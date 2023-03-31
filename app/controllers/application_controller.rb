@@ -1,11 +1,10 @@
 class ApplicationController < ActionController::API
-	#include ActionController::RequestForgeryProtection
+	include ActionController::RequestForgeryProtection
 
-	#protect_from_forgery with: :exception
-	before_action :snake_case_params 
-	#:attach_authenticity_token
+	protect_from_forgery with: :exception
+	before_action :snake_case_params, :attach_authenticity_token
 	rescue_from StandardError, with: :unhandled_error
-	#rescue_from ActionController::InvalidAuthenticityToken,	with: :invalid_authenticity_token
+	rescue_from ActionController::InvalidAuthenticityToken, with: :invalid_authenticity_token
 
 	def test
 		if params.has_key?(:login)

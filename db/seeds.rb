@@ -24,24 +24,36 @@ ApplicationRecord.transaction do
 		)
 
 		puts "Generating first and last names..."
+		# Generating Names
 		names = [];
 		10.times do 
-			names << Faker::Movies::HarryPotter.character
+			name = Faker::Movies::HarryPotter.character
+			while name.split(" ").length != 2 && name[0] != "Mrs."
+				name = Faker::Movies::HarryPotter.character
+			end
+			names << name
 		end
 
+		# Putting first and last names into an array
 		full_names = []
 		names.each do |name|
 			splitName = name.split(" ")
 			full_names << splitName
 		end
 
-		fullnames.each do |name|
-			10.times do 
-				User.create!({
+		full_names.each do |name|
+			User.create!({
 				first_name: name[0],
 				last_name: name[1],
-				email: Faker::Internet.unique.email
+				email: Faker::Internet.email(name: name[0]),
+				password: "password"
 			})
-			end
 		end
+end
+
+def nameCheck(name)
+	if (nameCheck.length != 2)
+		return false 
+	end
+	true 
 end

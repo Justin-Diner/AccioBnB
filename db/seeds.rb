@@ -41,6 +41,7 @@ ApplicationRecord.transaction do
 			full_names << splitName
 		end
 
+		# Creating Each User
 		full_names.each do |name|
 			User.create!({
 				first_name: name[0],
@@ -49,11 +50,5 @@ ApplicationRecord.transaction do
 				password: "password"
 			})
 		end
-end
-
-def nameCheck(name)
-	if (nameCheck.length != 2)
-		return false 
-	end
-	true 
+		puts "Done!"
 end

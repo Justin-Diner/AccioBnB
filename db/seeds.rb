@@ -28,7 +28,7 @@ ApplicationRecord.transaction do
 		names = [];
 		10.times do 
 			name = Faker::Movies::HarryPotter.character
-			while name.split(" ").length != 2 && name[0] != "Mrs."
+			while name.split(" ").length != 2 || name[0] === "Mrs."
 				name = Faker::Movies::HarryPotter.character
 			end
 			names << name

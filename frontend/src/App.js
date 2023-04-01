@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch} from 'react-router-dom';
 import LoginFormPage from './components/LoginFormPage';
-//import SignUpForm from './components/SignupFormPage';
+import SignUpForm from './components/SignupFormPage';
 //import Navigation from './components/Navigation';
 
 function App() {
@@ -9,10 +9,10 @@ function App() {
     <Switch>
 			{/*<Route exact path='/'>
 				<Navigation/>
-			</Route>
+	</Route>*/}
 			<Route exact path="/signup" > 
 				<SignUpForm/>
-			</Route>*/}
+			</Route>
 			<Route exact path="/login" >
 				<LoginFormPage />
 			</Route>

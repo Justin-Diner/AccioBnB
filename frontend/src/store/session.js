@@ -8,9 +8,8 @@ export const setCurrentUser = (user) => ({
 	user
 })
 
-export const removeCurrentUser = (userId) => ({
-	type: REMOVE_CURRENT_USER, 
-	userId
+export const removeCurrentUser = () => ({
+	type: REMOVE_CURRENT_USER
 })
 
 export const login = (user) => async (dispatch) => {

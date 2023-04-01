@@ -57,7 +57,7 @@ const SignUpForm = () => {
 			<h1 className="signup_option">Create an Account</h1>
 
 			<label className="signup_option"> First Name
-			<input  type="text" onChange={(e)=> setFirstName(e.target.value)} />
+			<input  type="text" placeholder="First Name" onChange={(e)=> setFirstName(e.target.value)} />
 			</label>
 
 			<label className="signup_option"> Last Name

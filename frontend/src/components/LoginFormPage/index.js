@@ -11,9 +11,9 @@ const LoginFormPage = () => {
 	const [errors, setErrors] = useState([]);
 	const sessionUser = useSelector(state => state.session.user);
 
-	//if (sessionUser) {
-	//	return <Redirect to="/" />
-	//} 
+	if (sessionUser) {
+		return <Redirect to="/" />
+	} 
 
 	function handleClick(e) {
 		e.preventDefault(); 

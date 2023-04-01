@@ -6,10 +6,9 @@ import Navigation from './components/Navigation';
 
 function App() {
   return (
+		<>
+		<Navigation/>
     <Switch>
-			<Route exact path='/'>
-				<Navigation/>
-			</Route>
 			<Route exact path="/signup" > 
 				<SignUpForm/>
 			</Route>
@@ -17,6 +16,7 @@ function App() {
 				<LoginFormPage />
 			</Route>
 		</Switch>
+		</>
   );
 }
 

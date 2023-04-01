@@ -40,25 +40,37 @@ const LoginFormPage = () => {
 	}
 
 	return (
-		<form id="login_form">
-			<h1>Please Log In</h1> 
-			<label> 
-				<input id="login_credential" placeholder="Email" type="text" onChange={(e) => setEmail(e.target.value)} />
-			</label>
-			<br/>
-			<label>  <br/>
-				<input id="login_password" placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)}/>
-			</label>
-			<br/>
-			<br/>
-			<button id="login_button" onClick={handleClick}>Log In</button>
-			<ul className="errors">
-				{errors.map(error => {
-					const errorText = error.slice(12)
-					return <li key={error}>{errorText}</li>})
-				}
-			</ul>
-		</form>
+		<div id="login_wrapper">
+			<form id="login_form">
+				<div id="top_login_bar">
+					<div id="xbutton_container">
+						<i class="fa-sharp fa-solid fa-xmark"></i>
+					</div>
+					<div id="login_sentence">Log in or sign up</div>
+					<div></div>
+				</div>
+				<h1 id="welcome">Welcome to Acciobnb</h1>
+
+				<div id="inputs_wrapper">
+					<label> 
+						<input className="form_input" id="login_email" placeholder="Email" type="text" onChange={(e) => setEmail(e.target.value)} />
+					</label>
+
+					<label>
+						<input className="form_input" id="login_password" placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)}/>
+					</label>
+				</div>
+
+				<div id="login_button" onClick={handleClick}>Continue</div>
+				<ul className="errors">
+					{errors.map(error => {
+						const errorText = error.slice(12)
+						return <li key={error}>{errorText}</li>})
+					}
+				</ul>
+			</form>
+		</div>
+		
 	)
 }
 

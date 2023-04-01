@@ -1,0 +1,24 @@
+.errors {
+	color: red;
+}
+
+#login_form {
+	border: 1px solid black; 
+	padding: 24px;
+	width: 300px;
+	padding-bottom: 20px;
+	display: block;
+	border-radius: 4%; 
+	background: radial-gradient(ellipse at top, #ffa201, transparent), radial-gradient(ellipse at bottom, #1303ee, transparent);
+	box-shadow: 0 0 5px black;
+}
+
+#login_button {
+	background-color: #e61e4d;
+	border-radius: 30%; 
+	font-weight: bold;
+}
+
+#login_button:hover {
+	cursor: pointer;
+}

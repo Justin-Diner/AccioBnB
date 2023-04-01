@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../store/session";
 import './LoginForm.css'
 import { Redirect } from 'react-router-dom';
+import { signup } from "../../store/session";
 
 const LoginFormPage = () => {
 	const dispatch = useDispatch(); 
@@ -39,6 +40,19 @@ const LoginFormPage = () => {
 			});
 	}
 
+	const demoUserLogin = (e) => {
+		e.preventDefault();
+
+		const demoUser = {
+			first_name: "Squib",
+			last_name: "user",
+			email: "squib@demouser.com",
+			password: "password"
+		}
+
+		dispatch(signup(demoUser));
+	}
+
 	return (
 		<div id="login_wrapper">
 			<form id="login_form">
@@ -61,7 +75,14 @@ const LoginFormPage = () => {
 					</label>
 				</div>
 
-				<div id="login_button" onClick={handleClick}>Continue</div>
+				<div className="form_button" id="login_button" onClick={handleClick}>Continue</div>
+
+				<div id="spacer">
+					<div>or</div>
+				</div>
+
+				<div className="form_button" id="demo_user_button" onClick={demoUserLogin}>Continue As Demo User</div>
+
 				<ul className="errors">
 					{errors.map(error => {
 						const errorText = error.slice(12)

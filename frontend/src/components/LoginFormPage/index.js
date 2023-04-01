@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 
 const LoginFormPage = () => {
 	const dispatch = useDispatch(); 
-	const [credential, setCredential] = useState("");
+	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [errors, setErrors] = useState([]);
 	const sessionUser = useSelector(state => state.session.user);
@@ -19,7 +19,7 @@ const LoginFormPage = () => {
 		e.preventDefault(); 
 
 		const user = {
-			credential: credential, 
+			email: email, 
 			password: password
 		}
 
@@ -43,7 +43,7 @@ const LoginFormPage = () => {
 		<form id="login_form">
 			<h1>Please Log In</h1> 
 			<label> 
-				<input id="login_credential" placeholder="Username or Email" type="text" onChange={(e) => setCredential(e.target.value)} />
+				<input id="login_credential" placeholder="Email" type="text" onChange={(e) => setEmail(e.target.value)} />
 			</label>
 			<br/>
 			<label>  <br/>

@@ -77,6 +77,7 @@ const LoginFormPage = () => {
 						<i class="fa-sharp fa-solid fa-xmark"></i>
 					</div>
 					<div id="login_sentence">Log in or sign up</div>
+					<div></div>
 				</div>
 				<h1 id="welcome">Welcome to Acciobnb</h1>
 

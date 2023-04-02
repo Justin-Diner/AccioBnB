@@ -6,11 +6,11 @@ import { Redirect } from 'react-router-dom';
 import { signup } from "../../store/session";
 
 const LoginFormPage = () => {
-	const dispatch = useDispatch(); 
+	const dispatch = useDispatch();
+	const sessionUser = useSelector(state => state.session.user); 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [errors, setErrors] = useState([]);
-	const sessionUser = useSelector(state => state.session.user);
 	const [hoverStylePos, setHoverStylePos] = useState({x: 0, y: 0});
 	const [isHovering, setIsHovering] = useState(false)
 	const [styles, setStyles] = useState({});
@@ -48,7 +48,7 @@ const LoginFormPage = () => {
 
 		const demoUser = {
 			first_name: "Squib",
-			last_name: "user",
+			last_name: "Guest",
 			email: "squib@demouser.com",
 			password: "password"
 		}
@@ -56,6 +56,7 @@ const LoginFormPage = () => {
 		dispatch(signup(demoUser));
 	}
 
+ // Hovering CSS on Login Button
  const submitHover = (e) => {
 		setIsHovering(true);
 		let location = {
@@ -64,15 +65,10 @@ const LoginFormPage = () => {
 		}
 		setHoverStylePos(location);
 		setStyles({ 
-			backgroundPosition: (((100 / 200) * hoverStylePos.x).toString() + "px , " + (((100 / 200) * hoverStylePos.y).toString() + "px"))});
- 		};
-
-	const submitHoverEnd = (e) => {
-		setIsHovering(false);
-	}
-
-
-	console.log(styles);
+			backgroundPosition: hoverStylePos.x.toString() + "px , " + hoverStylePos.y.toString() + "px"}
+		);
+	};
+		
 	return (
 		<div id="login_wrapper">
 			<form id="login_form">
@@ -81,9 +77,15 @@ const LoginFormPage = () => {
 						<i class="fa-sharp fa-solid fa-xmark"></i>
 					</div>
 					<div id="login_sentence">Log in or sign up</div>
-					<div></div>
 				</div>
 				<h1 id="welcome">Welcome to Acciobnb</h1>
+
+				<ul className="errors">
+					{errors.map(error => {
+						const errorText = error.slice(12)
+						return <li key={error}>{errorText}</li>})
+					}
+				</ul>
 
 				<div id="inputs_wrapper">
 					<label> 
@@ -95,20 +97,13 @@ const LoginFormPage = () => {
 					</label>
 				</div>
 
-				<div className="form_button" id={isHovering ? "login_button_hover" : "login_button"} onClick={handleClick} onMouseMove={(e) => submitHover(e)} onMouseLeave={(e) => submitHoverEnd(e)} style={styles}>Continue</div>
+				<div className="form_button" id={isHovering ? "login_button_hover" : "login_button"} onClick={handleClick} onMouseMove={(e) => submitHover(e)} onMouseLeave={() => setIsHovering(false)} style={styles}>Continue</div>
 
 				<div id="spacer">
 					<div>or</div>
 				</div>
 
 				<div className="form_button" id="demo_user_button" onClick={demoUserLogin}>Continue As Demo User</div>
-
-				<ul className="errors">
-					{errors.map(error => {
-						const errorText = error.slice(12)
-						return <li key={error}>{errorText}</li>})
-					}
-				</ul>
 			</form>
 		</div>
 		

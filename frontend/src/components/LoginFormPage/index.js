@@ -53,6 +53,8 @@ const LoginFormPage = () => {
 		dispatch(signup(demoUser));
 	}
 
+	
+
 	return (
 		<div id="login_wrapper">
 			<form id="login_form">

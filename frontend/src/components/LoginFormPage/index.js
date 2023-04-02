@@ -11,6 +11,9 @@ const LoginFormPage = () => {
 	const [password, setPassword] = useState("");
 	const [errors, setErrors] = useState([]);
 	const sessionUser = useSelector(state => state.session.user);
+	const [hoverStylePos, setHoverStylePos] = useState({x: 0, y: 0});
+	const [isHovering, setIsHovering] = useState(false)
+	const [styles, setStyles] = useState({});
 
 	if (sessionUser) {
 		return <Redirect to="/" />
@@ -53,8 +56,23 @@ const LoginFormPage = () => {
 		dispatch(signup(demoUser));
 	}
 
-	
+ const submitHover = (e) => {
+		setIsHovering(true);
+		let location = {
+			x: e.clientX,
+			y: e.clientY
+		}
+		setHoverStylePos(location);
+		setStyles({ 
+			backgroundPosition: (((100 / 200) * hoverStylePos.x).toString() + "px , " + (((100 / 200) * hoverStylePos.y).toString() + "px"))});
+ 		};
 
+	const submitHoverEnd = (e) => {
+		setIsHovering(false);
+	}
+
+
+	console.log(styles);
 	return (
 		<div id="login_wrapper">
 			<form id="login_form">
@@ -77,7 +95,7 @@ const LoginFormPage = () => {
 					</label>
 				</div>
 
-				<div className="form_button" id="login_button" onClick={handleClick}>Continue</div>
+				<div className="form_button" id={isHovering ? "login_button_hover" : "login_button"} onClick={handleClick} onMouseMove={(e) => submitHover(e)} onMouseLeave={(e) => submitHoverEnd(e)} style={styles}>Continue</div>
 
 				<div id="spacer">
 					<div>or</div>

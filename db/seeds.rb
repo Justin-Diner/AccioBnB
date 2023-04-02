@@ -23,6 +23,13 @@ ApplicationRecord.transaction do
 			password: "password"
 		)
 
+		User.create!(
+			first_name: "Squib",
+			last_name: "Guest",
+			email: "squib@demouser.com",
+			password: "password"
+		)
+
 		puts "Generating first and last names..."
 		# Generating Names
 		names = [];

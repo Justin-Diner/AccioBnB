@@ -11,8 +11,8 @@ const Navigation = () => {
 		res = <ProfileButton user={sessionUser}/>
 	} else {
 		res = [
-			<li><NavLink key="login" to='/login'>Login</NavLink></li>,
-			<li><NavLink key="signup" to='/signup'>Sign Up</NavLink></li>
+			<li key="login"><NavLink key="login" to='/login'>Login</NavLink></li>,
+			<li key="signup"><NavLink key="signup" to='/signup'>Sign Up</NavLink></li>
 		]
 	}
 	return (

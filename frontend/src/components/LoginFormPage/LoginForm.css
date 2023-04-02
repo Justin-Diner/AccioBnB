@@ -8,18 +8,22 @@
 }
 
 #login_wrapper {
-
-	position: absolute;
-	height: 100%;
-	width: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
 	background-color: rgb(34, 34, 34, .2);
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: row;
+	z-index: 2000;
 }
 
 #login_form {
 	font-family: 'Roboto', sans-serif;
+	position: relative;
 	font-size: 14px;
 	line-height: 1.43;
 	border: 1px solid black;
@@ -29,7 +33,6 @@
 	height: 540px;
 	width: 500px;
 	padding-bottom: 20px;
-	display: block;
 	border-radius: 12px; 
 	background-color: #FFFFFF;
 	box-shadow: 0 8px 28px rgba(0,0,0,0.28);
@@ -118,55 +121,22 @@
 	background-color: #EBEBEB;
 }
 
-#login_button {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-position: top 0, left 300;
-	background-image: radial-gradient( circle at center,#FF385C, #e61e4d 27.5%,#e31c5f 40%,#d70466 57.5%, #bd1e59 75%, #bd1e59 100% );
-	width: 100%;
-	height: 100%;
-	font-size: 16px;
-	height: 48px;
-	border-radius: 8px; 
-	font-weight: 600;
-	text-align: center;
-	margin-right: 16px;
-	color: white;
-	font-family: inherit;
-	line-height: 20px;
-	margin-top: 18px;
-	margin-bottom: 18px; 
-	border: none;
-}
-
-#login_button_hover {
-	cursor: pointer;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-position: top 0, left 300;
-	background-image: radial-gradient( circle at center,#FF385C, #e61e4d 27.5%,#e31c5f 40%,#d70466 57.5%, #bd1e59 75%, #bd1e59 100% );
-	background-size: 200% 200%;
-	width: 100%;
-	height: 100%;
-	font-size: 16px;
-	height: 48px;
-	border-radius: 8px; 
-	font-weight: 600;
-	text-align: center;
-	margin-right: 16px;
-	color: white;
-	font-family: inherit;
-	line-height: 20px;
-	margin-top: 18px;
-	margin-bottom: 18px; 
-	border: none;
-}
-
 #spacer {
 	display: flex; 
 	align-items: center;
 	flex-direction: row;
 	justify-content: center;
+}
+
+#xbutton_container {
+	display: flex; 
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	width: 22px;
+	height: 22px;
+}
+
+#xbutton_container:hover {
+	cursor: pointer;
 }

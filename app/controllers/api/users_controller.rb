@@ -4,6 +4,16 @@ class Api::UsersController < ApplicationController
 	# Overrides what keys we want Rails to automatically nest. 
 	wrap_parameters include: User.attribute_names + ['password']
 
+	def show 
+		@user = User.find(params[:id])
+
+		if (@user)
+			render 'api/users/show'
+		else 
+			render json: {errors: ['Account does not exist.']}
+		end
+	end
+
 	def create 
 		@user = User.new(user_params)
 		if @user.save
@@ -13,6 +23,20 @@ class Api::UsersController < ApplicationController
 			render json: @user.errors.full_messages, status: :unprocessable_entity
 		end
 	end
+
+	def update 
+		@user = User.find(params[:id])
+
+		if @user.update(user_params)
+			render 'api/users/show'
+		else 
+			render json: @user.errors.full_messages, status: 422
+		end
+	end
+
+	def destroy 
+		@user = User.find(params[:id])
+	end 
 
 	private 
 	def user_params

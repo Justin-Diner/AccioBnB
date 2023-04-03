@@ -3,10 +3,12 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import sessionReducer from './session';
 import usersReducer from './users';
+import uiReducer from './ui';
 
 const rootReducer = combineReducers({
 	session: sessionReducer,
-	users: usersReducer
+	users: usersReducer,
+	ui: uiReducer
 })
 
 let enhancer;

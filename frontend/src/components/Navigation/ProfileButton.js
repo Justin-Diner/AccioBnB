@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from '../../store/session'
+import * as uiActions from '../../store/ui'
 
 const ProfileButton = ({ user }) => {
 	const dispatch = useDispatch(); 
@@ -26,6 +27,8 @@ const ProfileButton = ({ user }) => {
 
 	const logout = (e) => {
     e.preventDefault();
+		dispatch(uiActions.receiveLogInModal(false));
+		dispatch(uiActions.receiveSignUpModal(false));
     dispatch(sessionActions.logout());
   };
 

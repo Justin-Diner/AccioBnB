@@ -10,7 +10,7 @@ function App() {
 		<Navigation/>
     <Switch>
 			<Route exact path="/signup" > 
-				<SignUpForm />
+				<SignUpForm reloadTrigger={true} />
 			</Route>
 			<Route exact path="/login" >
 				<LoginFormPage />

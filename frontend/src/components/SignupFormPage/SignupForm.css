@@ -54,6 +54,9 @@
 	margin: 4px;
 }
 
+#signup_sentence {
+	font-weight: 800;
+}
 #welcome {
 	position: relative;
 	left: 6px;

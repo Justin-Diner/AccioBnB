@@ -1,24 +1,36 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { signup } from '../../store/session';
 import { Redirect, Link } from 'react-router-dom';
 import './SignupForm.css'
 import ContinueButton from '../Buttons/ContinueButton/ContinueButton';
 import StandardFormButton from '../Buttons/StandardFormButton/StandardFormButton';
-
-
+import { retrieveSignUpModalState, receiveSignUpModal } from '../../store/ui';
 
 const SignUpForm = () => {
 	const dispatch = useDispatch(); 
 	const [showing, setShowing] = useState(true);
+
+	// User Inputs and Errors 
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
+
+	// Modal state tracker to ensure closure at right time. 
 	const [mouseClickedForm, setMouseClickedForm] = useState(false);
+
+	// Selector 
 	const sessionUser = useSelector(state => state.session.user)
+	const signUpModalState = useSelector(retrieveSignUpModalState);
+
+	useEffect(() => {
+			if (signUpModalState) {
+				setShowing(true);
+			}
+	}, [signUpModalState])
 
 	if (sessionUser) {
 		return <Redirect to="/" />
@@ -60,11 +72,12 @@ const SignUpForm = () => {
 			});
 	}
 
-	const handleOutsideClick = (e) => {
+	const handleOutsideClick = () => {
 		if (mouseClickedForm) {
 			setMouseClickedForm(false);
 			return 
 		} else {
+			dispatch(receiveSignUpModal(false));
 			setShowing(false);
 		}
 	}
@@ -76,12 +89,18 @@ const SignUpForm = () => {
 		}
 	}
 
+	const handleClose = () => {
+		setShowing(false);
+		dispatch(receiveSignUpModal(false));
+		return <Redirect to="/" />
+	}
+
 	return (
-		<div id="signup_wrapper" onClick={(e) => handleOutsideClick(e)}>
+		<div id="signup_wrapper" onClick={() => handleOutsideClick()}>
 			<div onMouseDown={(e) => handleInsideClick(e)}> 
 			<form id="signup_form"> 
 				<div id="top_signup_bar">
-					<div id="xbutton_container" onClick={() => setShowing(false)}>
+					<div id="xbutton_container" onClick={handleClose}>
 						<i class="fa-sharp fa-solid fa-xmark"></i>
 					</div>
 					<div id="signup_sentence">Create an Account</div>

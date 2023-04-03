@@ -3,7 +3,7 @@ import './StandardFormButton.css';
 const StandardFormButton = ({clickFunction, text}) => {
 	return (
 		<div
-			class="form_button"
+			className="form_button"
 			onClick={clickFunction}
 		>
 			{text}

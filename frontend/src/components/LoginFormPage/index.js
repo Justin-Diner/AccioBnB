@@ -73,7 +73,7 @@ const LoginFormPage = () => {
 					<div id="login_sentence">Log in or sign up</div>
 					<div></div>
 				</div>
-				<h1 id="welcome">Welcome to Acciobnb</h1>
+				<h1 id="welcome">Welcome Back to Acciobnb</h1>
 
 				<ul className="errors">
 					{errors.map(error => {
@@ -91,7 +91,7 @@ const LoginFormPage = () => {
 						<input className="form_input" id="login_password" placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)}/>
 					</label>
 				</div>
-				<ContinueButton clickFunction={handleClick} onClick={handleClick}/>
+				<ContinueButton clickFunction={handleClick} />
 				<div id="spacer">
 					<div>or</div>
 				</div>

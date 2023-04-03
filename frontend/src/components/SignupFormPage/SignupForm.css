@@ -39,7 +39,17 @@
 	box-shadow: 0 8px 28px rgba(0,0,0,0.28);
 	border-top-left-radius: 12px;
 	border-top-right-radius: 12px;
-	
+	animation-name: slidein; 
+	animation-duration: 0.4s;
+	animation-timing-function: ease-out; 
+	animation-delay: 0s;
+}
+
+@keyframes slidein {
+	from {
+		bottom: -150vh
+	}
+	to{bottom: 0}
 }
 
 .form_input {

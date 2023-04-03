@@ -8,4 +8,6 @@ Rails.application.routes.draw do
 		resources :users, only: [:create, :show, :destroy, :update]
 		resource :session, only: [:show, :create, :destroy]
 	end
+
+	get '*path', to: "static_pages#frontend_index"
 end

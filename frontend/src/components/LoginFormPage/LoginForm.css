@@ -19,7 +19,20 @@
 	align-items: center;
 	flex-direction: row;
 	z-index: 2000;
+	animation-name: slidein; 
+	animation-duration: 0.3s;
+	animation-timing-function: ease-out; 
+	animation-delay: 0s;
 }
+
+@keyframes slidein {
+	from {
+		bottom: -150vh
+	}
+	to{bottom: 0}
+}
+
+
 
 #login_form {
 	font-family: 'Roboto', sans-serif;

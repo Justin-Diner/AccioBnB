@@ -97,8 +97,9 @@ const LoginFormPage = () => {
 		return <Redirect to="/" />
 	}
 	
+	console.log(showing);
 	return (
-		<div id="login_wrapper" onClick={() => handleOutsideClick()}>
+		<div id={showing ? "login_wrapper" : "login_wrapper_gone"} onClick={() => handleOutsideClick()}>
 			<div onMouseDown={(e) => handleInsideClick(e)}> 
 				<form id="login_form">
 					<div id="top_login_bar">

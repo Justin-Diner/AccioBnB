@@ -78,8 +78,8 @@ const SettingsOptions = ({ user = null}) => {
 				{showMenu && (
 				<div id="settings_options_dropdown">
 					<ul className="profile_dropdown">
-					<NavLink to='/login'><li className="settings_dropdown_item" onClick={showLogIn}>Log In</li> </NavLink>
-					<NavLink to='/signup'><li className="settings_dropdown_item" onClick={showSignUp}>Sign Up</li></NavLink>
+						<NavLink to='/login' style={{ textDecoration: 'none' }} ><li className="settings_dropdown_item" id="login_from_loggedout_dropdown" onClick={showLogIn}>Log In</li> </NavLink>
+						<NavLink to='/signup' style={{ textDecoration: 'none' }}><li className="settings_dropdown_item" id="signup_from_loggedout_dropdown" onClick={showSignUp}>Sign Up</li></NavLink>
 						<li className="settings_dropdown_item">AccioBnB Your Home</li>
 						<li className="settings_dropdown_item">Help</li>
 					</ul>

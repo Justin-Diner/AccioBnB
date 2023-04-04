@@ -43,10 +43,10 @@
 	position: absolute; 
 	background-color: #FFFFFF;
 	border: 1px solid rgba(0,0,0,0.08);
-	box-shadow: 0 3px 3px -2px gray;
+	box-shadow: 0 0px 5px rgba(0,0,0,0.2);
 	cursor: pointer; 
 	border-radius: 21px;
-	top:55px;
+	top: 75px;
 	padding: 5px 5px 5px 12px; 
 	margin: 0; 
 	right: 4px;
@@ -54,6 +54,7 @@
 	width: 200px;
 	display: flex;
 	flex-direction: column;
+
 }
 
 #settings_options_dropdown ul li {
@@ -67,9 +68,28 @@
 	height: 43px;
 	width: 109%;
 	right: 12px;
+	font-family: 'Roboto', sans-serif;
+	text-indent: 12px;
+	text-align: left;
+	display: flex;
+	align-items: center;
+}
 
+.settings_dropdown_item:visited {
+	text-decoration: none;
+	color: black;
 }
 
 .settings_dropdown_item:hover {
-	background-color: lightgrey;
+	background-color: #F7F7F7;
+}
+
+#login_from_loggedout_dropdown {
+	text-decoration: none;
+	font-weight: 800;
+	color: black;
+}
+
+#signup_from_loggedout_dropdown {
+	color: black;
 }

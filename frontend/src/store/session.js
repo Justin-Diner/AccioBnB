@@ -12,6 +12,11 @@ export const removeCurrentUser = () => ({
 	type: REMOVE_CURRENT_USER
 })
 
+// Session Selector 
+export const sessionUser = (state) => {
+	return state.session.user ? state.session.user : null;
+}
+
 export const login = (user) => async (dispatch) => {
 	const {email, password } = user; 
 	const response = await csrfFetch('/api/session', {

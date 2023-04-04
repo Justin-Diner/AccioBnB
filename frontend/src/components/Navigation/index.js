@@ -7,13 +7,14 @@ import { receiveSignUpModal, receiveLogInModal } from "../../store/ui";
 import LogoDisplay from "./LogoDisplay/LogoDisplay.js";
 import SearchBar from "./SearchBar/SearchBar";
 import SettingsOptions from "./SettingsOptions/SettingsOptions";
+import * as sessionAction from '../../store/session';
 import './Navigation.css';
 
 const Navigation = () => {
 	const dispatch = useDispatch();
-	const sessionUser = useSelector(state => state.session.user ? state.session.user : null);
+	const sessionUser = useSelector(sessionAction.sessionUser);
 
-	let res;
+	let settingsDisplay;
 
 	const showLogIn = () => {
 		dispatch(receiveLogInModal(true));
@@ -23,14 +24,6 @@ const Navigation = () => {
 		dispatch(receiveSignUpModal(true));
 	}
 
-	if (sessionUser) {
-		res = <ProfileButton user={sessionUser}/>
-	} else {
-		res = [
-			<li key="login" onClick={showLogIn}><NavLink key="login" to='/login'>Login</NavLink></li>,
-			<li key="signup" onClick={showSignUp}><NavLink key="signup" to='/signup'>Sign Up</NavLink></li>
-		]
-	} 
 	return (
 		<>
 			<div id="top_nav_bar_container">
@@ -41,11 +34,8 @@ const Navigation = () => {
 						<div className="nav_component" id="search_wrapper"> 
 							<SearchBar id="search_bar_comp"/>
 						</div>
-						<div className="nav_component" id="settings_options_wrapper">
-							<SettingsOptions />
-							<ul id="top_nav_list">
-								{res}
-							</ul>
+						<div className="nav_component" id="settings_options_wrapper">		
+							<SettingsOptions user={sessionUser}/>
 						</div>
 					</div>
 			</div>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import SettingsOptions from "../SettingsOptions";
 import * as sessionActions from '../../../../store/session'
 import * as uiActions from '../../../../store/ui'
 
@@ -36,11 +37,11 @@ const ProfileButton = ({ user }) => {
  return (
 	<>
 		<div id="options_wrapper">
-			<button onClick={openMenu} id="bolt_icon_parent">
-				<i className="fa-solid fa-bolt"></i>
-			</button>
+			<div id="SettingsOptions" onClick={openMenu}>
+				<SettingsOptions />
+			</div>
 			{showMenu && (
-				<ul className="profile_dropdown">
+				<ul id="profile_dropdown">
 					<li>{`${user.firstName} ${user.lastName}`}</li>
 					<li>{user.email}</li>
 					<li>

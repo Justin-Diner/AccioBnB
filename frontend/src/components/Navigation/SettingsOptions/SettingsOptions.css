@@ -5,6 +5,9 @@
 	display: flex; 
 	justify-content: center;
 	align-items: center;
+	position: relative;
+	right: 24px;
+	top: 5px;
 }
 
 #settings_options_background {
@@ -17,10 +20,12 @@
 	padding: 4px;
 	padding-top: 4px;
 	padding-bottom: 7px;
+	cursor: pointer; 
 }
 
 #settings_options_background:hover {
 	box-shadow: 0 4px 3px -2px gray;
+	
 }
 
 .fa-bars {
@@ -32,4 +37,39 @@
 	width: 32px;
 	position: relative; 
 	left: 10px;
+}
+
+#settings_options_dropdown {
+	position: absolute; 
+	background-color: #FFFFFF;
+	border: 1px solid rgba(0,0,0,0.08);
+	box-shadow: 0 3px 3px -2px gray;
+	cursor: pointer; 
+	border-radius: 21px;
+	top:55px;
+	padding: 5px 5px 5px 12px; 
+	margin: 0; 
+	right: 4px;
+	height: 200px;
+	width: 200px;
+	display: flex;
+	flex-direction: column;
+}
+
+#settings_options_dropdown ul li {
+	flex-grow: 1;
+}
+
+.settings_dropdown_item {
+	position: relative;
+	top: 10px;
+	flex-grow: 1;
+	height: 43px;
+	width: 109%;
+	right: 12px;
+
+}
+
+.settings_dropdown_item:hover {
+	background-color: lightgrey;
 }

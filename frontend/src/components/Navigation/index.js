@@ -28,9 +28,9 @@ const Navigation = () => {
 		<>
 			<div id="top_nav_bar_container">
 					<div id="top_nav_bar">
-						<div className="nav_component" id="logo_wrapper">
+						<a href="/"><div className="nav_component" id="logo_wrapper">
 							<LogoDisplay id="nav_logo" />
-						</div>
+						</div></a>
 						<div className="nav_component" id="search_wrapper"> 
 							<SearchBar id="search_bar_comp"/>
 						</div>

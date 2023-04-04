@@ -4,6 +4,8 @@ import ProfileButton from "./ProfileButton";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { receiveSignUpModal, receiveLogInModal } from "../../store/ui";
+import LogoDisplay from "../LogoDisplay/LogoDisplay";
+import './Navigation.css';
 
 const Navigation = () => {
 	const dispatch = useDispatch();
@@ -29,9 +31,20 @@ const Navigation = () => {
 	} 
 	return (
 		<>
-			<ul id="top-nav">
-				{res}
-			</ul>
+			<div id="top_nav_bar_container">
+					<div id="top_nav_bar">
+						<div id="logo_wrapper">
+							<LogoDisplay id="nav_logo" />
+						</div>
+						<div id="search_wrapper"> 
+							<div id="search">Search</div>
+						</div>
+						<div id="search_bar"></div>
+						<ul id="top_nav_list">
+							{res}
+						</ul>
+					</div>
+			</div>
 		</>
 	)
 

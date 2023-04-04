@@ -1,0 +1,25 @@
+#top_nav_bar_container{
+	height: 86px;
+}
+
+#top_nav_bar {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	position: relative;
+	width: 100%;
+	z-index: 1;
+	border-top: 1px solid rgba(0,0,0,0.08);
+	border-bottom: 1px solid rgba(0,0,0,0.08);
+	height: 100%;
+}
+
+#logo_wrapper {
+	position: relative; 
+	top: 8px
+}
+
+#profile_image {
+	height: 40px;
+	width: 40px;
+}

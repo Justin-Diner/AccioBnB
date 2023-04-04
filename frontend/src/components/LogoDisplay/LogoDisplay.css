@@ -1,0 +1,18 @@
+#logo_container {
+	display: flex;
+}
+
+img {
+	height: 60px; 
+	width: 100px;
+}
+
+#app_name {
+	position: relative;
+	color: #FF385C;
+	font-family: 'Roboto', sans-serif;
+	font-weight: bold;
+	font-size: 24px;
+	right: 20px;
+	bottom: 6px;
+}

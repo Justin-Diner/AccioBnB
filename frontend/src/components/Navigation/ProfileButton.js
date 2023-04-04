@@ -34,6 +34,7 @@ const ProfileButton = ({ user }) => {
 
  return (
 	<>
+		<img id="profile_image" src={require("../../assets/profile_img.png")}></img>
 		<button onClick={openMenu} id="bolt_icon_parent">
 			<i class="fa-solid fa-bolt"></i>
 		</button>

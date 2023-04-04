@@ -123,3 +123,7 @@
 #xbutton_container:hover {
 	cursor: pointer;
 }
+
+.fa-xmark {
+	color: gray;
+}

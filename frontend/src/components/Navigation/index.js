@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { receiveSignUpModal, receiveLogInModal } from "../../store/ui";
 import LogoDisplay from "./LogoDisplay/LogoDisplay.js";
 import SearchBar from "./SearchBar/SearchBar";
+import SettingsOptions from "./SettingsOptions/SettingsOptions";
 import './Navigation.css';
 
 const Navigation = () => {
@@ -40,7 +41,8 @@ const Navigation = () => {
 						<div className="nav_component" id="search_wrapper"> 
 							<SearchBar id="search_bar_comp"/>
 						</div>
-						<div className="nav_component" id="options_drop_down">
+						<div className="nav_component" id="settings_options_wrapper">
+							<SettingsOptions />
 							<ul id="top_nav_list">
 								{res}
 							</ul>

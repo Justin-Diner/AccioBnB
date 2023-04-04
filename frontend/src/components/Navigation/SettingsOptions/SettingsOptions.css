@@ -1,0 +1,35 @@
+#settings_options_container { 
+	height: 100%;
+	width: 100px;
+	background-color: white;
+	display: flex; 
+	justify-content: center;
+	align-items: center;
+}
+
+#settings_options_background {
+	border: 2px solid rgba(0,0,0,0.08);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 76px;
+	border-radius: 32px;
+	padding: 4px;
+	padding-top: 4px;
+	padding-bottom: 7px;
+}
+
+#settings_options_background:hover {
+	box-shadow: 0 4px 3px -2px gray;
+}
+
+.fa-bars {
+	color: grey;
+}
+
+#profile_image {
+	height: 32px;
+	width: 32px;
+	position: relative; 
+	left: 10px;
+}

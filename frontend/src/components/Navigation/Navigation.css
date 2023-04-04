@@ -22,17 +22,14 @@
 	left: 40px;
 }
 
-#profile_image {
-	height: 40px;
-	width: 40px;
-}
-
 #search_wrapper {
 	height: 100%;
 	width: 100%;
+	justify-content: center;
+	display: flex; 
 }
 
-#options_drop_down {
+#settings_options_wrapper {
 	display: flex;
 	justify-content: end;
 	align-items: center;
@@ -40,3 +37,4 @@
 	width: 48%;
 	padding-right: 36px;
 }
+

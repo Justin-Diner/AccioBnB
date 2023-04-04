@@ -67,6 +67,7 @@
 #signup_sentence {
 	font-weight: 800;
 }
+
 #welcome {
 	position: relative;
 	left: 6px;
@@ -75,11 +76,13 @@
 	font-weight: 600;
 	line-height: 26px;
 	margin-bottom: 16px;
+	margin-top: 24px;
 }
 
 #top_signup_bar {
 	display: flex; 
 	justify-content: space-between;
+
 }
 
 #signup_label {

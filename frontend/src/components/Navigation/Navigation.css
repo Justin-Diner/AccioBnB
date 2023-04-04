@@ -1,10 +1,12 @@
 #top_nav_bar_container{
 	height: 86px;
+	position: fixed; 
+	width: 100%;
 }
 
 #top_nav_bar {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
 	position: relative;
 	width: 100%;
@@ -16,10 +18,25 @@
 
 #logo_wrapper {
 	position: relative; 
-	top: 8px
+	top: 8px;
+	left: 40px;
 }
 
 #profile_image {
 	height: 40px;
 	width: 40px;
+}
+
+#search_wrapper {
+	height: 100%;
+	width: 100%;
+}
+
+#options_drop_down {
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	height: 100%;
+	width: 48%;
+	padding-right: 36px;
 }

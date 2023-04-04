@@ -1,0 +1,25 @@
+#search_button_wrapper {
+	height: 48px;
+	padding-left: 5px;
+	padding-right: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	right: 5px;
+}
+
+#search_button_background {
+	background-color: #FF385C; 
+	height: 70%;
+	width: 34px;
+	border-radius: 100px;
+	z-index: 2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+i {
+	color: white;
+}

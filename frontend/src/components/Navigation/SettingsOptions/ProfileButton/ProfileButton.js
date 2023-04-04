@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import * as sessionActions from '../../store/session'
-import * as uiActions from '../../store/ui'
+import * as sessionActions from '../../../../store/session'
+import * as uiActions from '../../../../store/ui'
+
 
 const ProfileButton = ({ user }) => {
 	const dispatch = useDispatch(); 
@@ -34,19 +35,21 @@ const ProfileButton = ({ user }) => {
 
  return (
 	<>
-		<img id="profile_image" src={require("../../assets/profile_img.png")}></img>
-		<button onClick={openMenu} id="bolt_icon_parent">
-			<i class="fa-solid fa-bolt"></i>
-		</button>
-		{showMenu && (
-			<ul className="profile_dropdown">
-				<li>{`${user.firstName} ${user.lastName}`}</li>
-				<li>{user.email}</li>
-				<li>
-					<button onClick={logout}>Log Out</button>
-				</li>
-			</ul>
-		)}
+		<div id="options_wrapper">
+			<img id="profile_image" src={require("../../../../assets/profile_img.png")}></img>
+			<button onClick={openMenu} id="bolt_icon_parent">
+				<i className="fa-solid fa-bolt"></i>
+			</button>
+			{showMenu && (
+				<ul className="profile_dropdown">
+					<li>{`${user.firstName} ${user.lastName}`}</li>
+					<li>{user.email}</li>
+					<li>
+						<button onClick={logout}>Log Out</button>
+					</li>
+				</ul>
+			)}
+		</div>
 	</>
  )
 }

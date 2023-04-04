@@ -1,0 +1,22 @@
+#search_bar_wrapper {
+	height: 100%; 
+	width: 100%;
+}
+
+#search_bar {
+	border: 2px solid rgba(0,0,0,0.08);
+	box-shadow: 0 3px 3px -2px gray;
+	height: 48px;
+	position: relative; 
+	width: 100%; 
+	top: 20px;
+	border-radius: 32px;
+	cursor: pointer; 
+	display: flex; 
+	align-items: center;
+	justify-content: space-between;
+}
+
+#search_bar:hover {
+	box-shadow: 0 4px 3px -2px gray;
+}

@@ -1,0 +1,33 @@
+#filterIcon_wrapper {
+	display: flex; 
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+#filterIcon_wrapper:hover {
+	border-bottom: 2px solid #adadad;
+}
+
+#filterIcon_wrapper:hover #filterIcon_image{
+	filter:invert(0%);
+}
+
+#filterIcon_wrapper:hover #filterIcon_text {
+	color: black;
+}
+
+#filterIcon_image {
+	height: 30px;
+	width: 34px;
+	margin-bottom: 7px;
+	filter: invert(50%);
+}
+
+#filterIcon_text {
+	font-family: var(--font-family);
+	font-size: 12px;
+	color: #717171;
+	font-weight: 600;
+}
+

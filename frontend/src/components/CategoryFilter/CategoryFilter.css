@@ -1,7 +1,9 @@
 #category_filter_wrapper {
 	height: 78px; 
 	width: 100%;
-	background-color: blue;
 	margin-top: 27px;
-
+	display: flex;
+	justify-content: space-around;
 }
+
+

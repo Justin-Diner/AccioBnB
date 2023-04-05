@@ -3,7 +3,7 @@ import { Route, Switch} from 'react-router-dom';
 import LoginFormPage from './components/LoginFormPage';
 import SignUpForm from './components/SignupFormPage';
 import Navigation from './components/Navigation';
-import CategoryFilter from './components/CategoryFilter/index';
+import CategoryFilter from './components/CategoryFilter/CategoryFilter';
 import './index.css'
 
 function App() {
@@ -11,8 +11,8 @@ function App() {
 		<>
 			<div id="main_container">
 				<div id="nav_bar_filler"></div>
-				<Navigation />
 				<CategoryFilter />
+				<Navigation />		
 			</div>
 			<Switch>
 				<Route exact path="/signup" > 

@@ -101,7 +101,7 @@ const SignUpForm = () => {
 			<form id="signup_form"> 
 				<div id="top_signup_bar">
 					<div id="xbutton_container" onClick={handleClose}>
-						<i class="fa-sharp fa-solid fa-xmark"></i>
+						<i className="fa-sharp fa-solid fa-xmark"></i>
 					</div>
 					<div id="signup_sentence">Create an Account</div>
 					<div></div>

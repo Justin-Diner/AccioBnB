@@ -36,6 +36,11 @@ class Api::UsersController < ApplicationController
 
 	def destroy 
 		@user = User.find(params[:id])
+
+		if @user 
+			User.destroy(params[:id])
+			render json: { message: 'success' }
+		end
 	end 
 
 	private 

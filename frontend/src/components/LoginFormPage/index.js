@@ -103,7 +103,7 @@ const LoginFormPage = () => {
 				<form id="login_form">
 					<div id="top_login_bar">
 						<div id="xbutton_container" onClick={handleClose}>
-							<i class="fa-sharp fa-solid fa-xmark"></i>
+							<i className="fa-sharp fa-solid fa-xmark"></i>
 						</div>
 						<div id="login_sentence">Log in or sign up</div>
 						<div></div>

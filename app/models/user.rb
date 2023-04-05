@@ -22,6 +22,12 @@ class User < ApplicationRecord
 	validates :session_token, presence: true, uniqueness: true 
 	validates :password, length: {in: 6..255}, allow_nil: true 
 
+	has_many :listings, 
+	primary_key: :id, 
+	foreign_key: :host_id, 
+	class_name: :Listing
+
+
 	def	self.find_by_credentials(email, password)
 		if email =~ URI::MailTo::EMAIL_REGEXP
 			user = User.find_by(email: email)

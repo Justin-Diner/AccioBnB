@@ -80,8 +80,8 @@ ApplicationRecord.transaction do
 				num_bathrooms: 40, 
 				num_bedrooms: 38,
 				num_beds: 300, 
-				lat: 0, 
-				long: 0
+				lat: Faker::Address.latitude, 
+				long: Faker::Address.longitude
 		})
 
 		5.times do 
@@ -95,16 +95,15 @@ ApplicationRecord.transaction do
 				country: "United States",
 				property_type: property_types.sample,
 				max_guests: rand(1..20),
-				nightly_price: rand(1000..5000), 
+				nightly_price: rand(200..2000), 
 				cleaning_fee: rand(300..1000), 
 				description: Faker::Movies::HarryPotter.quote, 
 				num_bathrooms: rand(1..5),
 				num_bedrooms: rand(1..10),
 				num_beds: rand(1..20),
-				lat: 0,
-				long: 0
+				lat: Faker::Address.latitude,
+				long: Faker::Address.longitude
 			})
 		end
-
 		puts "Done!"
 end

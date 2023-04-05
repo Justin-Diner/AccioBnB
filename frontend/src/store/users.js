@@ -27,7 +27,7 @@ export const fetchUser = (userId) => async (dispatch) => {
 	dispatch(receiveUser(data));
 }
 
-// Create a new User 
+// Create a New User 
 export const createUser = user => async dispatch => {
     const response = await csrfFetch('api/users', {
         method: 'POST',
@@ -67,7 +67,7 @@ const usersReducer = (state={}, action) => {
 
     switch(action.type) {
         case RECEIVE_USER:
-            nextState[action.user.id] = action.payload;
+            nextState[action.user.id] = action.user;
             return nextState;
         case REMOVE_USER:
             delete nextState[action.userId];

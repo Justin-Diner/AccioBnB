@@ -4,10 +4,12 @@ import logger from 'redux-logger';
 import sessionReducer from './session';
 import usersReducer from './users';
 import uiReducer from './ui';
+import listingsReducer from './listings';
 
 const rootReducer = combineReducers({
 	session: sessionReducer,
 	users: usersReducer,
+	listings: listingsReducer,
 	ui: uiReducer
 })
 

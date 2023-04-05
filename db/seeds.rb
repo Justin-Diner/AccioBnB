@@ -63,7 +63,7 @@ ApplicationRecord.transaction do
 
 		# Listings 
 		ApplicationRecord.connection.reset_pk_sequence!('listings')
-		puts 'Generating Listings...'
+		puts 'Generating Hogwarts...'
 		Listing.create!({
 				host_id: 1,
 				title: "Hogwarts",
@@ -84,6 +84,7 @@ ApplicationRecord.transaction do
 				long: Faker::Address.longitude
 		})
 
+		puts 'Generating 5 Listings'
 		5.times do 
 			Listing.create({
 				host_id: rand(1..10),
@@ -104,6 +105,13 @@ ApplicationRecord.transaction do
 				lat: Faker::Address.latitude,
 				long: Faker::Address.longitude
 			})
+			if Listing.last.errors.any?
+				Listing.last.errors.full_messages.each do |message|
+					puts message
+				end
+			end
+			puts 'Listing Created'
 		end
+
 		puts "Done!"
 end

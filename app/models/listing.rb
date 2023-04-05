@@ -25,7 +25,7 @@
 #
 class Listing < ApplicationRecord
 	validates :host_id, :title, :street_address, :zip_code, :city, :state, :country, :property_type, :max_guests, :nightly_price, :cleaning_fee, :description, :num_bathrooms, :num_bedrooms, :num_beds, :lat, :long, presence: true 
-	validates :zip_code, length: {is: 5}
+	validates :zip_code, length: {in: 5..12}
 	validates :street_address, uniqueness: true
 
 	belongs_to :host, 

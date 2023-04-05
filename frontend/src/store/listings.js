@@ -56,9 +56,10 @@ export const createListing = listing => async (dispatch) => {
 	}
 }
 
-export const updateEvent = (listing) => async (dispatch) => {
+export const updateListing = (listing) => async (dispatch) => {
 	const response = await csrfFetch(`api/listings/${listing.id}`, {
-		method: "PATCH"
+		method: "PATCH",
+		body: JSON.stringify(listing)
 	})
 
 	const data = await response.json(); 

@@ -12,7 +12,7 @@
 #  property_type  :string           not null
 #  max_guests     :integer          not null
 #  nightly_price  :float            not null
-#  clearning_fee  :float            not null
+#  cleaning_fee   :float            not null
 #  description    :text             not null
 #  num_bathrooms  :float            not null
 #  num_bedrooms   :integer          not null
@@ -24,7 +24,7 @@
 #  title          :string           not null
 #
 class Listing < ApplicationRecord
-	validates :host_id, :title, :street_address, :zip_code, :city, :state, :country, :property_type, :max_guests, :nightly_price, :clearning_fee, :description, :num_bathrooms, :num_bedrooms, :num_beds, :lat, :long, presence: true 
+	validates :host_id, :title, :street_address, :zip_code, :city, :state, :country, :property_type, :max_guests, :nightly_price, :cleaning_fee, :description, :num_bathrooms, :num_bedrooms, :num_beds, :lat, :long, presence: true 
 	validates :zip_code, length: {is: 5}
 	validates :street_address, uniqueness: true
 

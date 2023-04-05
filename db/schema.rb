@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_05_160256) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_05_174716) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,7 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_05_160256) do
     t.string "property_type", null: false
     t.integer "max_guests", null: false
     t.float "nightly_price", null: false
-    t.float "clearning_fee", null: false
+    t.float "cleaning_fee", null: false
     t.text "description", null: false
     t.float "num_bathrooms", null: false
     t.integer "num_bedrooms", null: false

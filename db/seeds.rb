@@ -9,11 +9,14 @@
 ApplicationRecord.transaction do 
   puts "Destroying tables..."
   # Unnecessary if using `rails db:seed:replant`
-  User.destroy_all
+  Listing.destroy_all
+	User.destroy_all
+	
 
   puts "Resetting primary keys..."
   # For easy testing, so that after seeding, the first `User` has `id` of 1
   ApplicationRecord.connection.reset_pk_sequence!('users')
+		property_types = ["House", "Apartment", "Castle", "Condo", "Room"]
 
 		puts "Creating Users..."
 		User.create!(
@@ -59,6 +62,8 @@ ApplicationRecord.transaction do
 		end
 
 		# Listings 
+		ApplicationRecord.connection.reset_pk_sequence!('listings')
+		puts 'Generating Listings...'
 		Listing.create!({
 				host_id: 1,
 				title: "Hogwarts",
@@ -70,7 +75,7 @@ ApplicationRecord.transaction do
 				property_type: "castle",
 				max_guests: 300, 
 				nightly_price: 100000, 
-				clearning_fee: 1000, 
+				cleaning_fee: 1000, 
 				description: "Have a stay at Hogwarts Castle. It is one of the oldest magical castles in the world. Relive your school years with a nightly stay.",
 				num_bathrooms: 40, 
 				num_bedrooms: 38,
@@ -81,15 +86,25 @@ ApplicationRecord.transaction do
 
 		5.times do 
 			Listing.create({
-				host_id: rand(1..10)
+				host_id: rand(1..10),
 				title: Faker::Movies::HarryPotter.location, 
 				street_address: Faker::Address.street_address,
 				zip_code: Faker::Address.zip_code,
-				
+				city: Faker::Address.city,
+				state: Faker::Address.state,
+				country: "United States",
+				property_type: property_types.sample,
+				max_guests: rand(1..20),
+				nightly_price: rand(1000..5000), 
+				cleaning_fee: rand(300..1000), 
+				description: Faker::Movies::HarryPotter.quote, 
+				num_bathrooms: rand(1..5),
+				num_bedrooms: rand(1..10),
+				num_beds: rand(1..20),
+				lat: 0,
+				long: 0
 			})
 		end
-
-
 
 		puts "Done!"
 end

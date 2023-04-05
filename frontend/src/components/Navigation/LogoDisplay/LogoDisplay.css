@@ -1,6 +1,8 @@
 #logo_container {
 	display: flex;
-	padding-right: 15vh;
+	width: 10%;
+	top: 6px;
+	position: relative;
 }
 
 img {

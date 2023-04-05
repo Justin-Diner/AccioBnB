@@ -17,9 +17,10 @@
 }
 
 #logo_wrapper {
-	position: relative; 
-	top: 8px;
-	left: 40px;
+	height: 100%;
+	width: 100%; 
+	justify-content: center;
+	display: flex;
 }
 
 #search_wrapper {
@@ -34,8 +35,8 @@
 	justify-content: end;
 	align-items: center;
 	height: 100%;
-	width: 48%;
-	padding-right: 36px;
+	width: 10%;
+	padding-right: 18px;
 }
 
 a {

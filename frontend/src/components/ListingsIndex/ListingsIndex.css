@@ -1,5 +1,5 @@
 #listings_index_container {
-	background-color: darkgrey;
+	background-color: white;
 	height: 100vh;
 	width: 100%;
 	padding-left: 40px;
@@ -17,3 +17,8 @@
 	row-gap: 40px;
 
 }
+
+#listing_index_item_wrapper {
+	width: 100%;
+}
+

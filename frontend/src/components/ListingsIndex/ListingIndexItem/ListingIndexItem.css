@@ -1,4 +1,50 @@
 #listing_index_item_container {
-	background-color: lightcoral;
-	min-height: 340px;
+	min-height: 358px;
+	display: flex; 
+	align-items: start;
+	flex-direction: column;
+	justify-content: flex-end;
 }
+
+#listing_index_item_container:hover {
+	cursor: pointer;
+}
+
+#listing_index_item_image_wrapper {
+	height: 100%;
+	width: 100%;
+	border-radius: 12px;
+	
+}
+
+#listing_index_item_image {
+	height: 100%; 
+	width: 100%;
+	border-radius: 12px;
+}
+
+.listing_index_item_textcontent {
+	font-family: var(--font-family);
+	padding: 1px;
+	font-size: 16px;
+}
+
+#listing_index_item_state_and_ratings_wrapper {
+	display: flex; 
+	justify-content: space-between;
+	width: 100%;
+	margin-top: 10px;
+}
+
+#listing_index_item_title_and_state {
+	font-weight: 600;
+}
+
+#listing_index_item_milesaway {
+	color: #717171;
+}
+
+#listing_index_item_daterange {
+	color: #717171;
+}
+

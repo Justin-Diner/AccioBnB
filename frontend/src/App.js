@@ -5,6 +5,7 @@ import SignUpForm from './components/SignupFormPage';
 import Navigation from './components/Navigation';
 import CategoryFilter from './components/CategoryFilter/CategoryFilter';
 import './index.css'
+import ListingsIndex from './components/ListingsIndex/ListingsIndex';
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
 			<div id="main_container">
 				<div id="nav_bar_filler"></div>
 				<CategoryFilter />
-				<Navigation />		
+				<ListingsIndex />
+				<Navigation />	
 			</div>
 			<Switch>
 				<Route exact path="/signup" > 

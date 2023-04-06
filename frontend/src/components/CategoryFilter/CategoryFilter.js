@@ -13,9 +13,6 @@ const CategoryFilter = () => {
 		return <FilterIcon className="filter_icon_list_items" id={`icon_${tile[1]}`}key={index} image={tile[0]} text={tile[1]} />
 	})
 
-	console.log(displayedIcons);
-
-
 	//let imageUrl = '../../../assets/icons/Beachfront.png';
 	return ( 
 		<>

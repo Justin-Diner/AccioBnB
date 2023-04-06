@@ -1,13 +1,14 @@
 import csrfFetch from "./csrf";
 
 // Action Types 
-const RECEIVE_LISTINGS = 'listings/RECEIVE_LISTING';
+const RECEIVE_LISTINGS = 'listings/RECEIVE_LISTINGS';
 const RECEIVE_LISTING = 'listings/RECEIVE_LISTING';
 const REMOVE_LISTING = 'listings/REMOVE_LISTING';
 
 // Action Creators 
-export const receiveListings = () => ({
-	type: RECEIVE_LISTINGS
+export const receiveListings = (listings) => ({
+	type: RECEIVE_LISTINGS,
+	listings
 });
 
 export const receiveListing = (listing) => ({
@@ -21,11 +22,11 @@ export const removeListing = (listingId) => ({
 });
 
 // Selectors 
-export const retrieveListings = (state) => {
-	return state.listings ? state.listings : [];
+export const getListings = state => {
+	return state.listings ? Object.values(state.listings) : [];
 }
 
-export const retriveListing = listing => (state) => {
+export const getListing = listing => (state) => {
 	return state.listings ? state.listings[listing.id] : null;
 }
 

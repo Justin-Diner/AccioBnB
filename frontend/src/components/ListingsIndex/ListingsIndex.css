@@ -1,0 +1,19 @@
+#listings_index_container {
+	background-color: darkgrey;
+	height: 100vh;
+	width: 100%;
+	padding-left: 40px;
+	padding-top: 20px;
+}
+
+#listings_index_wrapper {
+	width: 100%;
+	max-width: 96%;
+	display: inline-grid;
+	grid-auto-flow: row dense;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	grid-template-rows: repeat(auto-fill, minmax(240px, 1fr));
+	column-gap: 24px; 
+	row-gap: 40px;
+
+}

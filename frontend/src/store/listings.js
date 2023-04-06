@@ -26,8 +26,8 @@ export const getListings = state => {
 	return state.listings ? Object.values(state.listings) : [];
 }
 
-export const getListing = listing => (state) => {
-	return state.listings ? state.listings[listing.id] : null;
+export const getListing = listingId => (state) => {
+	return state.listings ? state.listings[listingId] : null;
 }
 
 // Get All Listings 
@@ -39,9 +39,14 @@ export const fetchListings = () => async (dispatch) => {
 
 // Get Listing by ID
 export const fetchListing = listingId => async (dispatch) => {
+	debugger
 	const response = await csrfFetch(`api/listings/${listingId}`);
+	debugger
 	const data = await response.json(); 
-	dispatch(receiveListing(data));
+	debugger
+	if (response.ok) {
+		dispatch(receiveListing(data));
+	}
 }
 
 // Create a New Listing 

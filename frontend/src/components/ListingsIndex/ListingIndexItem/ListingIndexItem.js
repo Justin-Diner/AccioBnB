@@ -1,7 +1,9 @@
 import './ListingIndexItem.css';
+import { Link } from 'react-router-dom';
 
 const ListingIndexItem = ({listing}) => {
 	return ( 
+		<Link to={`/listings/${listing.id}`}>
 		<div id="listing_index_item_container">
 								<div id="listing_index_item_image_wrapper"> 
 					<img id="listing_index_item_image" src={require("../../../assets/places/hogwarts/hogwarts.jpg")}></img>
@@ -13,9 +15,17 @@ const ListingIndexItem = ({listing}) => {
 				</div>
 				<div className="listing_index_item_textcontent" id="listing_index_item_milesaway">74 miles away</div>
 				<div className="listing_index_item_textcontent" id="listing_index_item_daterange">Dec 10 - 15</div>
-				<div className="listing_index_item_textcontent" id="listing_index_item_nightlyprice"><b>{`${listing.nightlyPrice}`}</b> ` night</div>
+				<div className="listing_index_item_textcontent" id="listing_index_item_nightlyprice">
+					<div id="listing_index_item_price_only">
+						${`${listing.nightlyPrice}`}
+					</div>
+					<div>
+						night
+					</div>
+				</div>
 			</div>
 		</div>
+		</Link>
 	)
 }
 

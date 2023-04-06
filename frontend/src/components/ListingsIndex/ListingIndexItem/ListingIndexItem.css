@@ -48,3 +48,12 @@
 	color: #717171;
 }
 
+#listing_index_item_nightlyprice{
+	display: flex; 
+}
+
+#listing_index_item_price_only {
+	font-weight: 800;
+	margin-right: 4px;
+}
+

@@ -1,6 +1,7 @@
 /* TODO Add site wide styles */
 :root {
 	--font-family: 'Roboto', sans-serif;
+	--lsp-secondary-font-color: rgb(113, 113, 113);
 }
 
 #main_container {

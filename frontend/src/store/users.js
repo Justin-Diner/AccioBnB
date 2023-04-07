@@ -20,6 +20,10 @@ export const retrieveUser = (user) => (state) => {
 	return state.users ? state.users[user.id] : null; 
 }
 
+export const retrieveUserById = (userId) => (state) => {
+	return state.users ? state.users[userId] : null;
+}
+
 // Get User by ID
 export const fetchUser = (userId) => async (dispatch) => {
 	const response = await fetch(`/api/users/${userId}`);

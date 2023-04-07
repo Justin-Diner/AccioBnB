@@ -11,7 +11,6 @@ const LoginFormPage = ({initialShow}) => {
 	const dispatch = useDispatch();
 	const sessionUser = useSelector(state => state.session.user); 
 	const [showing, setShowing] = useState(false);
-	console.log(showing)
 
 	// User Inputs and Errors 
 	const [email, setEmail] = useState("");
@@ -23,7 +22,6 @@ const LoginFormPage = ({initialShow}) => {
 
 	// Selector 
 	const logInModalState = useSelector(retrieveLogInModalState)
-	console.log(`Initial Show: ${initialShow}`);
 
 	useEffect(() => {
 
@@ -35,15 +33,12 @@ const LoginFormPage = ({initialShow}) => {
 	}, [logInModalState])
 
 	if (!showing) {
-		console.log(`Showing: ${showing}`);
 		return
 	}
 
 	if (sessionUser) {
 		return <Redirect to="/" />
 	} 
-
-
 
 	function handleClick(e) {
 		e.preventDefault(); 

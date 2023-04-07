@@ -27,6 +27,7 @@
 	font-family: var(--font-family);
 	padding: 1px;
 	font-size: 16px;
+	color: black;
 }
 
 #listing_index_item_state_and_ratings_wrapper {
@@ -34,26 +35,34 @@
 	justify-content: space-between;
 	width: 100%;
 	margin-top: 10px;
+	margin-bottom: 4px;
 }
 
 #listing_index_item_title_and_state {
 	font-weight: 600;
+	color: black;
 }
 
 #listing_index_item_milesaway {
 	color: #717171;
+	margin-top: 4px;
+	margin-bottom: 4px;
 }
 
 #listing_index_item_daterange {
 	color: #717171;
+	margin-top: 4px;
+	margin-bottom: 4px;
 }
 
 #listing_index_item_nightlyprice{
 	display: flex; 
+	color: black;
 }
 
 #listing_index_item_price_only {
 	font-weight: 800;
 	margin-right: 4px;
+	color: black;
 }
 

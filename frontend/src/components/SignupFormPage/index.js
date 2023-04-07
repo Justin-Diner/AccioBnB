@@ -5,11 +5,11 @@ import { Redirect, Link } from 'react-router-dom';
 import './SignupForm.css'
 import ContinueButton from '../Buttons/ContinueButton/ContinueButton';
 import StandardFormButton from '../Buttons/StandardFormButton/StandardFormButton';
-import { retrieveSignUpModalState, receiveSignUpModal } from '../../store/ui';
+import { retrieveSignUpModalState, receiveSignUpModal, receiveLogInModal  } from '../../store/ui';
 
-const SignUpForm = () => {
+const SignUpForm = ({initialShow}) => {
 	const dispatch = useDispatch(); 
-	const [showing, setShowing] = useState(true);
+	const [showing, setShowing] = useState(false);
 
 	// User Inputs and Errors 
 	const [firstName, setFirstName] = useState("");
@@ -27,7 +27,7 @@ const SignUpForm = () => {
 	const signUpModalState = useSelector(retrieveSignUpModalState);
 
 	useEffect(() => {
-			if (signUpModalState) {
+			if (signUpModalState || initialShow) {
 				setShowing(true);
 			}
 	}, [signUpModalState])
@@ -92,7 +92,13 @@ const SignUpForm = () => {
 	const handleClose = () => {
 		setShowing(false);
 		dispatch(receiveSignUpModal(false));
-		return <Redirect to="/" />
+		<Redirect to="/" />
+	}
+
+	const switchToLogIn = () => {
+		setShowing(false);
+		dispatch(receiveSignUpModal(false));
+		dispatch(receiveLogInModal(true));
 	}
 
 	return (
@@ -145,12 +151,9 @@ const SignUpForm = () => {
 				<div id="spacer">
 					<div>Already Have an Account</div>
 				</div>
-				<div id="testing"> 
-					<Link id="login_link" to='/login'>
-						<StandardFormButton text="Click to Sign In"/>
-					</Link>
+				<div id="signup_switch_to_login_button"> 
+					<StandardFormButton clickFunction={switchToLogIn} text="Click to Sign In"/>
 				</div>
-			
 			</form>
 			</div>
 		</div>

@@ -10,23 +10,26 @@ import ListingShow from './components/ListingShow/ListingShow';
 
 function App() {
   return (
-		<>
-			<Switch>
-				<Route exact path="/">
-					<div id="main_container">
-						<div id="nav_bar_filler"></div>
-						<CategoryFilter />
-						<ListingsIndex />
-						<Navigation />	
-					</div>
-				</Route>
+		<>	
+		<Navigation />
+			<Route exact path="/">
+				<div id="main_container">
+					<div id="nav_bar_filler"></div>
+					<CategoryFilter />
+					<ListingsIndex />
+					<LoginFormPage initialShow={false} />
+					<SignUpForm initialShow={false} />
+				</div>
+			</Route>
+					
+				<Switch>
 				<Route exact path="/listings/:listingId" component={ListingShow} />
-				<Route exact path="/signup"> 
-					<SignUpForm reloadTrigger={true} />
+				{/*<Route exact path="/signup"> 
+					<SignUpForm />
 				</Route>
 				<Route exact path="/login" >
-					<LoginFormPage />
-				</Route>
+					<LoginFormPage initialShow={true} />
+				</Route>*/}
 			</Switch>
 		</>
   );

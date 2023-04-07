@@ -22,14 +22,14 @@ export const retrieveUser = (user) => (state) => {
 
 // Get User by ID
 export const fetchUser = (userId) => async (dispatch) => {
-	const response = await fetch(`api/users/${userId}`);
+	const response = await fetch(`/api/users/${userId}`);
 	const data = await response.json();
 	dispatch(receiveUser(data));
 }
 
 // Create a New User 
 export const createUser = user => async dispatch => {
-    const response = await csrfFetch('api/users', {
+    const response = await csrfFetch('/api/users', {
         method: 'POST',
         body: JSON.stringify(user)
     });
@@ -43,7 +43,7 @@ export const createUser = user => async dispatch => {
 
 // Delete a User
 export const deleteUser = userId => async (dispatch) => {
-	const response = await csrfFetch(`api/users/${userId}`, {
+	const response = await csrfFetch(`/api/users/${userId}`, {
 		method: "DELETE"
 	})
 

@@ -11,19 +11,8 @@ import * as sessionAction from '../../store/session';
 import './Navigation.css';
 
 const Navigation = () => {
-	const dispatch = useDispatch();
 	const sessionUser = useSelector(sessionAction.sessionUser);
-
-	let settingsDisplay;
-
-	const showLogIn = () => {
-		dispatch(receiveLogInModal(true));
-	}
-
-	const showSignUp = () => {
-		dispatch(receiveSignUpModal(true));
-	}
-
+	
 	return (
 		<>
 			<div id="top_nav_bar_container">

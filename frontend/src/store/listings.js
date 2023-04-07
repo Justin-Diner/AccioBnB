@@ -32,18 +32,17 @@ export const getListing = listingId => (state) => {
 
 // Get All Listings 
 export const fetchListings = () => async (dispatch) => {
-	const response = await csrfFetch('api/listings');
+	const response = await csrfFetch('/api/listings');
 	const data = await response.json(); 
 	dispatch(receiveListings(data));
 }
 
 // Get Listing by ID
-export const fetchListing = listingId => async (dispatch) => {
-	debugger
-	const response = await csrfFetch(`api/listings/${listingId}`);
-	debugger
+export const fetchListing = (listingId) => async (dispatch) => {
+	const response = await csrfFetch(`/api/listings/${listingId}`);
+	console.log(response);
 	const data = await response.json(); 
-	debugger
+	
 	if (response.ok) {
 		dispatch(receiveListing(data));
 	}
@@ -51,7 +50,7 @@ export const fetchListing = listingId => async (dispatch) => {
 
 // Create a New Listing 
 export const createListing = listing => async (dispatch) => {
-	const response = await csrfFetch('api/listings', {
+	const response = await csrfFetch('/api/listings', {
 		method: 'POST',
 		body: JSON.stringify(listing)
 	});

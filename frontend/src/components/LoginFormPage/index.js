@@ -7,10 +7,11 @@ import ContinueButton from "../Buttons/ContinueButton/ContinueButton";
 import StandardFormButton from "../Buttons/StandardFormButton/StandardFormButton";
 import { retrieveLogInModalState, receiveLogInModal } from "../../store/ui";
 
-const LoginFormPage = () => {
+const LoginFormPage = ({initialShow}) => {
 	const dispatch = useDispatch();
 	const sessionUser = useSelector(state => state.session.user); 
-	const [showing, setShowing] = useState(true);
+	const [showing, setShowing] = useState(false);
+	console.log(showing)
 
 	// User Inputs and Errors 
 	const [email, setEmail] = useState("");
@@ -22,20 +23,27 @@ const LoginFormPage = () => {
 
 	// Selector 
 	const logInModalState = useSelector(retrieveLogInModalState)
+	console.log(`Initial Show: ${initialShow}`);
 
 	useEffect(() => {
-		if (logInModalState) {
+
+		if (logInModalState || initialShow) {
 			setShowing(true);
+		} else {
+			setShowing(false);
 		}
 	}, [logInModalState])
+
+	if (!showing) {
+		console.log(`Showing: ${showing}`);
+		return
+	}
 
 	if (sessionUser) {
 		return <Redirect to="/" />
 	} 
 
-	if (!showing) {
-		return
-	}
+
 
 	function handleClick(e) {
 		e.preventDefault(); 

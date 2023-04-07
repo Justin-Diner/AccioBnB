@@ -13,9 +13,12 @@ const ListingShow = () => {
 	dispatch(fetchListing(listingId));
  }, [listingId]);
 
+console.log(listing);
+
  return (
 	<>
-		<p>hello</p>
+		{listing.title}
+		{listing.streetAddress}
 	</>
  )
 }

@@ -5,7 +5,7 @@ const ListingIndexItem = ({listing}) => {
 	return ( 
 		<Link to={`/listings/${listing.id}`}>
 		<div id="listing_index_item_container">
-								<div id="listing_index_item_image_wrapper"> 
+				<div id="listing_index_item_image_wrapper"> 
 					<img id="listing_index_item_image" src={require("../../../assets/places/hogwarts/hogwarts.jpg")}></img>
 				</div>
 			<div id="listing_index_item_wrapper">

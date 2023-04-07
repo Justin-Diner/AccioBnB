@@ -1,0 +1,50 @@
+#lsp_container {
+	font-family: var(--font-family);
+	margin: 38px;
+	font-size: 18px;
+}
+
+#lsp_title {
+	font-size: 38px;
+	font-weight: 800;
+	margin-bottom: 26px;
+}
+
+#lsp_initial_details {
+	display: flex; 
+	margin-top: 8px;
+}
+
+#lsp_initial_rating{
+ font-weight: bold; 
+}
+
+#lsp_initial_details span {
+	margin-left: 8px;
+	margin-right: 8px;
+}
+#lsp_rating_reviews_sep {
+	position: relative;
+	bottom: 4px;
+	font-weight: bold;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+#lsp_initial_amount_of_reviews {
+	font-weight: bold; 
+	text-decoration: underline 1px black;
+}
+
+#lsp_id_superhost {
+	margin-left: 10px;
+}
+
+#lsp_id_location {
+	font-weight: 600;
+	text-decoration: underline;
+}
+
+.fa-medal {
+	color: black;
+}

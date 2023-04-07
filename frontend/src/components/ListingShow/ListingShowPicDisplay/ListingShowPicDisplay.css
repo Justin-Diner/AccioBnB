@@ -1,0 +1,26 @@
+#lsp_container {
+	margin-left: max(266px, 12%);
+	margin-right: min(266px, 12%);
+}
+
+#LSPD_wrapper {
+	max-width: 100%;
+	max-height: max(60vh, 200px);
+	width: 100%;
+	padding-bottom: 10px; 
+	margin-top: 24px; 
+	height: 380px;
+	display: grid;
+	grid-template-columns: minmax(0, 50%) repeat(2, 1fr);
+	gap: 10px;
+	border-radius: 12px;
+
+}
+
+.LSPD_picture_item {
+	width: 100%;
+}
+
+#LSPD_item_1 {
+	grid-row: 1/3
+}

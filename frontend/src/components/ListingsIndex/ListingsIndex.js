@@ -12,8 +12,6 @@ const ListingsIndex = () => {
 		dispatch(fetchListings());
 	}, [])
 
-
-
 	return (
 		<main id="listings_index_container">
 			<div id="listings_index_wrapper">

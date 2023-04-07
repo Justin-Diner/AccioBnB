@@ -12,7 +12,7 @@ import './Navigation.css';
 
 const Navigation = () => {
 	const sessionUser = useSelector(sessionAction.sessionUser);
-	
+
 	return (
 		<>
 			<div id="top_nav_bar_container">

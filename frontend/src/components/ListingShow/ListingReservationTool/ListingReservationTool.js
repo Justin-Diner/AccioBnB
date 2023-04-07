@@ -1,11 +1,14 @@
 import './ListingReservationTool.css'
 import { useDispatch } from 'react-redux'
 import { useState } from 'react';
+import ContinueButton from '../../Buttons/ContinueButton/ContinueButton';
 
 const ListingReservationTool = ({listing}) => {
 	const dispatch = useDispatch();
 
-	const checkInDate = useState("04/05/2023")
+	const [checkInDate, setCheckInDate] = useState("04/05/2023")
+	const rating = 4.90;
+	const reviews = 207;
 
 	const getTodaysDate = () => {
 		let todaysDate = new Date;
@@ -13,7 +16,7 @@ const ListingReservationTool = ({listing}) => {
 		let month = todaysDate.getMonth() + 1;
 		let year = todaysDate.getFullYear();
 
-		return `${day}/${month}/${year}` 
+		return `${month}/${day}/${year}` 
 	}
 
  return(
@@ -31,14 +34,19 @@ const ListingReservationTool = ({listing}) => {
 
 				<div id="inputs_wrapper">
 						<label> 
-							<input className="form_input" id="login_email" placeholder="Email" type="text" />
+							<input className="form_input" id="rt_checkin" placeholder="CHECK-IN" type="text" />
+						</label>
+
+						<label> 
+							<input className="form_input" id="rt_checkout" placeholder="CHECKOUT" type="text" />
 						</label>
 
 						<label>
-							<input className="form_input" id="login_password" placeholder="Password" type="text" />
+							<input className="form_input" id="rt_num_guests" placeholder="1 guest" type="text" />
 						</label>
 				</div>
 
+				<ContinueButton />
 
 			</form>
 

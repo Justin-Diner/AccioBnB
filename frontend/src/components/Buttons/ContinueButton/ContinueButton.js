@@ -25,8 +25,7 @@ const ContinueButton = ({clickFunction}) => {
 			onMouseMove={(e) => submitHover(e)}
 			onMouseLeave={() => setIsHovering(false)}
 			style={styles}
-		>
-		Continue
+		> Continue
 		</div>
 	)
 }

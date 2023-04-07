@@ -17,10 +17,28 @@ const ListingReservationTool = ({listing}) => {
 	}
 
  return(
-	<div id="reversation_tool_container">
-		<div id="reveration_tool_wrapper">
-			<div>Testing</div>
-			<form id="reservation form">
+	<div id="rt_container">
+		<div id="rt_wrapper">
+			<form id="rt_reservation form">
+				<div id="rt_top_bar">
+					<div id="rt_top_bar_price_and_text">
+						{listing.nightlyPrice}
+					</div>
+					<div id="rt_top_bar_night">
+						night
+					</div>
+				</div>
+
+				<div id="inputs_wrapper">
+						<label> 
+							<input className="form_input" id="login_email" placeholder="Email" type="text" />
+						</label>
+
+						<label>
+							<input className="form_input" id="login_password" placeholder="Password" type="text" />
+						</label>
+				</div>
+
 
 			</form>
 

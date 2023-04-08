@@ -1,0 +1,55 @@
+#CICO_container {
+	height: 48px;
+	width: 100%;
+	position: relative;
+	left: 5px;
+}
+
+#CICO_wrapper {
+	height: 100%;
+	width: 100%;
+	display: flex;
+}
+
+#check_in_wrapper {
+ width: 50%;
+ height: 100%;
+ border: 1px solid #B0B0B0;
+ border-radius: 8px 0px 0px 0px;
+ padding-top: 12px;
+ padding-bottom: 12px;
+}
+
+.CICO_title {
+	font-size: 14px;
+	font-weight: bold;
+	position: relative;
+	left: 8px;
+	z-index: 1;
+}
+
+#check_in_text {
+	position: relative;
+}
+
+.CICO_input_text {
+ width: 90%;
+ height: 100%;
+ outline: none;
+ border-top-style: hidden;
+ border-right-style: hidden;
+ border-left-style: hidden;
+ border-bottom-style: hidden;
+ font-size: 16px;
+ position: relative;
+ bottom: 4px;
+}
+
+#check_out_wrapper {
+	width: 50%;
+	height: 100%;
+	border: 1px solid #B0B0B0;
+	border-radius: 0px 8px 0px 0px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+}

@@ -38,6 +38,10 @@
 	top: 3px;
 }
 
+#rt_checkin_checkout_wrapper {
+	margin-bottom: 48px;
+}
+
 #rt_top_bar_rightside {
 	display: flex;
 	font-weight: bold;

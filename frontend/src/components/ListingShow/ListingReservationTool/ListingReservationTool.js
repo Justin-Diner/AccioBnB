@@ -2,6 +2,7 @@ import './ListingReservationTool.css'
 import { useDispatch } from 'react-redux'
 import { useState } from 'react';
 import ContinueButton from '../../Buttons/ContinueButton/ContinueButton';
+import CheckInCheckOut from './ReservationPicker/CheckInCheckOut/CheckInCheckOut';
 
 const ListingReservationTool = ({listing}) => {
 	const dispatch = useDispatch();
@@ -44,13 +45,9 @@ const ListingReservationTool = ({listing}) => {
 				</div>
 
 				<div id="inputs_wrapper">
-						<label> 
-							<input className="form_input" id="rt_checkin" placeholder="CHECK-IN" type="text" />
-						</label>
-
-						<label> 
-							<input className="form_input" id="rt_checkout" placeholder="CHECKOUT" type="text" />
-						</label>
+					<div id="rt_checkin_checkout_wrapper">
+						<CheckInCheckOut />
+					</div>
 
 						<label>
 							<input className="form_input" id="rt_num_guests" placeholder="1 guest" type="text" />
@@ -82,9 +79,7 @@ const ListingReservationTool = ({listing}) => {
 					<div class="rt_total_cost_item" id="rt_total_costs_description">Total before taxes</div>
 					<div class="rt_total_cost_item" id="rt_total_cost_amount">$2,282</div>
 				</div>
-
 			</form>
-
 		</div>
 	</div>
  )

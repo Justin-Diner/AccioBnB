@@ -129,7 +129,7 @@ const LoginFormPage = ({initialShow}) => {
 							<input className="form_input" id="login_password" placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)}/>
 						</label>
 					</div>
-					<ContinueButton clickFunction={handleClick} />
+					<ContinueButton clickFunction={handleClick} textContent="Continue"/>
 					<div id="spacer">
 						<div>or</div>
 					</div>

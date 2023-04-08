@@ -146,7 +146,7 @@ const SignUpForm = ({initialShow}) => {
 					</label>
 				</div>
 				
-				<ContinueButton id="continue_button" clickFunction={handleClick} />
+				<ContinueButton id="continue_button" clickFunction={handleClick} textContent={"Continue"}/>
 
 				<div id="spacer">
 					<div>Already Have an Account</div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import './ContinueButton.css'
 
-const ContinueButton = ({clickFunction}) => {
+const ContinueButton = ({clickFunction, textContent}) => {
 	const [hoverStylePos, setHoverStylePos] = useState({x: 0, y: 0});
 	const [isHovering, setIsHovering] = useState(false)
 	const [styles, setStyles] = useState({});
@@ -25,7 +25,7 @@ const ContinueButton = ({clickFunction}) => {
 			onMouseMove={(e) => submitHover(e)}
 			onMouseLeave={() => setIsHovering(false)}
 			style={styles}
-		> Continue
+			> {textContent}
 		</div>
 	)
 }

@@ -11,8 +11,7 @@ import SearchBar from "../Navigation/SearchBar/SearchBar";
 import SettingsOptions from "../Navigation/SettingsOptions/SettingsOptions";
 import * as sessionAction from '../../store/session';
 import ListingReservationTool from "./ListingReservationTool/ListingReservationTool";
-
-import DatePicker from "./ListingReservationTool/ReservationPicker/DatePicker/DatePicker";
+import DurationPicker from "./ListingReservationTool/ReservationPicker/ReservationPicker";
 
 const ListingShow = () => {
  const dispatch = useDispatch();
@@ -105,7 +104,6 @@ const ListingShow = () => {
 					<ListingReservationTool listing={listing}/>
 				</div>
 			</div>
-	
 		</div>
 	</>
  )

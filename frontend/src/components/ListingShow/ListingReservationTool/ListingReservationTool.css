@@ -91,4 +91,8 @@
 	line-height: 20px;
 }
 
-
+#rt_reservation_picker_wrapper {
+	position: absolute; 
+	right: 1px;
+	z-index: 4;
+}

@@ -1,15 +1,30 @@
 import './ListingReservationTool.css'
 import { useDispatch } from 'react-redux'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ContinueButton from '../../Buttons/ContinueButton/ContinueButton';
 import CheckInCheckOut from './ReservationPicker/CheckInCheckOut/CheckInCheckOut';
+import ReservationPicker from './ReservationPicker/ReservationPicker';
 
 const ListingReservationTool = ({listing}) => {
 	const dispatch = useDispatch();
+	const [showReservationPicker, setShowReservationPicker] = useState(false);
 
 	const [checkInDate, setCheckInDate] = useState("04/05/2023")
 	const rating = 4.95;
 	const numReviews = 207;
+
+	useEffect(() => {
+		if (!showReservationPicker) return;
+
+		const closeReservationPicker = () => {
+			setShowReservationPicker(false);
+		}
+
+		document.addEventListener('click', closeReservationPicker)
+
+		return () => document.removeEventListener("click", closeReservationPicker)
+
+	}, [showReservationPicker])
 
 	const getTodaysDate = () => {
 		let todaysDate = new Date;
@@ -20,8 +35,17 @@ const ListingReservationTool = ({listing}) => {
 		return `${month}/${day}/${year}` 
 	}
 
+	const handleCheckinCheckoutClick = () => {
+		setShowReservationPicker(true);
+	}
+
+	const handleInsideClick = (e) => {
+		e.stopPropagation();
+	}
+
+
  return(
-	<div id="rt_container">
+	<div id="rt_container" onClick={handleInsideClick} >
 		<div id="rt_wrapper">
 			<form id="rt_reservation form">
 				<div id="rt_top_bar">
@@ -45,8 +69,11 @@ const ListingReservationTool = ({listing}) => {
 				</div>
 
 				<div id="inputs_wrapper">
-					<div id="rt_checkin_checkout_wrapper">
+					<div id="rt_checkin_checkout_wrapper" onClick={handleCheckinCheckoutClick}>
 						<CheckInCheckOut />
+					</div>
+					<div id="rt_reservation_picker_wrapper">
+						{showReservationPicker && <ReservationPicker/>}
 					</div>
 
 						<label>

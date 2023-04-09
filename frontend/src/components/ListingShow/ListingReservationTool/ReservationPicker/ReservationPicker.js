@@ -1,8 +1,32 @@
 import './ReservationPicker.css'
 import DatePicker from './DatePicker/DatePicker';
 import CheckInCheckOut from './CheckInCheckOut/CheckInCheckOut';
+import { useState, useEffect } from 'react';
 
-const ReservationPicker = () => {
+const ReservationPicker = ({chooseCheckInDate, chooseCheckOutDate}) => {
+	const [checkInDateText, setCheckInDateText] = useState("") 
+	const [checkOutDateText, setCheckOutDateText] = useState("") 
+
+	useEffect(() => {
+		if (checkInDateText) {
+			updateCheckInDateText(checkInDateText);
+			chooseCheckInDate(checkInDateText);
+		}
+
+		if (checkOutDateText) {
+			updateCheckOutDateText(checkOutDateText);
+			chooseCheckOutDate(checkOutDateText);
+		}
+	}, [checkInDateText, checkOutDateText])
+
+	const updateCheckInDateText = (date) => {
+		setCheckInDateText(date);
+	}
+
+	const updateCheckOutDateText = (date) => {
+		setCheckOutDateText(date);
+	}
+
 	return (
 		<div id="dp_container">
 			<div id="dp_top_options">
@@ -10,11 +34,11 @@ const ReservationPicker = () => {
 					Select Dates
 				</div>
 				<div id="dp_top_checkin_checkout">
-					<CheckInCheckOut />
+					<CheckInCheckOut checkInDate={checkInDateText} checkOutDate={checkOutDateText}/>
 				</div>
 			</div>
 			<div id="dp_top_datepicker_wrapper">
-				<DatePicker />
+				<DatePicker chooseCheckInDate={updateCheckInDateText} chooseCheckOutDate={updateCheckOutDateText} />
 			</div>
 			<div id="dp_margin_bottom"> </div>
 		</div>

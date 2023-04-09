@@ -8,8 +8,9 @@ import ReservationPicker from './ReservationPicker/ReservationPicker';
 const ListingReservationTool = ({listing}) => {
 	const dispatch = useDispatch();
 	const [showReservationPicker, setShowReservationPicker] = useState(false);
+	const [checkInDate, setCheckInDate] = useState("");
+	const [checkOutDate, setCheckOutDate] = useState("");
 
-	const [checkInDate, setCheckInDate] = useState("04/05/2023")
 	const rating = 4.95;
 	const numReviews = 207;
 
@@ -25,6 +26,15 @@ const ListingReservationTool = ({listing}) => {
 		return () => document.removeEventListener("click", closeReservationPicker)
 
 	}, [showReservationPicker])
+
+	
+	const updateCheckInDate = (date) => {
+		setCheckInDate(date);
+	}
+
+	const updateCheckOutDate = (date) => {
+		setCheckOutDate(date);
+	}
 
 	const getTodaysDate = () => {
 		let todaysDate = new Date;
@@ -70,10 +80,10 @@ const ListingReservationTool = ({listing}) => {
 
 				<div id="inputs_wrapper">
 					<div id="rt_checkin_checkout_wrapper" onClick={handleCheckinCheckoutClick}>
-						<CheckInCheckOut />
+						<CheckInCheckOut checkInDate={checkInDate} checkOutDate={checkOutDate}/>
 					</div>
 					<div id="rt_reservation_picker_wrapper">
-						{showReservationPicker && <ReservationPicker/>}
+						{showReservationPicker && <ReservationPicker chooseCheckInDate={updateCheckInDate} chooseCheckOutDate={updateCheckOutDate} />}
 					</div>
 
 						<label>

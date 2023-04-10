@@ -7,7 +7,7 @@ require "open-uri"
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-ApplicationRecord.transaction do 
+#ApplicationRecord.transaction do 
   puts "Destroying tables..."
   # Unnecessary if using `rails db:seed:replant`
   Listing.destroy_all
@@ -370,78 +370,77 @@ ApplicationRecord.transaction do
 		puts "Attempting to seed photos"
 		
 		Listing.all.each_with_index do |listing, index|
-			if (index === 0) 
+			if (index == 0) 
 				(1..5).each do |num|
 					listing.photos.attach(
 						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/hogwarts/hogwarts#{num}.jpg"),
 						filename: "hogwarts#{num}.jpg"
 					)
 				end
+			elsif (index == 1) 
+				(1..5).each do |num|
+					listing.photos.attach(
+						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/knightbus/kb#{num}.jpg"),
+						filename: "kb#{num}.jpg"
+					)
+				end
+			elsif (index == 2) 
+				(1..5).each do |num|
+					listing.photos.attach(
+						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/burrow/burrow#{num}.jpg"),
+						filename: "burrow#{num}.jpg"
+					)
+				end
+			elsif (index == 3) 
+				(1..5).each do |num|
+					listing.photos.attach(
+						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/cupboard/cupboard#{num}.jpg"),
+						filename: "cupboard#{num}.jpg"
+					)
+				end
+			elsif (index == 4) 
+				(1..5).each do |num|
+					listing.photos.attach(
+						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/cos/cos#{num}.jpg"),
+						filename: "cos#{num}.jpg"
+					)
+				end
+			elsif (index == 5) 
+				(1..5).each do |num|
+					listing.photos.attach(
+						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/gcroom/gcroom#{num}.jpg"),
+						filename: "gcroom#{num}.jpg"
+					)
+				end
+			elsif (index == 6) 
+				(1..5).each do |num|
+					listing.photos.attach(
+						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/hagridshut/hh#{num}.jpg"),
+						filename: "hh#{num}.jpg"
+					)
+				end
+			elsif (index == 7) 
+				(1..5).each do |num|
+					listing.photos.attach(
+						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/grimmauld/grim#{num}.jpg"),
+						filename: "grim#{num}.jpg"
+					)
+				end
+			elsif (index == 8) 
+				(1..5).each do |num|
+					listing.photos.attach(
+						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/qtent/qtent#{num}.jpg"),
+						filename: "qtent#{num}.jpg"
+					)
+				end
+			elsif (index == 9) 
+				(1..5).each do |num|
+					listing.photos.attach(
+						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/gringotts/gringotts#{num}.jpg"),
+						filename: "gringotts#{num}.jpg"
+					)
+				end
 			end
-			#elsif (index === 1) 
-			#	(1..5).each do |num|
-			#		listing.photos.attach(
-			#			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/knightbus/kb#{num}.jpg"),
-			#			filename: "kb#{num}.jpg"
-			#		)
-			#	end
-			#elsif (index === 2) 
-			#	(1..5).each do |num|
-			#		listing.photos.attach(
-			#			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/burrow/burrow#{num}.jpg"),
-			#			filename: "burrow#{num}.jpg"
-			#		)
-			#	end
-			#elsif (index === 3) 
-			#	(1..5).each do |num|
-			#		listing.photos.attach(
-			#			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/cupboard/cupboard#{num}.jpg"),
-			#			filename: "cupboard#{num}.jpg"
-			#		)
-			#	end
-			#elsif (index === 4) 
-			#	(1..5).each do |num|
-			#		listing.photos.attach(
-			#			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/cos/cos#{num}.jpg"),
-			#			filename: "cos#{num}.jpg"
-			#		)
-			#	end
-			#elsif (index === 5) 
-			#	(1..5).each do |num|
-			#		listing.photos.attach(
-			#			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/gcroom/gcroom#{num}.jpg"),
-			#			filename: "gcroom#{num}.jpg"
-			#		)
-			#	end
-			#elsif (index === 6) 
-			#	(1..5).each do |num|
-			#		listing.photos.attach(
-			#			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/hagridshut/hh#{num}.jpg"),
-			#			filename: "hh#{num}.jpg"
-			#		)
-			#	end
-			#elsif (index === 7) 
-			#	(1..5).each do |num|
-			#		listing.photos.attach(
-			#			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/grimmauld/grim#{num}.jpg"),
-			#			filename: "grim#{num}.jpg"
-			#		)
-			#	end
-			#elsif (index === 8) 
-			#	(1..5).each do |num|
-			#		listing.photos.attach(
-			#			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/qtent/qtent#{num}.jpg"),
-			#			filename: "qtent#{num}.jpg"
-			#		)
-			#	end
-			#elsif (index === 9) 
-			#	(1..5).each do |num|
-			#		listing.photos.attach(
-			#			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/gringotts/gringotts#{num}.jpg"),
-			#			filename: "gringotts#{num}.jpg"
-			#		)
-			#	end
-			#end
 		end
 				
 
@@ -475,4 +474,4 @@ ApplicationRecord.transaction do
 		#	puts 'Listing Created'
 		#end
 		puts "Done!"
-end
+#end

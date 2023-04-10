@@ -10,8 +10,8 @@ const SettingsOptions = ({ user = null}) => {
 	const dispatch = useDispatch(); 
 	const [showMenu, setShowMenu] = useState(false);
 	const sessionUser = useSelector(sessionActions.sessionUser);
-
 	let dropDownOptions;
+	let profileIcon;
 
 	useEffect(() => {
     if (!showMenu) return;
@@ -46,13 +46,21 @@ const SettingsOptions = ({ user = null}) => {
     dispatch(sessionActions.logout());
   };
 
+	
+	if (sessionUser) {
+		profileIcon = require("../../../assets/harry_potter_profile.png");
+	} else {
+		profileIcon = require("../../../assets/profile_icon.png");
+	}
+
+
 	if (sessionUser) {
 		dropDownOptions = 		
 		<>
 			<div id="settings_options_container">
 				<div id="settings_options_background" onClick={openMenu}>
 					<i className="fa-solid fa-bars"></i>
-					<img id="profile_image" src={require("../../../assets/profile_icon.png")}></img>
+					<img id="profile_image" src={profileIcon}></img>
 				</div>
 				{showMenu && (
 				<div id="settings_options_dropdown">

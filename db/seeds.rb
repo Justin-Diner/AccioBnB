@@ -324,7 +324,7 @@ require "open-uri"
 		puts 'Generating Magical Tent'
 		Listing.create!({
 			host_id: 4,
-			title: "Enchanted Tent Located at Quiddith World Cup",
+			title: "Enchanted Tent Located at Quidditch World Cup",
 			street_address: "765 World Cup Lane",
 			zip_code: Faker::Address.zip_code,
 			city: Faker::Address.city,

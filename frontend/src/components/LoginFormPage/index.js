@@ -41,6 +41,7 @@ const LoginFormPage = ({initialShow}) => {
 	} 
 
 	function handleClick(e) {
+		debugger
 		e.preventDefault(); 
 
 		const user = {
@@ -70,8 +71,8 @@ const LoginFormPage = ({initialShow}) => {
 		const newDemoUser = {
 			first_name: "Squib",
 			last_name: "Guest",
-			email: "squib@demouser.com",
-			password: "password"
+			email: "squib@accio.com",
+			password: "dumbledore"
 		}
 			dispatch(receiveLogInModal(false));
 			dispatch(login(newDemoUser))

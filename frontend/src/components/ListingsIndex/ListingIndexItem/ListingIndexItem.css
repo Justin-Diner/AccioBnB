@@ -1,9 +1,10 @@
 #listing_index_item_container {
-	min-height: 358px;
+	height: 100%;
 	display: flex; 
 	align-items: start;
 	flex-direction: column;
 	justify-content: flex-end;
+
 }
 
 #listing_index_item_container:hover {
@@ -12,15 +13,14 @@
 
 #listing_index_item_image_wrapper {
 	height: 100%;
-	width: 100%;
 	border-radius: 12px;
-	
 }
 
 #listing_index_item_image {
 	height: 100%; 
 	width: 100%;
 	border-radius: 12px;
+	object-fit: cover;
 }
 
 .listing_index_item_textcontent {

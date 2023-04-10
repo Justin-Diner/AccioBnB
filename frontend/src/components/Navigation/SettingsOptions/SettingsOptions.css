@@ -38,7 +38,13 @@
 	width: 32px;
 	position: relative; 
 	left: 10px;
+	filter: invert(50%);
 }
+
+#settings_options_background:hover #profile_image {
+	filter:invert(0%);
+}
+
 
 #settings_options_dropdown {
 	position: absolute; 

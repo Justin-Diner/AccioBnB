@@ -14,7 +14,7 @@ const ListingIndexItem = ({listing}) => {
 					<div className="listing_index_item_textcontent" id="listing_index_item_title_and_state">{`${listing.city}, ${listing.state}`}</div>
 					<div className="listing_index_item_textcontent" id="listing_index_item_rating">&#9733; 4.95</div>
 				</div>
-				<div className="listing_index_item_textcontent" id="listing_index_item_milesaway">74 miles away</div>
+				<div className="listing_index_item_textcontent" id="listing_index_item_milesaway">{(Math.floor(Math.random() * 100) + 1).toString()} miles away</div>
 				<div className="listing_index_item_textcontent" id="listing_index_item_daterange">Dec 10 - 15</div>
 				<div className="listing_index_item_textcontent" id="listing_index_item_nightlyprice">
 					<div id="listing_index_item_price_only">

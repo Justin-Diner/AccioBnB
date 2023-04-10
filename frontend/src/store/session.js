@@ -18,7 +18,6 @@ export const sessionUser = (state) => {
 }
 
 export const login = (user) => async (dispatch) => {
-	debugger
 	const {email, password } = user; 
 	const response = await csrfFetch('/api/session', {
 		method: 'POST',
@@ -48,7 +47,6 @@ export const logout = () => async (dispatch) => {
 }
 
 export const signup = (user) => async (dispatch) => {
-	debugger
 	const response = await csrfFetch('/api/users', {
 		method: "POST", 
 		body: JSON.stringify(user)
@@ -69,7 +67,6 @@ export function storeCSRFToken(response) {
 
 export const restoreSession = () => async (dispatch) => {
 	const response = await csrfFetch('/api/session')
-	debugger
 	if (response.ok) {
 		storeCSRFToken(response);
 		const data = await response.json();

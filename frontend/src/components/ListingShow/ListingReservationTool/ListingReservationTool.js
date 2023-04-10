@@ -4,27 +4,47 @@ import { useState, useEffect } from 'react';
 import ContinueButton from '../../Buttons/ContinueButton/ContinueButton';
 import CheckInCheckOut from './ReservationPicker/CheckInCheckOut/CheckInCheckOut';
 import ReservationPicker from './ReservationPicker/ReservationPicker';
+import GuestPicker from './GuestPicker/GuestPicker';
+import differenceInCalendarDays from 'date-fns/differenceInCalendarDays';
 
 const ListingReservationTool = ({listing}) => {
 	const [showReservationPicker, setShowReservationPicker] = useState(false);
+	const [showGuestAmountPicker, setShowGuestAmountPicker] = useState(false);
 	const [checkInDate, setCheckInDate] = useState("");
 	const [checkOutDate, setCheckOutDate] = useState("");
+	const [guestsChosen, setGuestsChosen] = useState(1);
 
+	const checkInDateObj = new Date(`${checkInDate} GMT`)
+	const checkOutDateObj = new Date(`${checkOutDate} GMT`)
+	
 	const rating = 4.95;
 	const numReviews = 207;
 
 	useEffect(() => {
 		if (!showReservationPicker) return;
-
 		const closeReservationPicker = () => {
 			setShowReservationPicker(false);
 		}
-
 		document.addEventListener('click', closeReservationPicker)
-
 		return () => document.removeEventListener("click", closeReservationPicker)
-
 	}, [showReservationPicker])
+
+	useEffect(() => {
+		if (!showGuestAmountPicker) return;
+		const closeGuestPicker = () => {
+			setShowGuestAmountPicker(false);
+		}
+		document.addEventListener('click', closeGuestPicker)
+		return () => document.removeEventListener("click", closeGuestPicker);
+	}, [showGuestAmountPicker]) 
+
+	const amountOfNights = () => {
+		if (checkInDate && checkOutDate) {
+		return (differenceInCalendarDays(checkInDateObj, checkOutDateObj) * -1).toString();
+		} else {
+			return "1";
+		}
+ }
 
 	const updateShowReservationPicker = (status) => {
 		setShowReservationPicker(status);
@@ -36,6 +56,10 @@ const ListingReservationTool = ({listing}) => {
 
 	const updateCheckOutDate = (date) => {
 		setCheckOutDate(date);
+	}
+
+	const updateGuestsChosen = (amount) => {
+		setGuestsChosen(amount);
 	}
 
 	const getTodaysDate = () => {
@@ -51,8 +75,17 @@ const ListingReservationTool = ({listing}) => {
 		setShowReservationPicker(true);
 	}
 
+	const handleGuestPickerClick = () => {
+		setShowGuestAmountPicker(true);
+	}
+
 	const handleInsideClick = (e) => {
 		e.stopPropagation();
+	}
+
+	const totalNightlyCost = () => {
+		let nightlyPrice = listing.nightlyPrice;
+		return listing.nightlyPrice;
 	}
 
 
@@ -88,20 +121,21 @@ const ListingReservationTool = ({listing}) => {
 						/>
 					</div>	
 					<div id="rt_reservation_picker_wrapper">
-							{showReservationPicker && 
-								<ReservationPicker 
-									chooseCheckInDate={updateCheckInDate} 
-									chooseCheckOutDate={updateCheckOutDate} 
-									chooseShowReservationPicker={updateShowReservationPicker} 
-								/>}
-						</div>
-						<div id="rt_numGuests_wrapper">
-							<input id="rt_num_guests" placeholder="1 guest" type="text" ></input>
-						</div>
+						{showReservationPicker && 
+							<ReservationPicker 
+								chooseCheckInDate={updateCheckInDate} 
+								chooseCheckOutDate={updateCheckOutDate} 
+								chooseShowReservationPicker={updateShowReservationPicker} 
+							/>}
 					</div>
+					<div id="rt_numGuests_wrapper" onClick={handleGuestPickerClick}>
+							<input id="rt_num_guests" value={`${guestsChosen} guests`} type="text" ></input>
+					</div>
+					<div id="rt_guestoption_picker_wrapper" >
+						{showGuestAmountPicker && <GuestPicker maxGuests={listing.maxGuests} guestsChosenUpdater={updateGuestsChosen}/>}
+					</div>
+				</div>
 			
-
-
 				<ContinueButton textContent={"Reserve"}/>
 
 				<div id="rt_notice_wrapper">
@@ -110,8 +144,8 @@ const ListingReservationTool = ({listing}) => {
 
 				<div id="rt_costs_wrapper">
 					<div className="rt_cost_wrapper" id="rt_nightly_cost_wrapper">
-						<div className="rt_cost_description" id="rt_nightly_cost">$375 x 5 nights</div>
-						<div className="rt_cost_item" id="rt_total_nightly_cost">$1875</div>
+						<div className="rt_cost_description" id="rt_nightly_cost">${listing?.nightlyPrice} x {amountOfNights()} nights</div>
+						<div className="rt_cost_item" id="rt_total_nightly_cost">{totalNightlyCost()}</div>
 					</div>
 					<div className="rt_cost_wrapper" id="rt_cleaning_cost_wrapper">
 						<div className="rt_cost_description" id="rt_cleaning_cost">Cleaning fee</div>

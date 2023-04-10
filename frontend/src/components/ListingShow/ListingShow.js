@@ -11,7 +11,6 @@ import SearchBar from "../Navigation/SearchBar/SearchBar";
 import SettingsOptions from "../Navigation/SettingsOptions/SettingsOptions";
 import * as sessionAction from '../../store/session';
 import ListingReservationTool from "./ListingReservationTool/ListingReservationTool";
-import DurationPicker from "./ListingReservationTool/ReservationPicker/ReservationPicker";
 
 const ListingShow = () => {
  const dispatch = useDispatch();
@@ -20,9 +19,6 @@ const ListingShow = () => {
  const listing = useSelector(getListing(listingId));
  const hostId = listing ? listing.hostId : null;
  const host = useSelector(state => state.users ? state.users[hostId] : null);
-
-
- console.log(`Host check: ${host}`)
 
  let reviews = 47;
  let rating = 4.95

@@ -1,0 +1,67 @@
+#gpo_container {
+	height: 100%;
+	width: 100%;
+	padding-top: 20px;
+}
+
+#gpo_wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 8px;
+	font-size: 16px;
+}
+
+#gpo_left_wrapper {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+#gpo_counter_wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 70%;
+	height: 100%;
+}
+
+#gpo_item_count_wrapper{
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.gpo_counter_button {
+	height: 36px; 
+	width: 36px;
+	border-radius: 50%;
+	border: 1px solid black;
+	text-align: center;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 24px;
+}
+#gpo_minus_button_wrapper {
+	position: relative;
+	left: 8px;
+}
+
+#gpo_plus_button_wrapper {
+	position: relative;
+	right: 8px;
+}
+
+
+.fa-plus {
+	color: black;
+}
+
+.fa-minus {
+	color: black;
+}

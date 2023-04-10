@@ -1,0 +1,20 @@
+#gp_container {
+	height: 370px;
+	width: 100%; 
+	background-color: white;
+	box-shadow: var(--box-shadow);
+	border: var(--main-border);
+	border-radius: var(--main-border-radius);
+	z-index: 100;
+	position: relative;
+	bottom: 14px;
+}
+
+#gp_guest_warning {
+	font-size: 16px;
+	position: relative; 
+	top: 10px;
+	left: 10px;
+}
+
+

@@ -377,6 +377,7 @@ require "open-uri"
 						filename: "hogwarts#{num}.jpg"
 					)
 				end
+
 			elsif (index == 1) 
 				(1..5).each do |num|
 					listing.photos.attach(

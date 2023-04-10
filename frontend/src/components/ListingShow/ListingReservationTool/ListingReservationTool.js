@@ -109,23 +109,23 @@ const ListingReservationTool = ({listing}) => {
 				</div>
 
 				<div id="rt_costs_wrapper">
-					<div class="rt_cost_wrapper" id="rt_nightly_cost_wrapper">
-						<div class="rt_cost_description" id="rt_nightly_cost">$375 x 5 nights</div>
-						<div class="rt_cost_item" id="rt_total_nightly_cost">$1875</div>
+					<div className="rt_cost_wrapper" id="rt_nightly_cost_wrapper">
+						<div className="rt_cost_description" id="rt_nightly_cost">$375 x 5 nights</div>
+						<div className="rt_cost_item" id="rt_total_nightly_cost">$1875</div>
 					</div>
-					<div class="rt_cost_wrapper" id="rt_cleaning_cost_wrapper">
-						<div class="rt_cost_description" id="rt_cleaning_cost">Cleaning fee</div>
-						<div class="rt_cost_item" id="rt_total_nightly_cost">$125</div>
+					<div className="rt_cost_wrapper" id="rt_cleaning_cost_wrapper">
+						<div className="rt_cost_description" id="rt_cleaning_cost">Cleaning fee</div>
+						<div className="rt_cost_item" id="rt_total_nightly_cost">$125</div>
 					</div>
-					<div class="rt_cost_wrapper" id="rt_accio_service_fee_wrapper">
-						<div class="rt_cost_description" id="accio_service_fee_title">Acciobnb service fee</div>
-						<div class="rt_cost_item" id="accio_service_fee">$282</div>
+					<div className="rt_cost_wrapper" id="rt_accio_service_fee_wrapper">
+						<div className="rt_cost_description" id="accio_service_fee_title">Acciobnb service fee</div>
+						<div className="rt_cost_item" id="accio_service_fee">$282</div>
 					</div>
 				</div>
 
 				<div id="rt_total_costs_wrapper">
-					<div class="rt_total_cost_item" id="rt_total_costs_description">Total before taxes</div>
-					<div class="rt_total_cost_item" id="rt_total_cost_amount">$2,282</div>
+					<div className="rt_total_cost_item" id="rt_total_costs_description">Total before taxes</div>
+					<div className="rt_total_cost_item" id="rt_total_cost_amount">$2,282</div>
 				</div>
 			</form>
 		</div>

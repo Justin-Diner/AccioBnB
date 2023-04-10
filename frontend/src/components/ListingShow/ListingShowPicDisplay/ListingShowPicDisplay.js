@@ -1,22 +1,34 @@
 import './ListingShowPicDisplay.css'
+import { useEffect } from 'react';
 
-const ListingShowPicDisplay = () => {
+const ListingShowPicDisplay = ({listing}) => {
+	const listingUrls = listing.photosUrl;
+
+	const listingImages = () => {
+		for (let i = 0; i < 5; i++) {
+			
+			<div className="LSPD_picture_item" id="LSPD_item_1" >
+				<img id="listing_index_item_image" src={listingUrls[i]}></img>
+			</div>
+		}
+	}
+
 	return (
 		<div id="LSPD_wrapper">
 			<div className="LSPD_picture_item" id="LSPD_item_1" >
-				<img id="listing_index_item_image" src={require("../../../assets/places/hogwarts/hogwarts.jpg")}></img>
+				<img className="listing_index_item_image" src={listingUrls[0]}></img>
 			</div>
 			<div className="LSPD_picture_item" id="LSPD_item_2" >
-			<img id="listing_index_item_image" src={require("../../../assets/places/hogwarts/hogwarts.jpg")}></img>
+				<img className="listing_index_item_image" src={listingUrls[1]}></img>
 			</div>
 			<div className="LSPD_picture_item" id="LSPD_item_3" >
-			<img id="listing_index_item_image" src={require("../../../assets/places/hogwarts/hogwarts.jpg")}></img>
+				<img className="listing_index_item_image" src={listingUrls[2]}></img>
 			</div>
 			<div className="LSPD_picture_item" id="LSPD_item_4" >
-			<img id="listing_index_item_image" src={require("../../../assets/places/hogwarts/hogwarts.jpg")}></img>
+				<img className="listing_index_item_image" src={listingUrls[3]}></img>
 			</div>
 			<div className="LSPD_picture_item" id="LSPD_item_5" >
-			<img id="listing_index_item_image" src={require("../../../assets/places/hogwarts/hogwarts.jpg")}></img>
+				<img className="listing_index_item_image" src={listingUrls[4]}></img>
 			</div>
 		</div> 
 	)

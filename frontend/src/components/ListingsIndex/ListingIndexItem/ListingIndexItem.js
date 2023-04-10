@@ -2,11 +2,12 @@ import './ListingIndexItem.css';
 import { Link } from 'react-router-dom';
 
 const ListingIndexItem = ({listing}) => {
+	let titlePhoto = listing.photosUrl[0];
 	return ( 
 		<Link to={`/listings/${listing.id}`}>
 		<div id="listing_index_item_container">
 				<div id="listing_index_item_image_wrapper"> 
-					<img id="listing_index_item_image" src={require("../../../assets/places/hogwarts/hogwarts.jpg")}></img>
+					<img id="listing_index_item_image" src={titlePhoto}></img>
 				</div>
 			<div id="listing_index_item_wrapper">
 				<div className="listing_index_item_textcontent" id="listing_index_item_state_and_ratings_wrapper">

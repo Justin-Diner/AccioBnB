@@ -73,7 +73,7 @@ const ListingShow = () => {
 			</div>
 	
 			<div id="LSPD_container">
-				<ListingShowPicDisplay />
+				<ListingShowPicDisplay listing={listing}/>
 			</div> 
 
 			<div id="lsp_property_details_container">

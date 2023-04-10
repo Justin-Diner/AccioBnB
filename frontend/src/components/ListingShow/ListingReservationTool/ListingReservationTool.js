@@ -6,7 +6,6 @@ import CheckInCheckOut from './ReservationPicker/CheckInCheckOut/CheckInCheckOut
 import ReservationPicker from './ReservationPicker/ReservationPicker';
 
 const ListingReservationTool = ({listing}) => {
-	const dispatch = useDispatch();
 	const [showReservationPicker, setShowReservationPicker] = useState(false);
 	const [checkInDate, setCheckInDate] = useState("");
 	const [checkOutDate, setCheckOutDate] = useState("");
@@ -27,7 +26,10 @@ const ListingReservationTool = ({listing}) => {
 
 	}, [showReservationPicker])
 
-	
+	const updateShowReservationPicker = (status) => {
+		setShowReservationPicker(status);
+	} 
+
 	const updateCheckInDate = (date) => {
 		setCheckInDate(date);
 	}
@@ -78,18 +80,27 @@ const ListingReservationTool = ({listing}) => {
 					</div>
 				</div>
 
-				<div id="inputs_wrapper">
+				<div id="rt_inputs_wrapper">
 					<div id="rt_checkin_checkout_wrapper" onClick={handleCheckinCheckoutClick}>
-						<CheckInCheckOut checkInDate={checkInDate} checkOutDate={checkOutDate}/>
-					</div>
+						<CheckInCheckOut 
+							checkInDate={checkInDate} 
+							checkOutDate={checkOutDate}
+						/>
+					</div>	
 					<div id="rt_reservation_picker_wrapper">
-						{showReservationPicker && <ReservationPicker chooseCheckInDate={updateCheckInDate} chooseCheckOutDate={updateCheckOutDate} />}
+							{showReservationPicker && 
+								<ReservationPicker 
+									chooseCheckInDate={updateCheckInDate} 
+									chooseCheckOutDate={updateCheckOutDate} 
+									chooseShowReservationPicker={updateShowReservationPicker} 
+								/>}
+						</div>
+						<div id="rt_numGuests_wrapper">
+							<input id="rt_num_guests" placeholder="1 guest" type="text" ></input>
+						</div>
 					</div>
+			
 
-						<label>
-							<input className="form_input" id="rt_num_guests" placeholder="1 guest" type="text" />
-						</label>
-				</div>
 
 				<ContinueButton textContent={"Reserve"}/>
 

@@ -44,3 +44,5 @@ hagrids_hut = {
 # to Kill server: 
 # lsof -wni tcp:5000
 # kill -9 <PID>
+
+#bundle lock --add-platform x86_64-linux

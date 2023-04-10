@@ -70,9 +70,9 @@ const DatePicker = ({chooseCheckInDate, chooseCheckOutDate}) => {
 			}}
 			modifiers={modifiers}
 		/>
-		<div id="bottom_prompt"> 
+		{/*<div id="bottom_prompt"> 
 			<div>{datePrompt}</div>
-		</div>
+		</div>*/}
 		</>
 	)
 

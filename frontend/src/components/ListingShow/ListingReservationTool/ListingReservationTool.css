@@ -40,6 +40,36 @@
 
 #rt_checkin_checkout_wrapper {
 	margin-bottom: 48px;
+	position: relative;
+	top: 10px;
+}
+
+#rt_inputs_wrapper {
+	width: 100%;
+	height: 100%;
+}
+
+#rt_numGuests_wrapper {
+	position: relative;
+	height: 58px;
+	width: 100%;
+	padding: 0px;
+	border-radius: 0px 0px 8px 8px;
+	border: 1px solid #B0B0B0;
+	bottom: 13px;
+}
+
+#rt_num_guests {
+	position: relative;
+	top: 16px;
+	height: 60%;
+	bottom: 12px;
+	border-color: #eee;
+	border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+	border-bottom-style: hidden;
+	outline: none;
 }
 
 #rt_top_bar_rightside {
@@ -93,6 +123,7 @@
 
 #rt_reservation_picker_wrapper {
 	position: absolute; 
-	right: 1px;
 	z-index: 4;
+	right: 8px;
+	bottom: 50px;
 }

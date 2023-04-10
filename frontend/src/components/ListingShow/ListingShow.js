@@ -81,7 +81,7 @@ const ListingShow = () => {
 					<div id="lsp_property_details_text_container">
 						<div id="lsp_property_details_text_and_beds_container">
 							<div id="lsp_property_type_and_hostname">
-								{listing.propertyType} Hosted By {host?.firstName}
+								{listing.propertyType} Hosted By {host?.firstName} {host?.lastName}
 							</div>
 							<div id="lsp_property_bedbath_details">
 								<div>{listing.maxGuests} guests </div>

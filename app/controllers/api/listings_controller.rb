@@ -1,5 +1,6 @@
 class Api::ListingsController < ApplicationController
-
+	wrap_parameters include: Listing.attribute_names + [:photo]
+	
 	def index
 		@listings = Listing.all
 		render 'api/listings/index'
@@ -47,6 +48,7 @@ class Api::ListingsController < ApplicationController
 
 	private 
 	def listing_params 
-		params.require(:listing).permit(:id, :host_id, :title, :street_address, :zip_code, :city, :state, :country, :property_type, :max_guests, :nightly_price, :clearning_fee, :description, :num_bathrooms, :num_bedrooms, :num_beds, :lat, :long)
+		params.require(:listing).permit(:id, :host_id, :title, :street_address, :zip_code, :city, :state, :country, :property_type, :max_guests, :nightly_price, :clearning_fee, :description, :num_bathrooms, :num_bedrooms, :num_beds, :lat, :long, photos:[])
+
 	end
 end

@@ -35,3 +35,25 @@
 	padding-left: 26px;
 	padding-top: 24px;
 }
+
+#dp_bottom_row_wrapper {
+	display: flex;
+	justify-content: flex-end;
+}
+
+#dp_close_button {
+	border-radius: 8px;
+	height: 36px;
+	width: 76px;
+	border: 1px solid black;
+	color: white;
+	background-color: #222222;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 32px;
+}
+
+#dp_close_button:hover {
+	cursor: pointer;
+}

@@ -1,8 +1,6 @@
 #CICO_container {
 	height: 48px;
 	width: 100%;
-	position: relative;
-	left: 5px;
 }
 
 #CICO_wrapper {
@@ -28,10 +26,6 @@
 	z-index: 1;
 }
 
-#check_in_text {
-	position: relative;
-}
-
 .CICO_input_text {
  width: 90%;
  height: 100%;
@@ -52,4 +46,6 @@
 	border-radius: 0px 8px 0px 0px;
 	padding-top: 12px;
 	padding-bottom: 12px;
+	position: relative;
 }
+

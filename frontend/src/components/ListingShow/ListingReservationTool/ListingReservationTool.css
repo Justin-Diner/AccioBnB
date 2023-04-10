@@ -57,6 +57,7 @@
 	border-radius: 0px 0px 8px 8px;
 	border: 1px solid #B0B0B0;
 	bottom: 13px;
+	box-sizing: border-box;
 }
 
 #rt_num_guests {

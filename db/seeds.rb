@@ -105,6 +105,13 @@ require "open-uri"
 			password: "dumbledore"
 		)
 
+		User.create!(
+			first_name: "Luna",
+			last_name: "Lovegood",
+			email: "luna@accio.com",
+			password: "dumbledore"
+		)
+
 		#puts "Generating first and last names..."
 		## Generating Names
 		#names = [];
@@ -365,6 +372,52 @@ require "open-uri"
 			long: Faker::Address.longitude
 		})
 
+		puts 'Generating Malfoy Manner'
+		Listing.create!({
+			host_id: 9,
+			title: "Malfoy Manner - Mansion With Long Standing History",
+			street_address: "1367 Malfoy Drive",
+			zip_code: Faker::Address.zip_code,
+			city: Faker::Address.city,
+			state: Faker::Address.state,
+			country: "United States",
+			property_type: "Mansion",
+			max_guests: 40, 
+			nightly_price: 3000, 
+			cleaning_fee: 500, 
+			description: "Welcome to Malfoy Manor, a stunning and imposing Mansion. This magnificent property is the ancestral home of the wealthy and influential Malfoy family, and is now available for you to experience as a unique Acciobnb rental. As you approach the manor, you will be struck by the grandeur of its architecture and the beauty of its surrounding gardens. The interior of the manor is no less impressive, with luxurious furnishings, ornate tapestries, and opulent decor that reflect the Malfoy family's taste for the finer things in life.
+
+			Step inside and explore the many rooms of this historic home, including the elegant drawing room, the cozy library, and the spacious dining room where you can enjoy a delicious meal prepared by your own private chef. The bedrooms are equally impressive, with comfortable beds, plush linens, and exquisite antique furnishings that will transport you back in time.",
+			num_bathrooms: 12, 
+			num_bedrooms: 16,
+			num_beds: 14, 
+			lat: Faker::Address.latitude, 
+			long: Faker::Address.longitude
+		})
+
+		puts 'Generating Lovegood House'
+		Listing.create!({
+			host_id: 13,
+			title: "Lovegood House - Home of the Quibbler",
+			street_address: "4521 Lovegood Lane",
+			zip_code: Faker::Address.zip_code,
+			city: Faker::Address.city,
+			state: Faker::Address.state,
+			country: "United States",
+			property_type: "Home",
+			max_guests: 10, 
+			nightly_price: 499, 
+			cleaning_fee: 130, 
+			description: "Welcome to the whimsical and enchanting home of Luna Lovegood, located in the heart of the stunning Ottery St. Catchpole countryside. This unique Airbnb rental is the perfect retreat for those seeking a magical escape from the stresses of everyday life. As you step inside, you'll be transported to a world of wonder and imagination, with whimsical decor, colorful furnishings, and mystical touches throughout the home.
+
+			Luna's home is also the headquarters of the beloved wizarding publication, the Quibbler magazine. As you explore the many rooms of the house, you'll discover stacks of past issues, as well as evidence of Luna's latest fantastical research and discoveries. Relax in the cozy living room, take a stroll through the magical gardens, or curl up with a book in one of the comfortable bedrooms.",
+			num_bathrooms: 2.5, 
+			num_bedrooms: 3,
+			num_beds: 6, 
+			lat: Faker::Address.latitude, 
+			long: Faker::Address.longitude
+		})
+
 		puts "Attempting to seed photos"
 		
 		Listing.all.each_with_index do |listing, index|
@@ -436,6 +489,20 @@ require "open-uri"
 					listing.photos.attach(
 						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/gringotts/gringotts#{num}.jpg"),
 						filename: "gringotts#{num}.jpg"
+					)
+				end
+			elsif (index == 10) 
+				(1..5).each do |num|
+					listing.photos.attach(
+						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/malfoyman/malfoym#{num}.jpg"),
+						filename: "malfoym#{num}.jpg"
+					)
+				end
+			elsif (index == 11) 
+				(1..5).each do |num|
+					listing.photos.attach(
+						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/lovegood/lovegood#{num}.jpg"),
+						filename: "lovegood#{num}.jpg"
 					)
 				end
 			end

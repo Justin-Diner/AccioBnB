@@ -113,7 +113,7 @@ const ListingReservationTool = ({listing}) => {
 				<div id="rt_top_bar">
 					<div id="rt_top_bar_leftside">
 						<div id="rt_top_bar_price_and_text">
-							${listing.nightlyPrice}
+							${listing.nightlyPrice.toLocaleString()}
 						</div>
 						<div id="rt_top_bar_night">
 							night

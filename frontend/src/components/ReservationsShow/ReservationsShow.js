@@ -18,6 +18,8 @@ const ReservationsShow = () => {
 	const dispatch = useDispatch();
 	const {userId} = useParams(); 
 	const reservations = useSelector(getReservations);
+	const sessionUser = useSelector(sessionAction.sessionUser);
+	const listings = useSelector(getListings);
 	const hosts = useSelector(retrieveUsers);
 	let content;
 
@@ -25,22 +27,27 @@ const ReservationsShow = () => {
 		dispatch(fetchUserReservations(userId));
 	}, []);
 
-	const sessionUser = useSelector(sessionAction.sessionUser);
-	const listings = useSelector(getListings);
+	if (!sessionUser) {
+		return;
+	}
 
-	useEffect(() => {
-		if (hosts.length) {
-			debugger
-			content = reservations.map((res) => {
-				let reservation = res;
-				let listing = listings[res.listingId];
-				let host = hosts[listing.hostId];
-				return <ReservationShowItem reservation={reservation} listing={listing} host={host}/>
-			})
-		}
-	}, [reservations])
+	if (hosts.length && listings.length) {
+		let holder = [];
 
-
+		reservations.forEach((res) => {
+			let reservation = res;
+			let listing = listings.find((listing) => listing.id === res.listingId);
+			let host = hosts.find((user) => user.id === listing.hostId);
+			
+			holder.push(<ReservationShowItem 
+				reservation={reservation} 
+				listing={listing} 
+				host={host}/>)
+		})
+		content = holder; 
+	} else {
+		content = <NoReservationItem />
+	}
 
 	return (
 		<div id="rsp_container">
@@ -61,8 +68,7 @@ const ReservationsShow = () => {
 			<div id="rsp_title_wrapper">
 				<div id="rsp_title">Trips</div>
 			</div>
-			<NoReservationItem />
-			<ReservationShowItem reservation={reservations[0]}/>
+			{content}
 		</div>
 	)
 }

@@ -9,7 +9,12 @@ end
 json.listings do 
 	@listings.each do |listing| 
 		json.set! listing.id do 
-			json.extract! listing, :city, :property_type, :state, :country, :host_id
+			json.extract! listing, :id, :city, :property_type, :state, :country, :host_id
+			if listing.photos.attached? 
+				json.photos_url listing.photos.map {|photo| photo.url}
+			else 
+				json.photos_url '/../../assets/images/hogwarts/hogwarts1.jpg'
+			end
 		end
 	end
 end
@@ -17,7 +22,7 @@ end
 json.host do
 	@hosts.each do |host|
 		json.set! host.id do 
-			json.extract! host, :first_name 
+			json.extract! host, :id, :first_name 
 		end
 	end
 end

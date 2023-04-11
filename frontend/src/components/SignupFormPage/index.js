@@ -41,7 +41,6 @@ const SignUpForm = ({initialShow}) => {
 	}
 	
 	const handleClick = (e) => {
-		debugger
 		e.preventDefault(); 
 		const newUser = {
 			first_name: firstName,

@@ -28,6 +28,12 @@ class User < ApplicationRecord
 	class_name: :Listing,
 	dependent: :destroy
 
+	has_many :reservations, 
+		primary_key: :id, 
+		foreign_key: :user_id,
+		class_name: :Reservation, 	
+		dependent: :destroy
+
 
 	def	self.find_by_credentials(email, password)
 		if email =~ URI::MailTo::EMAIL_REGEXP

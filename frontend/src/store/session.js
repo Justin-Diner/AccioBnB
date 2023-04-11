@@ -18,7 +18,6 @@ export const sessionUser = (state) => {
 }
 
 export const login = (user) => async (dispatch) => {
-	debugger
 	const {email, password } = user; 
 	const response = await csrfFetch('/api/session', {
 		method: 'POST',

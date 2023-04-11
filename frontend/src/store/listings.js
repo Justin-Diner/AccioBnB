@@ -30,6 +30,7 @@ export const getListing = listingId => (state) => {
 	return state.listings ? state.listings[listingId] : null;
 }
 
+// Thunk Action Creators 
 // Get All Listings 
 export const fetchListings = () => async (dispatch) => {
 	const response = await csrfFetch('/api/listings');

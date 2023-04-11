@@ -101,6 +101,10 @@ const ListingReservationTool = ({listing}) => {
 		return totalNightlyCost() + listing.cleaningFee + accioFee();
 	}
 
+	const makeReservation = () => {
+		return null;
+	}
+
 
  return(
 	<div id="rt_container" onClick={handleInsideClick} >
@@ -149,7 +153,7 @@ const ListingReservationTool = ({listing}) => {
 					</div>
 				</div>
 			
-				<ContinueButton textContent={"Reserve"}/>
+				<ContinueButton textContent={"Reserve"} clickFunction={makeReservation}/>
 
 				<div id="rt_notice_wrapper">
 					<div id="rt_notice">You won't be charged yet</div>

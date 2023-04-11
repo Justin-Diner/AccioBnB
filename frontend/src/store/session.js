@@ -18,6 +18,7 @@ export const sessionUser = (state) => {
 }
 
 export const login = (user) => async (dispatch) => {
+	debugger
 	const {email, password } = user; 
 	const response = await csrfFetch('/api/session', {
 		method: 'POST',
@@ -54,8 +55,8 @@ export const signup = (user) => async (dispatch) => {
 
 	if (response.ok) {
 		const data = await response.json(); 
-		storeCurrentUser(data.user);
-		dispatch(setCurrentUser(data.user));
+		storeCurrentUser(data);
+		dispatch(setCurrentUser(data));
 	}
 	return response;
 }

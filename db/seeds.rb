@@ -105,8 +105,6 @@ require "open-uri"
 			password: "dumbledore"
 		)
 
-
-
 		#puts "Generating first and last names..."
 		## Generating Names
 		#names = [];
@@ -377,7 +375,6 @@ require "open-uri"
 						filename: "hogwarts#{num}.jpg"
 					)
 				end
-
 			elsif (index == 1) 
 				(1..5).each do |num|
 					listing.photos.attach(

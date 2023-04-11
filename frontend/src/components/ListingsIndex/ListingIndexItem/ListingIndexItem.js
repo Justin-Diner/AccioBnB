@@ -18,7 +18,7 @@ const ListingIndexItem = ({listing}) => {
 				<div className="listing_index_item_textcontent" id="listing_index_item_daterange">Dec 10 - 15</div>
 				<div className="listing_index_item_textcontent" id="listing_index_item_nightlyprice">
 					<div id="listing_index_item_price_only">
-						${`${listing.nightlyPrice}`}
+						${`${listing.nightlyPrice.toLocaleString()}`}
 					</div>
 					<div>
 						night

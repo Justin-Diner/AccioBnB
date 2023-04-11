@@ -41,6 +41,7 @@ const SignUpForm = ({initialShow}) => {
 	}
 	
 	const handleClick = (e) => {
+		debugger
 		e.preventDefault(); 
 		const newUser = {
 			first_name: firstName,
@@ -55,11 +56,20 @@ const SignUpForm = ({initialShow}) => {
 		}
 
 		setErrors([]);
+		if (!errors.length) {
+			dispatch(receiveSignUpModal(false));
+			setShowing(false);
+		}
 
 		return dispatch(signup(newUser))
+			.then(() => {
+				if (!errors.length) {
+					dispatch(receiveSignUpModal(false));
+					setShowing(false);
+				}
+			})
 			.catch(async (res) => {
-				let data;
-				
+				let data;			
 				try {
 					data = await res.clone().json();
 				} catch {

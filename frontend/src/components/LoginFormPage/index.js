@@ -41,7 +41,6 @@ const LoginFormPage = ({initialShow}) => {
 	} 
 
 	function handleClick(e) {
-		debugger
 		e.preventDefault(); 
 
 		const user = {
@@ -50,7 +49,7 @@ const LoginFormPage = ({initialShow}) => {
 		}
 
 		setErrors([]);
-
+		
 	return dispatch(login(user))
 		.catch(async (res) => {
 			let data; 

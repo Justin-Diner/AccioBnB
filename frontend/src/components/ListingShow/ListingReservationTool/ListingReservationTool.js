@@ -38,14 +38,6 @@ const ListingReservationTool = ({listing}) => {
 		return () => document.removeEventListener("click", closeGuestPicker);
 	}, [showGuestAmountPicker]) 
 
-	const amountOfNights = () => {
-		if (checkInDate && checkOutDate) {
-		return (differenceInCalendarDays(checkInDateObj, checkOutDateObj) * -1).toString();
-		} else {
-			return "1";
-		}
- }
-
 	const updateShowReservationPicker = (status) => {
 		setShowReservationPicker(status);
 	} 
@@ -83,9 +75,30 @@ const ListingReservationTool = ({listing}) => {
 		e.stopPropagation();
 	}
 
+	const amountOfNights = () => {
+		if (checkInDate && checkOutDate) {
+		return (differenceInCalendarDays(checkInDateObj, checkOutDateObj) * -1).toString();
+		} else {
+			return "1";
+		}
+ }
+
 	const totalNightlyCost = () => {
 		let nightlyPrice = listing.nightlyPrice;
-		return listing.nightlyPrice;
+		let totalDays;
+		if (checkInDate && checkOutDate) {
+			totalDays = amountOfNights();
+			return nightlyPrice * totalDays;
+		} 
+		return nightlyPrice;
+	}
+
+	const accioFee = () => {
+		return Math.floor(.12 * (totalNightlyCost() + listing.cleaningFee));
+	}
+
+	const totalReservationCost = () => {
+		return totalNightlyCost() + listing.cleaningFee + accioFee();
 	}
 
 
@@ -145,21 +158,21 @@ const ListingReservationTool = ({listing}) => {
 				<div id="rt_costs_wrapper">
 					<div className="rt_cost_wrapper" id="rt_nightly_cost_wrapper">
 						<div className="rt_cost_description" id="rt_nightly_cost">${listing?.nightlyPrice} x {amountOfNights()} nights</div>
-						<div className="rt_cost_item" id="rt_total_nightly_cost">{totalNightlyCost()}</div>
+						<div className="rt_cost_item" id="rt_total_nightly_cost">${totalNightlyCost().toLocaleString()}</div>
 					</div>
 					<div className="rt_cost_wrapper" id="rt_cleaning_cost_wrapper">
 						<div className="rt_cost_description" id="rt_cleaning_cost">Cleaning fee</div>
-						<div className="rt_cost_item" id="rt_total_nightly_cost">$125</div>
+						<div className="rt_cost_item" id="rt_total_nightly_cost">${listing.cleaningFee.toLocaleString()}</div>
 					</div>
 					<div className="rt_cost_wrapper" id="rt_accio_service_fee_wrapper">
 						<div className="rt_cost_description" id="accio_service_fee_title">Acciobnb service fee</div>
-						<div className="rt_cost_item" id="accio_service_fee">$282</div>
+						<div className="rt_cost_item" id="accio_service_fee">${accioFee().toLocaleString()}</div>
 					</div>
 				</div>
 
 				<div id="rt_total_costs_wrapper">
 					<div className="rt_total_cost_item" id="rt_total_costs_description">Total before taxes</div>
-					<div className="rt_total_cost_item" id="rt_total_cost_amount">$2,282</div>
+					<div className="rt_total_cost_item" id="rt_total_cost_amount">${totalReservationCost().toLocaleString()}</div>
 				</div>
 			</form>
 		</div>

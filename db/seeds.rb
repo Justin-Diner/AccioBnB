@@ -267,8 +267,8 @@ require "open-uri"
 			state: "New York",
 			country: "United States",
 			property_type: "Room",
-			max_guests: 40, 
-			nightly_price: 300, 
+			max_guests: 20, 
+			nightly_price: 600, 
 			cleaning_fee: 100, 
 			description: "Welcome to the Gryffindor Common Room, a cozy and inviting space located within the historic walls of Hogwarts School of Witchcraft and Wizardry. As the home of some of the bravest and most daring students at Hogwarts, this common room exudes warmth, courage, and a sense of adventure.
 

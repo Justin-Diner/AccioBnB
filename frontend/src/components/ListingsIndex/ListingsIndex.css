@@ -8,14 +8,13 @@
 
 #listings_index_wrapper {
 	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-	grid-auto-rows: repeat(100px, minmax(240px, 1fr));
+	grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
 	width: 100%;
 	max-width: 96%;
-	display: inline-grid;
-	grid-auto-flow: row dense;
+	display: grid;
 	column-gap: 24px; 
 	row-gap: 40px;
-
+	align-items: stretch;
 }
 
 

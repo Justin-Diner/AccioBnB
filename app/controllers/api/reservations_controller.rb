@@ -1,4 +1,10 @@
 class Api::ReservationsController < ApplicationController
+
+	def index 
+		@reservations = Reservation.where(user_id = params[:id])
+		render 'api/reservations/index'
+	end
+
 	def show 
 		@reservation = Reservation.find(params[:id])
 
@@ -39,6 +45,6 @@ class Api::ReservationsController < ApplicationController
 
 	private 
 	def reservation_params
-		params.require(:reservation).permit(:user_id, :listing_id, :check_in, :check_out, :total_price)
+		params.require(:reservation).permit(:user_id, :listing_id, :check_in, :check_out, :num_guests, :total_price)
 	end 
 end

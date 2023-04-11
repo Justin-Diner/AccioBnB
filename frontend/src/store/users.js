@@ -1,4 +1,5 @@
 import csrfFetch from "./csrf";
+import { RECEIVE_RESERVATIONS } from "./reservations";
 
 //  ACTION TYPES
 const RECEIVE_USER = 'users/RECEIVE_USER';
@@ -16,6 +17,10 @@ export const removeUser = userId => ({
 });
 
 // Selectors 
+export const retrieveUsers = state => {
+	return state.users ? Object.values(state.users) : [];
+}
+
 export const retrieveUser = (user) => (state) => {
 	return state.users ? state.users[user.id] : null; 
 }
@@ -40,6 +45,7 @@ export const createUser = user => async dispatch => {
 
 		if (response.ok) {
     const data = await response.json();
+		debugger
     storeCurrentUser(data.user)
     dispatch(receiveUser(data.user))
 		}
@@ -76,6 +82,8 @@ const usersReducer = (state={}, action) => {
         case REMOVE_USER:
             delete nextState[action.userId];
             return nextState;
+				case RECEIVE_RESERVATIONS: 
+						return {...state, ...action.payload.host}
         default:
             return state;
     }

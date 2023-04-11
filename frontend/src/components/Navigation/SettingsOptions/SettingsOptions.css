@@ -82,6 +82,7 @@
 	text-align: left;
 	display: flex;
 	align-items: center;
+	color: black;
 }
 
 .settings_dropdown_item:visited {

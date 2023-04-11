@@ -1,7 +1,17 @@
 class Api::ReservationsController < ApplicationController
 
 	def index 
-		@reservations = Reservation.where(user_id = params[:id])
+		@reservations = Reservation.where("user_id = #{params[:user_id]}").includes(:listing).includes(:host)
+		@listings = []
+		@hosts = []
+
+		@reservations.each do |res| 
+			@listings << res.listing  
+		end
+
+		@reservations.each do |res|
+			@hosts << res.host
+		end
 		render 'api/reservations/index'
 	end
 
@@ -20,7 +30,7 @@ class Api::ReservationsController < ApplicationController
 		if @reservation.save
 			render 'api/reservations/show'
 		else 
-			render json: @user.errors.full_messages, status: :unprocessable_entity
+			render json: @reservation.errors.full_messages, status: :unprocessable_entity
 		end
 	end
 
@@ -30,7 +40,7 @@ class Api::ReservationsController < ApplicationController
 		if @reservation.update(reservation_params)
 			render 'api/reservations/show'
 		else 
-			render json: @user.errors.full_messages, status: 422
+			render json: @reservation.errors.full_messages, status: 422
 		end
 	end
 

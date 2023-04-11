@@ -7,6 +7,7 @@ import CategoryFilter from './components/CategoryFilter/CategoryFilter';
 import './index.css'
 import ListingsIndex from './components/ListingsIndex/ListingsIndex';
 import ListingShow from './components/ListingShow/ListingShow';
+import ReservationsShow from './components/ReservationsShow/ReservationsShow';
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
 					<LoginFormPage initialShow={false} />
 					<SignUpForm initialShow={false} />	
 				</Route> 
+				<Route exact path="/users/:userId/reservations">
+					<ReservationsShow />
+				</Route>
 			</Switch>
 		</>
   );

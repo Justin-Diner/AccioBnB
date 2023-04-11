@@ -1,18 +1,21 @@
 import './ListingReservationTool.css'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useState, useEffect } from 'react';
 import ContinueButton from '../../Buttons/ContinueButton/ContinueButton';
 import CheckInCheckOut from './ReservationPicker/CheckInCheckOut/CheckInCheckOut';
 import ReservationPicker from './ReservationPicker/ReservationPicker';
 import GuestPicker from './GuestPicker/GuestPicker';
 import differenceInCalendarDays from 'date-fns/differenceInCalendarDays';
+import { createReservation } from '../../../store/reservations';
 
 const ListingReservationTool = ({listing}) => {
+	const dispatch = useDispatch();
 	const [showReservationPicker, setShowReservationPicker] = useState(false);
 	const [showGuestAmountPicker, setShowGuestAmountPicker] = useState(false);
 	const [checkInDate, setCheckInDate] = useState("");
 	const [checkOutDate, setCheckOutDate] = useState("");
 	const [guestsChosen, setGuestsChosen] = useState(1);
+	const user = useSelector(state => state.session.user ? state.session.user : null)
 
 	const checkInDateObj = new Date(`${checkInDate} GMT`)
 	const checkOutDateObj = new Date(`${checkOutDate} GMT`)
@@ -101,8 +104,29 @@ const ListingReservationTool = ({listing}) => {
 		return totalNightlyCost() + listing.cleaningFee + accioFee();
 	}
 
+	const formatDates = (date) => {
+		const dateYr = date.slice(6);
+		const dateMonth = date.slice(0, 2)
+		const dateDay = date.slice(3, 5)
+		return `${dateYr}-${dateMonth}-${dateDay}`
+	}
+
 	const makeReservation = () => {
-		return null;
+		console.log(user);
+		console.log(listing.id)
+		if (user) {
+			const newReservation = {
+				user_id: user.id, 
+				listing_id: listing.id,
+				check_in: formatDates(checkInDate),
+				check_out: formatDates(checkOutDate), 
+				num_guests: guestsChosen,
+				total_price: totalReservationCost(), 
+			}
+			console.log(newReservation)
+			debugger
+			dispatch(createReservation(newReservation));
+		}
 	}
 
 
@@ -146,7 +170,7 @@ const ListingReservationTool = ({listing}) => {
 							/>}
 					</div>
 					<div id="rt_numGuests_wrapper" onClick={handleGuestPickerClick}>
-							<input id="rt_num_guests" value={`${guestsChosen} guests`} type="text" ></input>
+							<input readOnly={true} id="rt_num_guests" value={`${guestsChosen} guests`} type="text" ></input>
 					</div>
 					<div id="rt_guestoption_picker_wrapper" >
 						{showGuestAmountPicker && <GuestPicker maxGuests={listing.maxGuests} guestsChosenUpdater={updateGuestsChosen}/>}

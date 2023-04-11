@@ -1,4 +1,5 @@
 import csrfFetch from "./csrf";
+import { RECEIVE_RESERVATIONS } from "./reservations";
 
 // Action Types 
 const RECEIVE_LISTINGS = 'listings/RECEIVE_LISTINGS';
@@ -91,6 +92,8 @@ const listingsReducer = (state = {}, action) => {
 			const newState = {...state};
 			delete newState[action.listingId];
 			return newState;
+		case RECEIVE_RESERVATIONS: 
+			return {...state, ...action.payload.listings}
 		default:
 			return state; 
 	}

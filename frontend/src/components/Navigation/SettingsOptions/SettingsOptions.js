@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from '../../../store/session'
 import * as uiActions from '../../../store/ui'
 import { receiveSignUpModal, receiveLogInModal } from "../../../store/ui";
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const SettingsOptions = ({ user = null}) => {
 	const dispatch = useDispatch(); 
@@ -67,6 +67,10 @@ const SettingsOptions = ({ user = null}) => {
 					<ul className="profile_dropdown">
 						<li className="settings_dropdown_item">{`${user.firstName} ${user.lastName}`}</li>
 						<li className="settings_dropdown_item">{user.email}</li>
+						<Link to={`/users/${sessionUser.id}/reservations`}>
+							<li className="settings_dropdown_item">Reservations</li>
+						</Link>
+					
 						<li onClick={logout} className="settings_dropdown_item">
 							Sign Out
 						</li>

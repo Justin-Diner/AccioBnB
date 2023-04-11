@@ -32,10 +32,6 @@ const SignUpForm = ({initialShow}) => {
 			}
 	}, [signUpModalState])
 
-	if (sessionUser) {
-		return <Redirect to="/" />
-	}
-
 	if (!showing) {
 		return
 	}

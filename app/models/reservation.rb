@@ -24,4 +24,8 @@ class Reservation < ApplicationRecord
 	primary_key: :id, 
 	foreign_key: :listing_id,
 	class_name: :Listing
+
+	has_one :host,
+	through: :listing, 
+	source: :host
 end

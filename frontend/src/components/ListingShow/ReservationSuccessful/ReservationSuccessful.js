@@ -13,8 +13,6 @@ const ReservationSuccessful = () => {
 	const sessionUser = useSelector(sessionAction.sessionUser);
 	const reservationSuccessState = useSelector(retrieveReservationModalState)
 
-	
-
 	useEffect(() => {
 		if (reservationSuccessState || showing) {
 			setShowing(true)

@@ -21,7 +21,7 @@ const ReservationsShow = () => {
 	const sessionUser = useSelector(sessionAction.sessionUser);
 	const listings = useSelector(getListings);
 	const hosts = useSelector(retrieveUsers);
-	let content;
+	let content = [];
 
 	useEffect(() => {
 		dispatch(fetchUserReservations(userId));
@@ -45,7 +45,9 @@ const ReservationsShow = () => {
 				host={host}/>)
 		})
 		content = holder; 
-	} else {
+	} 
+
+	if (!content.length) {
 		content = <NoReservationItem />
 	}
 

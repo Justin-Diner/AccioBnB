@@ -11,7 +11,7 @@ const IndividualReview = ({review, user}) => {
 					</div>
 				</div>
 				<div id="IR_bottom_bar_wrapper">
-					<div id="IR_description"></div>
+					<div id="IR_description">fdklshfdsljfldksjfdsjlkfjdsljfdslkjfdslkjfdlksjfdlsjflkd sjkfljdsjkfdsljfdksljfkdlsjfdlksjflkdsjflkdjsfkldsjklfjslkfjslkjdfsl</div>
 				</div>
 			</div>
 		</div>

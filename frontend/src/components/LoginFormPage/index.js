@@ -42,6 +42,7 @@ const LoginFormPage = ({initialShow}) => {
 
 	function handleClick(e) {
 		e.preventDefault(); 
+		dispatch(receiveLogInModal(false));
 
 		const user = {
 			email: email, 

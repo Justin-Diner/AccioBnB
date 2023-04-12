@@ -16,7 +16,7 @@ const ListingsIndex = () => {
 		<main id="listings_index_container">
 			<div id="listings_index_wrapper">
 				{listings.map(listing => {
-					return <ListingIndexItem key={listing.id} listing={listing}/>
+					return <ListingIndexItem className="gridItem" key={listing.id} listing={listing}/>
 				})}
 			</div>
 		</main>

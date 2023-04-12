@@ -7,6 +7,7 @@ import ReservationPicker from './ReservationPicker/ReservationPicker';
 import GuestPicker from './GuestPicker/GuestPicker';
 import differenceInCalendarDays from 'date-fns/differenceInCalendarDays';
 import { createReservation } from '../../../store/reservations';
+import { receiveLogInModal } from '../../../store/ui';
 
 const ListingReservationTool = ({listing}) => {
 	const dispatch = useDispatch();
@@ -112,8 +113,6 @@ const ListingReservationTool = ({listing}) => {
 	}
 
 	const makeReservation = () => {
-		console.log(user);
-		console.log(listing.id)
 		if (user) {
 			const newReservation = {
 				user_id: user.id, 
@@ -123,9 +122,9 @@ const ListingReservationTool = ({listing}) => {
 				num_guests: guestsChosen,
 				total_price: totalReservationCost(), 
 			}
-			console.log(newReservation)
-			debugger
 			dispatch(createReservation(newReservation));
+		} else {
+			dispatch(receiveLogInModal(true));
 		}
 	}
 

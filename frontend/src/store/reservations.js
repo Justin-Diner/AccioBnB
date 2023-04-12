@@ -58,7 +58,7 @@ export const createReservation = reservation => async (dispatch) => {
 		method: 'POST',
 		body: JSON.stringify(reservation)
 	});
-	debugger 
+
 	if (response.ok) {
 		const data = await response.json();
 		dispatch(receiveReservation(data));

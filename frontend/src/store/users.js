@@ -1,5 +1,6 @@
 import csrfFetch from "./csrf";
 import { RECEIVE_RESERVATIONS } from "./reservations";
+import {RECEIVE_REVIEWS} from "./reviews";
 
 //  ACTION TYPES
 const RECEIVE_USER = 'users/RECEIVE_USER';
@@ -74,7 +75,6 @@ const storeCurrentUser = (user) => {
 
 const usersReducer = (state={}, action) => {
     const nextState = { ...state };
-
     switch(action.type) {
         case RECEIVE_USER:
             nextState[action.user.id] = action.user;
@@ -83,7 +83,9 @@ const usersReducer = (state={}, action) => {
             delete nextState[action.userId];
             return nextState;
 				case RECEIVE_RESERVATIONS: 
-						return {...state, ...action.payload.host}
+						return {...state, ...action.payload.host};
+				case RECEIVE_REVIEWS: 
+						return {...state, ...action.payload.users}
         default:
             return state;
     }

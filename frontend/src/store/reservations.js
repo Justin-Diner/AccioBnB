@@ -1,7 +1,8 @@
 import csrfFetch from "./csrf";
+import { receiveReservationSuccessModal } from "./ui";
 
 // Action Types 
-export const RECEIVE_RESERVATIONS = 'reservations/RECEIVE_RESERVATIONS'
+export const RECEIVE_RESERVATIONS = 'reservations/RECEIVE_RESERVATIONS';
 const RECEIVE_RESERVATION = 'reservations/RECEIVE_RESERVATION';
 const REMOVE_RESERVATION = 'reservations/REMOVE_RESERVATION';
 
@@ -63,6 +64,7 @@ export const createReservation = reservation => async (dispatch) => {
 		const data = await response.json();
 		dispatch(receiveReservation(data));
 	}
+	dispatch(receiveReservationSuccessModal(true));
 }
 
 // Update Reservation

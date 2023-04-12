@@ -122,10 +122,10 @@ const ListingReservationTool = ({listing}) => {
 				num_guests: guestsChosen,
 				total_price: totalReservationCost(), 
 			}
-			dispatch(createReservation(newReservation));
+				dispatch(createReservation(newReservation));
 		} else {
-			dispatch(receiveLogInModal(true));
-		}
+				dispatch(receiveLogInModal(true));
+			}
 	}
 
 
@@ -179,7 +179,7 @@ const ListingReservationTool = ({listing}) => {
 				<ContinueButton textContent={"Reserve"} clickFunction={makeReservation}/>
 
 				<div id="rt_notice_wrapper">
-					<div id="rt_notice">You won't be charged yet</div>
+					<div id="rt_notice">You may need a Portkey for this location</div>
 				</div>
 
 				<div id="rt_costs_wrapper">

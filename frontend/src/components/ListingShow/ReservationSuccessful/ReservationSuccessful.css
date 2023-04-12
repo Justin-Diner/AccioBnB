@@ -1,3 +1,28 @@
+#RSF_location_modal {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgb(34, 34, 34, .2);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	z-index: 2000;
+	animation-name: slidein; 
+	animation-duration: 0.4s;
+	animation-timing-function: ease-out; 
+	animation-delay: 0s;
+}
+
+@keyframes slidein {
+	from {
+		bottom: -150vh
+	}
+	to{bottom: 0}
+} 
+
 #RSF_container {
 		display: flex;
 		justify-content: center;
@@ -20,18 +45,9 @@
 		box-shadow: 0 8px 28px rgba(0,0,0,0.28);
 		border-top-left-radius: 12px;
 		border-top-right-radius: 12px;
-		animation-name: slidein; 
-		animation-duration: 0.4s;
-		animation-timing-function: ease-out; 
-		animation-delay: 0s;
 	}
 	
-	@keyframes slidein {
-		from {
-			bottom: -150vh
-		}
-		to{bottom: 0}
-	}
+
 
 #RSP_wrapper {
 	height: 100%;

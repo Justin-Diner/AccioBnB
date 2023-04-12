@@ -6,12 +6,14 @@ import usersReducer from './users';
 import uiReducer from './ui';
 import listingsReducer from './listings';
 import reservationsReducer from './reservations';
+import reviewReducer from './reviews';
 
 const rootReducer = combineReducers({
 	session: sessionReducer,
 	users: usersReducer,
 	listings: listingsReducer,
 	reservations: reservationsReducer,
+	reviews: reviewReducer,
 	ui: uiReducer
 })
 

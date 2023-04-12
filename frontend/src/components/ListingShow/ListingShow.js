@@ -12,6 +12,7 @@ import SettingsOptions from "../Navigation/SettingsOptions/SettingsOptions";
 import * as sessionAction from '../../store/session';
 import ListingReservationTool from "./ListingReservationTool/ListingReservationTool";
 import ReservationSuccessful from './ReservationSuccessful/ReservationSuccessful'
+import Reviews from "../Reviews/Reviews";
 
 const ListingShow = () => {
  const dispatch = useDispatch();
@@ -96,8 +97,13 @@ const ListingShow = () => {
 					</div>
 
 					<div id="lsp_listing_description">{listing.description}</div>
-					<ReservationSuccessful />
-				</div>
+					<div id="lsp_reviews_wrapper">
+						<Reviews /> 
+					</div>
+					</div>
+					<div id="lsp_res_successful_wrapper">
+						<ReservationSuccessful />
+					</div>
 				<div id="ListingReservationTool_wrapper"> 
 					<ListingReservationTool listing={listing}/>
 				</div>

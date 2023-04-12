@@ -8,8 +8,11 @@ Rails.application.routes.draw do
 		resources :users, only: [:create, :show, :destroy, :update] do 
 			resources :reservations, only: [:index]
 		end
-		resources :listings
+		resources :listings do 
+			resources :reviews, only: [:index, :show]
+		end
 		resources :reservations, only: [:create, :show, :destroy, :update ]
+		resources :reviews, only: [:create, :destroy, :update]
 		resource :session, only: [:show, :create, :destroy]
 	end
 

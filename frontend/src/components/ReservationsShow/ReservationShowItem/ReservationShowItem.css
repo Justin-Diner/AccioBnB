@@ -6,6 +6,8 @@
 	line-height: 1.43;
 	box-shadow: var(--box-shadow);
 	margin-bottom: 30px;
+	text-decoration: none;
+	color: black;
 }
 
 #RSI_wrapper {

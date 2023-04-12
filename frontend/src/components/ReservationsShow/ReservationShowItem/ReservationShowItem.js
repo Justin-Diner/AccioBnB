@@ -1,4 +1,5 @@
 import './ReservationShowItem.css'
+import { Link } from 'react-router-dom'
 
 const ReservationShowItem = ({listing, reservation, host}) => {
 	const months = {
@@ -37,6 +38,7 @@ const ReservationShowItem = ({listing, reservation, host}) => {
 
 
 	return (
+		<Link to={`/listings/${listing.id}`}>
 		<div id="RSI_container">
 			<div id="RSI_wrapper">
 				<div id="RSI_left_wrapper">
@@ -63,6 +65,7 @@ const ReservationShowItem = ({listing, reservation, host}) => {
 				</div>
 			</div>
 		</div>
+		</Link>
 	)
 }
 

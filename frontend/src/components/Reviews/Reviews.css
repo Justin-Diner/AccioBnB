@@ -1,5 +1,4 @@
 #reviews_container {
 	min-height: 240px;
 	width: 100%; 
-	border-bottom: var(	--border-bottom-grey);
 }

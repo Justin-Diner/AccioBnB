@@ -54,6 +54,16 @@ export const createReview = review => async (dispatch) => {
 	}
 }
 
+export const deleteReview = (reviewId) => async (dispatch) => {
+	const response = await csrfFetch(`/api/reviews/${reviewId}`, {
+		method: "DELETE"
+	})
+
+	if (response.ok) {
+		dispatch(removeReview(reviewId));
+	}
+}
+
 const reviewReducer = (state = {}, action) => {
 	switch(action.type) {
 		case RECEIVE_REVIEWS:

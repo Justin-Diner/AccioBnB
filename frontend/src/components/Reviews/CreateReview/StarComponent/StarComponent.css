@@ -1,0 +1,19 @@
+
+.star-rating button {
+		border: none;
+		outline: none;
+		cursor: pointer;
+		background-color: white;
+	}
+.star-rating .on {
+		color: #000;
+	}
+.star-rating .off {
+		color: #ccc;
+	}
+
+.SC_title {
+	font-size: 18px;
+	font-weight: bold;
+	margin: 5px;
+}

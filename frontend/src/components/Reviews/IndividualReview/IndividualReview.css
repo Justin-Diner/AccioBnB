@@ -1,7 +1,7 @@
 #IR_container {
-	height: 240px;
+	height: 100%;
 	width: 100%;
-
+	border-bottom: var(--border-bottom-grey);
 }
 
 #IR_wrapper {
@@ -33,9 +33,34 @@
 #IR_top_bar_leftside {
 	height: 100%;
 	width: 100%;
-	background-color: green;
 	margin-left: 12px;
 	display: flex;
-	align-items: center;
+	justify-content: space-between;
+	flex-direction: row;
+	position: relative;
+	top: 8px;
 
+}
+
+#IR_description {
+	margin-top: 14px;
+	color: rgb(34, 34, 34);
+	font-weight: 400; 
+}
+
+#IR_delete_wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: var(--main-border);
+	border-radius: 12px;
+	padding-left: 20px; 
+	padding-right: 20px;
+	position: relative; 
+	right: 18px;
+	bottom: 6px;
+}
+#IR_delete_wrapper:hover {
+	cursor: pointer; 
+	background-color: #EBEBEB;
 }

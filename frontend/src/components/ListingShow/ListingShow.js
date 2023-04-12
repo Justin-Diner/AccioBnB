@@ -13,6 +13,8 @@ import * as sessionAction from '../../store/session';
 import ListingReservationTool from "./ListingReservationTool/ListingReservationTool";
 import ReservationSuccessful from './ReservationSuccessful/ReservationSuccessful'
 import Reviews from "../Reviews/Reviews";
+import { Link } from "react-router-dom";
+import CreateReview from "../Reviews/CreateReview/CreateReview";
 
 const ListingShow = () => {
  const dispatch = useDispatch();
@@ -96,9 +98,13 @@ const ListingShow = () => {
 						</div>
 					</div>
 
-					<div id="lsp_listing_description">{listing.description}</div>
+					<div id="lsp_listing_description">{listing.description.split("\n").map((line) => <>{line}<br></br></>)}</div>
 					<div id="lsp_reviews_wrapper">
+						<div id="lsp_reservation_prompt_wrapper">
+							<div id="lsp_reservation_prompt">Did you stay here? Click to leave a <Link to="/reviews/create">review.</Link></div>
+						</div>
 						<Reviews /> 
+						<CreateReview listing={listing} host={host}/>
 					</div>
 					</div>
 					<div id="lsp_res_successful_wrapper">

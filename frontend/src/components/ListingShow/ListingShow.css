@@ -149,7 +149,7 @@
 
 #lsp_listing_description { 
 	width: 100%;
-	color: var(--lsp-secondary-font-color);
+	color: rgb(34, 34, 34);
 	padding-top: 32px;
 	padding-bottom: 32px;
 	border-bottom: 1px solid rgba(0,0,0,0.08);
@@ -161,3 +161,9 @@
 	width: 36%;
 }
 
+#lsp_reservation_prompt_wrapper {
+	height: 80px;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid rgba(0,0,0,0.08);
+}

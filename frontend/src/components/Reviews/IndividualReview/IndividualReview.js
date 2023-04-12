@@ -6,7 +6,9 @@ const IndividualReview = ({review, user}) => {
 			<div id="IR_wrapper">
 				<div id="IR_top_bar_wrapper">
 					<div id="IR_reviewer_image"></div>
-					<div id="IR_review_name"></div>
+					<div id="IR_top_bar_leftside">
+						<div id="IR_review_name">Testing</div>
+					</div>
 				</div>
 				<div id="IR_bottom_bar_wrapper">
 					<div id="IR_description"></div>

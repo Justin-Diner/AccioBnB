@@ -1,0 +1,65 @@
+#RSF_container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: row;
+		z-index: 2000;	
+		font-family: 'Roboto', sans-serif;
+		position: relative;
+		font-size: 14px;
+		line-height: 1.43;
+		border: 1px solid black;
+		color: #222;
+		padding: 24px;
+		min-height: 64px;
+		height: 340px;
+		width: 500px;
+		padding-bottom: 20px;
+		border-radius: 12px; 
+		background-color: #FFFFFF;
+		box-shadow: 0 8px 28px rgba(0,0,0,0.28);
+		border-top-left-radius: 12px;
+		border-top-right-radius: 12px;
+		animation-name: slidein; 
+		animation-duration: 0.4s;
+		animation-timing-function: ease-out; 
+		animation-delay: 0s;
+	}
+	
+	@keyframes slidein {
+		from {
+			bottom: -150vh
+		}
+		to{bottom: 0}
+	}
+
+#RSP_wrapper {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+#RSP_congrats {
+	font-size: 32px;
+	font-weight: 800;
+	position: relative; 
+	left: 20px;
+}
+
+#RSP_reservation_complete {
+	color: black;
+	font-size: 24px;
+}
+
+.RSP_sentence {
+	position: relative; 
+	left: 20px;
+	font-size: 18px;
+	color: var(	--lsp-secondary-font-color);
+	margin-top: 4px;
+}
+
+#RSP_continue_wrapper {
+	width: 50%;
+}

@@ -11,6 +11,7 @@ import SearchBar from "../Navigation/SearchBar/SearchBar";
 import SettingsOptions from "../Navigation/SettingsOptions/SettingsOptions";
 import * as sessionAction from '../../store/session';
 import ListingReservationTool from "./ListingReservationTool/ListingReservationTool";
+import ReservationSuccessful from './ReservationSuccessful/ReservationSuccessful'
 
 const ListingShow = () => {
  const dispatch = useDispatch();
@@ -95,12 +96,14 @@ const ListingShow = () => {
 					</div>
 
 					<div id="lsp_listing_description">{listing.description}</div>
+					<ReservationSuccessful />
 				</div>
 				<div id="ListingReservationTool_wrapper"> 
 					<ListingReservationTool listing={listing}/>
 				</div>
 			</div>
 		</div>
+
 	</>
  )
 }

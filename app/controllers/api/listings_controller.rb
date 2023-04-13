@@ -46,6 +46,11 @@ class Api::ListingsController < ApplicationController
 		end
 	end
 
+	def search
+		@listings = Listing.where("lower(title) LIKE ?", "%#{params[:q]}%")
+		render :search 
+	end
+	
 	private 
 	def listing_params 
 		params.require(:listing).permit(:id, :host_id, :title, :street_address, :zip_code, :city, :state, :country, :property_type, :max_guests, :nightly_price, :clearning_fee, :description, :num_bathrooms, :num_bedrooms, :num_beds, :lat, :long, photos:[])

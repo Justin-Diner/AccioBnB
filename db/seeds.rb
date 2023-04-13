@@ -112,6 +112,67 @@ require "open-uri"
 			password: "dumbledore"
 		)
 
+		puts "Attaching User Photos"
+
+		User.find(1).photo.attach(
+			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/profilepics/harry_potter.jpg"),
+			filename: "harry_potter.jpg"
+		)
+
+		User.find(2).photo.attach(
+			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/profilepics/capybara.jpg"),
+			filename: "capybara.jpg"
+		)
+
+		User.find(3).photo.attach(
+			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/profilepics/hermione.jpg"),
+			filename: "hermione.jpg"
+		)
+
+		User.find(4).photo.attach(
+			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/profilepics/ron_weasley.jpg"),
+			filename: "ron_weasley.jpg"
+		)
+
+		User.find(5).photo.attach(
+			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/profilepics/thomas_riddle.jpg"),
+			filename: "thomas_riddle.jpg"
+		)
+
+		User.find(6).photo.attach(
+			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/profilepics/voldemort.jpg"),
+			filename: "voldemort.jpg"
+		)
+		User.find(7).photo.attach(
+			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/profilepics/sirius.jpg"),
+			filename: "sirius.jpg"
+		)
+		User.find(8).photo.attach(
+			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/profilepics/dumbledore.jpg"),
+			filename: "dumbledore.jpg"
+		)
+		User.find(9).photo.attach(
+			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/profilepics/draco_malfoy.jpg"),
+			filename: "draco_malfoy.jpg"
+		)
+		User.find(10).photo.attach(
+			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/profilepics/neville.jpg"),
+			filename: "neville.jpg"
+		)
+		User.find(11).photo.attach(
+			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/profilepics/hagrid.jpg"),
+			filename: "hagrid.jpg"
+		)
+		User.find(12).photo.attach(
+			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/profilepics/stanshunpike.jpg"),
+			filename: "stanshunpike.jpg"
+		)
+
+		User.find(13).photo.attach(
+			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/profilepics/lunalovegood.jpg"),
+			filename: "lunalovegood.jpg"
+		)
+
 		#puts "Generating first and last names..."
 		## Generating Names
 		#names = [];
@@ -421,84 +482,84 @@ require "open-uri"
 		puts "Attempting to seed photos"
 		
 		Listing.all.each_with_index do |listing, index|
-			if (index == 0) 
+			if (listing.id == 1) 
 				(1..5).each do |num|
 					listing.photos.attach(
 						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/hogwarts/hogwarts#{num}.jpg"),
 						filename: "hogwarts#{num}.jpg"
 					)
 				end
-			elsif (index == 1) 
+			elsif (listing.id == 2) 
 				(1..5).each do |num|
 					listing.photos.attach(
 						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/knightbus/kb#{num}.jpg"),
 						filename: "kb#{num}.jpg"
 					)
 				end
-			elsif (index == 2) 
+			elsif (listing.id == 3) 
 				(1..5).each do |num|
 					listing.photos.attach(
 						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/burrow/burrow#{num}.jpg"),
 						filename: "burrow#{num}.jpg"
 					)
 				end
-			elsif (index == 3) 
+			elsif (listing.id == 4) 
 				(1..5).each do |num|
 					listing.photos.attach(
 						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/cupboard/cupboard#{num}.jpg"),
 						filename: "cupboard#{num}.jpg"
 					)
 				end
-			elsif (index == 4) 
+			elsif (listing.id == 5) 
 				(1..5).each do |num|
 					listing.photos.attach(
 						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/cos/cos#{num}.jpg"),
 						filename: "cos#{num}.jpg"
 					)
 				end
-			elsif (index == 5) 
+			elsif (listing.id == 6) 
 				(1..5).each do |num|
 					listing.photos.attach(
 						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/gcroom/gcroom#{num}.jpg"),
 						filename: "gcroom#{num}.jpg"
 					)
 				end
-			elsif (index == 6) 
+			elsif (listing.id == 7) 
 				(1..5).each do |num|
 					listing.photos.attach(
 						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/hagridshut/hh#{num}.jpg"),
 						filename: "hh#{num}.jpg"
 					)
 				end
-			elsif (index == 7) 
+			elsif (listing.id == 8) 
 				(1..5).each do |num|
 					listing.photos.attach(
 						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/grimmauld/grim#{num}.jpg"),
 						filename: "grim#{num}.jpg"
 					)
 				end
-			elsif (index == 8) 
+			elsif (listing.id == 9) 
 				(1..5).each do |num|
 					listing.photos.attach(
 						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/qtent/qtent#{num}.jpg"),
 						filename: "qtent#{num}.jpg"
 					)
 				end
-			elsif (index == 9) 
+			elsif (listing.id == 10) 
 				(1..5).each do |num|
 					listing.photos.attach(
 						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/gringotts/gringotts#{num}.jpg"),
 						filename: "gringotts#{num}.jpg"
 					)
 				end
-			elsif (index == 10) 
+			elsif (listing.id == 11) 
 				(1..5).each do |num|
 					listing.photos.attach(
 						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/malfoyman/malfoym#{num}.jpg"),
 						filename: "malfoym#{num}.jpg"
 					)
 				end
-			elsif (index == 11) 
+			elsif (listing.id == 12) 
 				(1..5).each do |num|
 					listing.photos.attach(
 						io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/lovegood/lovegood#{num}.jpg"),
@@ -508,6 +569,152 @@ require "open-uri"
 			end
 		end
 				
+		puts "Seeding Reviews"
+
+		Review.create!({
+			listing_id: 2,
+			user_id: 1,
+			description:"Who would have thought spending a night on the Knight Bus would be so much fun! Sure, it's not the most comfortable ride, but the driver, Stan, kept us entertained with his stories all night. It's a refreshing change from my usual accommodations at Hogwarts. I can definitely say that staying on a magical bus is now checked off my bucket list!",
+			cleanliness: 3,
+			accuracy: 4, 
+			communication: 4, 
+			location: 5, 
+			check_in: 3,
+			value: 3
+		})
+
+		Review.create!({
+			listing_id: 2,
+			user_id: 6,
+			description: "I must say, the Knight Bus is surprisingly comfortable, despite my initial skepticism. While I did not find what I was looking for - Harry Potter - the accommodations were more than adequate for my needs. The driver, Stan, was a bit too chatty for my liking, but overall, it was a pleasant stay.",
+			cleanliness: 2,
+			accuracy: 4, 
+			communication: 5, 
+			location: 5, 
+			check_in: 4,
+			value: 4
+		})
+
+		Review.create!({
+			listing_id: 1,
+			user_id: 1,
+			description: "Hogwarts is a truly magical place. The castle itself is breathtaking, with its winding staircases and hidden rooms. The professors are knowledgeable and passionate about their subjects, and there's always something new to learn. All in all, it's the perfect place for any aspiring wizard or witch.",
+			cleanliness: 5,
+			accuracy: 5, 
+			communication: 5, 
+			location: 5, 
+			check_in: 5,
+			value: 5
+		})
+
+		Review.create!({
+			listing_id: 1,
+			user_id: 3,
+			description: "Staying at Hogwarts is an experience that every witch and wizard should have. The castle is full of history and magic. The library is a treasure trove of books, and the grounds are perfect for exploring. Overall, it's a truly enchanting place.",
+			cleanliness: 5,
+			accuracy: 5, 
+			communication: 5, 
+			location: 5, 
+			check_in: 5,
+			value: 5
+		})
+
+		Review.create!({
+			listing_id: 1,
+			user_id: 4,
+			description: "The food in the Great Hall is fantastic, and the Quidditch matches are always a blast. If you're looking for a magical experience, there's no place quite like Hogwarts.",
+			cleanliness: 5,
+			accuracy: 5, 
+			communication: 5, 
+			location: 5, 
+			check_in: 5,
+			value: 5
+		})
+
+		Review.create!({
+			listing_id: 3,
+			user_id: 1,
+			description: "The Burrow is the warmest, most welcoming home I've ever had the pleasure of staying in. Mrs. Weasley's cooking is second to none, and the cozy bedrooms make you feel right at home. The garden is full of surprises, and there's always something new to discover. All in all, it's the perfect place to stay for anyone looking for a true taste of wizarding hospitality.",
+			cleanliness: 4,
+			accuracy: 5, 
+			communication: 4, 
+			location: 4, 
+			check_in: 5,
+			value: 5
+		})
+
+		Review.create!({
+			listing_id: 3,
+			user_id: 9,
+			description: "Place is a dump.",
+			cleanliness: 2,
+			accuracy: 3, 
+			communication: 3, 
+			location: 3, 
+			check_in: 3,
+			value: 3
+		})
+
+		Review.create!({
+			listing_id: 5,
+			user_id: 6,
+			description: "This place is incredibly welcoming. It is absolutely not scary. You should definitley make a reservation and check it out. Especially you, Harry Potter. You have nothing to worry about.",
+			cleanliness: 5,
+			accuracy: 5, 
+			communication: 5, 
+			location: 5, 
+			check_in: 5,
+			value: 5
+		})
+
+		Review.create!({
+			listing_id: 5,
+			user_id: 1,
+			description: "Do NOT listen to Voldemort. This place was incredibly smelly and did not advertise the giant BASILISK. Stay away. There are better places in Hogwarts to visit.",
+			cleanliness: 2,
+			accuracy: 1, 
+			communication: 2, 
+			location: 5, 
+			check_in: 3,
+			value: 1
+		})
+
+		Review.create!({
+			listing_id: 4,
+			user_id: 8,
+			description: "Great place to stay in the summers.",
+			cleanliness: 5,
+			accuracy: 5, 
+			communication: 5, 
+			location: 5, 
+			check_in: 5,
+			value: 5
+		})
+
+		Review.create!({
+			listing_id: 6,
+			user_id: 13,
+			description: "So whimsickle and magical. The narguls stay away. It's truly a great place to read and study. I can't wait for each year to camp there by the fire.",
+			cleanliness: 5,
+			accuracy: 5, 
+			communication: 5, 
+			location: 5, 
+			check_in: 5,
+			value: 5
+		})
+		
+		Review.create!({
+			listing_id: 6,
+			user_id: 10,
+			description: "The Gryffindor Common Room is a home away from home. The cozy fireplace and comfortable armchairs are perfect for relaxing after a long day of classes. And there's always a sense of camaraderie and support among the Gryffindors - it's a true community.",
+			cleanliness: 5,
+			accuracy: 5, 
+			communication: 5, 
+			location: 5, 
+			check_in: 5,
+			value: 5
+		})
+
 
 
 		#puts 'Generating 5 Listings'

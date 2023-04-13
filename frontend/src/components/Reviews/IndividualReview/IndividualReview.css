@@ -27,7 +27,12 @@
 	height: 40px; 
 	width: 40px; 
 	border-radius: 50%;
-	background-color: orange;
+}
+
+#IR_reviewer_image img {
+	border-radius: 50%;
+	height: 42px;
+	width: 42px;
 }
 
 #IR_top_bar_leftside {

@@ -147,6 +147,12 @@
 	user-select: none;
 }
 
+#lsp_host_profile_photo {
+	border-radius: 50%;
+	width: 76px;
+	height: 76px;
+}
+
 #lsp_listing_description { 
 	width: 100%;
 	color: rgb(34, 34, 34);

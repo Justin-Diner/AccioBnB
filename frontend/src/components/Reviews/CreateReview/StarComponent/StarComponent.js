@@ -1,9 +1,17 @@
 import './StarComponent.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const StarComponent = ({category}) => {
+const StarComponent = ({category, setter}) => {
 	const [rating, setRating] = useState(5);
 	const [hover, setHover] = useState(5);
+
+	useEffect(() => {
+		
+	})
+
+	const handleMouseEnter = () => {
+		setHover();
+	}
 
 	return (
 		<>

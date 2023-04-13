@@ -15,24 +15,22 @@ const Reviews = () => {
 	const users = useSelector(retrieveUsers)
 	let content;
 
+	useEffect(() => {
+		dispatch(fetchListingReviews(listingId));
+	}, [])
+
 	if (reviews.length) {
 		let holder = [];
 
 		reviews.forEach((review) => {
 			let reviewAuthor = users.find((user) => user.id === review.userId)
-			debugger
 			if (review.listingId === parseInt(listingId)) {
-				debugger
 				holder.push(<IndividualReview review={review} user={reviewAuthor} />)
+				console.log(reviewAuthor);
 			}
 		})
 		content = holder;
 	}
-
-	useEffect(() => {
-		dispatch(fetchListingReviews(listingId));
-	}, [])
-
 	return ( 
 		<div id="reviews_container">
 			{content}

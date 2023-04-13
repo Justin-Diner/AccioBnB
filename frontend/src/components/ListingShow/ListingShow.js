@@ -24,6 +24,8 @@ const ListingShow = () => {
  const hostId = listing ? listing.hostId : null;
  const host = useSelector(state => state.users ? state.users[hostId] : null);
 
+ console.log(host);
+
  let reviews = 47;
  let rating = 4.95
  let numReviews = 400
@@ -94,7 +96,7 @@ const ListingShow = () => {
 							</div>
 						</div>
 						<div id="lsp_host_profile_container">
-							<div id="lsp_host_profile_image">{host?.firstName[0].toUpperCase()}</div>
+							<img id="lsp_host_profile_photo" src={host?.photosUrl}></img>
 						</div>
 					</div>
 

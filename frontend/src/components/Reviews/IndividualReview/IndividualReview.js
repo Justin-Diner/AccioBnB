@@ -20,6 +20,7 @@ const IndividualReview = ({review, user}) => {
 		"12": "December"
 	}
 
+
 	const monthName = (createdAt) => {
 		console.log(createdAt)
 		let month = createdAt.slice(5, 7)
@@ -35,7 +36,9 @@ const IndividualReview = ({review, user}) => {
 		<div id="IR_container">
 			<div id="IR_wrapper">
 				<div id="IR_top_bar_wrapper">
-					<div id="IR_reviewer_image"></div>
+					<div id="IR_reviewer_image">
+						<img src={user.photoUrl}></img>
+					</div>
 					<div id="IR_top_bar_leftside">
 						<div id="IR_name_and_date_wrapper">
 							<div id="IR_review_name">{user.firstName}</div>

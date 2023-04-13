@@ -1,10 +1,14 @@
 import './IndividualReview.css';
 import { deleteReview } from '../../../store/reviews';
 import { useDispatch } from 'react-redux';
-import { receiveCreateReviewModal } from '../../../store/ui';
+import * as sessionAction from '../../../store/session';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const IndividualReview = ({review, user}) => {
 	const dispatch = useDispatch();
+	const sessionUser = useSelector(sessionAction.sessionUser);
+	const [allowDelete, setAllowDelete] = useState(false)
 
 	const months = {
 		"01": "January",
@@ -20,6 +24,13 @@ const IndividualReview = ({review, user}) => {
 		"11": "November",
 		"12": "December"
 	}
+
+	useEffect(() => {
+		if (sessionUser.id === user.id) {
+			setAllowDelete(true);
+		} 
+	
+	}, [sessionUser])
 
 
 	const monthName = (createdAt) => {
@@ -44,9 +55,11 @@ const IndividualReview = ({review, user}) => {
 							<div id="IR_review_name">{user?.firstName}</div>
 							<div id="IR_review_month">{monthName(review?.createdAt)}</div>
 						</div>
+						{allowDelete && 
 						<div id="IR_delete_wrapper" onClick={handleDelete}>
 							<div id="IR_delete_button" >Delete Post</div>
 						</div>
+						}
 					</div>
 				</div>
 				<div id="IR_bottom_bar_wrapper">

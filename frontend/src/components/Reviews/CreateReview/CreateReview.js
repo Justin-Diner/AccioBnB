@@ -62,6 +62,7 @@ const CreateReview = ({listing, host}) => {
 		}
 		dispatch(createReview(newReview));
 		dispatch(receiveCreateReviewModal(false));
+		setShowing(false);
 	}
 
 	return (

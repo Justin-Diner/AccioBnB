@@ -1,6 +1,7 @@
 import './IndividualReview.css';
 import { deleteReview } from '../../../store/reviews';
 import { useDispatch } from 'react-redux';
+import { receiveCreateReviewModal } from '../../../store/ui';
 
 const IndividualReview = ({review, user}) => {
 	const dispatch = useDispatch();

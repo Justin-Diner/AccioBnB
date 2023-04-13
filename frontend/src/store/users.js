@@ -46,7 +46,6 @@ export const createUser = user => async dispatch => {
 
 		if (response.ok) {
     const data = await response.json();
-		debugger
     storeCurrentUser(data.user)
     dispatch(receiveUser(data.user))
 		}

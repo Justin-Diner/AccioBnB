@@ -17,7 +17,7 @@ const ReservationSuccessful = () => {
 		if (reservationSuccessState || showing) {
 			setShowing(true)
 		}
-	}, reservationSuccessState)
+	}, [reservationSuccessState])
  
 	if (!showing) {
 		return 

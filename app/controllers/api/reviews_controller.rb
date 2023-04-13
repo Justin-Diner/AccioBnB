@@ -40,7 +40,7 @@ class Api::ReviewsController < ApplicationController
 	end
 
 	def destroy 
-		@review = Reservation.find(params[:id])
+		@review = Review.find(params[:id])
 
 		if @review
 			Review.destroy(params[:id])

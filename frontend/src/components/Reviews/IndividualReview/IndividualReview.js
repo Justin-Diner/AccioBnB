@@ -22,9 +22,8 @@ const IndividualReview = ({review, user}) => {
 
 
 	const monthName = (createdAt) => {
-		console.log(createdAt)
-		let month = createdAt.slice(5, 7)
-		let year = createdAt.slice(0, 4)
+		let month = createdAt?.slice(5, 7)
+		let year = createdAt?.slice(0, 4)
 		return `${months[month]} ${year}`;
 	} 
 
@@ -44,8 +43,8 @@ const IndividualReview = ({review, user}) => {
 							<div id="IR_review_name">{user.firstName}</div>
 							<div id="IR_review_month">{monthName(review.createdAt)}</div>
 						</div>
-						<div id="IR_delete_wrapper">
-							<div id="IR_delete_button" onClick={handleDelete}>Delete Post</div>
+						<div id="IR_delete_wrapper" onClick={handleDelete}>
+							<div id="IR_delete_button" >Delete Post</div>
 						</div>
 					</div>
 				</div>

@@ -15,6 +15,8 @@ import ReservationSuccessful from './ReservationSuccessful/ReservationSuccessful
 import Reviews from "../Reviews/Reviews";
 import { Link } from "react-router-dom";
 import CreateReview from "../Reviews/CreateReview/CreateReview";
+import { receiveCreateReviewModal, receiveLogInModal } from "../../store/ui";
+import { retrieveUsers } from '../../store/users';
 
 const ListingShow = () => {
  const dispatch = useDispatch();
@@ -23,8 +25,7 @@ const ListingShow = () => {
  const listing = useSelector(getListing(listingId));
  const hostId = listing ? listing.hostId : null;
  const host = useSelector(state => state.users ? state.users[hostId] : null);
-
- console.log(host);
+ const users = useSelector(retrieveUsers);
 
  let reviews = 47;
  let rating = 4.95
@@ -42,6 +43,14 @@ const ListingShow = () => {
 
  if (!listing) {
 	return null;
+ }
+
+ const handleCreateReview = () => {
+	if (!sessionUser) {
+		dispatch(receiveLogInModal(true));
+	} else {
+		dispatch(receiveCreateReviewModal(true));
+	}
  }
  
  return (
@@ -101,12 +110,15 @@ const ListingShow = () => {
 					</div>
 
 					<div id="lsp_listing_description">{listing.description.split("\n").map((line) => <>{line}<br></br></>)}</div>
+
 					<div id="lsp_reviews_wrapper">
-						<div id="lsp_reservation_prompt_wrapper">
-							<div id="lsp_reservation_prompt">Did you stay here? Click to leave a <Link to="/reviews/create">review.</Link></div>
+						<div id="lsp_reservation_prompt_wrapper" onClick={handleCreateReview}>
+							<div id="lsp_reservation_prompt"> Did you stay here? Wave your wand  here to a review.</div>
 						</div>
-						<Reviews /> 
-						<CreateReview listing={listing} host={host}/>
+						<Reviews users={users}/> 
+						<div id="lsp_create_new_review_wrapper">
+							<CreateReview listing={listing} host={host}/>
+						</div>
 					</div>
 					</div>
 					<div id="lsp_res_successful_wrapper">

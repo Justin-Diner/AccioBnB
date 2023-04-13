@@ -184,7 +184,7 @@ const ListingReservationTool = ({listing}) => {
 
 				<div id="rt_costs_wrapper">
 					<div className="rt_cost_wrapper" id="rt_nightly_cost_wrapper">
-						<div className="rt_cost_description" id="rt_nightly_cost">${listing?.nightlyPrice} x {amountOfNights()} nights</div>
+						<div className="rt_cost_description" id="rt_nightly_cost">${(listing?.nightlyPrice).toLocaleString()} x {amountOfNights()} nights</div>
 						<div className="rt_cost_item" id="rt_total_nightly_cost">${totalNightlyCost().toLocaleString()}</div>
 					</div>
 					<div className="rt_cost_wrapper" id="rt_cleaning_cost_wrapper">

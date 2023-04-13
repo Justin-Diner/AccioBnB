@@ -4,6 +4,7 @@ import csrfFetch from './csrf';
 const RECEIVE_SIGNUP_MODAL = 'ui/RECEIVE_SIGNUP_MODAL'
 const RECEIVE_LOGIN_MODAL = 'ui/RECEIVE_LOGIN_MODAL'
 const RECEIVE_RESERVATION_MODAL = 'ui/RECEIVE_RESERVATION_MODAL'
+const RECEIVE_CREATE_REVIEW_MODAL = 'ui/CREATE_REVIEW_MODAL'
 
 export const receiveSignUpModal = (modalState) => ({
 	type: RECEIVE_SIGNUP_MODAL,
@@ -20,6 +21,11 @@ export const receiveReservationSuccessModal = (modalState) => ({
 	modalState
 })
 
+export const receiveCreateReviewModal = (modalState) => ({
+	type: RECEIVE_CREATE_REVIEW_MODAL, 
+	modalState
+})
+
 // Selectors 
 export const retrieveSignUpModalState = (state) => {
 	return state.ui.signUpModal ? state.ui.signUpModal : null;
@@ -31,6 +37,10 @@ export const retrieveLogInModalState = (state) => {
 
 export const retrieveReservationModalState = (state) => {
 	return state.ui.reservationModal ? state.ui.reservationModal : null; 
+}
+
+export const retrieveCreateReviewModalState = (state) => {
+	return state.ui.createReviewModal ? state.ui.createReviewModal : null; 
 }
 
 const uiReducer = (state = {}, action) => {
@@ -46,6 +56,9 @@ const uiReducer = (state = {}, action) => {
 		case RECEIVE_RESERVATION_MODAL:
 			nextState.reservationModal = action.modalState
 			return nextState
+		case RECEIVE_CREATE_REVIEW_MODAL:
+			nextState.createReviewModal = action.modalState
+			return nextState;
 		default: 
 			return state; 
 	}

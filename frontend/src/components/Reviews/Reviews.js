@@ -8,11 +8,10 @@ import { getReviews } from '../../store/reviews';
 import { retrieveUsers } from '../../store/users';
 
 
-const Reviews = () => {
+const Reviews = ({users}) => {
 	const {listingId} = useParams();
 	const dispatch = useDispatch();
-	const reviews = useSelector(getReviews)
-	const users = useSelector(retrieveUsers)
+	const reviews = useSelector(getReviews);
 	let content;
 
 	useEffect(() => {
@@ -26,11 +25,11 @@ const Reviews = () => {
 			let reviewAuthor = users.find((user) => user.id === review.userId)
 			if (review.listingId === parseInt(listingId)) {
 				holder.push(<IndividualReview review={review} user={reviewAuthor} />)
-				console.log(reviewAuthor);
 			}
 		})
 		content = holder;
 	}
+	
 	return ( 
 		<div id="reviews_container">
 			{content}

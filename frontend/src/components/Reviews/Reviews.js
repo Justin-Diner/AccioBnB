@@ -20,9 +20,11 @@ const Reviews = () => {
 
 		reviews.forEach((review) => {
 			let reviewAuthor = users.find((user) => user.id === review.userId)
-			holder.push(
-				<IndividualReview review={review} user={reviewAuthor} />
-			)
+			debugger
+			if (review.listingId === parseInt(listingId)) {
+				debugger
+				holder.push(<IndividualReview review={review} user={reviewAuthor} />)
+			}
 		})
 		content = holder;
 	}

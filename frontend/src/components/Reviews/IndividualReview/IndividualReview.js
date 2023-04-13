@@ -41,7 +41,7 @@ const IndividualReview = ({review, user}) => {
 					</div>
 					<div id="IR_top_bar_leftside">
 						<div id="IR_name_and_date_wrapper">
-							<div id="IR_review_name">{user.firstName}</div>
+							<div id="IR_review_name">{user?.firstName}</div>
 							<div id="IR_review_month">{monthName(review?.createdAt)}</div>
 						</div>
 						<div id="IR_delete_wrapper" onClick={handleDelete}>

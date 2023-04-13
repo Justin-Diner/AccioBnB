@@ -30,6 +30,8 @@ function App() {
 				</Route> 
 				<Route exact path="/users/:userId/reservations">
 					<ReservationsShow />
+					<LoginFormPage initialShow={false} />
+					<SignUpForm initialShow={false} />
 				</Route>
 			</Switch>
 		</>

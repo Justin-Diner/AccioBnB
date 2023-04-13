@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import CreateReview from "../Reviews/CreateReview/CreateReview";
 import { receiveCreateReviewModal, receiveLogInModal } from "../../store/ui";
 import { retrieveUsers } from '../../store/users';
+import Socials from "../Navigation/socials/Socials";
 
 const ListingShow = () => {
  const dispatch = useDispatch();
@@ -63,6 +64,9 @@ const ListingShow = () => {
 						</div></a>
 						<div className="nav_component" id="LSP_search_wrapper"> 
 							<SearchBar id="search_bar_comp"/>
+						</div>
+						<div className="nav_component" id="LSP_socials_wrapper">
+							<Socials />
 						</div>
 						<div className="nav_component" id="LSP_settings_options_wrapper">		
 							<SettingsOptions user={sessionUser}/>

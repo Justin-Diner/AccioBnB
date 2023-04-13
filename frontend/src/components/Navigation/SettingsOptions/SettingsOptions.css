@@ -5,9 +5,6 @@
 	display: flex; 
 	justify-content: center;
 	align-items: center;
-	position: relative;
-	right: 24px;
-	top: 5px;
 }
 
 #settings_options_background {

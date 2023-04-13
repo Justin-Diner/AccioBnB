@@ -42,11 +42,11 @@ const ReservationSuccessful = () => {
 				<div id="RSP_wrapper">
 					<div id="RSP_congrats">Congratulations!</div>
 					<div className="RSP_sentence" id="RSP_reservation_complete">Your reservation is complete. </div>
-					<div className="RSP_sentence" id="RSP_title_line">You're heading to...</div>
+					{/*<div className="RSP_sentence" id="RSP_title_line">You're heading to...</div>*/}
 					<div className="RSP_sentence" id="RSP_go_to_trips">Visit your trips page to view your reservations.</div>
 					
 						<div id="RSP_continue_wrapper">
-						<Link to={`/users/${sessionUser?.id}/reservations`}>
+						<Link to={`/users/${sessionUser?.id}/reservations`} onClick={closeWindow}>
 							<ContinueButton textContent={"Accio Trips!"} />
 							</Link>
 						</div>

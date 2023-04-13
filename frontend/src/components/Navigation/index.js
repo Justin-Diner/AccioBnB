@@ -9,6 +9,7 @@ import SearchBar from "./SearchBar/SearchBar";
 import SettingsOptions from "./SettingsOptions/SettingsOptions";
 import * as sessionAction from '../../store/session';
 import './Navigation.css';
+import Socials from "./socials/Socials";
 
 const Navigation = () => {
 	const sessionUser = useSelector(sessionAction.sessionUser);
@@ -23,8 +24,13 @@ const Navigation = () => {
 						<div className="nav_component" id="search_wrapper"> 
 							<SearchBar id="search_bar_comp"/>
 						</div>
-						<div className="nav_component" id="settings_options_wrapper">		
-							<SettingsOptions user={sessionUser}/>
+						<div id="socials_and_nav_wrapper">
+							<div id="socials_wrapper">
+								<Socials />
+							</div>
+							<div className="nav_component" id="settings_options_wrapper">		
+								<SettingsOptions user={sessionUser}/>
+							</div>
 						</div>
 					</div>
 			</div>

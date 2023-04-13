@@ -34,6 +34,11 @@
 	width: 45%;
 }
 
+#RSP_socials_wrapper {
+	position: relative; 
+	top: 18px;
+}
+
 #RSP_settings_options_wrapper {
 	position: relative; 
 	top: 18px;

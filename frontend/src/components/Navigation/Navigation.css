@@ -31,12 +31,18 @@
 	display: flex; 
 }
 
+#socials_and_nav_wrapper {
+	display: flex;
+	align-items: center;
+	position: relative; 
+	right: 64px;
+}
+
 #settings_options_wrapper {
 	display: flex;
 	justify-content: end;
-	align-items: center;
 	height: 100%;
-	width: 10%;
+	width: 40%;
 	padding-right: 18px;
 }
 

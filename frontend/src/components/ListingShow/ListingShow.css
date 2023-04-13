@@ -33,6 +33,11 @@
 	width: 45%;
 }
 
+#LSP_socials_wrapper {
+	position: relative; 
+	top: 18px;
+}
+
 #LSP_settings_options_wrapper {
 	position: relative; 
 	top: 18px;

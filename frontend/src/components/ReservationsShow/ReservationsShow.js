@@ -13,6 +13,7 @@ import ReservationShowItem from './ReservationShowItem/ReservationShowItem';
 import { fetchListing } from '../../store/listings';
 import { getListings } from '../../store/listings';
 import { retrieveUsers } from '../../store/users';
+import Socials from '../Navigation/socials/Socials';
 
 const ReservationsShow = () => {
 	const dispatch = useDispatch();
@@ -26,10 +27,6 @@ const ReservationsShow = () => {
 	useEffect(() => {
 		dispatch(fetchUserReservations(userId));
 	}, []);
-
-	if (!sessionUser) {
-		return;
-	}
 
 	if (hosts.length && listings.length) {
 		let holder = [];
@@ -47,6 +44,11 @@ const ReservationsShow = () => {
 		content = holder; 
 	} 
 
+	if (!sessionUser) {
+		content = [];
+	}
+
+
 	if (!content.length) {
 		content = <NoReservationItem />
 	}
@@ -60,6 +62,9 @@ const ReservationsShow = () => {
 						</div></a>
 						<div className="nav_component" id="RSP_search_wrapper"> 
 							<SearchBar id="search_bar_comp"/>
+						</div>
+						<div className="nav_component" id="RSP_socials_wrapper">
+							<Socials />
 						</div>
 						<div className="nav_component" id="RSP_settings_options_wrapper">		
 							<SettingsOptions user={sessionUser}/>

@@ -76,6 +76,7 @@ const LoginFormPage = ({initialShow}) => {
 			password: "dumbledore"
 		}
 			dispatch(receiveLogInModal(false));
+			setShowing(false);
 			dispatch(login(newDemoUser))
 		}
 

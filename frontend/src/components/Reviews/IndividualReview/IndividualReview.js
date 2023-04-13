@@ -26,9 +26,11 @@ const IndividualReview = ({review, user}) => {
 	}
 
 	useEffect(() => {
-		if (sessionUser.id === user.id) {
+		if (sessionUser?.id === user.id) {
 			setAllowDelete(true);
-		} 
+		} else {
+			setAllowDelete(false);
+		}
 	
 	}, [sessionUser])
 

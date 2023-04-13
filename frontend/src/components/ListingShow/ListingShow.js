@@ -19,6 +19,7 @@ import { receiveCreateReviewModal, receiveLogInModal } from "../../store/ui";
 import { retrieveUsers } from '../../store/users';
 import Socials from "../Navigation/socials/Socials";
 
+
 const ListingShow = () => {
  const dispatch = useDispatch();
  const sessionUser = useSelector(sessionAction.sessionUser);
@@ -28,7 +29,6 @@ const ListingShow = () => {
  const host = useSelector(state => state.users ? state.users[hostId] : null);
  const users = useSelector(retrieveUsers);
 
- let reviews = 47;
  let rating = 4.95
  let numReviews = 400
 

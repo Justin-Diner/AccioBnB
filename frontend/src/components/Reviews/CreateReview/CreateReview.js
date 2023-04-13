@@ -26,6 +26,7 @@ const CreateReview = ({listing, host}) => {
 	useEffect(() => {
 		if (createReviewState || showing) {
 			setShowing(true)
+			dispatch(receiveCreateReviewModal(true));
 		}
 	}, [createReviewState])
  

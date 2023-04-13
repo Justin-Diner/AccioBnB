@@ -8,6 +8,7 @@ import GuestPicker from './GuestPicker/GuestPicker';
 import differenceInCalendarDays from 'date-fns/differenceInCalendarDays';
 import { createReservation } from '../../../store/reservations';
 import { receiveLogInModal } from '../../../store/ui';
+import { getReviews } from "../../../store/reviews";
 
 const ListingReservationTool = ({listing}) => {
 	const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const ListingReservationTool = ({listing}) => {
 	const [checkOutDate, setCheckOutDate] = useState("");
 	const [guestsChosen, setGuestsChosen] = useState(1);
 	const user = useSelector(state => state.session.user ? state.session.user : null)
+	const reviewAmount = useSelector(getReviews);
 
 	const checkInDateObj = new Date(`${checkInDate} GMT`)
 	const checkOutDateObj = new Date(`${checkOutDate} GMT`)
@@ -148,7 +150,7 @@ const ListingReservationTool = ({listing}) => {
 						</div>
 						<div id="lsp_rating_reviews_sep">.</div>
 						<div id="rt_reviews">
-							{numReviews} reviews
+							{reviewAmount.length ? reviewAmount.length : 0} reviews
 						</div>
 					</div>
 				</div>

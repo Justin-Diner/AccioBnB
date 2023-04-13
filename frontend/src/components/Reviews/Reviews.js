@@ -5,8 +5,6 @@ import { useParams } from 'react-router-dom';
 import { fetchListingReviews } from '../../store/reviews';
 import IndividualReview from './IndividualReview/IndividualReview';
 import { getReviews } from '../../store/reviews';
-import { retrieveUsers } from '../../store/users';
-
 
 const Reviews = ({users}) => {
 	const {listingId} = useParams();
@@ -29,7 +27,7 @@ const Reviews = ({users}) => {
 		})
 		content = holder;
 	}
-	
+
 	return ( 
 		<div id="reviews_container">
 			{content}

@@ -60,7 +60,62 @@ const ListingShow = () => {
 ```
 
 # Reservations 
-Each listing's show page includes the reservation tool. You are only able to make a reservation if you are logged in. The user will input the dates in which they would like to stay and the amount of guests that they are bringing. Each listing has a maximum number of guests and the reservation tool does not allow the user to bring more guests than the max amount allowed.  Additionally, users are unable to input dates prior to current date.  Once the user makes a successful reservation. They are able to see their listing in the reservations show page. The reservation show page lists details about each reservation and the user is able to click on their reservation which redirects the user back to that listing 
+Each listing's show page includes the reservation tool. It is critical to making a user reservation and consists of multiple interconnected componenets. You are only able to make a reservation if you are logged in. The user will input the dates in which they would like to stay and the amount of guests that they are bringing. Each listing has a maximum number of guests and the reservation tool does not allow the user to bring more guests than the max amount allowed.  Additionally, users are unable to input dates prior to current date.  Once the user makes a successful reservation. They are able to see their listing in the reservations show page. The reservation show page lists details about each reservation and the user is able to click on their reservation which redirects the user back to that listing.
+
+![Reservation Tool](reservationtool.jpg)
+
+```js 
+const ReservationPicker = ({chooseCheckInDate, chooseCheckOutDate, chooseShowReservationPicker}) => {
+	const [checkInDateText, setCheckInDateText] = useState("") 
+	const [checkOutDateText, setCheckOutDateText] = useState("") 
+
+	useEffect(() => {
+		if (checkInDateText) {
+			updateCheckInDateText(checkInDateText);
+			chooseCheckInDate(checkInDateText);
+		}
+
+		if (checkOutDateText) {
+			updateCheckOutDateText(checkOutDateText);
+			chooseCheckOutDate(checkOutDateText);
+		}
+	}, [checkInDateText, checkOutDateText])
+
+	const updateCheckInDateText = (date) => {
+		setCheckInDateText(date);
+	}
+
+	const updateCheckOutDateText = (date) => {
+		setCheckOutDateText(date);
+	}
+
+	const closeReservationPicker = () => {
+		chooseShowReservationPicker(false);
+	}
+
+	return (
+		<div id="dp_container">
+			<div id="dp_top_options">
+				<div id="dp_top_selectdates">
+					Select Dates
+				</div>
+				<div id="dp_top_checkin_checkout">
+					<CheckInCheckOut checkInDate={checkInDateText} checkOutDate={checkOutDateText}/>
+				</div>
+			</div>
+			<div id="dp_top_datepicker_wrapper">
+				<DatePicker chooseCheckInDate={updateCheckInDateText} chooseCheckOutDate={updateCheckOutDateText} />
+			</div>
+			<div id="dp_bottom_row_wrapper">
+				<div id="dp_close_button" onClick={closeReservationPicker}>Close</div>
+			</div>
+			<div id="dp_margin_bottom"> </div>
+		</div>
+	)
+}
+```
+
+export default ReservationPicker;
 
 # Google Maps 
 To Do 

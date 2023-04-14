@@ -22,14 +22,6 @@ const DatePicker = ({chooseCheckInDate, chooseCheckOutDate}) => {
 			chooseCheckOutDate(checkOutDate);
 		}
 	}, [datePrompt])
-	
-
-	//useEffect(() => {
-	//	if (selected) {
-	//		let checkInDate = format(selected?.to, 'yyyy-MM-dd')
-	//		console.log(checkInDate);
-	//	}
-	//}, [selected])
 
 	const css = `
 	.my-selected {
@@ -58,24 +50,20 @@ const DatePicker = ({chooseCheckInDate, chooseCheckOutDate}) => {
 
 	return (
 		<>
-		<style>{css}</style>
-		<DayPicker
-			mode="range"
-			selected={selected}
-			onSelect={setSelected}
-			disabled={disabledDays}
-			numberOfMonths={2}
-			modifiersClassNames={{
-				selected: 'my-selected'
-			}}
-			modifiers={modifiers}
-		/>
-		{/*<div id="bottom_prompt"> 
-			<div>{datePrompt}</div>
-		</div>*/}
+			<style>{css}</style>
+			<DayPicker
+				mode="range"
+				selected={selected}
+				onSelect={setSelected}
+				disabled={disabledDays}
+				numberOfMonths={2}
+				modifiersClassNames={{
+					selected: 'my-selected'
+				}}
+				modifiers={modifiers}
+			/>
 		</>
 	)
-
 }
 
 export default DatePicker;

@@ -1,7 +1,8 @@
+import React from 'react';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getListing, fetchListing } from "../../store/listings";
-import usersReducer, { fetchUser, retrieveUserById } from '../../store/users';
+import { fetchUser } from '../../store/users';
 import { useParams } from "react-router-dom";
 import './ListingShow.css'
 import './ListingShowPicDisplay/ListingShowPicDisplay';
@@ -13,7 +14,6 @@ import * as sessionAction from '../../store/session';
 import ListingReservationTool from "./ListingReservationTool/ListingReservationTool";
 import ReservationSuccessful from './ReservationSuccessful/ReservationSuccessful'
 import Reviews from "../Reviews/Reviews";
-import { Link } from "react-router-dom";
 import CreateReview from "../Reviews/CreateReview/CreateReview";
 import { receiveCreateReviewModal, receiveLogInModal } from "../../store/ui";
 import { retrieveUsers } from '../../store/users';
@@ -31,7 +31,6 @@ const ListingShow = () => {
  const reviews = useSelector(getReviews)
 
  let rating = 4.95
- let numReviews = 400
 
  useEffect(() => {
 	dispatch(fetchListing(listingId));
@@ -110,11 +109,15 @@ const ListingShow = () => {
 							</div>
 						</div>
 						<div id="lsp_host_profile_container">
-							<img id="lsp_host_profile_photo" src={host?.photosUrl}></img>
+							<img id="lsp_host_profile_photo" src={host?.photosUrl} alt="host_profile_pic"></img>
 						</div>
 					</div>
 
-					<div id="lsp_listing_description">{listing.description.split("\n").map((line) => <>{line}<br></br></>)}</div>
+					<div id="lsp_listing_description">{listing.description.split("\n").map((line, index) => 
+						<React.Fragment key={index}>
+							{line}<br></br>
+							</React.Fragment>)}
+					</div>
 
 					<div id="lsp_reviews_wrapper">
 						<div id="lsp_reservation_prompt_wrapper" onClick={handleCreateReview}>

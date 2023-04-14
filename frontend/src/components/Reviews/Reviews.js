@@ -14,7 +14,7 @@ const Reviews = ({users}) => {
 
 	useEffect(() => {
 		dispatch(fetchListingReviews(listingId));
-	}, [])
+	}, [dispatch, listingId])
 
 	if (reviews.length) {
 		let holder = [];
@@ -22,7 +22,7 @@ const Reviews = ({users}) => {
 		reviews.forEach((review) => {
 			let reviewAuthor = users.find((user) => user.id === review.userId)
 			if (review.listingId === parseInt(listingId)) {
-				holder.push(<IndividualReview review={review} user={reviewAuthor} />)
+				holder.push(<IndividualReview key={review.id} review={review} user={reviewAuthor} />)
 			}
 		})
 		content = holder;

@@ -1,8 +1,10 @@
 import './ListingIndexItem.css';
 import { Link } from 'react-router-dom';
+import { fetchListingReviews, getReviews } from '../../../store/reviews';
 
 const ListingIndexItem = ({listing}) => {
 	let titlePhoto = listing?.photosUrl[0];
+
 	return ( 
 		<Link to={`/listings/${listing.id}`}>
 		<div id="listing_index_item_container">

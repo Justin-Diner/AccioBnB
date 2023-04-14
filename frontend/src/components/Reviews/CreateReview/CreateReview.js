@@ -40,16 +40,16 @@ const CreateReview = ({listing, host}) => {
 		window.removeEventListener("click", closeWindow);
 	}
 
-
-	if (showing) {
-		window.addEventListener("click", closeWindow)
+	const handleOutsideClick = () => {
+		closeWindow();
 	}
 
 	const handleClick = (e) => {
 		e.stopPropagation();
 	}
 
-	const submitReview = () => {
+	const submitReview = (e) => {
+		e.preventDefault();
 		const newReview = {
 			user_id: sessionUser.id,
 			listing_id: listing.id,
@@ -67,7 +67,7 @@ const CreateReview = ({listing, host}) => {
 	}
 
 	return (
-		<div id="create_review_modal" >
+		<div id="create_review_modal" onClick={() => handleOutsideClick()}>
 		<div id="create_review_container" onClick={(e) => handleClick(e)}>
 			<div id="create_review_wrapper">
 				<div id="create_review_title">{listing.title}</div>
@@ -118,7 +118,7 @@ const CreateReview = ({listing, host}) => {
 							</div>
 							<div id="create_review_submit_button_container">
 								<div id="create_review_submit_button_wrapper">
-									<ContinueButton textContent={"Submit Review"} clickFunction={submitReview}/> 
+									<ContinueButton textContent={"Submit Review"} clickFunction={(e) => submitReview(e)}/> 
 								</div>
 							</div>
 						</div>

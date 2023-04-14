@@ -18,7 +18,7 @@ import CreateReview from "../Reviews/CreateReview/CreateReview";
 import { receiveCreateReviewModal, receiveLogInModal } from "../../store/ui";
 import { retrieveUsers } from '../../store/users';
 import Socials from "../Navigation/socials/Socials";
-
+import { getReviews } from "../../store/reviews";
 
 const ListingShow = () => {
  const dispatch = useDispatch();
@@ -28,6 +28,7 @@ const ListingShow = () => {
  const hostId = listing ? listing.hostId : null;
  const host = useSelector(state => state.users ? state.users[hostId] : null);
  const users = useSelector(retrieveUsers);
+ const reviews = useSelector(getReviews)
 
  let rating = 4.95
  let numReviews = 400
@@ -79,7 +80,7 @@ const ListingShow = () => {
 			<div id="lsp_initial_details">
 				<div id="lsp_initial_rating">&#9733; {rating}</div>
 				<div id="lsp_rating_reviews_sep">.</div>
-				<div id="lsp_initial_amount_of_reviews">{numReviews} reviews</div>
+				<div id="lsp_initial_amount_of_reviews">{reviews.length} reviews</div>
 					<span>.</span>
 					<i className="fa-sharp fa-solid fa-medal"></i>
 				<div id="lsp_id_superhost"> Superhost</div>
@@ -117,7 +118,7 @@ const ListingShow = () => {
 
 					<div id="lsp_reviews_wrapper">
 						<div id="lsp_reservation_prompt_wrapper" onClick={handleCreateReview}>
-							<div id="lsp_reservation_prompt"> Did you stay here? Wave your wand  here to a review.</div>
+							<div id="lsp_reservation_prompt"> Did you stay here? Wave your wand here to a review.</div>
 						</div>
 						<Reviews users={users}/> 
 						<div id="lsp_create_new_review_wrapper">

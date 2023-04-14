@@ -172,4 +172,91 @@ To Do
 
 To Do 
 
+# Additional Features:
+# Continue Button
+The continue button is one of the most reusable components in the application. Notably, the component renders its color dynamically based on mouse hover location. It takes two items as props: a clickFunction (that is invoked when the component is clicked) and textContent (that displays the text on the button). This reusable component adds style throughout the website that is interactive. 
+
+```js
+import React, { useState } from "react"
+import './ContinueButton.css'
+
+const ContinueButton = ({clickFunction, textContent}) => {
+	const [hoverStylePos, setHoverStylePos] = useState({x: 0, y: 0});
+	const [isHovering, setIsHovering] = useState(false)
+	const [styles, setStyles] = useState({});
+
+	const submitHover = (e) => {
+		setIsHovering(true);
+		let location = {
+			x: e.clientX,
+			y: e.clientY
+		}
+		setHoverStylePos(location);
+		setStyles({ 
+			backgroundPosition: hoverStylePos.x.toString() + "px , " + hoverStylePos.y.toString() + "px"}
+		);
+	};
+
+	return (
+		<div 
+			onClick={clickFunction}
+			id={isHovering ? "login_button_hover" : "login_button"} 
+			onMouseMove={(e) => submitHover(e)}
+			onMouseLeave={() => setIsHovering(false)}
+			style={styles}
+			> {textContent}
+		</div>
+	)
+}
+
+export default ContinueButton;
+```
+
+```css
+#login_button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-position: top 0, left 300;
+	background-image: radial-gradient( circle at center,#FF385C, #e61e4d 27.5%,#e31c5f 40%,#d70466 57.5%, #bd1e59 75%, #bd1e59 100% );
+	width: 100%;
+	height: 100%;
+	font-size: 16px;
+	height: 48px;
+	border-radius: 8px; 
+	font-weight: 600;
+	text-align: center;
+	margin-right: 16px;
+	color: white;
+	font-family: inherit;
+	line-height: 20px;
+	margin-top: 18px;
+	margin-bottom: 18px; 
+	border: none;
+}
+
+#login_button_hover {
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-position: top 0, left 300;
+	background-image: radial-gradient( circle at center,#FF385C, #e61e4d 27.5%,#e31c5f 40%,#d70466 57.5%, #bd1e59 75%, #bd1e59 100% );
+	background-size: 200% 200%;
+	width: 100%;
+	height: 100%;
+	font-size: 16px;
+	height: 48px;
+	border-radius: 8px; 
+	font-weight: 600;
+	text-align: center;
+	margin-right: 16px;
+	color: white;
+	font-family: inherit;
+	line-height: 20px;
+	margin-top: 18px;
+	margin-bottom: 18px; 
+	border: none;
+}
+```
 

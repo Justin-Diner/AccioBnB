@@ -1,5 +1,6 @@
 # Welcome to the Magical World of AccioBnB.  
 
+[Click here to visit the live site. Accio AccioBnB!](https://acciobnb.onrender.com/)
 # Introduction
 AccioBnB is a clone of AirBnB at the time of creation. AirBnB is a home rental service that allows hosts the ability the rent out their proprierties at certain prices and the user can make reservations to stay at their homes. Users are able to make a reservation and leave reviews on their stay. The technologies implemented in this project include:
 

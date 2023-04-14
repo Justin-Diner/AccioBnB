@@ -137,7 +137,6 @@ const ListingShow = () => {
 				</div>
 			</div>
 		</div>
-
 	</>
  )
 }

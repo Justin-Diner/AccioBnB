@@ -44,6 +44,21 @@ The landing page of AccioBnB displays the listings of the site, includes a searc
 
 ![Listing Show](listingshow.jpg)
 
+Notably, the ListingShow page houses information from mutliple database sources in order to display the listing, host, and review information. It utilizes useSelector and useParams hooks to grab infomration. 
+
+```js
+const ListingShow = () => {
+ const dispatch = useDispatch();
+ const sessionUser = useSelector(sessionAction.sessionUser);
+ const { listingId } = useParams(); 
+ const listing = useSelector(getListing(listingId));
+ const hostId = listing ? listing.hostId : null;
+ const host = useSelector(state => state.users ? state.users[hostId] : null);
+ const users = useSelector(retrieveUsers);
+ const reviews = useSelector(getReviews)
+
+```
+
 # Reservations 
 Each listing's show page includes the reservation tool. You are only able to make a reservation if you are logged in. The user will input the dates in which they would like to stay and the amount of guests that they are bringing. Each listing has a maximum number of guests and the reservation tool does not allow the user to bring more guests than the max amount allowed.  Additionally, users are unable to input dates prior to current date.  Once the user makes a successful reservation. They are able to see their listing in the reservations show page. The reservation show page lists details about each reservation and the user is able to click on their reservation which redirects the user back to that listing 
 

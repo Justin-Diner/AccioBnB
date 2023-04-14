@@ -44,7 +44,7 @@ const LoginFormPage = ({initialShow}) => {
 		e.preventDefault(); 
 		dispatch(receiveLogInModal(false));
 		setShowing(false);
-
+	
 		const user = {
 			email: email, 
 			password: password
@@ -52,8 +52,6 @@ const LoginFormPage = ({initialShow}) => {
 
 		setErrors([]);
 
-
-		
 	return dispatch(login(user))
 		.catch(async (res) => {
 			let data; 

@@ -64,6 +64,7 @@ Each listing's show page includes the reservation tool. It is critical to making
 
 ![Reservation Tool](reservationtool.jpg)
 
+Notably, the ReservationPicker component has to receive data from its child DatePicker component (the calendar component). The DatePicker component receives the setter functions of the ReservationPicker's state and utilzes those setter functions to set the state of the check in and check out dates that the user selected. This allows three componenets to interact dynamically. This includes the ReservationPicker (the parent reservation component), the first-child date selected component, and second-child DatePicker component. 
 ```js 
 const ReservationPicker = ({chooseCheckInDate, chooseCheckOutDate, chooseShowReservationPicker}) => {
 	const [checkInDateText, setCheckInDateText] = useState("") 
@@ -115,13 +116,53 @@ const ReservationPicker = ({chooseCheckInDate, chooseCheckOutDate, chooseShowRes
 }
 ```
 
-export default ReservationPicker;
+```js 
+const DatePicker = ({chooseCheckInDate, chooseCheckOutDate}) => {
+	const [selected, setSelected] = useState({}); 
+	let checkInDate = "";
+	let checkOutDate = "";
+	let datePrompt = <div>Please select your check-in date.</div>
+
+```
 
 # Google Maps 
 To Do 
 
 # Reviews 
 Users are able to view user reviews on each listing's show page, but are unable to make their own comments. Once logged in, users are able to write reviews of the properties they have "stayed" at. The user can rate the property, and leave a description of their stay. The user can post their review which shows up on the listing's show page. If the user is the author, they are able to delete the review. If they are not the author they are unable to delete the review. They are also unable to delete any reviews if they are not logged in. 
+
+![reviews](reviews.jpg)
+
+```js
+const Reviews = ({users}) => {
+	const {listingId} = useParams();
+	const dispatch = useDispatch();
+	const reviews = useSelector(getReviews);
+	let content;
+
+	useEffect(() => {
+		dispatch(fetchListingReviews(listingId));
+	}, [dispatch, listingId])
+
+	if (reviews.length) {
+		let pertinentReviews = [];
+
+		reviews.forEach((review) => {
+			let reviewAuthor = users.find((user) => user.id === review.userId)
+			if (review.listingId === parseInt(listingId)) {
+				pertinentReviews.push(<IndividualReview key={review.id} review={review} user={reviewAuthor} />)
+			}
+		})
+		content = pertinentReviews;
+	}
+
+	return ( 
+		<div id="reviews_container">
+			{content}
+		</div>
+	)
+}
+```
 
 # Search Bar 
 

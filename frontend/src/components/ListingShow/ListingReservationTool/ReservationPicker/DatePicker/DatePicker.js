@@ -7,9 +7,9 @@ import './DatePicker.css'
 
 const DatePicker = ({chooseCheckInDate, chooseCheckOutDate}) => {
 	const [selected, setSelected] = useState({}); 
-	let datePrompt = <div>Please select your check-in date.</div>
 	let checkInDate = "";
 	let checkOutDate = "";
+	let datePrompt = <div>Please select your check-in date.</div>
 	
 	useEffect(() => {
 		if (selected?.from){

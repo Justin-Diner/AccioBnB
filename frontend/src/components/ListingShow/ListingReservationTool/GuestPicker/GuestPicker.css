@@ -1,20 +1,25 @@
 #gp_container {
-	height: 370px;
-	width: 100%; 
+	position: absolute;
+	height: 330px;
+	width: 90%; 
 	background-color: white;
 	box-shadow: var(--box-shadow);
 	border: var(--main-border);
 	border-radius: var(--main-border-radius);
 	z-index: 100;
-	position: relative;
-	bottom: 14px;
+	bottom: 76px;
+	right: 24px;
 }
 
 #gp_guest_warning {
 	font-size: 16px;
 	position: relative; 
-	top: 10px;
+	top: 20px;
 	left: 10px;
 }
 
+#gp_max_guest_warning {
+	font-weight: 800;
+	text-decoration: underline;
+}
 

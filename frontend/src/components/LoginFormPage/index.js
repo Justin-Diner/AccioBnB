@@ -51,6 +51,8 @@ const LoginFormPage = ({initialShow}) => {
 		}
 
 		setErrors([]);
+
+
 		
 	return dispatch(login(user))
 		.catch(async (res) => {

@@ -12,6 +12,8 @@ AccioBnB is a clone of AirBnB at the time of creation. AirBnB is a home rental s
 # Account Creation
 Users are able to explore the site without being signed up. However, they are prompted to sign in when required to do so. Once prompted, users are able to create an account, log in, or login as a demo user. As a demo user, you are able to experience the site's full functionality. Error handling and password protection is also included. The user receives errors if they do not pass certain database and validation checks (handled on the Ruby on Rails backend) and displayed on the login page. 
 
+![Introduction Gif](./acciointro.gif)
+
 # Listings 
 The landing page of AccioBnB displays the listings of the site, includes a search bar, and includes details about each listing. Clicking on a listing redirects the user to the listing's show page. The listing show page includes pictures of the listing, a description, the host, ratings, and more.  It also includes the ability to the make a reservation and leave a comment. 
 

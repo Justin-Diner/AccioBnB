@@ -212,7 +212,7 @@ const ContinueButton = ({clickFunction, textContent}) => {
 export default ContinueButton;
 ```
 
-```css
+<style type="text/css" rel="stylesheet">
 #login_button {
 	display: flex;
 	justify-content: center;
@@ -258,5 +258,5 @@ export default ContinueButton;
 	margin-bottom: 18px; 
 	border: none;
 }
-```
+</style>
 

@@ -14,6 +14,8 @@ Users are able to explore the site without being signed up. However, they are pr
 
 Notable, the log in and account creation forms are modals. The modals are available in almost portion of the site and use Redux front-end state to determine whether or not they should be shown. The "ui" slice of state keeps track of whether a modal should be showing or not showing. The modal component also keeps track of whether it should be showing in its React state. 
 
+![Introduction Gif](./acciointro.gif)
+
 ```js 
 const uiReducer = (state = {}, action) => {
 	const nextState = {...state};
@@ -37,10 +39,10 @@ const uiReducer = (state = {}, action) => {
 }
 ```
 
-![Introduction Gif](./acciointro.gif)
-
 # Listings 
 The landing page of AccioBnB displays the listings of the site, includes a search bar, and includes details about each listing. Clicking on a listing redirects the user to the listing's show page. The listing show page includes pictures of the listing, a description, the host, ratings, and more.  It also includes the ability to the make a reservation and leave a comment. 
+
+![Listing Show](listingshow.jpg)
 
 # Reservations 
 Each listing's show page includes the reservation tool. You are only able to make a reservation if you are logged in. The user will input the dates in which they would like to stay and the amount of guests that they are bringing. Each listing has a maximum number of guests and the reservation tool does not allow the user to bring more guests than the max amount allowed.  Additionally, users are unable to input dates prior to current date.  Once the user makes a successful reservation. They are able to see their listing in the reservations show page. The reservation show page lists details about each reservation and the user is able to click on their reservation which redirects the user back to that listing 

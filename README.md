@@ -18,20 +18,18 @@ The landing page of AccioBnB displays the listings of the site, includes a searc
 # Reservations 
 Each listing's show page includes the reservation tool. You are only able to make a reservation if you are logged in. The user will input the dates in which they would like to stay and the amount of guests that they are bringing. Each listing has a maximum number of guests and the reservation tool does not allow the user to bring more guests than the max amount allowed.  Additionally, users are unable to input dates prior to current date.  Once the user makes a successful reservation. They are able to see their listing in the reservations show page. The reservation show page lists details about each reservation and the user is able to click on their reservation which redirects the user back to that listing 
 
-* Ruby version
+# Google Maps 
+To Do 
 
-* System dependencies
+# Reviews 
+Users are able to view user reviews on each listing's show page, but are unable to make their own comments. Once logged in, users are able to write reviews of the properties they have "stayed" at. The user can rate the property, and leave a description of their stay. The user can post their review which shows up on the listing's show page. If the user is the author, they are able to delete the review. If they are not the author they are unable to delete the review. They are also unable to delete any reviews if they are not logged in. 
 
-* Configuration
+# Search Bar 
 
-* Database creation
+To Do 
 
-* Database initialization
+# User Profiles 
 
-* How to run the test suite
+To Do 
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...

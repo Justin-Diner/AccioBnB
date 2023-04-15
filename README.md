@@ -13,7 +13,7 @@ AccioBnB is a clone of AirBnB at the time of creation. AirBnB is a home rental s
 # Account Creation
 Users are able to explore the site without being signed up. However, they are prompted to sign in when required to do so. Once prompted, users are able to create an account, log in, or login as a demo user. As a demo user, you are able to experience the site's full functionality. Error handling and password protection is also included. The user receives errors if they do not pass certain database and validation checks (handled by the Ruby on Rails backend) and displayed on the login page. 
 
-Notable, the log in and account creation forms are modals. The modals are available in almost portion of the site and use Redux front-end state to determine whether or not they should be shown. The "ui" slice of state keeps track of whether a modal should be showing or not showing. The modal component also keeps track of whether it should be showing in its React state. 
+Notably, the log in and account creation forms are modals. The modals are available in almost portion of the site and use Redux front-end state to determine whether or not they should be shown. The "ui" slice of state keeps track of whether a modal should be showing or not showing. The modal component also keeps track of whether it should be showing in its React state. 
 
 ![Introduction Gif](./acciointro.gif)
 

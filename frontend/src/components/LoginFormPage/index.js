@@ -42,8 +42,6 @@ const LoginFormPage = ({initialShow}) => {
 
 	function handleClick(e) {
 		e.preventDefault(); 
-		dispatch(receiveLogInModal(false));
-		setShowing(false);
 	
 		const user = {
 			email: email, 
@@ -63,6 +61,10 @@ const LoginFormPage = ({initialShow}) => {
 			if (data?.errors) setErrors(data.errors);
 			else if (data) setErrors([data]);
 			else setErrors([res.statusText]);
+			if (!data.errors) {
+				dispatch(receiveLogInModal(false));
+				setShowing(false);
+			}
 		});
 	}
 

@@ -2,7 +2,7 @@
 
 [Click here to visit the live site. Accio AccioBnB!](https://acciobnb.onrender.com/)
 # Introduction
-AccioBnB is a clone of AirBnB at the time of creation. AirBnB is a home rental service that allows hosts the ability the rent out their proprierties at certain prices and the user can make reservations to stay at their homes. Users are able to make a reservation and leave reviews on their stay. The technologies implemented in this project include:
+AccioBnB is a clone of AirBnB at the time of creation. AirBnB is a home rental service that allows hosts the ability the rent out their proprierties at certain prices and the user can make reservations to stay at their homes. Users are able to make a reservation and leave reviews of their stay. The technologies implemented in this project include:
 
 * Languages: JavaScript, Ruby, HTML, CSS 
 * Frontend and State Management: React and React-Redux
@@ -11,9 +11,9 @@ AccioBnB is a clone of AirBnB at the time of creation. AirBnB is a home rental s
 * Asset Storage: AWS Simple Cloud Stoage (S3) with IAM user permissions.  
 
 # Account Creation
-Users are able to explore the site without being signed up. However, they are prompted to sign in when required to do so. Once prompted, users are able to create an account, log in, or login as a demo user. As a demo user, you are able to experience the site's full functionality. Error handling and password protection is also included. The user receives errors if they do not pass certain database and validation checks (handled by the Ruby on Rails backend) and displayed on the login page. 
+Users are able to explore the site without being signed up. However, they are prompted to sign in when required to do so. Once prompted, users are able to create an account, log into their own account, or login as a demo user. As a demo user, you are able to experience the site's full functionality. Error handling and password protection is also included. The user receives errors if they do not pass database and validation checks (handled by the Ruby on Rails backend) and displayed on the login page. 
 
-Notably, the log in and account creation forms are modals. The modals are available in almost all portions of the site and use Redux front-end state to determine whether or not they should be displayed. The "ui" slice of state keeps track of whether a modal should be showing or not showing. The modal component itself also keeps track of whether it should be showing in its own React state. 
+The log in and account creation forms are modals. The modals are available in all portions of the site and use the application's front-end state to determine whether or not they should be displayed. The "ui" slice of state has its own reducer and keeps track of whether a modal should or should not be shown. The modal component itself also utilizes the React useState hook to keep track of whether it should be shown. 
 
 ![Introduction Gif](./acciointro.gif)
 
@@ -41,7 +41,7 @@ const uiReducer = (state = {}, action) => {
 ```
 
 # Listings 
-The landing page of AccioBnB displays the listings of the site, includes a search bar, and details about each listing. Clicking on a listing redirects the user to the listing's show page. The listing show page includes pictures of the listing, a description, the host, ratings, and more. It also includes the ability to the make a reservation and leave comments. 
+The main landing page of AccioBnB displays the site's listings, including a search bar and details about each listing. Clicking on a listing redirects the user to the individual listing's show page. The listing show page includes pictures of the listing, a description, the host, comments, ratings, and more. It also includes the ability to the make a reservation. 
 
 ![Listing Show](listingshow.jpg)
 
@@ -61,11 +61,11 @@ const ListingShow = () => {
 ```
 
 # Reservations 
-Each listing's show page includes the reservation tool. It is critical to making a user reservation and consists of multiple interconnected componenets. You are only able to make a reservation if you are logged in. The user will input the dates in which they would like to stay and the amount of guests that they are bringing. Each listing has a maximum number of guests and the reservation tool does not allow the user to bring more guests than the max amount allowed (as described when creating a listing).  Additionally, users are unable to input dates prior to current date.  Once the user makes a successful reservation, they are able to see their listing in their own reservations show page. If not logged in, this page will be empty and direct the user to the index. The reservation show page lists details about each reservation and the user is able to click on their reservation which redirects the user back to that listing.
+Each listing's show page includes the reservation tool. It is one of the more intricate tools in the application and consists of multiple interconnected React componenets. You are only able to make a reservation if you are logged in. The user inputs the dates in which they would like to stay and the amount of guests that they are bringing. Each host sets the maximum number of guests and the reservation tool does not allow the user to bring more guests than the max amount allowed (as described when creating a listing). Additionally, users are unable to input dates prior to current date. Once the user makes a successful reservation, they are able to see their listing in their own reservations show page. If not logged in, this page will be empty and direct the user to the index. The reservation show page lists details about each reservation and the user is able to click on their reservation which redirects the user back to that listing.
 
 ![Reservation Tool](reservationtool.jpg)
 
-Notably, the ReservationPicker component has to receive data from its child DatePicker component (the calendar component). The DatePicker component receives the setter functions of the ReservationPicker's state and utilzes those setter functions to set the state of the check in and check out dates that the user selected. This allows three componenets to interact dynamically. This includes the ReservationPicker (the parent reservation component), the first-child date selected component, and second-child DatePicker component. 
+Of note, the ReservationPicker component has to receive data from its child DatePicker component (the calendar component). The DatePicker component receives the setter functions of the ReservationPicker's state and utilzes those setter functions to set the state of the check in and check out dates that the user selected. This allows three componenets to pass data and interact dynamically. This includes the ReservationPicker (the parent reservation component), the first-child date selected component, and second-child DatePicker component. As a result, the dates chosen by the user for their stay are displayed in multiple places, dynamically. 
 ```js 
 const ReservationPicker = ({chooseCheckInDate, chooseCheckOutDate, chooseShowReservationPicker}) => {
 	const [checkInDateText, setCheckInDateText] = useState("") 

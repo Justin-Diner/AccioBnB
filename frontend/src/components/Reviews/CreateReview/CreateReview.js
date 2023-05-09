@@ -8,9 +8,10 @@ import { retrieveCreateReviewModalState } from '../../../store/ui';
 import { receiveCreateReviewModal } from '../../../store/ui';
 import * as sessionAction from '../../../store/session';
 import { createReview } from '../../../store/reviews';
+import { set } from 'date-fns';
 
 
-const CreateReview = ({listing, host}) => {
+const CreateReview = ({listing, host, review}) => {
 	const dispatch = useDispatch();
 	const [showing, setShowing] = useState(false);
 	const [accuracy, setAccuracy] = useState(5);
@@ -23,6 +24,19 @@ const CreateReview = ({listing, host}) => {
 	const createReviewState = useSelector(retrieveCreateReviewModalState);
 	const sessionUser = useSelector(sessionAction.sessionUser);
 
+	useEffect(() => {
+		if (review) {
+			setShowing(true);
+			setAccuracy(review.accuracy);
+			setCheckIn(review.check_in);
+			setCleanliness(review.cleanliness);
+			setCommunication(review.communication);
+			setLocation(review.location);
+			setValue(review.value);
+			setDescription(review.description);
+		}
+
+	}, [])
 	useEffect(() => {
 		if (createReviewState || showing) {
 			setShowing(true)
@@ -114,7 +128,7 @@ const CreateReview = ({listing, host}) => {
 						<div id="create_review_description_wrapper">
 							<div id="create_review_comment">
 								<div id="create_review_textarea_title">Tell Us About Your Magical Stay</div>
-								<textarea onChange={(e) => setDescription(e.target.value)} id="create_review_comment_textarea"></textarea>
+								<textarea value={description} onChange={(e) => setDescription(e.target.value)} id="create_review_comment_textarea"></textarea>
 							</div>
 							<div id="create_review_submit_button_container">
 								<div id="create_review_submit_button_wrapper">

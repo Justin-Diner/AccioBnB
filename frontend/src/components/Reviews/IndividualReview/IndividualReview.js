@@ -1,5 +1,6 @@
 import './IndividualReview.css';
-import { deleteReview } from '../../../store/reviews';
+import { deleteReview, updateReview } from '../../../store/reviews';
+import { receiveCreateReviewModal } from '../../../store/ui';
 import { useDispatch } from 'react-redux';
 import * as sessionAction from '../../../store/session';
 import { useEffect, useState } from 'react';
@@ -8,7 +9,8 @@ import { useSelector } from 'react-redux';
 const IndividualReview = ({review, user}) => {
 	const dispatch = useDispatch();
 	const sessionUser = useSelector(sessionAction.sessionUser);
-	const [allowDelete, setAllowDelete] = useState(false)
+	const [allowDelete, setAllowDelete] = useState(false);
+	const [allowEdit, setAllowEdit] = useState(false);
 
 	const months = {
 		"01": "January",
@@ -28,8 +30,10 @@ const IndividualReview = ({review, user}) => {
 	useEffect(() => {
 		if (sessionUser && sessionUser?.id === user?.id) {
 			setAllowDelete(true);
+			setAllowEdit(true);
 		} else {
 			setAllowDelete(false);
+			setAllowEdit(false);
 		}
 	
 	}, [sessionUser])
@@ -44,6 +48,13 @@ const IndividualReview = ({review, user}) => {
 	const handleDelete = () => {
 		dispatch(deleteReview(review.id))
 	}
+
+	const handleEdit = () => {
+		const newReview = {
+		
+		}
+		dispatch(receiveCreateReviewModal(true));
+	}
 	
 	return (
 		<div id="IR_container">
@@ -57,11 +68,18 @@ const IndividualReview = ({review, user}) => {
 							<div id="IR_review_name">{user?.firstName}</div>
 							<div id="IR_review_month">{monthName(review?.createdAt)}</div>
 						</div>
-						{allowDelete && 
-						<div id="IR_delete_wrapper" onClick={handleDelete}>
-							<div id="IR_delete_button" >Delete Post</div>
+						<div id="IR_buttons_wrapper">
+							{allowEdit &&
+								<div className="IR_button" id="IR_edit_wrapper" onClick={handleEdit}>
+									<div id="IR_edit_button">Edit Post</div>
+								</div>
+							} 
+							{allowDelete && 
+							<div className="IR_button" id="IR_delete_wrapper" onClick={handleDelete}>
+								<div id="IR_delete_button" >Delete Post</div>
+							</div>
+							}
 						</div>
-						}
 					</div>
 				</div>
 				<div id="IR_bottom_bar_wrapper">

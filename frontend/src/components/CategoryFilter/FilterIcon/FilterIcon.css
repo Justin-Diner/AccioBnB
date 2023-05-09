@@ -7,6 +7,7 @@
 
 #filterIcon_wrapper:hover {
 	border-bottom: 2px solid #adadad;
+	cursor: pointer;
 }
 
 #filterIcon_wrapper:hover #filterIcon_image{

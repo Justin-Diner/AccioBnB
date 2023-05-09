@@ -21,7 +21,7 @@ const LoginFormPage = ({initialShow}) => {
 	const [mouseClickedForm, setMouseClickedForm] = useState(false);
 
 	// Selector 
-	const logInModalState = useSelector(retrieveLogInModalState)
+	let logInModalState = useSelector(retrieveLogInModalState)
 
 	useEffect(() => {
 
@@ -70,7 +70,6 @@ const LoginFormPage = ({initialShow}) => {
 
 	const demoUserLogin = (e) => {
 		e.preventDefault();
-
 		const newDemoUser = {
 			first_name: "Squib",
 			last_name: "Guest",
@@ -82,7 +81,8 @@ const LoginFormPage = ({initialShow}) => {
 			dispatch(login(newDemoUser))
 		}
 
-	const handleOutsideClick = () => {
+	const handleOutsideClick = (e) => {
+		e.preventDefault();
 		if (mouseClickedForm) {
 			setMouseClickedForm(false);
 			return 
@@ -106,7 +106,7 @@ const LoginFormPage = ({initialShow}) => {
 	}
 	
 	return (
-		<div id={showing ? "login_wrapper" : "login_wrapper_gone"} onClick={() => handleOutsideClick()}>
+		<div id={showing ? "login_wrapper" : "login_wrapper_gone"} onClick={(e) => handleOutsideClick(e)}>
 			<div onMouseDown={(e) => handleInsideClick(e)}> 
 				<form id="login_form">
 					<div id="top_login_bar">

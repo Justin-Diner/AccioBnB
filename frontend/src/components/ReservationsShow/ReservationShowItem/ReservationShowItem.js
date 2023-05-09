@@ -1,7 +1,24 @@
-import './ReservationShowItem.css'
-import { Link } from 'react-router-dom'
+import './ReservationShowItem.css';
+import { Link } from 'react-router-dom';
+import ListingReservationTool from '../../ListingShow/ListingReservationTool/ListingReservationTool';
+import { useState, useEffect } from 'react';
+import { deleteReservation } from '../../../store/reservations';
+import { useDispatch } from 'react-redux';
 
 const ReservationShowItem = ({listing, reservation, host}) => {
+	const dispatch = useDispatch();
+	const [showReservationTool, setShowReservationTool] = useState(false);
+	
+
+	useEffect(() => {
+		if (!showReservationTool) return; 
+		const closeReservationTool = () => {
+			setShowReservationTool(false);
+		}
+		document.addEventListener('click', closeReservationTool)
+		return () => document.removeEventListener("click", closeReservationTool);
+	}, [showReservationTool])
+
 	const months = {
 		"01": "Jan",
 		"02": "Feb",
@@ -15,6 +32,10 @@ const ReservationShowItem = ({listing, reservation, host}) => {
 		"10": "Oct",
 		"11": "Nov",
 		"12": "Dec"
+	}
+
+	const cancelReservation = () => {
+		dispatch(deleteReservation(reservation.id));
 	}
 
 	const getMonth = (checkInDate) => {
@@ -35,10 +56,7 @@ const ReservationShowItem = ({listing, reservation, host}) => {
 		image = listing.photosUrl[0];
 	}
 	
-
-
 	return (
-		<Link to={`/listings/${listing.id}`}>
 		<div id="RSI_container">
 			<div id="RSI_wrapper">
 				<div id="RSI_left_wrapper">
@@ -61,11 +79,22 @@ const ReservationShowItem = ({listing, reservation, host}) => {
 					</div>
 				</div>
 				<div id="RSI_right_side_wrapper">
-					<img id="RSI_image" src={image} />
+					<div id="RSI_delete_and_edit_wrapper">
+						<div className="RSI_button" id="RSI_edit_button" onClick={() => setShowReservationTool(true)}>Edit</div>
+						<div className="RSI_button" id="RSI_delete_button" onClick={cancelReservation}>Cancel</div>
+					</div>
+					<Link className="RSI_link_back_to_listing" to={`/listings/${listing.id}`}>
+						<img id="RSI_image" src={image} />
+					</Link>
 				</div>
 			</div>
+			{showReservationTool && 
+				<div id="RSI_edit_tool_wrapper">
+					<ListingReservationTool listing={listing} type="edit" reservation={reservation}/>
+				</div>
+			}
 		</div>
-		</Link>
+
 	)
 }
 

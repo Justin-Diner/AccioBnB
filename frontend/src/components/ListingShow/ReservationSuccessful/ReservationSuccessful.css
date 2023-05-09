@@ -48,7 +48,6 @@
 	}
 	
 
-
 #RSP_wrapper {
 	height: 100%;
 	width: 100%;
@@ -77,5 +76,12 @@
 }
 
 #RSP_continue_wrapper {
-	width: 50%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+
+#RSF_link_to_RSP {
+	height: 100%;
+	width: 100%;
 }

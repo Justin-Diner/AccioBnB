@@ -52,10 +52,11 @@
 	height: 100%;
 	width: 100%;
 	border-bottom: var(--border-bottom-grey);
+	margin-bottom: 18px;
 }
 
 #rsp_title {
 	font-size: 32px;
 	font-weight: 800;
-	margin-bottom: 26px
+	margin-bottom: 26px;
 }

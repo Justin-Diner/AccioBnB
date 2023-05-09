@@ -1,14 +1,24 @@
 #gp_container {
-	position: absolute;
-	height: 330px;
-	width: 90%; 
+	position: relative;
+	width: 100%;
 	background-color: white;
+}
+
+#gp_wrapper {
+	position: absolute;
+	width: 100%; 
+	min-height: 340px;
+	max-width: 440px;
+	background-color: white;
+	z-index: 2;
+	bottom: 14px;
 	box-shadow: var(--box-shadow);
 	border: var(--main-border);
 	border-radius: var(--main-border-radius);
-	z-index: 100;
-	bottom: 76px;
-	right: 24px;
+	z-index: 3;
+	padding: 8px;
+	top: -12px;
+	left: -1px;
 }
 
 #gp_guest_warning {
@@ -16,6 +26,7 @@
 	position: relative; 
 	top: 20px;
 	left: 10px;
+	width: 96%;
 }
 
 #gp_max_guest_warning {

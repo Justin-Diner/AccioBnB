@@ -46,7 +46,7 @@ const ReservationSuccessful = () => {
 					<div className="RSP_sentence" id="RSP_go_to_trips">Visit your trips page to view your reservations.</div>
 					
 						<div id="RSP_continue_wrapper">
-						<Link to={`/users/${sessionUser?.id}/reservations`} onClick={closeWindow}>
+						<Link id="RSF_link_to_RSP" to={`/users/${sessionUser?.id}/reservations`} onClick={closeWindow}>
 							<ContinueButton textContent={"Accio Trips!"} />
 							</Link>
 						</div>

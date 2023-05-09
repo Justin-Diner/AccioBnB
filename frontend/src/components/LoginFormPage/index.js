@@ -37,7 +37,7 @@ const LoginFormPage = ({initialShow}) => {
 	}
 
 	if (sessionUser) {
-		return <Redirect to="/" />
+		dispatch(receiveLogInModal(false));
 	} 
 
 	function handleClick(e) {

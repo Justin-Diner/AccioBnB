@@ -133,7 +133,7 @@ const ListingShow = () => {
 						<ReservationSuccessful />
 					</div>
 				<div id="ListingReservationTool_wrapper"> 
-					<ListingReservationTool listing={listing}/>
+					<ListingReservationTool listing={listing} type="reservation" />
 				</div>
 			</div>
 		</div>

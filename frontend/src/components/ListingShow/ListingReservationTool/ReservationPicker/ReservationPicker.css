@@ -1,11 +1,15 @@
 #dp_container {
-	min-height: 420px;
+	min-height: 428px;
 	width: 640px;
 	box-shadow: var(--box-shadow);
 	border: var(--main-border);
 	border-radius: var(--main-border-radius);
 	z-index: 100;
 	background-color: white;
+	position: relative;
+	right: 180px;
+	bottom: 110px;
+
 }
 
 #dp_top_options {

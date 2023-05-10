@@ -121,7 +121,7 @@ const ListingShow = () => {
 
 					<div id="lsp_reviews_wrapper">
 						<div id="lsp_reservation_prompt_wrapper" onClick={handleCreateReview}>
-							<div id="lsp_reservation_prompt"> Did you stay here? Wave your wand here to a review.</div>
+							<div id="lsp_reservation_prompt"> Did you stay here? Wave your wand here to leave a review.</div>
 						</div>
 						<Reviews users={users}/> 
 						<div id="lsp_create_new_review_wrapper">

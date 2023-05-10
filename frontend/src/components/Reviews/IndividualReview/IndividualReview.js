@@ -1,14 +1,23 @@
 import './IndividualReview.css';
-import { deleteReview } from '../../../store/reviews';
+import { deleteReview, updateReview } from '../../../store/reviews';
+import { receiveCreateReviewModal, receiveEditReviewModal, retrieveEditReviewModalState } from '../../../store/ui';
 import { useDispatch } from 'react-redux';
 import * as sessionAction from '../../../store/session';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import CreateReview from '../CreateReview/CreateReview';
+import { getListing } from '../../../store/listings';
+import { retrieveUser } from '../../../store/users';
 
 const IndividualReview = ({review, user}) => {
 	const dispatch = useDispatch();
 	const sessionUser = useSelector(sessionAction.sessionUser);
-	const [allowDelete, setAllowDelete] = useState(false)
+	const [allowDelete, setAllowDelete] = useState(false);
+	const [allowEditButton, setAllowEditButton] = useState(false);
+	const [promptReviewEdit, setPromptReviewEdit] = useState(false);
+	const reviewListing = useSelector(getListing(review.listingId))
+	const host = useSelector(retrieveUser(reviewListing.hostId))
+	const editReviewUIState = useSelector(retrieveEditReviewModalState);
 
 	const months = {
 		"01": "January",
@@ -26,10 +35,18 @@ const IndividualReview = ({review, user}) => {
 	}
 
 	useEffect(() => {
+		if (!editReviewUIState) {
+			setPromptReviewEdit(false);
+		}
+	}, [editReviewUIState])
+
+	useEffect(() => {
 		if (sessionUser && sessionUser?.id === user?.id) {
 			setAllowDelete(true);
+			setAllowEditButton(true);
 		} else {
 			setAllowDelete(false);
+			setAllowEditButton(false);
 		}
 	
 	}, [sessionUser])
@@ -44,6 +61,11 @@ const IndividualReview = ({review, user}) => {
 	const handleDelete = () => {
 		dispatch(deleteReview(review.id))
 	}
+
+	const handleEdit = () => {
+		setPromptReviewEdit(true)
+		dispatch(receiveEditReviewModal(true));
+	}
 	
 	return (
 		<div id="IR_container">
@@ -57,17 +79,25 @@ const IndividualReview = ({review, user}) => {
 							<div id="IR_review_name">{user?.firstName}</div>
 							<div id="IR_review_month">{monthName(review?.createdAt)}</div>
 						</div>
-						{allowDelete && 
-						<div id="IR_delete_wrapper" onClick={handleDelete}>
-							<div id="IR_delete_button" >Delete Post</div>
+						<div id="IR_buttons_wrapper">
+							{allowEditButton &&
+								<div className="IR_button" id="IR_edit_wrapper" onClick={handleEdit}>
+									<div id="IR_edit_button">Edit Post</div>
+								</div>
+							} 
+							{allowDelete && 
+							<div className="IR_button" id="IR_delete_wrapper" onClick={handleDelete}>
+								<div id="IR_delete_button" >Delete Post</div>
+							</div>
+							}
 						</div>
-						}
 					</div>
 				</div>
 				<div id="IR_bottom_bar_wrapper">
 					<div id="IR_description">{review?.description}</div>
 				</div>
 			</div>
+			{promptReviewEdit && <CreateReview listing={reviewListing} host={host} review={review}/>}
 		</div>
 	)
 }

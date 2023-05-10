@@ -24,9 +24,6 @@
 } 
 
 #create_review_container {
-	display: flex;
-	justify-content: start;
-	flex-direction: row;
 	z-index: 2000;	
 	font-family: 'Roboto', sans-serif;
 	position: relative;
@@ -79,7 +76,6 @@
 
 #create_review_content_wrapper {
 	display: flex;	
-	position: relative; 
 }
 
 #create_review_textarea_title {
@@ -97,20 +93,21 @@
 
 #create_review_comment_textarea {
 	position: relative; 
-	width: 300px;
+	width: 340px;
 	height: 300px;
 	resize: none;
-	border-radius: 12px;
 	box-shadow: var(--box-shadow);
 	left: 32px;
 	top: 10px;
+	font-family: var(--font-family);
+	font-size: 16px;
 }
 
 #create_review_submit_button_wrapper {
 	width: 300px;
 	position: relative; 
 	right: 5px;
-	left: 30px;
+	left: 10px;
 	top: 18px;
 }
 
@@ -129,5 +126,7 @@
 	display: flex;
 	flex-direction: column;
 	position: relative;
-	bottom: 20px;
+	right: 60px;
+	bottom: 42px;
+
 }

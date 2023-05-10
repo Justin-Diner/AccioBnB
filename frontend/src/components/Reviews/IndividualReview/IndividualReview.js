@@ -1,6 +1,6 @@
 import './IndividualReview.css';
 import { deleteReview, updateReview } from '../../../store/reviews';
-import { receiveCreateReviewModal } from '../../../store/ui';
+import { receiveCreateReviewModal, receiveEditReviewModal, retrieveEditReviewModalState } from '../../../store/ui';
 import { useDispatch } from 'react-redux';
 import * as sessionAction from '../../../store/session';
 import { useEffect, useState } from 'react';
@@ -17,6 +17,7 @@ const IndividualReview = ({review, user}) => {
 	const [promptReviewEdit, setPromptReviewEdit] = useState(false);
 	const reviewListing = useSelector(getListing(review.listingId))
 	const host = useSelector(retrieveUser(reviewListing.hostId))
+	const editReviewUIState = useSelector(retrieveEditReviewModalState);
 
 	const months = {
 		"01": "January",
@@ -32,6 +33,12 @@ const IndividualReview = ({review, user}) => {
 		"11": "November",
 		"12": "December"
 	}
+
+	useEffect(() => {
+		if (!editReviewUIState) {
+			setPromptReviewEdit(false);
+		}
+	}, [editReviewUIState])
 
 	useEffect(() => {
 		if (sessionUser && sessionUser?.id === user?.id) {
@@ -57,6 +64,7 @@ const IndividualReview = ({review, user}) => {
 
 	const handleEdit = () => {
 		setPromptReviewEdit(true)
+		dispatch(receiveEditReviewModal(true));
 	}
 	
 	return (

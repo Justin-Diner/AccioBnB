@@ -39,19 +39,25 @@ const CreateReview = ({listing, host, review}) => {
 	}, [])
 
 	useEffect(() => {
-		if (createReviewState || showing) {
+		if (createReviewState) {
 			setShowing(true)
 			dispatch(receiveCreateReviewModal(true));
-		}
+		} 
 	}, [createReviewState])
  
 	if (!showing) {
 		return 
 	}
 
+
+
 	const closeWindow = () => {
 		setShowing(false);
-		dispatch(receiveCreateReviewModal(false));
+		if (review) {
+			dispatch(receiveEditReviewModal(false));
+		} else {
+			dispatch(receiveCreateReviewModal(false));
+		}
 		window.removeEventListener("click", closeWindow);
 	}
 
@@ -61,6 +67,10 @@ const CreateReview = ({listing, host, review}) => {
 
 	const handleClick = (e) => {
 		e.stopPropagation();
+	}
+
+	if (showing) {
+		window.addEventListener("click", closeWindow)
 	}
 
 	const submitReview = (e) => {
@@ -146,7 +156,7 @@ const CreateReview = ({listing, host, review}) => {
 						<div id="create_review_description_wrapper">
 							<div id="create_review_comment">
 								<div id="create_review_textarea_title">Tell Us About Your Magical Stay</div>
-								<textarea value={description} onChange={(e) => setDescription(e.target.value)} id="create_review_comment_textarea"></textarea>
+									<textarea value={description} onChange={(e) => setDescription(e.target.value)} id="create_review_comment_textarea"></textarea>
 							</div>
 							<div id="create_review_submit_button_container">
 								<div id="create_review_submit_button_wrapper">

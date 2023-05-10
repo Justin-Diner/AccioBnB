@@ -3,6 +3,9 @@
 	position: fixed; 
 	width: 100%;
 	background-color: white;
+	top: 0; 
+	left: 0;
+	z-index: 100;
 }
 
 #top_nav_bar {

@@ -16,9 +16,11 @@ const CategoryFilter = () => {
 	//let imageUrl = '../../../assets/icons/Beachfront.png';
 	return ( 
 		<>
+			<div id="category_filter_container">
 				<div id="category_filter_wrapper">
 						{displayedIcons}
 				</div> 
+			</div>
 		</>
 	)
 }

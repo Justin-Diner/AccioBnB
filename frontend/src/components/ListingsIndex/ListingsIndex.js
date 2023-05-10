@@ -25,13 +25,7 @@ const ListingsIndex = () => {
 			setShowGMap(!showGMap);
 	}
 
-	useEffect(() => {
-		if("REACT_APP_MAPS_API_KEY" in process.env){
-			console.log('It is set!');
-		} else {
-			console.log('No set!');
-		}
-		
+	useEffect(() => {		
 		if (showGMap) {
 			setGMapDisplayStyle({
 				display: 'inline',

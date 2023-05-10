@@ -191,3 +191,8 @@
 	cursor: pointer; 
 	color: blue;
 }
+
+#lsp_gmap_wrapper {
+	height: 600px;
+	width: 100%;
+}

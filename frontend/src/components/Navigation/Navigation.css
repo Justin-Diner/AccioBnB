@@ -32,6 +32,8 @@
 	width: 100%;
 	justify-content: center;
 	display: flex; 
+	position: relative;
+	left: 46px;
 }
 
 #socials_and_nav_wrapper {

@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react';
 import ListingIndexItem from './ListingIndexItem/ListingIndexItem';
 import GMapsIndexButton from './GMapsIndexButton/GMapsIndexButton';
 import { Wrapper, Status } from "@googlemaps/react-wrapper"
-import GMap from './GMap/GMap';
-import Loading from './GMap/Loading/Loading';
+import GMap from '../GMap/GMap';
+import Loading from '../GMap/Loading/Loading';
 
 const ListingsIndex = () => {
 	const dispatch = useDispatch(); 

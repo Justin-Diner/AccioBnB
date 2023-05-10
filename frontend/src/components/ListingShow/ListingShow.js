@@ -19,6 +19,7 @@ import { receiveCreateReviewModal, receiveLogInModal } from "../../store/ui";
 import { retrieveUsers } from '../../store/users';
 import Socials from "../Navigation/socials/Socials";
 import { getReviews } from "../../store/reviews";
+import GMapLS from './GMapLS/GMapLS';
 
 const ListingShow = () => {
  const dispatch = useDispatch();
@@ -128,6 +129,7 @@ const ListingShow = () => {
 							<CreateReview listing={listing} host={host}/>
 						</div>
 					</div>
+
 					</div>
 					<div id="lsp_res_successful_wrapper">
 						<ReservationSuccessful />
@@ -136,6 +138,11 @@ const ListingShow = () => {
 					<ListingReservationTool listing={listing} type="reservation" />
 				</div>
 			</div>
+
+			<div id="lsp_gmap_wrapper">
+				<GMapLS listing={listing}/>
+			</div>
+
 		</div>
 	</>
  )

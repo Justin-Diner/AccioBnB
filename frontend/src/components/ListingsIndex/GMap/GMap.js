@@ -5,8 +5,8 @@ const GMap = () => {
 	const [gMap, setGMap] = useState();
 	const ref = useRef();
 
-	const initialCenterCoords = { lat: 40.73630, lng: -73.99379 };
-  const zoomAmount = 16;
+	const initialCenterCoords = { lat: 51.5072, lng: 0.1276 };
+  const zoomAmount = 8;
 
 	const createTheMap = (latitude, longitude) => {
 		const initialMap = new window.google.maps.Map(ref.current, {

@@ -5,6 +5,7 @@ const RECEIVE_SIGNUP_MODAL = 'ui/RECEIVE_SIGNUP_MODAL'
 const RECEIVE_LOGIN_MODAL = 'ui/RECEIVE_LOGIN_MODAL'
 const RECEIVE_RESERVATION_MODAL = 'ui/RECEIVE_RESERVATION_MODAL'
 const RECEIVE_CREATE_REVIEW_MODAL = 'ui/CREATE_REVIEW_MODAL'
+const RECEIVE_EDIT_REVIEW_MODAL = 'ui/EDIT_REVIEW_MODAL'
 
 export const receiveSignUpModal = (modalState) => ({
 	type: RECEIVE_SIGNUP_MODAL,
@@ -26,6 +27,11 @@ export const receiveCreateReviewModal = (modalState) => ({
 	modalState
 })
 
+export const receiveEditReviewModal = (modalState) => ({
+	type: RECEIVE_EDIT_REVIEW_MODAL, 
+	modalState
+})
+
 // Selectors 
 export const retrieveSignUpModalState = (state) => {
 	return state.ui.signUpModal ? state.ui.signUpModal : null;
@@ -43,6 +49,10 @@ export const retrieveCreateReviewModalState = (state) => {
 	return state.ui.createReviewModal ? state.ui.createReviewModal : null; 
 }
 
+export const retrieveEditReviewModalState = (state) => {
+	return state.ui.editReviewModal ? state.ui.editReviewModal : null; 
+}
+
 const uiReducer = (state = {}, action) => {
 	const nextState = {...state};
 
@@ -58,6 +68,9 @@ const uiReducer = (state = {}, action) => {
 			return nextState
 		case RECEIVE_CREATE_REVIEW_MODAL:
 			nextState.createReviewModal = action.modalState
+			return nextState;
+		case RECEIVE_EDIT_REVIEW_MODAL:
+			nextState.editReviewModal = action.modalState
 			return nextState;
 		default: 
 			return state; 

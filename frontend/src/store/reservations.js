@@ -79,7 +79,6 @@ export const updateReservation = (reservation) => async (dispatch) => {
 }
 
 export const deleteReservation = (reservationId) => async (dispatch) => {
-	debugger
 	const response = await csrfFetch(`/api/reservations/${reservationId}`, {
 		method: "DELETE"
 	});

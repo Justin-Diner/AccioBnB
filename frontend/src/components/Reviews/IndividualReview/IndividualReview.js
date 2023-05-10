@@ -5,12 +5,18 @@ import { useDispatch } from 'react-redux';
 import * as sessionAction from '../../../store/session';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import CreateReview from '../CreateReview/CreateReview';
+import { getListing } from '../../../store/listings';
+import { retrieveUser } from '../../../store/users';
 
 const IndividualReview = ({review, user}) => {
 	const dispatch = useDispatch();
 	const sessionUser = useSelector(sessionAction.sessionUser);
 	const [allowDelete, setAllowDelete] = useState(false);
-	const [allowEdit, setAllowEdit] = useState(false);
+	const [allowEditButton, setAllowEditButton] = useState(false);
+	const [promptReviewEdit, setPromptReviewEdit] = useState(false);
+	const reviewListing = useSelector(getListing(review.listingId))
+	const host = useSelector(retrieveUser(reviewListing.hostId))
 
 	const months = {
 		"01": "January",
@@ -30,10 +36,10 @@ const IndividualReview = ({review, user}) => {
 	useEffect(() => {
 		if (sessionUser && sessionUser?.id === user?.id) {
 			setAllowDelete(true);
-			setAllowEdit(true);
+			setAllowEditButton(true);
 		} else {
 			setAllowDelete(false);
-			setAllowEdit(false);
+			setAllowEditButton(false);
 		}
 	
 	}, [sessionUser])
@@ -50,10 +56,7 @@ const IndividualReview = ({review, user}) => {
 	}
 
 	const handleEdit = () => {
-		const newReview = {
-		
-		}
-		dispatch(receiveCreateReviewModal(true));
+		setPromptReviewEdit(true)
 	}
 	
 	return (
@@ -69,7 +72,7 @@ const IndividualReview = ({review, user}) => {
 							<div id="IR_review_month">{monthName(review?.createdAt)}</div>
 						</div>
 						<div id="IR_buttons_wrapper">
-							{allowEdit &&
+							{allowEditButton &&
 								<div className="IR_button" id="IR_edit_wrapper" onClick={handleEdit}>
 									<div id="IR_edit_button">Edit Post</div>
 								</div>
@@ -86,6 +89,7 @@ const IndividualReview = ({review, user}) => {
 					<div id="IR_description">{review?.description}</div>
 				</div>
 			</div>
+			{promptReviewEdit && <CreateReview listing={reviewListing} host={host} review={review}/>}
 		</div>
 	)
 }

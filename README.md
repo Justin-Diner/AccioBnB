@@ -131,7 +131,7 @@ const DatePicker = ({chooseCheckInDate, chooseCheckOutDate}) => {
 To Do 
 
 # Reviews 
-Users are able to view user reviews on each listing's show page, but are unable to make their own comments. Once logged in, users are able to write reviews of the properties they have "stayed" at. The user can rate the property, and leave a description of their stay. The user can post their review which shows up on the listing's show page. If the user is the author, they are able to delete the review. If they are not the author they are unable to delete the review. They are also unable to delete any reviews if they are not logged in. 
+Users who are not logged in are able to view reviews on each listing's show page, but are unable to make their own comments. Once logged in, users are able to write reviews of the properties they have "stayed" at. The user can rate the property, and leave a description of their stay. The user can post their review which is displayed on the listing's show page. If the user is the author, they are able to delete and edit the review. If they are not the author they are unable to delete or edit the review. They are also unable to delete any reviews if they are not logged in. 
 
 ![reviews](reviews.jpg)
 

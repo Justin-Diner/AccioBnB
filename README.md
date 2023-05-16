@@ -176,7 +176,7 @@ To Do
 
 # Additional Features:
 # Continue Button
-The continue button is one of the most reusable components in the application. Notably, the component renders its color dynamically based on mouse hover location. It takes two items as props: a clickFunction (that is invoked when the component is clicked) and textContent (that displays the text on the button). This reusable component adds style throughout the website that is interactive. 
+The continue button is one of the most reusable components in the application. The component renders its color dynamically based on mouse hover location. It takes two items as props: (1) a ```clickFunction``` that is invoked when the component is clicked and (2) ```textContent``` that displays the text on the button. This reusable component adds a consistent style throughout the website. 
 
 ```js
 import React, { useState } from "react"

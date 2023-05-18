@@ -1,6 +1,6 @@
 import './GMapLS.css';
-import GMap from '../../GMap/GMap'
-import { Wrapper, Status } from "@googlemaps/react-wrapper"
+import GMapShow from './GMapShow/GMapShow';
+import { Wrapper } from "@googlemaps/react-wrapper"
 
 const GMapLS = ({listing}) => {
 	return (
@@ -9,7 +9,7 @@ const GMapLS = ({listing}) => {
 				<div id="GMapLS_title">Where you'll be</div>
 				<div id="GMapLS_map_wrapper">
 					<Wrapper apiKey={process.env.REACT_APP_MAPS_API_KEY}>
-						<GMap />
+						<GMapShow listing={listing}/>
 					</Wrapper>
 				</div>
 				<div id="GMapLS_city_state">{`${listing.city}`}, {`${listing.country}`}</div>

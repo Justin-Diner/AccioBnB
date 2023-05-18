@@ -24,12 +24,15 @@ const ReservationSuccessful = () => {
 	}
 
 	const closeWindow = () => {
-		dispatch(receiveReservationSuccessModal(false));
+		window.removeEventListener("click", closeWindow);
 		setShowing(false);
+		dispatch(receiveReservationSuccessModal(false));
+		console.log(showing);
 	}
 
 	if (showing) {
-		window.addEventListener("click", closeWindow)
+		window.addEventListener("click", closeWindow);
+		console.log(showing);
 	}
 
 	const handleClick = (e) => {

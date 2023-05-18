@@ -1,6 +1,6 @@
 import './IndividualReview.css';
 import { deleteReview, updateReview } from '../../../store/reviews';
-import { receiveCreateReviewModal, receiveEditReviewModal, retrieveEditReviewModalState } from '../../../store/ui';
+import { receiveEditReviewModal, retrieveEditReviewModalState } from '../../../store/ui';
 import { useDispatch } from 'react-redux';
 import * as sessionAction from '../../../store/session';
 import { useEffect, useState } from 'react';

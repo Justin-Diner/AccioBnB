@@ -222,8 +222,8 @@ require "open-uri"
 				num_bathrooms: 40, 
 				num_bedrooms: 38,
 				num_beds: 300, 
-				lat: Faker::Address.latitude, 
-				long: Faker::Address.longitude
+				lat: 57.12656, 
+				long: -4.70857
 		})
 
 		puts 'Generating Knightbus...'
@@ -245,8 +245,8 @@ require "open-uri"
 			num_bathrooms: 1, 
 			num_bedrooms: 2,
 			num_beds: 10, 
-			lat: Faker::Address.latitude, 
-			long: Faker::Address.longitude
+			lat: 51.54351, 
+			long: -0.37755
 		})
 
 		puts 'Generating The Burrow...'
@@ -268,8 +268,8 @@ require "open-uri"
 			num_bathrooms: 2.5, 
 			num_bedrooms: 5,
 			num_beds: 8, 
-			lat: Faker::Address.latitude, 
-			long: Faker::Address.longitude
+			lat: 50.37191, 
+			long: -3.64174
 		})
 
 		puts 'Generating Cupboard Under the Stairs..'
@@ -291,8 +291,8 @@ require "open-uri"
 			num_bathrooms: 0, 
 			num_bedrooms: 1,
 			num_beds: 1, 
-			lat: Faker::Address.latitude, 
-			long: Faker::Address.longitude
+			lat: 51.69205, 
+			long: -0.41672
 		})
 
 		puts 'Generating Chamber of Secrets..'
@@ -314,8 +314,8 @@ require "open-uri"
 			num_bathrooms: 5, 
 			num_bedrooms: 3,
 			num_beds: 10, 
-			lat: Faker::Address.latitude, 
-			long: Faker::Address.longitude
+			lat: 57.44997, 
+			long: -4.22244
 		})
 
 		puts 'Generating Gryffindor Common Room'
@@ -337,8 +337,8 @@ require "open-uri"
 			num_bathrooms: 5, 
 			num_bedrooms: 3,
 			num_beds: 10, 
-			lat: Faker::Address.latitude, 
-			long: Faker::Address.longitude
+			lat: 57.12656, 
+			long: -4.70857
 		})
 
 		puts 'Generating Hagrids Hut'
@@ -360,8 +360,8 @@ require "open-uri"
 			num_bathrooms: 1, 
 			num_bedrooms: 2,
 			num_beds: 1, 
-			lat: Faker::Address.latitude, 
-			long: Faker::Address.longitude
+			lat: 57.13799, 
+			long: -4.72132
 		})
 
 		puts 'Generating 12 Grimmauld Place'
@@ -383,8 +383,8 @@ require "open-uri"
 			num_bathrooms: 3, 
 			num_bedrooms: 4,
 			num_beds: 6, 
-			lat: Faker::Address.latitude, 
-			long: Faker::Address.longitude
+			lat: 51.53559,
+			long: -0.10372
 		})
 
 		puts 'Generating Magical Tent'
@@ -406,8 +406,8 @@ require "open-uri"
 			num_bathrooms: 1, 
 			num_bedrooms: 3,
 			num_beds: 6, 
-			lat: Faker::Address.latitude, 
-			long: Faker::Address.longitude
+			lat: 50.56337, 
+			long: -3.95914
 		})
 
 		puts 'Generating Gringotts'
@@ -429,8 +429,8 @@ require "open-uri"
 			num_bathrooms: 6, 
 			num_bedrooms: 100,
 			num_beds: 100, 
-			lat: Faker::Address.latitude, 
-			long: Faker::Address.longitude
+			lat: 51.50802,
+			long: -0.12770
 		})
 
 		puts 'Generating Malfoy Manner'
@@ -452,8 +452,8 @@ require "open-uri"
 			num_bathrooms: 12, 
 			num_bedrooms: 16,
 			num_beds: 14, 
-			lat: Faker::Address.latitude, 
-			long: Faker::Address.longitude
+			lat: 51.44215,
+			long: 0.14970
 		})
 
 		puts 'Generating Lovegood House'
@@ -475,8 +475,8 @@ require "open-uri"
 			num_bathrooms: 2.5, 
 			num_bedrooms: 3,
 			num_beds: 6, 
-			lat: Faker::Address.latitude, 
-			long: Faker::Address.longitude
+			lat: 51.18123,
+			long: -4.07020
 		})
 
 		puts "Attempting to seed photos"

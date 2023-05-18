@@ -80,12 +80,16 @@ const ListingShow = () => {
 			<div id="lsp_initial_details">
 				<div id="lsp_initial_rating">&#9733; {rating}</div>
 				<div id="lsp_rating_reviews_sep">.</div>
+				<a id="lsp_amount_of_reviews_link" href="#lsp_reservation_prompt_wrapper">
 				<div id="lsp_initial_amount_of_reviews">{reviews.length} reviews</div>
+				</a>
 					<span>.</span>
 					<i className="fa-sharp fa-solid fa-medal"></i>
 				<div id="lsp_id_superhost"> Superhost</div>
 					<span>.</span>
+				<a id="lsp_id_location_link" href="#GMapLS_container">
 				<div id="lsp_id_location">{`${listing.city}, ${listing.state}, ${listing.country}`}</div>
+				</a>
 			</div>
 	
 			<div id="LSPD_container">

@@ -71,13 +71,31 @@
 	padding-right: 4px;
 }
 
+#lsp_amount_of_reviews_link {
+	font-weight: bold;
+}
+
+#lsp_amount_of_reviews_link:visited {
+	color: black;
+}
+
 #lsp_initial_amount_of_reviews {
 	font-weight: bold; 
 	text-decoration: underline 1px black;
 }
 
+
+
 #lsp_id_superhost {
 	margin-left: 10px;
+}
+
+#lsp_id_location_link {
+	color: black;
+}
+
+#lsp_id_location_link:visited {
+	color: black;
 }
 
 #lsp_id_location {

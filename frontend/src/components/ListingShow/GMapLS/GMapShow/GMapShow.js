@@ -47,7 +47,7 @@ const GMapShow = ({ listing }) => {
 			})
 
 			const infoWindow = new window.google.maps.InfoWindow({
-				content: "Portkey provided after booking.",
+				content: "Exact portkey location provided after booking.",
 				position: initialCenterCoords
 			})
 

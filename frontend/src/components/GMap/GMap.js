@@ -2,6 +2,7 @@ import './GMap.css';
 import { useEffect, useState, useRef, Children } from 'react';
 import { useSelector } from 'react-redux';
 import { getListings } from '../../store/listings';
+import { NavLink } from 'react-router-dom';
 
 const GMap = () => {
 	const [gMap, setGMap] = useState();
@@ -34,24 +35,27 @@ const GMap = () => {
 			const listingLng = Number(listing.long);
 			const position = {lat: listingLat, lng: listingLng};
 			const place = listing.city
-			markers.current.push(
-				new window.google.maps.Marker({
-					position: position, 
-					map: gMap, 
-					title: place,
-					label: {
-						text: '$' + listing.nightlyPrice.toLocaleString(),
-						color: 'black',
-						fontSize: '15px',
-						fontWeight: 'bold'
-					},
-					icon: {
-						url: oval,
-						scaledSize: new window.google.maps.Size(80, 38)
-					},
-					optimized: false
-				})
-			);
+			const currentMarker = new window.google.maps.Marker({
+				position: position, 
+				map: gMap, 
+				title: place,
+				label: {
+					text: '$' + listing.nightlyPrice.toLocaleString(),
+					color: 'black',
+					fontSize: '15px',
+					fontWeight: 'bold'
+				},
+				icon: {
+					url: oval,
+					scaledSize: new window.google.maps.Size(80, 38)
+				},
+				optimized: false,
+				url: `/listings/${listing.id}`
+			})
+			
+			window.google.maps.event.addListener(currentMarker, 'click', function() {
+				window.location.href = currentMarker.url;
+			});
 		})
 	}, [gMap])
 

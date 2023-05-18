@@ -44,21 +44,27 @@ const CreateReview = ({listing, host, review}) => {
 			dispatch(receiveCreateReviewModal(true));
 		} 
 	}, [createReviewState])
+
+	useEffect(() => {
+		if (showing) {
+			window.addEventListener("click", closeWindow)
+			console.log(showing)
+		}
+	}, [showing])
+
  
 	if (!showing) {
 		return 
 	}
 
-
-
 	const closeWindow = () => {
+		window.removeEventListener("click", closeWindow);
 		setShowing(false);
 		if (review) {
 			dispatch(receiveEditReviewModal(false));
 		} else {
 			dispatch(receiveCreateReviewModal(false));
 		}
-		window.removeEventListener("click", closeWindow);
 	}
 
 	const handleOutsideClick = () => {
@@ -67,10 +73,6 @@ const CreateReview = ({listing, host, review}) => {
 
 	const handleClick = (e) => {
 		e.stopPropagation();
-	}
-
-	if (showing) {
-		window.addEventListener("click", closeWindow)
 	}
 
 	const submitReview = (e) => {
@@ -89,14 +91,15 @@ const CreateReview = ({listing, host, review}) => {
 
 		if (reviewType === "Submit") {
 			dispatch(createReview(newReview));
-			dispatch(receiveCreateReviewModal(false));
-			setShowing(false);
+			if (createReviewState) {
+				dispatch(receiveCreateReviewModal(false));
+			}
 		} else if (reviewType === "Edit") {
 			newReview.id = review.id
 			dispatch(updateReview(newReview));
 			dispatch(receiveEditReviewModal(false));
-			setShowing(false);
 		}
+		setShowing(false);
 	}
 
 	const setReviewType = () => {

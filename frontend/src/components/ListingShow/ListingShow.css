@@ -91,7 +91,7 @@
 
 #lsp_property_details_container {
 	width: 100%;
-	height: 1000px;
+	min-height: 1000px;
 	top: 60px;
 	margin-top: 40px;
 	display: flex;
@@ -190,4 +190,9 @@
 #lsp_reservation_prompt_wrapper:hover {
 	cursor: pointer; 
 	color: blue;
+}
+
+#lsp_gmap_wrapper {
+	height: 600px;
+	width: 100%;
 }

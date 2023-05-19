@@ -81,9 +81,6 @@ const ListingsIndex = () => {
 		<main id="listings_index_container">
 			<div id="listings_index_wrapper">
 				{displayedListings}
-				{/*{displayedListings.map(listing => {
-					return <ListingIndexItem className="gridItem" key={listing.id} listing={listing}/>
-				})}*/}
 			</div>
 			<div onClick={() => handleMapClick()}> 
 				<GMapsIndexButton />

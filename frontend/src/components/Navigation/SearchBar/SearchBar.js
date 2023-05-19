@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import { fetchSearchResults, getSearchResults } from '../../../store/search';
 
-const SearchBar = () => {
+const SearchBar = ({index}) => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const [searchText, setSearchText] = useState("");
@@ -20,6 +20,12 @@ const SearchBar = () => {
 	async function handleSearchSubmit(e) {
 		e.preventDefault();
 		const searchQuery = searchText.toLowerCase();
+		if (!searchQuery.length) {
+			return; 
+		}
+		if (!index) {
+			history.push(`/`)
+		}
 		dispatch(fetchSearchResults(searchQuery));
 	}
 

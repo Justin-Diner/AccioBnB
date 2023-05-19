@@ -64,7 +64,7 @@ const ListingShow = () => {
 							<LogoDisplay id="nav_logo" />
 						</div></a>
 						<div className="nav_component" id="LSP_search_wrapper"> 
-							<SearchBar id="search_bar_comp"/>
+							<SearchBar id="search_bar_comp" index={false}/>
 						</div>
 						<div className="nav_component" id="LSP_socials_wrapper">
 							<Socials />

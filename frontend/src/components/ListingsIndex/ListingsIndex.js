@@ -16,6 +16,7 @@ const ListingsIndex = () => {
 		display: 'none',
 		position: 'none'
 	});
+
 	const [displayedListings, setDisplayedListings] = useState([]);
 	const listings = useSelector(getListings);
 	const searchResults = useSelector(getSearchResults);
@@ -23,6 +24,7 @@ const ListingsIndex = () => {
 	useEffect(() => {
 		dispatch(fetchListings());
 	}, [])
+
 
 	useEffect(() => {
 		const initialListings = listings.map(listing => {

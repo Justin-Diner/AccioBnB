@@ -314,8 +314,8 @@ require "open-uri"
 			num_bathrooms: 5, 
 			num_bedrooms: 3,
 			num_beds: 10, 
-			lat: 57.44997, 
-			long: -4.22244
+			lat: 57.13655, 
+			long: -4.70252
 		})
 
 		puts 'Generating Gryffindor Common Room'
@@ -337,8 +337,8 @@ require "open-uri"
 			num_bathrooms: 5, 
 			num_bedrooms: 3,
 			num_beds: 10, 
-			lat: 57.12656, 
-			long: -4.70857
+			lat: 57.13330, 
+			long: -4.71049
 		})
 
 		puts 'Generating Hagrids Hut'

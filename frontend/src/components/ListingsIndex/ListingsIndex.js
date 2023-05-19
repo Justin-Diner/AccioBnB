@@ -7,6 +7,7 @@ import GMapsIndexButton from './GMapsIndexButton/GMapsIndexButton';
 import { Wrapper, Status } from "@googlemaps/react-wrapper"
 import GMap from '../GMap/GMap';
 import Loading from '../GMap/Loading/Loading';
+import { getSearchResults } from '../../store/search';
 
 const ListingsIndex = () => {
 	const dispatch = useDispatch(); 
@@ -15,11 +16,22 @@ const ListingsIndex = () => {
 		display: 'none',
 		position: 'none'
 	});
+
+	const [displayedListings, setDisplayedListings] = useState([]);
 	const listings = useSelector(getListings);
+	const searchResults = useSelector(getSearchResults);
 	
 	useEffect(() => {
 		dispatch(fetchListings());
 	}, [])
+
+
+	useEffect(() => {
+		const initialListings = listings.map(listing => {
+			return <ListingIndexItem className="gridItem" key={listing.id} listing={listing}/>
+		})
+		setDisplayedListings(initialListings);
+	}, [listings])
 
 	const handleMapClick = () => {
 			setShowGMap(!showGMap);
@@ -39,6 +51,23 @@ const ListingsIndex = () => {
 		}
 	}, [showGMap])
 
+	useEffect(() => {
+			let listingResults = [];
+		
+			if (searchResults != null && searchResults.length) {
+				let currentListing;
+		
+				searchResults.forEach(result => {
+					currentListing = listings.find(listing => listing.id === result.id)
+					listingResults.push(currentListing);
+				})
+				let listingResultsIndexItems = listingResults.map(listing => {
+					return <ListingIndexItem className="gridItem" key={listing.id} listing={listing}/>
+				})
+				setDisplayedListings(listingResultsIndexItems);
+			}
+	}, [searchResults])
+
 	const render = (status) => {
 		switch (status) {
 				case Status.LOADING:
@@ -53,9 +82,7 @@ const ListingsIndex = () => {
 	return (
 		<main id="listings_index_container">
 			<div id="listings_index_wrapper">
-				{listings.map(listing => {
-					return <ListingIndexItem className="gridItem" key={listing.id} listing={listing}/>
-				})}
+				{displayedListings}
 			</div>
 			<div onClick={() => handleMapClick()}> 
 				<GMapsIndexButton />

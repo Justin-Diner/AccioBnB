@@ -10,10 +10,12 @@ const CategoryFilter = () => {
 	let iconImages = [[beachFront, "Beachfront"], [bolt, "Harry"], [castle, "Hogwarts"], [countrySide, "Countryside"], [tent, "Tents"]];
 
 	let displayedIcons = iconImages.map((tile, index) => {
-		return <FilterIcon className="filter_icon_list_items" id={`icon_${tile[1]}`}key={index} image={tile[0]} text={tile[1]} />
+		return <FilterIcon className="filter_icon_list_items" id={`icon_${tile[1]}`} key={index} image={tile[0]} text={tile[1]} searchInput={tile[1]} />
 	})
 
-	//let imageUrl = '../../../assets/icons/Beachfront.png';
+	displayedIcons.forEach(icon => {
+
+	})
 	return ( 
 		<>
 			<div id="category_filter_container">

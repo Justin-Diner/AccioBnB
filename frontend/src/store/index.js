@@ -7,6 +7,7 @@ import uiReducer from './ui';
 import listingsReducer from './listings';
 import reservationsReducer from './reservations';
 import reviewReducer from './reviews';
+import searchReducer from './search';
 
 const rootReducer = combineReducers({
 	session: sessionReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
 	listings: listingsReducer,
 	reservations: reservationsReducer,
 	reviews: reviewReducer,
+	searchResults: searchReducer,
 	ui: uiReducer
 })
 

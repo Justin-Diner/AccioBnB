@@ -22,4 +22,14 @@
 	box-shadow: 0 4px 3px -2px gray;
 }
 
+#SB_input {
+	font-family: var(--font-family);
+	font-size: 16px;
+	position: relative; 
+	left: 15px;
+	height: 28px;
+	border: none; 
+	outline: none;
+	width: 80%;
+}
 

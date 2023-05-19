@@ -341,13 +341,13 @@ require "open-uri"
 			long: -4.71049
 		})
 
-		puts 'Generating Hagrids Hut'
+		puts 'Generating Hagrid\'s Hut'
 		Listing.create!({
 			host_id: 11,
 			title: "Hut on Hogwarts Grounds. Wonderful forest view",
 			street_address: "1234 Hogwarts Ave",
 			zip_code: 10075,
-			city: "Hagrids Hut",
+			city: "Hagrid\'s Hut",
 			state: "Hogwarts",
 			country: "Great Britain",
 			property_type: "Home",

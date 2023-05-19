@@ -8,6 +8,7 @@ import './index.css'
 import ListingsIndex from './components/ListingsIndex/ListingsIndex';
 import ListingShow from './components/ListingShow/ListingShow';
 import ReservationsShow from './components/ReservationsShow/ReservationsShow';
+import Search from './components/SearchShowPage/SearchShowPage';
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
 				</div>
 			</Route>
 			<Switch>
+				<Route path="/search">
+					<Search />
+				</Route>
 				<Route exact path="/listings/:listingId">
 					<ListingShow />
 					<LoginFormPage initialShow={false} />

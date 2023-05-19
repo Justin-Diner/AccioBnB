@@ -47,7 +47,7 @@ class Api::ListingsController < ApplicationController
 	end
 
 	def search
-		@listings = Listing.where("lower(title) LIKE ?", "%#{params[:q]}%")
+		@listings = Listing.where("lower(description) LIKE ?", "%#{params[:q]}%").or(Listing.where("lower(title) LIKE ?", "%#{params[:q]}%"))
 		render :search 
 	end
 	

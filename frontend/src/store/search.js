@@ -10,10 +10,14 @@ export const fetchSearchResults = (query) => async dispatch => {
     const data = await res.json();
     dispatch(receiveSearchResults(data));
 };
+
+export const getSearchResults = (state) => {
+	return state.searchResults ? Object.values(state.searchResults) : null;
+}
 const searchReducer = (state = {}, action) => {
     switch (action.type) {
         case GET_SEARCH_RESULTS:
-            return action.searchResults.search
+            return action.searchResults.search || null;
         default:
             return state;
     }

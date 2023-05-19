@@ -2,35 +2,33 @@ import './SearchBar.css'
 import SearchButton from './SearchButton/SearchButton';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import {useDispatch} from 'react-redux';
-import { fetchSearchResults } from '../../../store/search';
+import {useDispatch, useSelector} from 'react-redux';
+import { fetchSearchResults, getSearchResults } from '../../../store/search';
 
 const SearchBar = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const [searchText, setSearchText] = useState("");
+	const searchResults = useSelector(getSearchResults);
 
 	async function handleSearch(e) {
 		e.preventDefault(); 
 		const query = e.target.value;
 		await setSearchText(query);
-		dispatch(fetchSearchResults(query));
 	}
 
-	function handleSearchSubmit(e) {
+	async function handleSearchSubmit(e) {
 		e.preventDefault();
-		if (searchText.length > 0) {
-			history.push(`/search?listings=${searchText}`)
-		}
+		const searchQuery = searchText.toLowerCase();
+		dispatch(fetchSearchResults(searchQuery));
 	}
 
  return (
 	<div id="search_bar_wrapper">
 		<div id="search_bar">
-			<input onChange={handleSearch} type="text" placeholder="Search"></input>
+			<input id="SB_input" onChange={handleSearch} type="text" placeholder="Start Your Search"></input>
 			<div></div>
-			<button onClick={handleSearchSubmit}>Search</button>
-			<SearchButton />
+			<SearchButton clickEvent={handleSearchSubmit} />
 		</div> 
 	</div>
  )

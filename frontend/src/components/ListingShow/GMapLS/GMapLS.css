@@ -1,0 +1,31 @@
+#GMapLS_container {
+	height: 480px;
+	width: 100%;
+	padding-top: 48px;
+	padding-bottom: 48px;
+	border-top: var(--border-bottom-grey);
+	border-bottom: var(--border-bottom-grey);
+}
+
+#GMapLS_wrapper {
+	height: 100%;
+	width: 100%;
+}
+
+#GMapLS_map_wrapper {
+	height: 100%;
+	width: 100%;
+}
+
+#GMapLS_title {
+	font-size: 28px;
+	font-weight: 400;
+	margin-bottom: 24px;
+}
+
+#GMapLS_city_state {
+	font-size: 22px;
+	padding-top: 24px;
+	padding-bottom: 24px;
+	font-weight: 400;
+}

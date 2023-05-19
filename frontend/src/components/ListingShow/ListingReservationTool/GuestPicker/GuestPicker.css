@@ -1,20 +1,36 @@
 #gp_container {
-	height: 370px;
-	width: 100%; 
+	position: relative;
+	width: 100%;
 	background-color: white;
+}
+
+#gp_wrapper {
+	position: absolute;
+	width: 100%; 
+	min-height: 340px;
+	max-width: 440px;
+	background-color: white;
+	z-index: 2;
+	bottom: 14px;
 	box-shadow: var(--box-shadow);
 	border: var(--main-border);
 	border-radius: var(--main-border-radius);
-	z-index: 100;
-	position: relative;
-	bottom: 14px;
+	z-index: 3;
+	padding: 8px;
+	top: -12px;
+	left: -1px;
 }
 
 #gp_guest_warning {
 	font-size: 16px;
 	position: relative; 
-	top: 10px;
+	top: 20px;
 	left: 10px;
+	width: 96%;
 }
 
+#gp_max_guest_warning {
+	font-weight: 800;
+	text-decoration: underline;
+}
 

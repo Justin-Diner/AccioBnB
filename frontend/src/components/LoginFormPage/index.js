@@ -21,7 +21,7 @@ const LoginFormPage = ({initialShow}) => {
 	const [mouseClickedForm, setMouseClickedForm] = useState(false);
 
 	// Selector 
-	const logInModalState = useSelector(retrieveLogInModalState)
+	let logInModalState = useSelector(retrieveLogInModalState)
 
 	useEffect(() => {
 
@@ -37,21 +37,19 @@ const LoginFormPage = ({initialShow}) => {
 	}
 
 	if (sessionUser) {
-		return <Redirect to="/" />
+		dispatch(receiveLogInModal(false));
 	} 
 
 	function handleClick(e) {
 		e.preventDefault(); 
-		dispatch(receiveLogInModal(false));
-		setShowing(false);
-
+	
 		const user = {
 			email: email, 
 			password: password
 		}
 
 		setErrors([]);
-		
+
 	return dispatch(login(user))
 		.catch(async (res) => {
 			let data; 
@@ -63,12 +61,15 @@ const LoginFormPage = ({initialShow}) => {
 			if (data?.errors) setErrors(data.errors);
 			else if (data) setErrors([data]);
 			else setErrors([res.statusText]);
+			if (!data.errors) {
+				dispatch(receiveLogInModal(false));
+				setShowing(false);
+			}
 		});
 	}
 
 	const demoUserLogin = (e) => {
 		e.preventDefault();
-
 		const newDemoUser = {
 			first_name: "Squib",
 			last_name: "Guest",
@@ -76,10 +77,12 @@ const LoginFormPage = ({initialShow}) => {
 			password: "dumbledore"
 		}
 			dispatch(receiveLogInModal(false));
+			setShowing(false);
 			dispatch(login(newDemoUser))
 		}
 
-	const handleOutsideClick = () => {
+	const handleOutsideClick = (e) => {
+		e.preventDefault();
 		if (mouseClickedForm) {
 			setMouseClickedForm(false);
 			return 
@@ -103,7 +106,7 @@ const LoginFormPage = ({initialShow}) => {
 	}
 	
 	return (
-		<div id={showing ? "login_wrapper" : "login_wrapper_gone"} onClick={() => handleOutsideClick()}>
+		<div id={showing ? "login_wrapper" : "login_wrapper_gone"} onClick={(e) => handleOutsideClick(e)}>
 			<div onMouseDown={(e) => handleInsideClick(e)}> 
 				<form id="login_form">
 					<div id="top_login_bar">

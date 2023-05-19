@@ -3,6 +3,9 @@
 	position: fixed; 
 	width: 100%;
 	background-color: white;
+	top: 0; 
+	left: 0;
+	z-index: 100;
 }
 
 #top_nav_bar {
@@ -29,6 +32,8 @@
 	width: 100%;
 	justify-content: center;
 	display: flex; 
+	position: relative;
+	left: 46px;
 }
 
 #socials_and_nav_wrapper {

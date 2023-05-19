@@ -15,7 +15,6 @@ function App() {
 		<>	
 			<Route exact path="/">
 				<div id="main_container">
-					<div id="nav_bar_filler"></div>
 					<Navigation />
 					<CategoryFilter />
 					<ListingsIndex />

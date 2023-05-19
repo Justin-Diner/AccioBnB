@@ -13,7 +13,6 @@ Rails.application.routes.draw do
 			resources :reviews, only: [:index, :show]
 		end
 		resources :reservations, only: [:create, :show, :destroy, :update ]
-		resources :reviews, only: [:create, :destroy, :update]
 		resource :session, only: [:show, :create, :destroy]
 	end
 

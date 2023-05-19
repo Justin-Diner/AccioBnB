@@ -5,8 +5,6 @@ import { useParams } from 'react-router-dom';
 import { fetchListingReviews } from '../../store/reviews';
 import IndividualReview from './IndividualReview/IndividualReview';
 import { getReviews } from '../../store/reviews';
-import { retrieveUsers } from '../../store/users';
-
 
 const Reviews = ({users}) => {
 	const {listingId} = useParams();
@@ -16,20 +14,20 @@ const Reviews = ({users}) => {
 
 	useEffect(() => {
 		dispatch(fetchListingReviews(listingId));
-	}, [])
+	}, [dispatch, listingId])
 
 	if (reviews.length) {
-		let holder = [];
+		let pertinentReviews = [];
 
 		reviews.forEach((review) => {
 			let reviewAuthor = users.find((user) => user.id === review.userId)
 			if (review.listingId === parseInt(listingId)) {
-				holder.push(<IndividualReview review={review} user={reviewAuthor} />)
+				pertinentReviews.push(<IndividualReview key={review.id} review={review} user={reviewAuthor} />)
 			}
 		})
-		content = holder;
+		content = pertinentReviews;
 	}
-	
+
 	return ( 
 		<div id="reviews_container">
 			{content}

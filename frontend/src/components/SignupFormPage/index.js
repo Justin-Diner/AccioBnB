@@ -51,10 +51,6 @@ const SignUpForm = ({initialShow}) => {
 		}
 
 		setErrors([]);
-		if (!errors.length) {
-			dispatch(receiveSignUpModal(false));
-			setShowing(false);
-		}
 
 		return dispatch(signup(newUser))
 			.then(() => {

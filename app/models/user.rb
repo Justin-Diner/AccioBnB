@@ -11,6 +11,8 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
+require "open-uri"
+
 class User < ApplicationRecord
 	before_validation :ensure_session_token
 	has_secure_password
@@ -22,6 +24,7 @@ class User < ApplicationRecord
 	validates :session_token, presence: true, uniqueness: true 
 	validates :password, length: {in: 6..255}, allow_nil: true 
 	has_one_attached :photo
+	after_create :set_default_photo
 
 	has_many :listings, 
 	primary_key: :id, 
@@ -63,6 +66,15 @@ class User < ApplicationRecord
 		self.session_token
 	end
 
+	def set_default_photo
+		unless self.photo.attached?
+			self.photo.attach(
+				io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/profilepics/capybara.jpg"),
+				filename: "capybara.jpg"
+			)
+		end
+	end
+
 	private
 	def ensure_session_token 
 		self.session_token ||= generate_session_token
@@ -75,5 +87,4 @@ class User < ApplicationRecord
 		end
 		token
 	end
-
 end

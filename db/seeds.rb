@@ -209,9 +209,9 @@ require "open-uri"
 				title: "Hogwarts - School of Witchcraft and Wizardry",
 				street_address: "1 Hogwarts Ave",
 				zip_code: 11111,
-				city: "New York",
-				state: "New York",
-				country: "United States",
+				city: "Hogwarts",
+				state: "England",
+				country: "Great Britain",
 				property_type: "Castle",
 				max_guests: 300, 
 				nightly_price: 100000, 
@@ -222,19 +222,19 @@ require "open-uri"
 				num_bathrooms: 40, 
 				num_bedrooms: 38,
 				num_beds: 300, 
-				lat: Faker::Address.latitude, 
-				long: Faker::Address.longitude
+				lat: 57.12656, 
+				long: -4.70857
 		})
 
 		puts 'Generating Knightbus...'
 		Listing.create!({
 			host_id: 12,
-			title: "Knight Bus - Remodeled Quaint 1970s Double-Decker Bus",
+			title: "Remodeled Quaint 1970s Double-Decker Bus",
 			street_address: "3478 Smith Ave",
 			zip_code: 10075,
-			city: Faker::Address.city,
-			state: Faker::Address.state,
-			country: "United States",
+			city: "Knight Bus",
+			state: "TBD",
+			country: "Great Britain",
 			property_type: "Automobile",
 			max_guests: 20, 
 			nightly_price: 99, 
@@ -245,19 +245,19 @@ require "open-uri"
 			num_bathrooms: 1, 
 			num_bedrooms: 2,
 			num_beds: 10, 
-			lat: Faker::Address.latitude, 
-			long: Faker::Address.longitude
+			lat: 51.54351, 
+			long: -0.37755
 		})
 
 		puts 'Generating The Burrow...'
 		Listing.create!({
 			host_id: 4,
-			title: "The Burrow - Magical Multi-Level Family Home",
+			title: "Magical Multi-Level Family Home",
 			street_address: "3478 Weasley Lane",
 			zip_code: Faker::Address.zip_code,
-			city: Faker::Address.city,
-			state: Faker::Address.state,
-			country: "United States",
+			city: "The Burrow",
+			state: "Devon",
+			country: "Great Britain",
 			property_type: "Home",
 			max_guests: 15, 
 			nightly_price: 249, 
@@ -268,8 +268,8 @@ require "open-uri"
 			num_bathrooms: 2.5, 
 			num_bedrooms: 5,
 			num_beds: 8, 
-			lat: Faker::Address.latitude, 
-			long: Faker::Address.longitude
+			lat: 50.37191, 
+			long: -3.64174
 		})
 
 		puts 'Generating Cupboard Under the Stairs..'
@@ -278,9 +278,9 @@ require "open-uri"
 			title: "Cupboard Under the Stairs",
 			street_address: "4 Privet Drive",
 			zip_code: Faker::Address.zip_code,
-			city: Faker::Address.city,
-			state: Faker::Address.state,
-			country: "United States",
+			city: "Watford",
+			state: "England",
+			country: "Great Britain",
 			property_type: "Room",
 			max_guests: 2, 
 			nightly_price: 100, 
@@ -291,8 +291,8 @@ require "open-uri"
 			num_bathrooms: 0, 
 			num_bedrooms: 1,
 			num_beds: 1, 
-			lat: Faker::Address.latitude, 
-			long: Faker::Address.longitude
+			lat: 51.69205, 
+			long: -0.41672
 		})
 
 		puts 'Generating Chamber of Secrets..'
@@ -301,9 +301,9 @@ require "open-uri"
 			title: "Cavernous Chamber of Secrets Under the Bathroom of Hogwarts",
 			street_address: "12 Hogwarts Ave",
 			zip_code: 10075,
-			city: "New York",
-			state: "New York",
-			country: "United States",
+			city: "Chamber of Secrets",
+			state: "Hogwarts",
+			country: "Great Britain",
 			property_type: "Basement",
 			max_guests: 20, 
 			nightly_price: 200, 
@@ -314,8 +314,8 @@ require "open-uri"
 			num_bathrooms: 5, 
 			num_bedrooms: 3,
 			num_beds: 10, 
-			lat: Faker::Address.latitude, 
-			long: Faker::Address.longitude
+			lat: 57.13655, 
+			long: -4.70252
 		})
 
 		puts 'Generating Gryffindor Common Room'
@@ -324,9 +324,9 @@ require "open-uri"
 			title: "Gryffindor Common Room",
 			street_address: "123 Hogwarts Ave",
 			zip_code: 10075,
-			city: "New York",
-			state: "New York",
-			country: "United States",
+			city: "Gryffindor Common Room",
+			state: "Hogwarts",
+			country: "Great Britain",
 			property_type: "Room",
 			max_guests: 20, 
 			nightly_price: 600, 
@@ -337,8 +337,8 @@ require "open-uri"
 			num_bathrooms: 5, 
 			num_bedrooms: 3,
 			num_beds: 10, 
-			lat: Faker::Address.latitude, 
-			long: Faker::Address.longitude
+			lat: 57.13330, 
+			long: -4.71049
 		})
 
 		puts 'Generating Hagrids Hut'
@@ -347,9 +347,9 @@ require "open-uri"
 			title: "Hut on Hogwarts Grounds. Wonderful forest view",
 			street_address: "1234 Hogwarts Ave",
 			zip_code: 10075,
-			city: "New York",
-			state: "New York",
-			country: "United States",
+			city: "Hagrids Hut",
+			state: "Hogwarts",
+			country: "Great Britain",
 			property_type: "Home",
 			max_guests: 5, 
 			nightly_price: 250, 
@@ -360,8 +360,8 @@ require "open-uri"
 			num_bathrooms: 1, 
 			num_bedrooms: 2,
 			num_beds: 1, 
-			lat: Faker::Address.latitude, 
-			long: Faker::Address.longitude
+			lat: 57.13799, 
+			long: -4.72132
 		})
 
 		puts 'Generating 12 Grimmauld Place'
@@ -370,9 +370,9 @@ require "open-uri"
 			title: "Magical Townhouse Located at Grimmauld Place",
 			street_address: "12 Grimmauld Place",
 			zip_code: Faker::Address.zip_code,
-			city: Faker::Address.city,
-			state: Faker::Address.state,
-			country: "United States",
+			city: "12 Grummauld Place",
+			state: "Islington",
+			country: "Great Britain",
 			property_type: "Townhouse",
 			max_guests: 12, 
 			nightly_price: 400, 
@@ -383,8 +383,8 @@ require "open-uri"
 			num_bathrooms: 3, 
 			num_bedrooms: 4,
 			num_beds: 6, 
-			lat: Faker::Address.latitude, 
-			long: Faker::Address.longitude
+			lat: 51.53559,
+			long: -0.10372
 		})
 
 		puts 'Generating Magical Tent'
@@ -393,9 +393,9 @@ require "open-uri"
 			title: "Enchanted Tent Located at Quidditch World Cup",
 			street_address: "765 World Cup Lane",
 			zip_code: Faker::Address.zip_code,
-			city: Faker::Address.city,
-			state: Faker::Address.state,
-			country: "United States",
+			city: "Magical Tent",
+			state: "TBD",
+			country: "Great Britain",
 			property_type: "Tent",
 			max_guests: 10, 
 			nightly_price: 249, 
@@ -406,8 +406,8 @@ require "open-uri"
 			num_bathrooms: 1, 
 			num_bedrooms: 3,
 			num_beds: 6, 
-			lat: Faker::Address.latitude, 
-			long: Faker::Address.longitude
+			lat: 50.56337, 
+			long: -3.95914
 		})
 
 		puts 'Generating Gringotts'
@@ -416,9 +416,9 @@ require "open-uri"
 			title: "Bank that is Totally Owned by Me",
 			street_address: "3256 Magical Lane",
 			zip_code: Faker::Address.zip_code,
-			city: Faker::Address.city,
-			state: Faker::Address.state,
-			country: "United States",
+			city: "Gringotts Bank",
+			state: "Diagon Alley",
+			country: "Great Britain",
 			property_type: "Building",
 			max_guests: 100, 
 			nightly_price: 999, 
@@ -429,8 +429,8 @@ require "open-uri"
 			num_bathrooms: 6, 
 			num_bedrooms: 100,
 			num_beds: 100, 
-			lat: Faker::Address.latitude, 
-			long: Faker::Address.longitude
+			lat: 51.50802,
+			long: -0.12770
 		})
 
 		puts 'Generating Malfoy Manner'
@@ -439,9 +439,9 @@ require "open-uri"
 			title: "Malfoy Manner - Mansion With Long Standing History",
 			street_address: "1367 Malfoy Drive",
 			zip_code: Faker::Address.zip_code,
-			city: Faker::Address.city,
-			state: Faker::Address.state,
-			country: "United States",
+			city: "Malfoy Manner",
+			state: "London",
+			country: "Great Britain",
 			property_type: "Mansion",
 			max_guests: 40, 
 			nightly_price: 3000, 
@@ -452,8 +452,8 @@ require "open-uri"
 			num_bathrooms: 12, 
 			num_bedrooms: 16,
 			num_beds: 14, 
-			lat: Faker::Address.latitude, 
-			long: Faker::Address.longitude
+			lat: 51.44215,
+			long: 0.14970
 		})
 
 		puts 'Generating Lovegood House'
@@ -462,9 +462,9 @@ require "open-uri"
 			title: "Lovegood House - Home of the Quibbler",
 			street_address: "4521 Lovegood Lane",
 			zip_code: Faker::Address.zip_code,
-			city: Faker::Address.city,
-			state: Faker::Address.state,
-			country: "United States",
+			city: "Lovegood Home",
+			state: "Devon",
+			country: "Great Britain",
 			property_type: "Home",
 			max_guests: 10, 
 			nightly_price: 499, 
@@ -475,8 +475,8 @@ require "open-uri"
 			num_bathrooms: 2.5, 
 			num_bedrooms: 3,
 			num_beds: 6, 
-			lat: Faker::Address.latitude, 
-			long: Faker::Address.longitude
+			lat: 51.18123,
+			long: -4.07020
 		})
 
 		puts "Attempting to seed photos"

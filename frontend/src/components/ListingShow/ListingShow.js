@@ -1,7 +1,8 @@
+import React from 'react';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getListing, fetchListing } from "../../store/listings";
-import usersReducer, { fetchUser, retrieveUserById } from '../../store/users';
+import { fetchUser } from '../../store/users';
 import { useParams } from "react-router-dom";
 import './ListingShow.css'
 import './ListingShowPicDisplay/ListingShowPicDisplay';
@@ -13,11 +14,12 @@ import * as sessionAction from '../../store/session';
 import ListingReservationTool from "./ListingReservationTool/ListingReservationTool";
 import ReservationSuccessful from './ReservationSuccessful/ReservationSuccessful'
 import Reviews from "../Reviews/Reviews";
-import { Link } from "react-router-dom";
 import CreateReview from "../Reviews/CreateReview/CreateReview";
 import { receiveCreateReviewModal, receiveLogInModal } from "../../store/ui";
 import { retrieveUsers } from '../../store/users';
 import Socials from "../Navigation/socials/Socials";
+import { getReviews } from "../../store/reviews";
+import GMapLS from './GMapLS/GMapLS';
 
 const ListingShow = () => {
  const dispatch = useDispatch();
@@ -27,10 +29,9 @@ const ListingShow = () => {
  const hostId = listing ? listing.hostId : null;
  const host = useSelector(state => state.users ? state.users[hostId] : null);
  const users = useSelector(retrieveUsers);
+ const reviews = useSelector(getReviews)
 
- let reviews = 47;
  let rating = 4.95
- let numReviews = 400
 
  useEffect(() => {
 	dispatch(fetchListing(listingId));
@@ -79,12 +80,16 @@ const ListingShow = () => {
 			<div id="lsp_initial_details">
 				<div id="lsp_initial_rating">&#9733; {rating}</div>
 				<div id="lsp_rating_reviews_sep">.</div>
-				<div id="lsp_initial_amount_of_reviews">{numReviews} reviews</div>
+				<a id="lsp_amount_of_reviews_link" href="#lsp_reservation_prompt_wrapper">
+				<div id="lsp_initial_amount_of_reviews">{reviews.length} reviews</div>
+				</a>
 					<span>.</span>
 					<i className="fa-sharp fa-solid fa-medal"></i>
 				<div id="lsp_id_superhost"> Superhost</div>
 					<span>.</span>
+				<a id="lsp_id_location_link" href="#GMapLS_container">
 				<div id="lsp_id_location">{`${listing.city}, ${listing.state}, ${listing.country}`}</div>
+				</a>
 			</div>
 	
 			<div id="LSPD_container">
@@ -109,31 +114,40 @@ const ListingShow = () => {
 							</div>
 						</div>
 						<div id="lsp_host_profile_container">
-							<img id="lsp_host_profile_photo" src={host?.photosUrl}></img>
+							<img id="lsp_host_profile_photo" src={host?.photosUrl} alt="host_profile_pic"></img>
 						</div>
 					</div>
 
-					<div id="lsp_listing_description">{listing.description.split("\n").map((line) => <>{line}<br></br></>)}</div>
+					<div id="lsp_listing_description">{listing.description.split("\n").map((line, index) => 
+						<React.Fragment key={index}>
+							{line}<br></br>
+							</React.Fragment>)}
+					</div>
 
 					<div id="lsp_reviews_wrapper">
 						<div id="lsp_reservation_prompt_wrapper" onClick={handleCreateReview}>
-							<div id="lsp_reservation_prompt"> Did you stay here? Wave your wand  here to a review.</div>
+							<div id="lsp_reservation_prompt"> Did you stay here? Wave your wand here to leave a review.</div>
 						</div>
 						<Reviews users={users}/> 
 						<div id="lsp_create_new_review_wrapper">
 							<CreateReview listing={listing} host={host}/>
 						</div>
 					</div>
+
 					</div>
 					<div id="lsp_res_successful_wrapper">
 						<ReservationSuccessful />
 					</div>
 				<div id="ListingReservationTool_wrapper"> 
-					<ListingReservationTool listing={listing}/>
+					<ListingReservationTool listing={listing} type="reservation" />
 				</div>
 			</div>
-		</div>
 
+			<div id="lsp_gmap_wrapper">
+				<GMapLS listing={listing}/>
+			</div>
+
+		</div>
 	</>
  )
 }

@@ -37,12 +37,12 @@ const GuestPicker = ({maxGuests, guestsChosenUpdater}) => {
 					setterOfGuestsChosen={updateGuestsChosen}
 					maxGuests={maxGuests}
 				/>
-				<GuestPickerOption 
+				{/*<GuestPickerOption 
 					title={"Pets"} 
 					category={"Bringing a service animal?"} 
-					/>
+					/>*/}
 
-				<div id="gp_guest_warning">This place has a maximum of {maxGuests} guests, not including infants.
+				<div id="gp_guest_warning">This place has a maximum of <span id="gp_max_guest_warning">{maxGuests}</span> guests, not including owls or cats.
 				</div>
 			</div>
 		</div>

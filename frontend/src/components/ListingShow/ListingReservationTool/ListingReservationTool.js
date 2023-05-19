@@ -6,10 +6,11 @@ import CheckInCheckOut from './ReservationPicker/CheckInCheckOut/CheckInCheckOut
 import ReservationPicker from './ReservationPicker/ReservationPicker';
 import GuestPicker from './GuestPicker/GuestPicker';
 import differenceInCalendarDays from 'date-fns/differenceInCalendarDays';
-import { createReservation } from '../../../store/reservations';
+import { createReservation, updateReservation } from '../../../store/reservations';
 import { receiveLogInModal } from '../../../store/ui';
+import { getReviews } from "../../../store/reviews";
 
-const ListingReservationTool = ({listing}) => {
+const ListingReservationTool = ({listing, type, reservation}) => {
 	const dispatch = useDispatch();
 	const [showReservationPicker, setShowReservationPicker] = useState(false);
 	const [showGuestAmountPicker, setShowGuestAmountPicker] = useState(false);
@@ -17,12 +18,20 @@ const ListingReservationTool = ({listing}) => {
 	const [checkOutDate, setCheckOutDate] = useState("");
 	const [guestsChosen, setGuestsChosen] = useState(1);
 	const user = useSelector(state => state.session.user ? state.session.user : null)
+	const reviewAmount = useSelector(getReviews);
 
 	const checkInDateObj = new Date(`${checkInDate} GMT`)
 	const checkOutDateObj = new Date(`${checkOutDate} GMT`)
 	
 	const rating = 4.95;
-	const numReviews = 207;
+
+	useEffect(() => {
+		if (reservation) {
+			setCheckInDate(reservationDateFormat(reservation.checkIn));
+			setCheckOutDate(reservationDateFormat(reservation.checkOut));
+			setGuestsChosen(reservation.numGuests);
+		}
+	}, [])
 
 	useEffect(() => {
 		if (!showReservationPicker) return;
@@ -42,6 +51,13 @@ const ListingReservationTool = ({listing}) => {
 		return () => document.removeEventListener("click", closeGuestPicker);
 	}, [showGuestAmountPicker]) 
 
+	const reservationDateFormat = (dateText) => {
+		const splitYear = dateText.slice(0, 4);
+		const splitMonth = dateText.slice(5, 7);
+		const splitDay = dateText.slice(8, 10);
+		return `${splitMonth}/${splitDay}/${splitYear}`;
+	} 
+
 	const updateShowReservationPicker = (status) => {
 		setShowReservationPicker(status);
 	} 
@@ -56,6 +72,14 @@ const ListingReservationTool = ({listing}) => {
 
 	const updateGuestsChosen = (amount) => {
 		setGuestsChosen(amount);
+	}
+
+	const continueButtonText = () => {
+		if (type === "reservation") {
+			return "Reserve"
+		} else if (type === "edit") {
+			return "Edit Reservation"
+		}
 	}
 
 	const getTodaysDate = () => {
@@ -113,26 +137,36 @@ const ListingReservationTool = ({listing}) => {
 	}
 
 	const makeReservation = () => {
-		if (user) {
+		if (user && !reservation) {
 			const newReservation = {
 				user_id: user.id, 
 				listing_id: listing.id,
 				check_in: formatDates(checkInDate),
 				check_out: formatDates(checkOutDate), 
 				num_guests: guestsChosen,
-				total_price: totalReservationCost(), 
+				total_price: totalReservationCost() 
 			}
 				dispatch(createReservation(newReservation));
+		} else if (user && reservation) {
+				const updatedReservation = {
+					id: reservation.id,
+					user_id: user.id,
+					listing_id: listing.id, 
+					check_in: formatDates(checkInDate),
+					check_out: formatDates(checkOutDate),
+					num_guests: guestsChosen, 
+					total_price: totalReservationCost()
+				}
+				dispatch(updateReservation(updatedReservation))
 		} else {
 				dispatch(receiveLogInModal(true));
 			}
 	}
 
-
  return(
 	<div id="rt_container" onClick={handleInsideClick} >
 		<div id="rt_wrapper">
-			<form id="rt_reservation form">
+			<form id="rt_reservation_form">
 				<div id="rt_top_bar">
 					<div id="rt_top_bar_leftside">
 						<div id="rt_top_bar_price_and_text">
@@ -148,7 +182,7 @@ const ListingReservationTool = ({listing}) => {
 						</div>
 						<div id="lsp_rating_reviews_sep">.</div>
 						<div id="rt_reviews">
-							{numReviews} reviews
+							{reviewAmount.length ? reviewAmount.length : 0} reviews
 						</div>
 					</div>
 				</div>
@@ -176,7 +210,7 @@ const ListingReservationTool = ({listing}) => {
 					</div>
 				</div>
 			
-				<ContinueButton textContent={"Reserve"} clickFunction={makeReservation}/>
+				<ContinueButton textContent={continueButtonText()} clickFunction={makeReservation}/>
 
 				<div id="rt_notice_wrapper">
 					<div id="rt_notice">You may need a Portkey for this location</div>

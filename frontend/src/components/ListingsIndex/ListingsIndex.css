@@ -4,19 +4,29 @@
 	width: 100%;
 	padding-left: 40px;
 	padding-top: 20px;
+	position: relative;
+	top: 160px;
 
 }
 
 #listings_index_wrapper {
 	display: grid;
 	grid-auto-flow: row dense;
-	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 	grid-auto-rows: 460px;
 	width: 100%;
 	max-width: 100%;
 	column-gap: 24px; 
 	row-gap: 40px;
 	max-width: 96%;
+}
+
+#listings_index_map_wrapper { 
+	display: fixed;
+	height: 85vh;
+	width: 100%;
+	top: 160px;
+	left: 0;
 }
 
 

@@ -1,0 +1,14 @@
+#GMap_main_container {
+	height: 100%;
+	width: 100%;
+}
+
+#map_wrapper {
+	height: 100%;
+	width: 100%;
+}
+
+#map {
+	height: 100%;
+	width: 100%;
+}

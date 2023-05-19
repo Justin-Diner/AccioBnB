@@ -25,6 +25,10 @@
 	object-fit: cover;
 }
 
+#listing_index_item_wrapper {
+	width: 100%
+}
+
 .listing_index_item_textcontent {
 	font-family: var(--font-family);
 	padding: 1px;

@@ -1,9 +1,20 @@
-#category_filter_wrapper {
-	height: 78px; 
+#category_filter_container {
+	position: fixed; 
+	height: 78px;
 	width: 100%;
-	margin-top: 27px;
+	z-index: 100;
+	top: 84px;
+	background-color: white;
+	z-index: 2;
+
+}
+
+#category_filter_wrapper {
+	height: 100%; 
+	width: 100%;
 	display: flex;
 	justify-content: space-around;
+
 }
 
 

@@ -9,6 +9,10 @@
 	right: 5px;
 }
 
+#search_button_background:hover {
+	background-color: #d70466;
+}
+
 #search_button_background {
 	background-color: #FF385C; 
 	height: 70%;

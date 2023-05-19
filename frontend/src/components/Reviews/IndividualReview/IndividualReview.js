@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import CreateReview from '../CreateReview/CreateReview';
 import { getListing } from '../../../store/listings';
-import { retrieveUser } from '../../../store/users';
+import { retrieveUser, retrieveUsers } from '../../../store/users';
 
 const IndividualReview = ({review, user}) => {
 	const dispatch = useDispatch();
@@ -15,9 +15,11 @@ const IndividualReview = ({review, user}) => {
 	const [allowDelete, setAllowDelete] = useState(false);
 	const [allowEditButton, setAllowEditButton] = useState(false);
 	const [promptReviewEdit, setPromptReviewEdit] = useState(false);
+
 	const reviewListing = useSelector(getListing(review.listingId))
 	const host = useSelector(retrieveUser(reviewListing.hostId))
 	const editReviewUIState = useSelector(retrieveEditReviewModalState);
+	const users = useSelector(retrieveUsers)
 
 	const months = {
 		"01": "January",
@@ -35,22 +37,39 @@ const IndividualReview = ({review, user}) => {
 	}
 
 	useEffect(() => {
-		if (!editReviewUIState) {
-			setPromptReviewEdit(false);
-		}
-	}, [editReviewUIState])
-
-	useEffect(() => {
-		if (sessionUser && sessionUser?.id === user?.id) {
+		if (authorCheck()) {
 			setAllowDelete(true);
 			setAllowEditButton(true);
 		} else {
 			setAllowDelete(false);
 			setAllowEditButton(false);
 		}
-	
-	}, [sessionUser])
+	}, []);
 
+
+	useEffect(() => {
+		if (!editReviewUIState) {
+			setPromptReviewEdit(false);
+		}
+	}, [editReviewUIState])
+
+	useEffect(() => {
+		if (authorCheck()) {
+			setAllowDelete(true);
+			setAllowEditButton(true);
+		} else {
+			setAllowDelete(false);
+			setAllowEditButton(false);
+		}
+	}, [sessionUser, users])
+
+	const authorCheck = () => {
+		if (sessionUser && (sessionUser?.id === user?.id)) {
+			return true; 
+		} else {
+			return false; 
+		}
+	}
 
 	const monthName = (createdAt) => {
 		let month = createdAt?.slice(5, 7)
@@ -87,7 +106,7 @@ const IndividualReview = ({review, user}) => {
 							} 
 							{allowDelete && 
 							<div className="IR_button" id="IR_delete_wrapper" onClick={handleDelete}>
-								<div id="IR_delete_button" >Delete Post</div>
+								<div id="IR_delete_button">Delete Post</div>
 							</div>
 							}
 						</div>

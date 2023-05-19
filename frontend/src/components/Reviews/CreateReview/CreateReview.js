@@ -8,6 +8,7 @@ import { retrieveCreateReviewModalState, retrieveEditReviewModalState } from '..
 import { receiveCreateReviewModal, receiveEditReviewModal } from '../../../store/ui';
 import * as sessionAction from '../../../store/session';
 import { createReview, updateReview } from '../../../store/reviews';
+import { fetchUser } from '../../../store/users';
 
 const CreateReview = ({listing, host, review}) => {
 	const dispatch = useDispatch();
@@ -48,7 +49,6 @@ const CreateReview = ({listing, host, review}) => {
 	useEffect(() => {
 		if (showing) {
 			window.addEventListener("click", closeWindow)
-			console.log(showing)
 		}
 	}, [showing])
 
@@ -92,6 +92,7 @@ const CreateReview = ({listing, host, review}) => {
 		if (reviewType === "Submit") {
 			dispatch(createReview(newReview));
 			if (createReviewState) {
+				dispatch(fetchUser(sessionUser.id));
 				dispatch(receiveCreateReviewModal(false));
 			}
 		} else if (reviewType === "Edit") {

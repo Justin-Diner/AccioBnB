@@ -1,5 +1,5 @@
 import './IndividualReview.css';
-import { deleteReview, updateReview } from '../../../store/reviews';
+import { deleteReview } from '../../../store/reviews';
 import { receiveEditReviewModal, retrieveEditReviewModalState } from '../../../store/ui';
 import { useDispatch } from 'react-redux';
 import * as sessionAction from '../../../store/session';
@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import CreateReview from '../CreateReview/CreateReview';
 import { getListing } from '../../../store/listings';
-import { retrieveUser, retrieveUsers } from '../../../store/users';
+import { retrieveUser } from '../../../store/users';
 
 const IndividualReview = ({review, user}) => {
 	const dispatch = useDispatch();
@@ -15,11 +15,11 @@ const IndividualReview = ({review, user}) => {
 	const [allowDelete, setAllowDelete] = useState(false);
 	const [allowEditButton, setAllowEditButton] = useState(false);
 	const [promptReviewEdit, setPromptReviewEdit] = useState(false);
+	const [author, setAuthor] = useState(false);
 
 	const reviewListing = useSelector(getListing(review.listingId))
 	const host = useSelector(retrieveUser(reviewListing.hostId))
 	const editReviewUIState = useSelector(retrieveEditReviewModalState);
-	const users = useSelector(retrieveUsers)
 
 	const months = {
 		"01": "January",
@@ -61,7 +61,7 @@ const IndividualReview = ({review, user}) => {
 			setAllowDelete(false);
 			setAllowEditButton(false);
 		}
-	}, [sessionUser, users])
+	}, [sessionUser, user])
 
 	const authorCheck = () => {
 		if (sessionUser && (sessionUser?.id === user?.id)) {
@@ -91,7 +91,7 @@ const IndividualReview = ({review, user}) => {
 			<div id="IR_wrapper">
 				<div id="IR_top_bar_wrapper">
 					<div id="IR_reviewer_image">
-						<img src={user?.photoUrl}></img>
+						<img alt="user photo" src={user?.photoUrl}></img>
 					</div>
 					<div id="IR_top_bar_leftside">
 						<div id="IR_name_and_date_wrapper">

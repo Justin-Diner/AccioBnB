@@ -1,2 +1,6 @@
 lsof -ti:<server>
 kill -9 <PID>
+
+start:
+rails s
+npm run build 

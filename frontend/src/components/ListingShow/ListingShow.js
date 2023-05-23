@@ -114,7 +114,7 @@ const ListingShow = () => {
 							</div>
 						</div>
 						<div id="lsp_host_profile_container">
-							<img id="lsp_host_profile_photo" src={host?.photosUrl} alt="host_profile_pic"></img>
+							<img id="lsp_host_profile_photo" src={host?.photoUrl} alt="host_profile_pic"></img>
 						</div>
 					</div>
 

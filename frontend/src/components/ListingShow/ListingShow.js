@@ -20,6 +20,7 @@ import { retrieveUsers } from '../../store/users';
 import Socials from "../Navigation/socials/Socials";
 import { getReviews } from "../../store/reviews";
 import GMapLS from './GMapLS/GMapLS';
+import ThreeFacts from './ThreeFacts/ThreeFacts';
 
 const ListingShow = () => {
  const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const ListingShow = () => {
  const hostId = listing ? listing.hostId : null;
  const host = useSelector(state => state.users ? state.users[hostId] : null);
  const users = useSelector(retrieveUsers);
- const reviews = useSelector(getReviews)
+ const reviews = useSelector(getReviews);
 
  let rating = 4.95
 
@@ -41,7 +42,7 @@ const ListingShow = () => {
 	if (listing) {
 		dispatch(fetchUser(listing.hostId))
 	 }
- }, [dispatch, listing])
+ }, [dispatch, listing]);
 
  if (!listing) {
 	return null;
@@ -116,6 +117,10 @@ const ListingShow = () => {
 						<div id="lsp_host_profile_container">
 							<img id="lsp_host_profile_photo" src={host?.photoUrl} alt="host_profile_pic"></img>
 						</div>
+					</div>
+
+					<div id="lsp_tf_container"> 
+						<ThreeFacts host={host?.firstName} />
 					</div>
 
 					<div id="lsp_listing_description">{listing.description.split("\n").map((line, index) => 

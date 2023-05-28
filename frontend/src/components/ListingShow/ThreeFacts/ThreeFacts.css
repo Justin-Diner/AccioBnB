@@ -1,0 +1,14 @@
+#tf_container {
+	min-height: 200px;
+	border-bottom: var(--border-bottom-grey);
+	padding-top: 32px;
+	padding-bottom: 32px;
+}
+
+.tf_item {
+	margin-bottom: 22px;
+}
+
+#tf_cancel_wrapper {
+	margin-bottom: 0px;
+}

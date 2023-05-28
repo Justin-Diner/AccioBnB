@@ -2,14 +2,13 @@ import { useState, useEffect } from "react";
 import './GuestPickerOption.css';
 
 const GuestPickerOption = ({title, category, guestsChosen, setterOfGuestsChosen, maxGuests}) => {
-	const [itemCount, setItemCount] = useState(0);
+	const [itemCount, setItemCount] = useState(0); 
 
 	const increaseCount = () => {
 		if ((guestsChosen < maxGuests) && (itemCount >= 0)) {
 			let newItemCount = itemCount + 1
 				setItemCount(newItemCount)
 				setterOfGuestsChosen(guestsChosen + 1);
-
 		}
 	}
 

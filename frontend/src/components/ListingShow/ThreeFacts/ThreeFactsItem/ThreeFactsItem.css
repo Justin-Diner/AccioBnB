@@ -1,0 +1,44 @@
+#tfi_container {
+	height: 100%;
+	width: 100%; 
+	margin-bottom: 4px;
+	margin-top: 4px;
+}
+
+#tfi_wrapper {
+	height: 100%; 
+	display: flex; 
+}
+
+#tfi_image {
+	height: 32px; 
+	width: 32px;
+}
+
+#tfi_title {
+	color: rgb(34, 34, 34);
+	font-family: var(--font-family);
+	font-weight: 600;
+	font-size: 18px !important; 
+	line-height: 20px; 
+	margin-bottom: 4px; 
+}
+
+#tfi_cancel_title {
+	position: relative; 
+	top: 8px;
+	font-weight: 600;
+	font-family: var(--font-family);
+}
+
+#tfi_title_desc_wrapper {
+	padding-left: 18px;
+}
+
+#tfi_description {
+	color: var(--lsp-secondary-font-color);
+	font-family: var(--font-family);
+	font-weight: 400 !important; 
+	font-size: 16px; 
+	line-height: 20px; 
+}

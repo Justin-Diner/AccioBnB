@@ -9,6 +9,7 @@ import differenceInCalendarDays from 'date-fns/differenceInCalendarDays';
 import { createReservation, updateReservation } from '../../../store/reservations';
 import { receiveLogInModal } from '../../../store/ui';
 import { getReviews } from "../../../store/reviews";
+import { calculateRating } from '../../utils/Utils';
 
 const ListingReservationTool = ({listing, type, reservation}) => {
 	const dispatch = useDispatch();
@@ -178,7 +179,7 @@ const ListingReservationTool = ({listing, type, reservation}) => {
 					</div>
 					<div id="rt_top_bar_rightside">
 						<div id="rt_rating">
-							&#9733; {rating}
+							&#9733; {calculateRating(listing.overallRating)}
 						</div>
 						<div id="lsp_rating_reviews_sep">.</div>
 						<div id="rt_reviews">

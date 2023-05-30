@@ -1,6 +1,6 @@
 import './ListingIndexItem.css';
 import { Link } from 'react-router-dom';
-import { fetchListingReviews, getReviews } from '../../../store/reviews';
+import { calculateRating } from '../../utils/Utils';
 
 const ListingIndexItem = ({listing}) => {
 	let titlePhoto = listing?.photosUrl[0];
@@ -14,7 +14,7 @@ const ListingIndexItem = ({listing}) => {
 			<div id="listing_index_item_wrapper">
 				<div className="listing_index_item_textcontent" id="listing_index_item_state_and_ratings_wrapper">
 					<div className="listing_index_item_textcontent" id="listing_index_item_title_and_state">{`${listing.city}, ${listing.state}`}</div>
-					<div className="listing_index_item_textcontent" id="listing_index_item_rating">&#9733; 4.95</div>
+					<div className="listing_index_item_textcontent" id="listing_index_item_rating">&#9733; {calculateRating(listing.overallRating)}</div>
 				</div>
 				<div className="listing_index_item_textcontent" id="listing_index_item_milesaway">{(Math.floor(Math.random() * 130) + 1).toString()} miles away</div>
 				<div className="listing_index_item_textcontent" id="listing_index_item_daterange">Dec 10 - 15</div>

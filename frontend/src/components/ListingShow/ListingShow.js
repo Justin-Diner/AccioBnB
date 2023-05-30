@@ -21,6 +21,7 @@ import Socials from "../Navigation/socials/Socials";
 import { getReviews } from "../../store/reviews";
 import GMapLS from './GMapLS/GMapLS';
 import ThreeFacts from './ThreeFacts/ThreeFacts';
+import { calculateRating } from '../utils/Utils';
 
 const ListingShow = () => {
  const dispatch = useDispatch();
@@ -79,7 +80,7 @@ const ListingShow = () => {
 			<div id="lsp_title">{listing.title}</div>
 					
 			<div id="lsp_initial_details">
-				<div id="lsp_initial_rating">&#9733; {rating}</div>
+				<div id="lsp_initial_rating">&#9733; {calculateRating(listing.overallRating)}</div>
 				<div id="lsp_rating_reviews_sep">.</div>
 				<a id="lsp_amount_of_reviews_link" href="#lsp_reservation_prompt_wrapper">
 				<div id="lsp_initial_amount_of_reviews">{reviews.length} reviews</div>

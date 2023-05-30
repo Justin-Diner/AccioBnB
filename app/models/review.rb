@@ -14,9 +14,12 @@
 #  value         :integer          not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  review_rating :float            default(6.0)
 #
 class Review < ApplicationRecord
 	validates :listing_id, :user_id, :description, :cleanliness, :accuracy, :communication, :location, :check_in, :value, presence: true
+	before_save :calculate_review_average
+	after_save :update_listing_overall_rating 
 
 	belongs_to :user, 
 	primary_key: :id, 
@@ -31,4 +34,14 @@ class Review < ApplicationRecord
 	has_one :host,
 	through: :listing, 
 	source: :host
+
+	private
+
+	def calculate_review_average
+		self.review_rating = ((cleanliness + accuracy + communication + location + check_in + value) / 6.0).round(2)
+	end
+
+	def update_listing_overall_rating
+		listing.update(overall_rating: listing.calculate_overall_rating)
+	end
 end

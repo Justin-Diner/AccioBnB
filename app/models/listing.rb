@@ -22,6 +22,7 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  title          :string           not null
+#  overall_rating :float            default(5.0)
 #
 class Listing < ApplicationRecord
 	validates :host_id, :title, :street_address, :zip_code, :city, :state, :country, :property_type, :max_guests, :nightly_price, :cleaning_fee, :description, :num_bathrooms, :num_bedrooms, :num_beds, :lat, :long, presence: true 
@@ -50,4 +51,12 @@ class Listing < ApplicationRecord
 		through: :reservations, 
 		source: :user 
 
+	def calculate_overall_rating
+		total_reviews = reviews.count
+		p total_reviews
+		return 5.0 if total_reviews.zero? 
+
+		sum_ratings = reviews.sum(:review_rating)
+		(sum_ratings.to_f / total_reviews).round(2)
+	end
 end

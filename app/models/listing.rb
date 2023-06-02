@@ -59,4 +59,12 @@ class Listing < ApplicationRecord
 		sum_ratings = reviews.sum(:review_rating)
 		(sum_ratings.to_f / total_reviews).round(2)
 	end
+
+	def photosUrl 
+		if photos.attached? 
+			photos.map {|photo| photo.url}
+		else 
+			'/../../assets/images/hogwarts/hogwarts1.jpg'
+		end
+	end
 end

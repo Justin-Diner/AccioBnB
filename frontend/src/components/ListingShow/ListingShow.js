@@ -33,8 +33,6 @@ const ListingShow = () => {
  const users = useSelector(retrieveUsers);
  const reviews = useSelector(getReviews);
 
- let rating = 4.95
-
  useEffect(() => {
 	dispatch(fetchListing(listingId));
  }, [dispatch, listingId]);

@@ -50,7 +50,7 @@ const IndividualReview = ({review, user}) => {
 	useEffect(() => {
 		if (!editReviewUIState) {
 			setPromptReviewEdit(false);
-		}
+		} 
 	}, [editReviewUIState])
 
 	useEffect(() => {
@@ -78,6 +78,8 @@ const IndividualReview = ({review, user}) => {
 	} 
 
 	const handleDelete = () => {
+		setAllowDelete(false);
+		setAllowEditButton(false);
 		dispatch(deleteReview(review.id))
 	}
 

@@ -126,12 +126,13 @@
 }
 
 #lsp_property_details_text_container {
+	min-width: 600px;
 	width: 100%;
 	display: flex;
 	align-items: end;
 	justify-content: space-between;
 	height: 82px;
-	padding-bottom: 10px;
+	padding-bottom: 24px;
 	border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 

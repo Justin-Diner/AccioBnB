@@ -11,9 +11,10 @@ class Api::ReviewsController < ApplicationController
 
 	def show 
 		@review = Review.find(params[:id])
+		@listing = Listing.find(@review.listing_id)
 
 		if (@review)
-			redner 'api/reviews/show'
+			render 'api/reviews/show'
 		else 
 			render json: {errors: ['Review does not exist.']}
 		end
@@ -22,7 +23,9 @@ class Api::ReviewsController < ApplicationController
 
 	def create 
 		@review = Review.new(review_params)
+
 		if @review.save 
+			@listing = Listing.find(@review.listing_id)
 			render 'api/reviews/show'
 		else
 			render json: @review.errors.full_messages, status: :unprocessable_entity
@@ -33,6 +36,7 @@ class Api::ReviewsController < ApplicationController
 		@review = Review.find(params[:id])
 
 		if @review.update(review_params)
+			@listing = Listing.find(@review.listing_id)
 			render 'api/reviews/show'
 		else 
 			render json: @review.errors.full_messages, status: 422
@@ -44,7 +48,8 @@ class Api::ReviewsController < ApplicationController
 
 		if @review
 			Review.destroy(params[:id])
-			render json: {message: 'success'}
+			@listing = Listing.find(@review.listing_id)
+			render 'api/listings/show'
 		end
 	end
 

@@ -1,9 +1,10 @@
 import csrfFetch from "./csrf";
 import { RECEIVE_RESERVATIONS } from "./reservations";
+import { RECEIVE_REVIEW, REMOVE_REVIEW } from "./reviews";
 
 // Action Types 
 const RECEIVE_LISTINGS = 'listings/RECEIVE_LISTINGS';
-const RECEIVE_LISTING = 'listings/RECEIVE_LISTING';
+export const RECEIVE_LISTING = 'listings/RECEIVE_LISTING';
 const REMOVE_LISTING = 'listings/REMOVE_LISTING';
 
 // Action Creators 
@@ -94,6 +95,10 @@ const listingsReducer = (state = {}, action) => {
 			return newState;
 		case RECEIVE_RESERVATIONS: 
 			return {...state, ...action.payload.listings}
+		case RECEIVE_REVIEW:
+			return {...state, [action.payload.listings.id]: action.payload.listings}
+		case REMOVE_REVIEW:
+			return {...state, [action.payload.id]: action.payload}
 		default:
 			return state; 
 	}

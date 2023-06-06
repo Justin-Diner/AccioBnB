@@ -1,6 +1,7 @@
 #LSDP_container {
-	height: 100%;
+	min-height: 480px;
 	width: 100%; 
+	border-bottom: var(--border-bottom-grey);
 }
 
 #LSDP_wrapper {
@@ -12,6 +13,8 @@
 	margin-bottom: 12px;
 	font-size: 24px; 
 	font-weight: 600;
+	position: relative;
+	left: 10px;
 }
 
 #LSDP_subtitle {

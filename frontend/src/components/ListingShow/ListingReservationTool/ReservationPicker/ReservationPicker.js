@@ -45,7 +45,7 @@ const ReservationPicker = ({chooseCheckInDate, chooseCheckOutDate, chooseShowRes
 				<DatePicker chooseCheckInDate={updateCheckInDateText} chooseCheckOutDate={updateCheckOutDateText} />
 			</div>
 			<div id="dp_bottom_row_wrapper">
-				<div id="dp_close_button" onClick={closeReservationPicker}>Close</div>
+				<div id="dp_close_button" onClick={closeReservationPicker }>Close</div>
 			</div>
 			<div id="dp_margin_bottom"> </div>
 		</div>

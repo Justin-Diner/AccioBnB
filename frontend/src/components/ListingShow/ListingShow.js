@@ -143,16 +143,6 @@ const ListingShow = () => {
 						<ListingShowDatePicker LSSetCheckInDate={setCheckInDate} LSSetCheckOutDate={setCheckOutDate} listing={listing}/>
 					</section>
 
-					<div id="lsp_reviews_wrapper">
-						<div id="lsp_reservation_prompt_wrapper" onClick={handleCreateReview}>
-							<div id="lsp_reservation_prompt">Write a review</div>
-						</div>
-						<Reviews users={users}/> 
-						<div id="lsp_create_new_review_wrapper">
-							<CreateReview listing={listing} host={host}/>
-						</div>
-					</div>
-
 					</div>
 					<div id="lsp_res_successful_wrapper">
 						<ReservationSuccessful />
@@ -161,6 +151,16 @@ const ListingShow = () => {
 					<ListingReservationTool listing={listing} type="reservation" LSCheckInDate={checkInDate} LSCheckOutDate={checkOutDate}/>
 				</div>
 			</div>
+
+			<div id="lsp_reviews_wrapper">
+						<div id="lsp_reservation_prompt_wrapper" onClick={handleCreateReview}>
+							<div id="lsp_reservation_prompt">Write a review</div>
+						</div>
+						<Reviews users={users}/> 
+						<div id="lsp_create_new_review_wrapper">
+							<CreateReview listing={listing} host={host}/>
+						</div>
+					</div>
 
 			<div id="lsp_gmap_wrapper">
 				<GMapLS listing={listing}/>

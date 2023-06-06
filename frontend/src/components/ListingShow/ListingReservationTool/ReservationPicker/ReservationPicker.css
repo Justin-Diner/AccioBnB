@@ -56,6 +56,8 @@
 	justify-content: center;
 	align-items: center;
 	margin-right: 32px;
+	position: relative;
+	bottom: 13px;
 }
 
 #dp_close_button:hover {

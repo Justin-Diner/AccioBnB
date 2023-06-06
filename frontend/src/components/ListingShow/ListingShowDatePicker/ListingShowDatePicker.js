@@ -7,19 +7,16 @@ const ListingShowDatePicker = ({LSSetCheckInDate, LSSetCheckOutDate, listing}) =
 	const [LSDPCheckInDate, setLSDPCheckInDate] = useState(""); 
 	const [LSDPCheckOutDate, setLSDPCheckOutDate] = useState(""); 
 	const [LSDPDateTitle, setLSDPDateTitle] = useState("Minimum 1 Night Stay");
-	const [LSDPDateSubTitle, setLSDPDateSubTitle] = useState("Add your travel dates for exact pricing")
 
 	useEffect(() => {
 		if (LSDPCheckInDate && LSDPCheckOutDate) {
 			setLSDPDateTitle(amountOfNights())
-			setLSDPDateSubTitle(`${LSDPCheckInDate} - ${LSDPCheckOutDate}`)
 		}
 		if (LSDPCheckInDate) {
 			LSSetCheckInDate(LSDPCheckInDate)
 		}
-
-		if (LSDPCheckInDate && LSDPCheckOutDate === "") {
-			setLSDPDateSubTitle("Select checkout date.")
+		if (LSDPCheckInDate === "" && LSDPCheckOutDate === "") {
+			setLSDPDateTitle("Minimum 1 Night Stay")
 		}
 
 	}, [LSDPCheckInDate])
@@ -27,16 +24,15 @@ const ListingShowDatePicker = ({LSSetCheckInDate, LSSetCheckOutDate, listing}) =
 	useEffect(() => {
 		if (LSDPCheckInDate && LSDPCheckOutDate) {
 			amountOfNights();
-			setLSDPDateSubTitle(`${LSDPCheckInDate} - ${LSDPCheckOutDate}`)
 		}
 
 		if (LSDPCheckOutDate) {
 			LSSetCheckOutDate(LSDPCheckOutDate)
 		}
-
-		if (LSDPCheckOutDate && LSDPCheckInDate === "") {
-			setLSDPDateSubTitle("Select check-in date.")
+		if (LSDPCheckInDate === "" && LSDPCheckOutDate === "") {
+			setLSDPDateTitle("Minimum 1 Night Stay")
 		}
+
 	}, [LSDPCheckOutDate])
 
 	const amountOfNights = () => {
@@ -52,7 +48,6 @@ const ListingShowDatePicker = ({LSSetCheckInDate, LSSetCheckOutDate, listing}) =
 		<div id="LSDP_container">
 			<div id="LSDP_wrapper">
 				<div id="LSDP_title">{LSDPDateTitle}</div>
-				<div id="LSDP_subtitle">{LSDPDateSubTitle}</div>
 					<DatePicker chooseCheckInDate={setLSDPCheckInDate} chooseCheckOutDate={setLSDPCheckOutDate}/>
 				</div> 
 		</div> 

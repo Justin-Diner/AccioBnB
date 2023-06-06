@@ -1,28 +1,30 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getListing, fetchListing } from "../../store/listings";
-import { fetchUser } from '../../store/users';
 import { useParams } from "react-router-dom";
 import './ListingShow.css'
-import './ListingShowPicDisplay/ListingShowPicDisplay';
+
+import { getListing, fetchListing } from "../../store/listings";
+import { getReviews } from "../../store/reviews";
+import { fetchUser, retrieveUsers } from '../../store/users';
+import { receiveCreateReviewModal, receiveLogInModal } from "../../store/ui";
+
+import { calculateRating } from '../utils/Utils';
+import CreateReview from "../Reviews/CreateReview/CreateReview";
+import GMapLS from './GMapLS/GMapLS';
+import ListingReservationTool from "./ListingReservationTool/ListingReservationTool";
+import ListingShowDatePicker from './ListingShowDatePicker/ListingShowDatePicker';
 import ListingShowPicDisplay from "./ListingShowPicDisplay/ListingShowPicDisplay";
+import './ListingShowPicDisplay/ListingShowPicDisplay';
 import LogoDisplay from "../Navigation/LogoDisplay/LogoDisplay";
+import ReservationSuccessful from './ReservationSuccessful/ReservationSuccessful'
+import Reviews from "../Reviews/Reviews";
 import SearchBar from "../Navigation/SearchBar/SearchBar";
 import SettingsOptions from "../Navigation/SettingsOptions/SettingsOptions";
 import * as sessionAction from '../../store/session';
-import ListingReservationTool from "./ListingReservationTool/ListingReservationTool";
-import ReservationSuccessful from './ReservationSuccessful/ReservationSuccessful'
-import Reviews from "../Reviews/Reviews";
-import CreateReview from "../Reviews/CreateReview/CreateReview";
-import { receiveCreateReviewModal, receiveLogInModal } from "../../store/ui";
-import { retrieveUsers } from '../../store/users';
 import Socials from "../Navigation/socials/Socials";
-import { getReviews } from "../../store/reviews";
-import GMapLS from './GMapLS/GMapLS';
 import ThreeFacts from './ThreeFacts/ThreeFacts';
-import { calculateRating } from '../utils/Utils';
-import ListingShowDatePicker from './ListingShowDatePicker/ListingShowDatePicker';
+
 
 const ListingShow = () => {
  const dispatch = useDispatch();
@@ -45,14 +47,6 @@ const ListingShow = () => {
 		dispatch(fetchUser(listing.hostId))
 	 }
  }, [dispatch, listing]);
-
- useEffect(() => {
-	console.log(checkInDate)
- }, [checkInDate])
-
- useEffect(() => {
-	console.log(checkOutDate)
- }, [checkOutDate])
 
  if (!listing) {
 	return null;
@@ -140,7 +134,7 @@ const ListingShow = () => {
 					</div>
 
 					<section>
-						<ListingShowDatePicker LSSetCheckInDate={setCheckInDate} LSSetCheckOutDate={setCheckOutDate} listing={listing}/>
+						<ListingShowDatePicker LSSetCheckInDate={setCheckInDate} LSSetCheckOutDate={setCheckOutDate} listing={listing} />
 					</section>
 
 					</div>

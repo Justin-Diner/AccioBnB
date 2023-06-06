@@ -66,8 +66,6 @@ const ListingShow = () => {
 	}
  }
 
-
- 
  return (
 	<>
 		<div id="lsp_container">
@@ -142,7 +140,7 @@ const ListingShow = () => {
 					</div>
 
 					<section>
-						<ListingShowDatePicker LSSetCheckInDate={setCheckInDate} LSSetCheckOutDate={setCheckOutDate}/>
+						<ListingShowDatePicker LSSetCheckInDate={setCheckInDate} LSSetCheckOutDate={setCheckOutDate} listing={listing}/>
 					</section>
 
 					<div id="lsp_reviews_wrapper">

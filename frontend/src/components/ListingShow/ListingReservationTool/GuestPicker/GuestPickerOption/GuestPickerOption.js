@@ -36,7 +36,7 @@ const GuestPickerOption = ({title, category, guestsChosen, setterOfGuestsChosen,
 						className="gpo_counter_button" 
 						id="gpo_minus_button_wrapper" 
 						onClick={decreaseCount}>
-							<i class="fa-solid fa-minus"></i>
+							<i className="fa-solid fa-minus"></i>
 					</div>
 					<div id="gpo_item_count_wrapper">
 						<div id="gpo_item_count">{itemCount}</div>

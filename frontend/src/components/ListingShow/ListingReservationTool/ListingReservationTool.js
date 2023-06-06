@@ -11,7 +11,7 @@ import { receiveLogInModal } from '../../../store/ui';
 import { getReviews } from "../../../store/reviews";
 import { calculateRating } from '../../utils/Utils';
 
-const ListingReservationTool = ({listing, type, reservation}) => {
+const ListingReservationTool = ({listing, type, reservation, LSCheckInDate, LSCheckOutDate }) => {
 	const dispatch = useDispatch();
 	const [showReservationPicker, setShowReservationPicker] = useState(false);
 	const [showGuestAmountPicker, setShowGuestAmountPicker] = useState(false);
@@ -23,8 +23,6 @@ const ListingReservationTool = ({listing, type, reservation}) => {
 
 	const checkInDateObj = new Date(`${checkInDate} GMT`)
 	const checkOutDateObj = new Date(`${checkOutDate} GMT`)
-	
-	const rating = 4.95;
 
 	useEffect(() => {
 		if (reservation) {
@@ -33,6 +31,22 @@ const ListingReservationTool = ({listing, type, reservation}) => {
 			setGuestsChosen(reservation.numGuests);
 		}
 	}, [])
+
+	useEffect(() => {
+		if (LSCheckInDate) {
+			setCheckInDate(LSCheckInDate);
+		} else {
+			setCheckInDate("");
+		}
+	}, [LSCheckInDate])
+
+	useEffect(() => {
+		if (LSCheckOutDate) {
+			setCheckOutDate(LSCheckOutDate);
+		} else {
+			setCheckOutDate("");
+		}
+	}, [LSCheckOutDate])
 
 	useEffect(() => {
 		if (!showReservationPicker) return;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getListing, fetchListing } from "../../store/listings";
 import { fetchUser } from '../../store/users';
@@ -22,6 +22,7 @@ import { getReviews } from "../../store/reviews";
 import GMapLS from './GMapLS/GMapLS';
 import ThreeFacts from './ThreeFacts/ThreeFacts';
 import { calculateRating } from '../utils/Utils';
+import ListingShowDatePicker from './ListingShowDatePicker/ListingShowDatePicker';
 
 const ListingShow = () => {
  const dispatch = useDispatch();
@@ -32,6 +33,8 @@ const ListingShow = () => {
  const host = useSelector(state => state.users ? state.users[hostId] : null);
  const users = useSelector(retrieveUsers);
  const reviews = useSelector(getReviews);
+ const [checkInDate, setCheckInDate] = useState("");
+ const [checkOutDate, setCheckOutDate] = useState("");
 
  useEffect(() => {
 	dispatch(fetchListing(listingId));
@@ -42,6 +45,14 @@ const ListingShow = () => {
 		dispatch(fetchUser(listing.hostId))
 	 }
  }, [dispatch, listing]);
+
+ useEffect(() => {
+	console.log(checkInDate)
+ }, [checkInDate])
+
+ useEffect(() => {
+	console.log(checkOutDate)
+ }, [checkOutDate])
 
  if (!listing) {
 	return null;
@@ -54,6 +65,8 @@ const ListingShow = () => {
 		dispatch(receiveCreateReviewModal(true));
 	}
  }
+
+
  
  return (
 	<>
@@ -128,9 +141,13 @@ const ListingShow = () => {
 							</React.Fragment>)}
 					</div>
 
+					<section>
+						<ListingShowDatePicker LSSetCheckInDate={setCheckInDate} LSSetCheckOutDate={setCheckOutDate}/>
+					</section>
+
 					<div id="lsp_reviews_wrapper">
 						<div id="lsp_reservation_prompt_wrapper" onClick={handleCreateReview}>
-							<div id="lsp_reservation_prompt"> Did you stay here? Wave your wand (click) here to leave a review.</div>
+							<div id="lsp_reservation_prompt">Write a review</div>
 						</div>
 						<Reviews users={users}/> 
 						<div id="lsp_create_new_review_wrapper">
@@ -143,7 +160,7 @@ const ListingShow = () => {
 						<ReservationSuccessful />
 					</div>
 				<div id="ListingReservationTool_wrapper"> 
-					<ListingReservationTool listing={listing} type="reservation" />
+					<ListingReservationTool listing={listing} type="reservation" LSCheckInDate={checkInDate} LSCheckOutDate={checkOutDate}/>
 				</div>
 			</div>
 

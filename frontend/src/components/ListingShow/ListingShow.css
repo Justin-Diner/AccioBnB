@@ -208,6 +208,7 @@
 }
 
 #lsp_reservation_prompt_wrapper {
+	border-top: var(--border-bottom-grey);
 	height: 80px;
 	display: flex;
 	align-items: center;

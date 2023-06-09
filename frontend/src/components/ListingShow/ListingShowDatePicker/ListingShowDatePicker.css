@@ -1,7 +1,6 @@
 #LSDP_container {
 	min-height: 480px;
 	width: 100%; 
-	border-bottom: var(--border-bottom-grey);
 }
 
 #LSDP_wrapper {

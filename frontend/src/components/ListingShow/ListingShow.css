@@ -1,10 +1,17 @@
-
-
 #lsp_container {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+#lsp_wrapper {
 	font-family: var(--font-family);
-	margin-left: 38px; 
-	margin-right: 38px; 
 	font-size: 18px;
+	display: flex; 
+	flex-direction: column;
+	max-width: 1300px;
+	min-width: 1100px;
 }
 
 #LSP_nav_container {

@@ -6,6 +6,7 @@ const RECEIVE_LOGIN_MODAL = 'ui/RECEIVE_LOGIN_MODAL'
 const RECEIVE_RESERVATION_MODAL = 'ui/RECEIVE_RESERVATION_MODAL'
 const RECEIVE_CREATE_REVIEW_MODAL = 'ui/CREATE_REVIEW_MODAL'
 const RECEIVE_EDIT_REVIEW_MODAL = 'ui/EDIT_REVIEW_MODAL'
+const RECEIVE_CLEAR_SELECTED_DATES = 'ui/CLEAR_SELECTED_DATES'
 
 export const receiveSignUpModal = (modalState) => ({
 	type: RECEIVE_SIGNUP_MODAL,
@@ -32,6 +33,11 @@ export const receiveEditReviewModal = (modalState) => ({
 	modalState
 })
 
+export const receiveClearSelectedDates = (clearBool) => ({
+	type: RECEIVE_CLEAR_SELECTED_DATES,
+	clearBool
+})
+
 // Selectors 
 export const retrieveSignUpModalState = (state) => {
 	return state.ui.signUpModal ? state.ui.signUpModal : null;
@@ -53,6 +59,10 @@ export const retrieveEditReviewModalState = (state) => {
 	return state.ui.editReviewModal ? state.ui.editReviewModal : null; 
 }
 
+export const retrieveClearSelectedDatesStatus = (state) => {
+	return state.ui.clearSelectedDatesStatus ? state.ui.clearSelectedDatesStatus : null;
+}
+
 const uiReducer = (state = {}, action) => {
 	const nextState = {...state};
 
@@ -72,6 +82,9 @@ const uiReducer = (state = {}, action) => {
 		case RECEIVE_EDIT_REVIEW_MODAL:
 			nextState.editReviewModal = action.modalState
 			return nextState;
+		case RECEIVE_CLEAR_SELECTED_DATES:
+			nextState.clearSelectedDatesStatus = action.clearBool
+			return nextState
 		default: 
 			return state; 
 	}

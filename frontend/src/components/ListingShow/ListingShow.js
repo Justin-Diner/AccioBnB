@@ -7,7 +7,7 @@ import './ListingShow.css'
 import { getListing, fetchListing } from "../../store/listings";
 import { getReviews } from "../../store/reviews";
 import { fetchUser, retrieveUsers } from '../../store/users';
-import { receiveCreateReviewModal, receiveLogInModal } from "../../store/ui";
+import { receiveCreateReviewModal, receiveLogInModal, retrieveClearSelectedDatesStatus, receiveClearSelectedDates } from "../../store/ui";
 
 import { calculateRating } from '../utils/Utils';
 import CreateReview from "../Reviews/CreateReview/CreateReview";
@@ -25,7 +25,6 @@ import * as sessionAction from '../../store/session';
 import Socials from "../Navigation/socials/Socials";
 import ThreeFacts from './ThreeFacts/ThreeFacts';
 
-
 const ListingShow = () => {
  const dispatch = useDispatch();
  const sessionUser = useSelector(sessionAction.sessionUser);
@@ -37,6 +36,7 @@ const ListingShow = () => {
  const reviews = useSelector(getReviews);
  const [checkInDate, setCheckInDate] = useState("");
  const [checkOutDate, setCheckOutDate] = useState("");
+ const resetCICO = useSelector(retrieveClearSelectedDatesStatus)
 
  useEffect(() => {
 	dispatch(fetchListing(listingId));
@@ -47,6 +47,14 @@ const ListingShow = () => {
 		dispatch(fetchUser(listing.hostId))
 	 }
  }, [dispatch, listing]);
+
+ useEffect(() => {
+	if (resetCICO) {
+		setCheckInDate("")
+		setCheckOutDate("")
+		dispatch(receiveClearSelectedDates(false));
+	}
+ }, [resetCICO])
 
  if (!listing) {
 	return null;
@@ -62,7 +70,8 @@ const ListingShow = () => {
 
  return (
 	<>
-		<div id="lsp_container">
+	<div id="lsp_container">
+		<div id="lsp_wrapper">
 			<div id="LSP_nav_container">
 				<div id="LSP_top_nav_bar">
 						<a href="/"><div className="LSP_nav_component" id="LSP_logo_wrapper">
@@ -156,10 +165,10 @@ const ListingShow = () => {
 						</div>
 					</div>
 
-			<div id="lsp_gmap_wrapper">
-				<GMapLS listing={listing}/>
+				<div id="lsp_gmap_wrapper">
+					<GMapLS listing={listing}/>
+				</div>
 			</div>
-
 		</div>
 	</>
  )

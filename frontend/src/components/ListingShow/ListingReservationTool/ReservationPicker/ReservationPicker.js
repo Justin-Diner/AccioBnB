@@ -2,10 +2,14 @@ import './ReservationPicker.css'
 import DatePicker from './DatePicker/DatePicker';
 import CheckInCheckOut from './CheckInCheckOut/CheckInCheckOut';
 import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {retrieveClearSelectedDatesStatus, receiveClearSelectedDates} from '../../../../store/ui'
 
 const ReservationPicker = ({chooseCheckInDate, chooseCheckOutDate, chooseShowReservationPicker}) => {
+	const dispatch = useDispatch();
 	const [checkInDateText, setCheckInDateText] = useState("") 
 	const [checkOutDateText, setCheckOutDateText] = useState("") 
+	const resetCICO = useSelector(retrieveClearSelectedDatesStatus)
 
 	useEffect(() => {
 		if (checkInDateText) {
@@ -18,6 +22,14 @@ const ReservationPicker = ({chooseCheckInDate, chooseCheckOutDate, chooseShowRes
 			chooseCheckOutDate(checkOutDateText);
 		}
 	}, [checkInDateText, checkOutDateText])
+
+	useEffect(() => {
+		if (resetCICO) {
+			setCheckInDateText("");
+			setCheckOutDateText("")
+			dispatch(receiveClearSelectedDates(false));
+		}
+	}, [resetCICO])
 
 	const updateCheckInDateText = (date) => {
 		setCheckInDateText(date);

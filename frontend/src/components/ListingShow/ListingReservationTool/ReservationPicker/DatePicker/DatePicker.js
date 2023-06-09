@@ -3,9 +3,12 @@ import { addDays, format } from 'date-fns';
 import 'react-day-picker/dist/style.css';
 import { useState, useEffect } from 'react';
 import './DatePicker.css'
+import { useDispatch, useSelector } from 'react-redux';
+import {receiveClearSelectedDates} from '../../../../../store/ui';
 
 
 const DatePicker = ({chooseCheckInDate, chooseCheckOutDate}) => {
+	const dispatch = useDispatch(); 
 	const [selected, setSelected] = useState([]); 
 
 	let checkInDate = "";
@@ -23,6 +26,13 @@ const DatePicker = ({chooseCheckInDate, chooseCheckOutDate}) => {
 			chooseCheckOutDate(checkOutDate);
 		}
 	}, [datePrompt])
+
+	useEffect(() => {
+		if (checkInDate === "" && checkOutDate === "") {
+			chooseCheckInDate("")
+			chooseCheckOutDate("");
+		}
+	}, [selected])
 
 	const css = `
 	.my-selected {
@@ -50,9 +60,8 @@ const DatePicker = ({chooseCheckInDate, chooseCheckOutDate}) => {
 	} 
 
 	const clearDates = () => {
+		dispatch(receiveClearSelectedDates(true));
 		setSelected(["", ""])
-		chooseCheckInDate("")
-		chooseCheckOutDate("");
 	}
 
 	return (

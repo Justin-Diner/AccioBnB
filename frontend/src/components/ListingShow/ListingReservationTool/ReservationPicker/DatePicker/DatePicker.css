@@ -2,3 +2,28 @@
 	display: flex;
 	justify-content: center;
 }
+
+#DP_clear_dates_wrapper {
+	width: 80%; 
+	display: flex;
+	justify-content: flex-end;
+}
+
+#DP_reservation_dates {
+	position: relative;
+	color: var(--lsp-secondary-font-color);
+	font-size: 14px;
+	left: 10px;
+}
+
+#DP_clear_dates_text {
+	position: relative; 
+	text-decoration: underline;
+	font-weight: 600;
+	display: flex; 
+	top: 24px;
+}
+
+#DP_clear_dates_text:hover {
+	cursor: pointer; 
+}

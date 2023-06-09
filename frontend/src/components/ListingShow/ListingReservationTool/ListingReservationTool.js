@@ -7,11 +7,11 @@ import ReservationPicker from './ReservationPicker/ReservationPicker';
 import GuestPicker from './GuestPicker/GuestPicker';
 import differenceInCalendarDays from 'date-fns/differenceInCalendarDays';
 import { createReservation, updateReservation } from '../../../store/reservations';
-import { receiveLogInModal } from '../../../store/ui';
+import { receiveLogInModal, retrieveClearSelectedDatesStatus, receiveClearSelectedDates } from '../../../store/ui';
 import { getReviews } from "../../../store/reviews";
 import { calculateRating } from '../../utils/Utils';
 
-const ListingReservationTool = ({listing, type, reservation}) => {
+const ListingReservationTool = ({listing, type, reservation, LSCheckInDate, LSCheckOutDate }) => {
 	const dispatch = useDispatch();
 	const [showReservationPicker, setShowReservationPicker] = useState(false);
 	const [showGuestAmountPicker, setShowGuestAmountPicker] = useState(false);
@@ -20,11 +20,10 @@ const ListingReservationTool = ({listing, type, reservation}) => {
 	const [guestsChosen, setGuestsChosen] = useState(1);
 	const user = useSelector(state => state.session.user ? state.session.user : null)
 	const reviewAmount = useSelector(getReviews);
+	const resetCICO = useSelector(retrieveClearSelectedDatesStatus)
 
 	const checkInDateObj = new Date(`${checkInDate} GMT`)
 	const checkOutDateObj = new Date(`${checkOutDate} GMT`)
-	
-	const rating = 4.95;
 
 	useEffect(() => {
 		if (reservation) {
@@ -35,6 +34,22 @@ const ListingReservationTool = ({listing, type, reservation}) => {
 	}, [])
 
 	useEffect(() => {
+		if (LSCheckInDate) {
+			setCheckInDate(LSCheckInDate);
+		} else {
+			setCheckInDate("");
+		}
+	}, [LSCheckInDate])
+
+	useEffect(() => {
+		if (LSCheckOutDate) {
+			setCheckOutDate(LSCheckOutDate);
+		} else {
+			setCheckOutDate("");
+		}
+	}, [LSCheckOutDate])
+
+	useEffect(() => {
 		if (!showReservationPicker) return;
 		const closeReservationPicker = () => {
 			setShowReservationPicker(false);
@@ -42,6 +57,14 @@ const ListingReservationTool = ({listing, type, reservation}) => {
 		document.addEventListener('click', closeReservationPicker)
 		return () => document.removeEventListener("click", closeReservationPicker)
 	}, [showReservationPicker])
+
+	useEffect(() => {
+		if (resetCICO) {
+			setCheckInDate("")
+			setCheckOutDate("")
+			dispatch(receiveClearSelectedDates(false))
+		}
+	}, [resetCICO])
 
 	useEffect(() => {
 		if (!showGuestAmountPicker) return;

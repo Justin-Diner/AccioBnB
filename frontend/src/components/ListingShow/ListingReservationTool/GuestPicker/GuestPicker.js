@@ -3,7 +3,7 @@ import './GuestPicker.css'
 import { useEffect, useState } from "react";
 
 const GuestPicker = ({maxGuests, guestsChosenUpdater}) => {
-	const [guestsChosen, setGuestsChosen] = useState(0);
+	const [guestsChosen, setGuestsChosen] = useState(1);
 
 	useEffect(() => {
 		guestsChosenUpdater(guestsChosen);

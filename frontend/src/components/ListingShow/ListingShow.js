@@ -1,27 +1,29 @@
 import React from 'react';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getListing, fetchListing } from "../../store/listings";
-import { fetchUser } from '../../store/users';
 import { useParams } from "react-router-dom";
 import './ListingShow.css'
-import './ListingShowPicDisplay/ListingShowPicDisplay';
+
+import { getListing, fetchListing } from "../../store/listings";
+import { getReviews } from "../../store/reviews";
+import { fetchUser, retrieveUsers } from '../../store/users';
+import { receiveCreateReviewModal, receiveLogInModal, retrieveClearSelectedDatesStatus, receiveClearSelectedDates } from "../../store/ui";
+
+import { calculateRating } from '../utils/Utils';
+import CreateReview from "../Reviews/CreateReview/CreateReview";
+import GMapLS from './GMapLS/GMapLS';
+import ListingReservationTool from "./ListingReservationTool/ListingReservationTool";
+import ListingShowDatePicker from './ListingShowDatePicker/ListingShowDatePicker';
 import ListingShowPicDisplay from "./ListingShowPicDisplay/ListingShowPicDisplay";
+import './ListingShowPicDisplay/ListingShowPicDisplay';
 import LogoDisplay from "../Navigation/LogoDisplay/LogoDisplay";
+import ReservationSuccessful from './ReservationSuccessful/ReservationSuccessful'
+import Reviews from "../Reviews/Reviews";
 import SearchBar from "../Navigation/SearchBar/SearchBar";
 import SettingsOptions from "../Navigation/SettingsOptions/SettingsOptions";
 import * as sessionAction from '../../store/session';
-import ListingReservationTool from "./ListingReservationTool/ListingReservationTool";
-import ReservationSuccessful from './ReservationSuccessful/ReservationSuccessful'
-import Reviews from "../Reviews/Reviews";
-import CreateReview from "../Reviews/CreateReview/CreateReview";
-import { receiveCreateReviewModal, receiveLogInModal } from "../../store/ui";
-import { retrieveUsers } from '../../store/users';
 import Socials from "../Navigation/socials/Socials";
-import { getReviews } from "../../store/reviews";
-import GMapLS from './GMapLS/GMapLS';
 import ThreeFacts from './ThreeFacts/ThreeFacts';
-import { calculateRating } from '../utils/Utils';
 
 const ListingShow = () => {
  const dispatch = useDispatch();
@@ -32,6 +34,9 @@ const ListingShow = () => {
  const host = useSelector(state => state.users ? state.users[hostId] : null);
  const users = useSelector(retrieveUsers);
  const reviews = useSelector(getReviews);
+ const [checkInDate, setCheckInDate] = useState("");
+ const [checkOutDate, setCheckOutDate] = useState("");
+ const resetCICO = useSelector(retrieveClearSelectedDatesStatus)
 
  useEffect(() => {
 	dispatch(fetchListing(listingId));
@@ -42,6 +47,14 @@ const ListingShow = () => {
 		dispatch(fetchUser(listing.hostId))
 	 }
  }, [dispatch, listing]);
+
+ useEffect(() => {
+	if (resetCICO) {
+		setCheckInDate("")
+		setCheckOutDate("")
+		dispatch(receiveClearSelectedDates(false));
+	}
+ }, [resetCICO])
 
  if (!listing) {
 	return null;
@@ -54,10 +67,11 @@ const ListingShow = () => {
 		dispatch(receiveCreateReviewModal(true));
 	}
  }
- 
+
  return (
 	<>
-		<div id="lsp_container">
+	<div id="lsp_container">
+		<div id="lsp_wrapper">
 			<div id="LSP_nav_container">
 				<div id="LSP_top_nav_bar">
 						<a href="/"><div className="LSP_nav_component" id="LSP_logo_wrapper">
@@ -128,9 +142,22 @@ const ListingShow = () => {
 							</React.Fragment>)}
 					</div>
 
-					<div id="lsp_reviews_wrapper">
+					<section>
+						<ListingShowDatePicker LSSetCheckInDate={setCheckInDate} LSSetCheckOutDate={setCheckOutDate} listing={listing} />
+					</section>
+
+					</div>
+					<div id="lsp_res_successful_wrapper">
+						<ReservationSuccessful />
+					</div>
+				<div id="ListingReservationTool_wrapper"> 
+					<ListingReservationTool listing={listing} type="reservation" LSCheckInDate={checkInDate} LSCheckOutDate={checkOutDate}/>
+				</div>
+			</div>
+
+			<div id="lsp_reviews_wrapper">
 						<div id="lsp_reservation_prompt_wrapper" onClick={handleCreateReview}>
-							<div id="lsp_reservation_prompt"> Did you stay here? Wave your wand (click) here to leave a review.</div>
+							<div id="lsp_reservation_prompt">Write a review</div>
 						</div>
 						<Reviews users={users}/> 
 						<div id="lsp_create_new_review_wrapper">
@@ -138,19 +165,10 @@ const ListingShow = () => {
 						</div>
 					</div>
 
-					</div>
-					<div id="lsp_res_successful_wrapper">
-						<ReservationSuccessful />
-					</div>
-				<div id="ListingReservationTool_wrapper"> 
-					<ListingReservationTool listing={listing} type="reservation" />
+				<div id="lsp_gmap_wrapper">
+					<GMapLS listing={listing}/>
 				</div>
 			</div>
-
-			<div id="lsp_gmap_wrapper">
-				<GMapLS listing={listing}/>
-			</div>
-
 		</div>
 	</>
  )

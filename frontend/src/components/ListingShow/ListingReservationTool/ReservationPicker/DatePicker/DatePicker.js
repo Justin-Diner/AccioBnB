@@ -3,13 +3,17 @@ import { addDays, format } from 'date-fns';
 import 'react-day-picker/dist/style.css';
 import { useState, useEffect } from 'react';
 import './DatePicker.css'
+import { useDispatch, useSelector } from 'react-redux';
+import {receiveClearSelectedDates} from '../../../../../store/ui';
 
 
 const DatePicker = ({chooseCheckInDate, chooseCheckOutDate}) => {
-	const [selected, setSelected] = useState({}); 
+	const dispatch = useDispatch(); 
+	const [selected, setSelected] = useState([]); 
+
 	let checkInDate = "";
 	let checkOutDate = "";
-	let datePrompt = <div>Please select your check-in date.</div>
+	let datePrompt = <div id="DP_reservation_dates"> Please select your check-in date.</div>
 	
 	useEffect(() => {
 		if (selected?.from){
@@ -22,6 +26,13 @@ const DatePicker = ({chooseCheckInDate, chooseCheckOutDate}) => {
 			chooseCheckOutDate(checkOutDate);
 		}
 	}, [datePrompt])
+
+	useEffect(() => {
+		if (checkInDate === "" && checkOutDate === "") {
+			chooseCheckInDate("")
+			chooseCheckOutDate("");
+		}
+	}, [selected])
 
 	const css = `
 	.my-selected {
@@ -40,16 +51,24 @@ const DatePicker = ({chooseCheckInDate, chooseCheckOutDate}) => {
 
 	if (selected?.from) {
 		if (!selected.to) {
-			datePrompt = <p>{format(selected?.from, 'PPP')}</p>
+			datePrompt = <p id="DP_reservation_dates" >{format(selected?.from, 'PPP')}</p>
 		} else if (selected?.to) {
-			datePrompt = <p>
-				You're reserving: {format(selected?.from, 'PPP')} - {format(selected?.to, 'PPP')}
+			datePrompt = <p id="DP_reservation_dates">
+				{format(selected?.from, 'PPP')} - {format(selected?.to, 'PPP')}
 				</p>
 		}
 	} 
 
+	const clearDates = () => {
+		dispatch(receiveClearSelectedDates(true));
+		setSelected(["", ""])
+	}
+
 	return (
 		<>
+			<div>
+				{datePrompt}
+			</div>
 			<style>{css}</style>
 			<DayPicker
 				mode="range"
@@ -62,6 +81,9 @@ const DatePicker = ({chooseCheckInDate, chooseCheckOutDate}) => {
 				}}
 				modifiers={modifiers}
 			/>
+			<div id="DP_clear_dates_wrapper">
+				<div id="DP_clear_dates_text" onClick={() => clearDates()}>Clear Dates</div>
+			</div>
 		</>
 	)
 }

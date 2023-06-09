@@ -4,6 +4,14 @@ import './GuestPickerOption.css';
 const GuestPickerOption = ({title, category, guestsChosen, setterOfGuestsChosen, maxGuests}) => {
 	const [itemCount, setItemCount] = useState(0); 
 
+	useEffect(() => {
+		if (title === "Adults") {
+			setItemCount(1)
+		} else {
+			setItemCount(0);
+		}
+	}, [])
+
 	const increaseCount = () => {
 		if ((guestsChosen < maxGuests) && (itemCount >= 0)) {
 			let newItemCount = itemCount + 1
@@ -13,7 +21,11 @@ const GuestPickerOption = ({title, category, guestsChosen, setterOfGuestsChosen,
 	}
 
 	const decreaseCount = () => {
-		if (itemCount > 0) {
+		if (itemCount > 1 && title === "Adults") {
+			let newItemCount = itemCount - 1;
+			setItemCount(newItemCount);
+			setterOfGuestsChosen(guestsChosen - 1);
+		} else if (title != "Adults" && itemCount > 0) {
 			let newItemCount = itemCount - 1
 			setItemCount(newItemCount)
 			setterOfGuestsChosen(guestsChosen - 1);
@@ -36,7 +48,7 @@ const GuestPickerOption = ({title, category, guestsChosen, setterOfGuestsChosen,
 						className="gpo_counter_button" 
 						id="gpo_minus_button_wrapper" 
 						onClick={decreaseCount}>
-							<i class="fa-solid fa-minus"></i>
+							<i className="fa-solid fa-minus"></i>
 					</div>
 					<div id="gpo_item_count_wrapper">
 						<div id="gpo_item_count">{itemCount}</div>

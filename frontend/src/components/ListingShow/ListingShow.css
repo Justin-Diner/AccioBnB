@@ -1,10 +1,17 @@
-
-
 #lsp_container {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+#lsp_wrapper {
 	font-family: var(--font-family);
-	margin-left: 38px; 
-	margin-right: 38px; 
 	font-size: 18px;
+	display: flex; 
+	flex-direction: column;
+	max-width: 1300px;
+	min-width: 1100px;
 }
 
 #LSP_nav_container {
@@ -201,10 +208,10 @@
 }
 
 #lsp_reservation_prompt_wrapper {
+	border-top: var(--border-bottom-grey);
 	height: 80px;
 	display: flex;
 	align-items: center;
-	border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 
 #lsp_reservation_prompt_wrapper:hover {
@@ -215,4 +222,14 @@
 #lsp_gmap_wrapper {
 	height: 600px;
 	width: 100%;
+}
+
+#lsp_reservation_prompt {
+	font-size: 24px;
+	text-decoration: underline;
+	font-weight: 600;
+}
+
+#lsp_reversion_prompt:hover {
+	cursor: pointer; 
 }

@@ -1,0 +1,23 @@
+#LSDP_container {
+	min-height: 480px;
+	width: 100%; 
+}
+
+#LSDP_wrapper {
+	height: 100%;
+	width: 100%; 
+}
+#LSDP_title {
+	margin-top: 22px;
+	margin-bottom: 12px;
+	font-size: 24px; 
+	font-weight: 600;
+	position: relative;
+	left: 10px;
+}
+
+#LSDP_subtitle {
+	color: var(--lsp-secondary-font-color);
+	font-size: 18px; 
+	margin-bottom: 24px;
+}

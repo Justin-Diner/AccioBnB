@@ -25,6 +25,7 @@ const DatePicker = ({chooseCheckInDate, chooseCheckOutDate}) => {
 			checkOutDate = format(selected?.to, 'MM/dd/yyyy').toString();
 			chooseCheckOutDate(checkOutDate);
 		}
+
 	}, [datePrompt])
 
 	useEffect(() => {
@@ -33,6 +34,8 @@ const DatePicker = ({chooseCheckInDate, chooseCheckOutDate}) => {
 			chooseCheckOutDate("");
 		}
 	}, [selected])
+
+
 
 	const css = `
 	.my-selected {

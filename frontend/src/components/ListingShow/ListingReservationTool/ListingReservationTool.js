@@ -31,6 +31,14 @@ const ListingReservationTool = ({listing, type, reservation, LSCheckInDate, LSCh
 			setCheckOutDate(reservationDateFormat(reservation.checkOut));
 			setGuestsChosen(reservation.numGuests);
 		}
+
+		if (LSCheckInDate) {
+			setCheckInDate(LSCheckInDate);
+		}
+		
+		if (LSCheckOutDate) {
+			setCheckOutDate(LSCheckOutDate)
+		}
 	}, [])
 
 	useEffect(() => {

@@ -2,11 +2,16 @@ import './ListingShowDatePicker.css';
 import DatePicker from '../ListingReservationTool/ReservationPicker/DatePicker/DatePicker';
 import { useEffect, useState } from 'react';
 import { differenceInCalendarDays } from 'date-fns';
+import { receiveCheckInDate, receiveCheckOutDate, retrieveCheckInDate, retrieveCheckOutDate } from '../../../store/ui';
+import { useDispatch, useSelector } from 'react-redux';
 
 const ListingShowDatePicker = ({LSSetCheckInDate, LSSetCheckOutDate, listing}) => {
+	const dispatch = useDispatch();
 	const [LSDPCheckInDate, setLSDPCheckInDate] = useState(""); 
 	const [LSDPCheckOutDate, setLSDPCheckOutDate] = useState(""); 
 	const [LSDPDateTitle, setLSDPDateTitle] = useState("Minimum 1 Night Stay");
+	const selectedCheckInDate = useSelector(retrieveCheckInDate)
+	const selectedCheckOutDate = useSelector(retrieveCheckOutDate)
 
 	useEffect(() => {
 		if (LSDPCheckInDate && LSDPCheckOutDate) {
@@ -14,6 +19,7 @@ const ListingShowDatePicker = ({LSSetCheckInDate, LSSetCheckOutDate, listing}) =
 		}
 		if (LSDPCheckInDate) {
 			LSSetCheckInDate(LSDPCheckInDate)
+			dispatch(receiveCheckInDate(LSDPCheckInDate))
 		}
 		if (LSDPCheckInDate === "" && LSDPCheckOutDate === "") {
 			setLSDPDateTitle("Minimum 1 Night Stay")
@@ -28,12 +34,14 @@ const ListingShowDatePicker = ({LSSetCheckInDate, LSSetCheckOutDate, listing}) =
 
 		if (LSDPCheckOutDate) {
 			LSSetCheckOutDate(LSDPCheckOutDate)
+			dispatch(receiveCheckOutDate(LSDPCheckOutDate))
 		}
 		if (LSDPCheckInDate === "" && LSDPCheckOutDate === "") {
 			setLSDPDateTitle("Minimum 1 Night Stay")
 		}
 
 	}, [LSDPCheckOutDate])
+
 
 	const amountOfNights = () => {
 		if (LSDPCheckInDate && LSDPCheckOutDate) {
@@ -48,7 +56,7 @@ const ListingShowDatePicker = ({LSSetCheckInDate, LSSetCheckOutDate, listing}) =
 		<div id="LSDP_container">
 			<div id="LSDP_wrapper">
 				<div id="LSDP_title">{LSDPDateTitle}</div>
-					<DatePicker chooseCheckInDate={setLSDPCheckInDate} chooseCheckOutDate={setLSDPCheckOutDate}/>
+					<DatePicker chooseCheckInDate={setLSDPCheckInDate} chooseCheckOutDate={setLSDPCheckOutDate} guestCheckInDate={LSDPCheckInDate} guestCheckOutDate={LSDPCheckOutDate}/>
 				</div> 
 		</div> 
 	)

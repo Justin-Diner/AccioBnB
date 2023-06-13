@@ -7,6 +7,8 @@ const RECEIVE_RESERVATION_MODAL = 'ui/RECEIVE_RESERVATION_MODAL'
 const RECEIVE_CREATE_REVIEW_MODAL = 'ui/CREATE_REVIEW_MODAL'
 const RECEIVE_EDIT_REVIEW_MODAL = 'ui/EDIT_REVIEW_MODAL'
 const RECEIVE_CLEAR_SELECTED_DATES = 'ui/CLEAR_SELECTED_DATES'
+const RECEIVE_CHECK_IN_DATE = 'ui/SELECTED_CHECK_IN_DATE'
+const RECEIVE_CHECK_OUT_DATE = 'ui/SELECTED_CHECK_OUT_DATE'
 
 export const receiveSignUpModal = (modalState) => ({
 	type: RECEIVE_SIGNUP_MODAL,
@@ -38,6 +40,16 @@ export const receiveClearSelectedDates = (clearBool) => ({
 	clearBool
 })
 
+export const receiveCheckInDate = (checkInDate) => ({
+	type: RECEIVE_CHECK_IN_DATE,
+	checkInDate
+})
+
+export const receiveCheckOutDate = (checkOutDate) => ({
+	type: RECEIVE_CHECK_OUT_DATE,
+	checkOutDate
+})
+
 // Selectors 
 export const retrieveSignUpModalState = (state) => {
 	return state.ui.signUpModal ? state.ui.signUpModal : null;
@@ -63,28 +75,42 @@ export const retrieveClearSelectedDatesStatus = (state) => {
 	return state.ui.clearSelectedDatesStatus ? state.ui.clearSelectedDatesStatus : null;
 }
 
+export const retrieveCheckInDate = (state) => {
+	return state.ui.checkInDate ? state.ui.checkInDate : null; 
+}
+
+export const retrieveCheckOutDate = (state) => {
+	return state.ui.checkOutDate ? state.ui.checkOutDate : null; 
+}
+
 const uiReducer = (state = {}, action) => {
 	const nextState = {...state};
 
 	switch(action.type) {
 		case RECEIVE_SIGNUP_MODAL:
 			nextState.signUpModal = action.modalState;
-			return nextState
+			return nextState;
 		case RECEIVE_LOGIN_MODAL: 
 		nextState.logInModal = action.modalState;
 			return nextState;
 		case RECEIVE_RESERVATION_MODAL:
-			nextState.reservationModal = action.modalState
-			return nextState
+			nextState.reservationModal = action.modalState;
+			return nextState;
 		case RECEIVE_CREATE_REVIEW_MODAL:
-			nextState.createReviewModal = action.modalState
+			nextState.createReviewModal = action.modalState;
 			return nextState;
 		case RECEIVE_EDIT_REVIEW_MODAL:
-			nextState.editReviewModal = action.modalState
+			nextState.editReviewModal = action.modalState;
 			return nextState;
 		case RECEIVE_CLEAR_SELECTED_DATES:
-			nextState.clearSelectedDatesStatus = action.clearBool
-			return nextState
+			nextState.clearSelectedDatesStatus = action.clearBool;
+			return nextState;
+		case RECEIVE_CHECK_IN_DATE:
+			nextState.checkInDate = action.checkInDate;
+			return nextState;
+		case RECEIVE_CHECK_OUT_DATE: 
+			nextState.checkOutDate = action.checkOutDate
+			return nextState;
 		default: 
 			return state; 
 	}

@@ -61,6 +61,7 @@ const ListingsIndex = () => {
 					currentListing = listings.find(listing => listing.id === result.id)
 					listingResults.push(currentListing);
 				})
+				debugger
 				let listingResultsIndexItems = listingResults.map(listing => {
 					return <ListingIndexItem className="gridItem" key={listing.id} listing={listing}/>
 				})

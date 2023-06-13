@@ -20,12 +20,16 @@ const ReviewOverviews = () => {
 				<div id="RO_amount_of_reviews">{reviews.length} reviews</div>
 			</div>
 			<div id="RO_each_review_container">
-				<ROItem />
-				<ROItem />
-				<ROItem />
-				<ROItem />
-				<ROItem />
-				<ROItem />
+				<div id="RO_each_review_left">
+					<ROItem category="Cleanliness" rating={listing.overallCleanliness}/>
+					<ROItem category="Communication" rating={listing.overallCleanliness}/>
+					<ROItem category="Check-in" rating={listing.overallCleanliness}/>
+				</div>
+				<div id="RO_each_review_right">
+					<ROItem category="Accuracy" rating={listing.overallCleanliness}/>
+					<ROItem category="Location" rating={listing.overallCleanliness}/>
+					<ROItem category="Value" rating={listing.overallCleanliness}/>
+				</div>
 			</div>
 		</div>
 

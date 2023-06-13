@@ -1,0 +1,29 @@
+#ROItem_container {
+	display: flex; 
+	margin: 20px;
+}
+
+#ROItem_category_Text {
+	width: 50%;
+}
+
+#ROItem_gray_rating_bar {
+	width: 120px; 
+	height: 4px !important; 
+	background-color: rgb(221, 221, 221) !important; 
+	border-radius: 2px !important;
+	position: relative; 
+	top: 5px;
+}
+
+#ROI_rating_bar_wrapper {
+	display: flex;
+}
+
+#ROItem_category_rating {
+	color: rgb(34, 34, 34);
+	font-weight: 600;
+	font-size: 14px; 
+	line-height: 16px;
+	margin-left: 8px;
+}

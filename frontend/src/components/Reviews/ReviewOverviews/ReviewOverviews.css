@@ -1,11 +1,11 @@
 #RO_container {
-	height: 300px;
-	background-color: green;
-	max-width: 1280px; 
+	height: 180px;
+	max-width: 1300px; 
 }
 
 #RO_stars_RAmount_container {
 	display: flex; 
+	margin-left: 20px;
 }
 #RO_stars_RAmount {
 	font-size: 24px;
@@ -24,4 +24,18 @@
 	font-size: 24px;
 	padding-left: 4px; 
 	font-weight: 800;
+}
+
+
+#RO_each_review_container {
+	display: flex;
+	flex-direction: row;
+}
+
+#RO_each_review_left {
+	width: 50%;
+}
+
+#RO_each_review_right {
+	width: 50%;
 }

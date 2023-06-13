@@ -53,11 +53,18 @@ class Listing < ApplicationRecord
 
 	def calculate_overall_rating
 		total_reviews = reviews.count
-		p total_reviews
 		return 5.0 if total_reviews.zero? 
 
 		sum_ratings = reviews.sum(:review_rating)
 		(sum_ratings.to_f / total_reviews).round(2)
+	end
+
+	def calculate_overall_cleanliness_rating
+		total_reviews = reviews.count
+		return 5.0 if total_reviews.zero? 
+
+		sum_overall_cleanliness = reviews.sum(:cleanliness)
+		(sum_overall_cleanliness.to_f / total_reviews).round(1)
 	end
 
 	def photosUrl 

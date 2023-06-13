@@ -20,7 +20,7 @@ class Review < ApplicationRecord
 	validates :listing_id, :user_id, :description, :cleanliness, :accuracy, :communication, :location, :check_in, :value, presence: true
 	
 	before_validation :calculate_review_average
-	after_validation :update_listing_overall_rating
+	after_validation :update_listing_overall_rating, :update_listing_overall_cleanliness 
 
 	after_destroy :update_listing_overall_rating 
 	after_save :update_listing_overall_rating 
@@ -47,5 +47,10 @@ class Review < ApplicationRecord
 
 	def update_listing_overall_rating
 		listing.update(overall_rating: listing.calculate_overall_rating)
+	end
+
+	def update_listing_overall_cleanliness
+		p "Calculating Listing Overall Cleanliness and Saving it"
+		listing.update(overall_cleanliness: listing.calculate_overall_cleanliness_rating)
 	end
 end

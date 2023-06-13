@@ -27,3 +27,13 @@
 	line-height: 16px;
 	margin-left: 8px;
 }
+
+#ROItem_black_rating_bar {
+	width: 85%;
+	height: 4px !important;
+	top: 0px;
+	left: 0px; 
+	bottom: 0px; 
+	background-color:rgb(34, 34, 34);
+	border-radius: 2px !important;
+}

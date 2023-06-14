@@ -482,7 +482,7 @@ require "open-uri"
 			max_guests: 10, 
 			nightly_price: 499, 
 			cleaning_fee: 130, 
-			description: "Welcome to the whimsical and enchanting home of Luna Lovegood, located in the heart of the stunning Ottery St. Catchpole countryside. This unique Airbnb rental is the perfect retreat for those seeking a magical escape from the stresses of everyday life. As you step inside, you'll be transported to a world of wonder and imagination, with whimsical decor, colorful furnishings, and mystical touches throughout the home.
+			description: "Welcome to the whimsical and enchanting home of Luna Lovegood, located in the heart of the stunning Ottery St. Catchpole countryside. This unique Acciobnb rental is the perfect retreat for those seeking a magical escape from the stresses of everyday life. As you step inside, you'll be transported to a world of wonder and imagination, with whimsical decor, colorful furnishings, and mystical touches throughout the home.
 
 			Luna's home is also the headquarters of the beloved wizarding publication, the Quibbler magazine. As you explore the many rooms of the house, you'll discover stacks of past issues, as well as evidence of Luna's latest fantastical research and discoveries. Relax in the cozy living room, take a stroll through the magical gardens, or curl up with a book in one of the comfortable bedrooms.",
 			num_bathrooms: 2.5, 
@@ -661,10 +661,10 @@ require "open-uri"
 			user_id: 9,
 			description: "Place is a dump.",
 			cleanliness: 2,
-			accuracy: 3, 
-			communication: 3, 
-			location: 3, 
-			check_in: 3,
+			accuracy: 2, 
+			communication: 1, 
+			location: 1, 
+			check_in: 1,
 			value: 3
 		})
 
@@ -853,7 +853,7 @@ require "open-uri"
 		Review.create!({
 			listing_id: 10,
 			user_id: 11,
-			description: "Well, let me tell ya, stayin' at Gringotts Bank turned out to be a bit of a disaster. Turns out, the listing was a complete fake, and who do ya think was behind it? Voldemort himself! That sneaky snake put up the fake listing just to give me a hard time. Instead of a cozy room, I found myself face-to-face with a bunch of goblins who were less than thrilled to see me. They chased me out faster than a hippogriff on a sugar rush! So, if you're lookin' for a place to stay, I'd steer clear of any listings posted by ol' Voldy. Stick to the Leaky Cauldron or the Three Broomsticks for a proper wizarding accommodation. Lesson learned, folks - don't trust Dark Lords with your Airbnb bookings!",
+			description: "Well, let me tell ya, stayin' at Gringotts Bank turned out to be a bit of a disaster. Turns out, the listing was a complete fake, and who do ya think was behind it? Voldemort himself! That sneaky snake put up the fake listing just to give me a hard time. Instead of a cozy room, I found myself face-to-face with a bunch of goblins who were less than thrilled to see me. They chased me out faster than a hippogriff on a sugar rush! So, if you're lookin' for a place to stay, I'd steer clear of any listings posted by ol' Voldy. Stick to the Leaky Cauldron or the Three Broomsticks for a proper wizarding accommodation. Lesson learned, folks - don't trust Dark Lords with your Acciobnb bookings!",
 			cleanliness: 1,
 			accuracy: 1, 
 			communication: 1, 

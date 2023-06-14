@@ -20,10 +20,9 @@ class Review < ApplicationRecord
 	validates :listing_id, :user_id, :description, :cleanliness, :accuracy, :communication, :location, :check_in, :value, presence: true
 	
 	before_validation :calculate_review_average
-	after_validation :update_listing_overall_rating, :update_listing_ratings 
+	after_save :update_listing_overall_rating, :update_listing_ratings 
 
-	after_destroy :update_listing_overall_rating 
-	after_save :update_listing_overall_rating 
+	after_destroy :update_listing_overall_rating, :update_listing_ratings 
 
 	belongs_to :user, 
 	primary_key: :id, 

@@ -228,6 +228,8 @@
 	font-size: 24px;
 	text-decoration: underline;
 	font-weight: 600;
+	position: relative;
+	left: 20px;
 }
 
 #lsp_reversion_prompt:hover {

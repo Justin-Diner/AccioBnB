@@ -5,8 +5,9 @@ import { useParams } from 'react-router-dom';
 import { fetchListingReviews } from '../../store/reviews';
 import IndividualReview from './IndividualReview/IndividualReview';
 import { getReviews } from '../../store/reviews';
+import ReviewOverviews from './ReviewOverviews/ReviewOverviews';
 
-const Reviews = ({users}) => {
+const Reviews = ({users }) => {
 	const dispatch = useDispatch();
 	const {listingId} = useParams();
 	const [displayedReviews, setDisplayedReviews] = useState([]); 
@@ -30,10 +31,15 @@ const Reviews = ({users}) => {
 		setDisplayedReviews(reviewsToDisplay);
 	}, [reviews])
 
-	return ( 
-		<div id="reviews_container">
-			{displayedReviews}
-		</div>
+	return (
+		<>
+			<div id="reviews_ROOverview_Container">
+				<ReviewOverviews /> 
+			</div>
+			<div id="reviews_container">
+				{displayedReviews}
+			</div>
+		</> 
 	)
 }
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter} from 'react-router-dom';
 import {createRoot} from "react-dom/client";
@@ -14,6 +13,9 @@ import './reset.css';
 import './index.css';
 
 const store = configureStore();
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
 
 if (process.env.NODE_ENV !== 'production') {
 	window.store = store;
@@ -23,8 +25,7 @@ if (process.env.NODE_ENV !== 'production') {
 	window.reviewsActions = reviewsActions;
 }
 
-const rootElement = document.getElementById("root");
-const root = createRoot(rootElement);
+
 
 function Root() {
   return (
@@ -45,7 +46,7 @@ const initialLoad = () => {
 }
 
 // Top function that sets the X-CSRF-Token prior to rendering. Doing so ensures that the CSRF token is set. 
-if (sessionStorage.getItem("X-CSRF-Token") === null || sessionStorage.getItem("currentUser" === null)) {
+if (sessionStorage.getItem("X-CSRF-Token") === null || sessionStorage.getItem("currentUser") === null) {
 	store.dispatch(sessionActions.restoreSession())
 		.then(initialLoad());
 } else {

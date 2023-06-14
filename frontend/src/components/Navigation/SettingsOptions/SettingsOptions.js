@@ -16,19 +16,19 @@ const SettingsOptions = ({ user = null}) => {
 	useEffect(() => {
     if (!showMenu) return;
 
-    const closeMenu = () => {
-      setShowMenu(false);
-    };
-
 		document.addEventListener('click', closeMenu);
 		
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-	const openMenu = () => {
-		if (showMenu) return; {
-			setShowMenu(true);
-		}
+	const closeMenu = () => {
+		setShowMenu(false);
+	};
+
+	const openMenu = (e) => {
+		e.stopPropagation();
+		if (showMenu) return;
+		setShowMenu(true);
 	}
 
 	const showLogIn = () => {
@@ -58,7 +58,7 @@ const SettingsOptions = ({ user = null}) => {
 		dropDownOptions = 		
 		<>
 			<div id="settings_options_container">
-				<div id="settings_options_background" onClick={openMenu}>
+				<div id="settings_options_background" onClick={(e) => openMenu(e)}>
 					<i className="fa-solid fa-bars"></i>
 					<img id="profile_image" src={profileIcon}></img>
 				</div>
@@ -92,8 +92,8 @@ const SettingsOptions = ({ user = null}) => {
 					<ul className="profile_dropdown">
 						<li className="settings_dropdown_item" id="login_from_loggedout_dropdown" onClick={showLogIn}>Log In</li> 
 						<li className="settings_dropdown_item" id="signup_from_loggedout_dropdown" onClick={showSignUp}>Sign Up</li>
-						<li className="settings_dropdown_item">AccioBnB Your Home</li>
-						<li className="settings_dropdown_item">Help</li>
+						<li className="settings_dropdown_item" onClick={showLogIn}>AccioBnB Your Home</li>
+						<li className="settings_dropdown_item" onClick={showLogIn}>Help</li>
 					</ul>
 				</div>
 				)}

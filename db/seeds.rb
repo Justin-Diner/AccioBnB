@@ -21,6 +21,7 @@ require "open-uri"
 
 		puts "Creating Users..."
 
+		#1
 		User.create!(
 			first_name: "Harry",
 			last_name: "Potter",
@@ -28,6 +29,7 @@ require "open-uri"
 			password: "dumbledore"
 		)
 
+		#2
 		User.create!(
 			first_name: "Squib",
 			last_name: "Guest",
@@ -35,13 +37,15 @@ require "open-uri"
 			password: "dumbledore"
 		)
 
+		#3
 		User.create!(
 			first_name: "Hermione",
-			last_name: "Grander",
+			last_name: "Granger",
 			email: "hermione@accio.com",
 			password: "dumbledore"
 		)
 
+		#4
 		User.create!(
 			first_name: "Ronald",
 			last_name: "Weasley",
@@ -49,6 +53,7 @@ require "open-uri"
 			password: "dumbledore"
 		)
 
+		#5
 		User.create!(
 			first_name: "Thomas",
 			last_name: "Riddle",
@@ -56,13 +61,15 @@ require "open-uri"
 			password: "dumbledore"
 		)
 
+		#6
 		User.create!(
-			first_name: "Lord",
-			last_name: "Voldemort",
+			first_name: "Voldemort",
+			last_name: "Lord",
 			email: "lordvoldemort@accio.com",
 			password: "dumbledore"
 		)
 
+		#7
 		User.create!(
 			first_name: "Sirius",
 			last_name: "Black",
@@ -70,6 +77,7 @@ require "open-uri"
 			password: "dumbledore"
 		)
 
+		#8
 		User.create!(
 			first_name: "Albus",
 			last_name: "Dumbledore",
@@ -77,6 +85,7 @@ require "open-uri"
 			password: "dumbledore"
 		)
 
+		#9
 		User.create!(
 			first_name: "Draco",
 			last_name: "Malfoy",
@@ -84,6 +93,7 @@ require "open-uri"
 			password: "dumbledore"
 		)
 
+		#10
 		User.create!(
 			first_name: "Neville",
 			last_name: "Longbottom",
@@ -91,6 +101,7 @@ require "open-uri"
 			password: "dumbledore"
 		)
 
+		#11
 		User.create!(
 			first_name: "Rubeus",
 			last_name: "Hagrid",
@@ -98,6 +109,7 @@ require "open-uri"
 			password: "dumbledore"
 		)
 
+		#12
 		User.create!(
 			first_name: "Stan",
 			last_name: "Shunpike",
@@ -105,6 +117,7 @@ require "open-uri"
 			password: "dumbledore"
 		)
 
+		#13
 		User.create!(
 			first_name: "Luna",
 			last_name: "Lovegood",
@@ -692,6 +705,19 @@ require "open-uri"
 		})
 
 		Review.create!({
+			listing_id: 4,
+			user_id: 4,
+			description: "Incredibly small and took quite a while to travel to. But served its purpose. I was ready to get out of there, quick.",
+			cleanliness: 3,
+			accuracy: 4, 
+			communication: 5, 
+			location: 2, 
+			check_in: 2,
+			value: 3
+		})
+
+
+		Review.create!({
 			listing_id: 6,
 			user_id: 13,
 			description: "So whimsickle and magical. The narguls stay away. It's truly a great place to read and study. I can't wait for each year to camp there by the fire.",
@@ -713,6 +739,177 @@ require "open-uri"
 			location: 5, 
 			check_in: 5,
 			value: 5
+		})
+
+		Review.create!({
+			listing_id: 6,
+			user_id: 9,
+			description: "Even though I booked a night in the common room I was unable to find it. The location only pointed me to a painting that was incredibly rude. I told it I was there for a stay but even when I gave it the password it would not let me in. I don't think I was provided the correct location. Potter just laughed when I told him. Terrible listing.",
+			cleanliness: 3,
+			accuracy: 2, 
+			communication: 2, 
+			location: 5, 
+			check_in: 1,
+			value: 2
+		})
+
+		Review.create!({
+			listing_id: 7,
+			user_id: 4,
+			description: "Staying at Hagrid's hut was an experience unlike any other, mate. From the moment you step foot into that cozy wooden shack, you're surrounded by the warmest of welcomes and the quirkiest of company. Hagrid's hospitality knows no bounds, and his cooking... well, let's just say it's an acquired taste.",
+			cleanliness: 4,
+			accuracy: 4, 
+			communication: 5, 
+			location: 5, 
+			check_in: 4,
+			value: 4
+		})
+
+		Review.create!({
+			listing_id: 7,
+			user_id: 3,
+			description: "Staying at Hagrid's hut was an enchanting escapade, filled with fascinating creatures and Hagrid's endearing eccentricities. It may not offer luxurious accommodations, but the warmth of friendship and the thrill of magical encounters make it an unforgettable experience.",
+			cleanliness: 3,
+			accuracy: 5, 
+			communication: 5, 
+			location: 5, 
+			check_in: 4,
+			value: 5
+		})
+
+		Review.create!({
+			listing_id: 7,
+			user_id: 7,
+			description: "Staying at that bloody shabby hut of Hagrid's was a right adventure, I'll give you that. From the moment you enter, you're greeted by the stench of beasts and Hagrid's questionable culinary skills. But you know what? There's something raw and authentic about the place. The crackling fire, the wild stories, and the company of Fang create a sense of freedom you won't find elsewhere.",
+			cleanliness: 3,
+			accuracy: 5, 
+			communication: 5, 
+			location: 4, 
+			check_in: 4,
+			value: 5
+		})
+
+		Review.create!({
+			listing_id: 8,
+			user_id: 1,
+			description: "Staying at 12 Grimmauld Place was a haunting yet strangely nostalgic experience. The ancient house, inherited by the Black family, exudes an air of mystery and hidden secrets at every turn. The portrait-covered walls and creaking staircases transport you back to a time when dark magic was ever-present.",
+			cleanliness: 5,
+			accuracy: 5, 
+			communication: 5, 
+			location: 4, 
+			check_in: 4,
+			value: 5
+		})
+
+		Review.create!({
+			listing_id: 8,
+			user_id: 3,
+			description: "Staying at 12 Grimmauld Place proved to be an exceptional gathering place for the Order of the Phoenix. Despite the dark and foreboding aura of the ancient Black family house, its hidden chambers and intricate enchantments ensured utmost secrecy and security for our meetings. The countless protective enchantments and strategic location within the wizarding world made it an ideal headquarters.",
+			cleanliness: 5,
+			accuracy: 5, 
+			communication: 5, 
+			location: 5, 
+			check_in: 4,
+			value: 5
+		})
+
+		Review.create!({
+			listing_id: 8,
+			user_id: 6,
+			description: "Staying at 12 Grimmauld Place, I must admit, was an elusive endeavor. Despite my utmost efforts and extensive research, the hidden nature of the ancient Black family house proved insurmountable even for the Dark Lord himself. While I am unable to provide a detailed review of the premises, the mere fact that it remained concealed from my formidable powers speaks volumes of its formidable enchantments. As a result, I cannot give this place a positive review.",
+			cleanliness: 2,
+			accuracy: 3, 
+			communication: 1, 
+			location: 1, 
+			check_in: 1,
+			value: 2
+		})
+
+		
+		Review.create!({
+			listing_id: 9,
+			user_id: 1,
+			description: "Staying in the magical tent during the Quidditch World Cup was like stepping into a whimsical wonderland that exceeded all expectations. This extraordinary accommodation, which seemed impossibly small from the outside, revealed a spacious and enchanting interior that comfortably housed us and our awe-struck friends. The tent was like a TARDIS of the wizarding world, filled with cozy beds, a charming sitting area, and even a miniature kitchen that magically conjured up delicious snacks.",
+			cleanliness: 5,
+			accuracy: 4, 
+			communication: 5, 
+			location: 5, 
+			check_in: 4,
+			value: 5
+		})
+
+		Review.create!({
+			listing_id: 9,
+			user_id: 3,
+			description: "Staying in the magical tent during the Quidditch World Cup was an experience that perfectly balanced wonder and practicality. The tent's compact exterior cleverly concealed a surprisingly spacious and well-designed interior, complete with comfortable sleeping arrangements and essential amenities. It was a testament to wizarding ingenuity, providing a convenient and cozy home away from home.",
+			cleanliness: 5,
+			accuracy: 4, 
+			communication: 5, 
+			location: 5, 
+			check_in: 4,
+			value: 5
+		})
+
+		Review.create!({
+			listing_id: 10,
+			user_id: 11,
+			description: "Well, let me tell ya, stayin' at Gringotts Bank turned out to be a bit of a disaster. Turns out, the listing was a complete fake, and who do ya think was behind it? Voldemort himself! That sneaky snake put up the fake listing just to give me a hard time. Instead of a cozy room, I found myself face-to-face with a bunch of goblins who were less than thrilled to see me. They chased me out faster than a hippogriff on a sugar rush! So, if you're lookin' for a place to stay, I'd steer clear of any listings posted by ol' Voldy. Stick to the Leaky Cauldron or the Three Broomsticks for a proper wizarding accommodation. Lesson learned, folks - don't trust Dark Lords with your Airbnb bookings!",
+			cleanliness: 1,
+			accuracy: 1, 
+			communication: 1, 
+			location: 1, 
+			check_in: 1,
+			value: 1
+		})
+
+		Review.create!({
+			listing_id: 10,
+			user_id: 5,
+			description: "What an amazing stay! I was able to see all the treasures and trinkets that Gringotts has to offer. It was an elegant night of wizarding treasury. I cannot wait to go back and stay at Gringotts again. It was 5 star and top-notch service. There's even a dragon viewing. Great fun for all involved. A museum of magical history.",
+			cleanliness: 5,
+			accuracy: 5, 
+			communication: 5, 
+			location: 5, 
+			check_in: 5,
+			value: 5
+		})
+
+		Review.create!({
+			listing_id: 11,
+			user_id: 6,
+			description: "Staying at Malfoy Manor was an exquisite experience that surpassed all expectations. As the Dark Lord, I was graciously offered a complimentary stay, and I must say, it was an absolute delight. The grandeur of the manor, with its opulent halls and lavish decor, reflected the impeccable taste and status of the Malfoy family. Every room exuded an air of power and authority, perfectly suited to my esteemed presence. The house-elves attended to my every need with unwavering loyalty, ensuring my utmost comfort. The extensive library provided a haven for my studies and strategic planning. The Malfoys themselves, while deeply loyal, treated me with the utmost respect and deference. The vast grounds, with their meticulously manicured gardens, allowed for peaceful contemplation and secluded gatherings. All in all, Malfoy Manor offered a sanctuary of darkness and sophistication.",
+			cleanliness: 5,
+			accuracy: 5, 
+			communication: 5, 
+			location: 5, 
+			check_in: 4,
+			value: 5
+		})
+
+
+
+		Review.create!({
+			listing_id: 12,
+			user_id: 1,
+			description: "Staying at Luna Lovegood's house was a whimsical and enchanting experience that transported me to a world of wonder. The eccentric charm of her home, with its colorful tapestries and peculiar decor, reflected Luna's unique personality perfectly. The cozy bedrooms were adorned with magical artifacts and peculiar paintings that seemed to come to life.",
+			cleanliness: 4,
+			accuracy: 5, 
+			communication: 5, 
+			location: 5, 
+			check_in: 5,
+			value: 5
+		})
+
+		Review.create!({
+			listing_id: 12,
+			user_id: 4,
+			description: "Staying at Luna Lovegood's house was... well, it was an experience, to say the least. From the moment you step foot in that place, you're bombarded with all sorts of oddities. The decorations were... erm, unique, to put it mildly, with weird creatures and random objects scattered around. Luna's dad was always going on about some conspiracy theories, and the conversations could get a bit, um, out there.",
+			cleanliness: 3,
+			accuracy: 4, 
+			communication: 4, 
+			location: 3, 
+			check_in: 4,
+			value: 4
 		})
 
 

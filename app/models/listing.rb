@@ -77,7 +77,7 @@ class Listing < ApplicationRecord
 		total_reviews = reviews.count
 		return 5.0 if total_reviews.zero? 
 
-		sum_overall_communication = reviews.sum(:communication)
+		sum_overall_communication = reviews.sum(:communication) 
 		(sum_overall_communication.to_f / total_reviews).round(1)
 	end
 
@@ -85,7 +85,7 @@ class Listing < ApplicationRecord
 		total_reviews = reviews.count
 		return 5.0 if total_reviews.zero? 
 
-		sum_overall_checkin = reviews.sum(:check_in)
+		sum_overall_checkin = reviews.sum(:check_in) 
 		(sum_overall_checkin.to_f / total_reviews).round(1)
 	end
 
@@ -93,7 +93,7 @@ class Listing < ApplicationRecord
 		total_reviews = reviews.count
 		return 5.0 if total_reviews.zero? 
 
-		sum_overall_accuracy = reviews.sum(:accuracy)
+		sum_overall_accuracy = reviews.sum(:accuracy) 
 		(sum_overall_accuracy.to_f / total_reviews).round(1)
 	end
 
@@ -101,7 +101,7 @@ class Listing < ApplicationRecord
 		total_reviews = reviews.count
 		return 5.0 if total_reviews.zero? 
 
-		sum_overall_location = reviews.sum(:location)
+		sum_overall_location = reviews.sum(:location) 
 		(sum_overall_location.to_f / total_reviews).round(1)
 	end
 
@@ -109,7 +109,7 @@ class Listing < ApplicationRecord
 		total_reviews = reviews.count
 		return 5.0 if total_reviews.zero? 
 
-		sum_overall_value = reviews.sum(:value)
+		sum_overall_value = reviews.sum(:value) 
 		(sum_overall_value.to_f / total_reviews).round(1)
 	end
 

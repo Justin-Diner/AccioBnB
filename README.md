@@ -128,7 +128,7 @@ const DatePicker = ({chooseCheckInDate, chooseCheckOutDate}) => {
 ```
 
 # Google Maps 
-To Do 
+The application utlizes Google Maps in two areas: (1) on the initial listings/index page and on each individual listing show page. On the listings/index page, Google Maps is available through the push of a button that is centered on the bottom. When a user clicks the button, it changes to the map on a fixed view. The map displays the price of each listing on the map and links to that individual listing's show page. This is exactly what Airbnb does as well.  On the listing show page, there is an area with a Google Map that shows approximately where the location will be. A custom Google Maps InfoWindow is used to display the text "Exact Portkey location procided after booking." 
 
 # Reviews 
 Users who are not logged in are able to view reviews on each listing's show page, but are unable to make their own comments. Once logged in, users are able to write reviews of the properties they have "stayed" at. The user can rate the property, and leave a description of their stay. The user can post their review which is displayed on the listing's show page. If the user is the author, they are able to delete and edit the review. If they are not the author they are unable to delete or edit the review. They are also unable to delete any reviews if they are not logged in. 

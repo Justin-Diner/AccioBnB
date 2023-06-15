@@ -130,6 +130,73 @@ const DatePicker = ({chooseCheckInDate, chooseCheckOutDate}) => {
 # Google Maps 
 The application utlizes Google Maps in two areas: (1) on the initial listings/index page and on each individual listing show page. On the listings/index page, Google Maps is available through the push of a button that is centered on the bottom. When a user clicks the button, it changes to the map on a fixed view. The map displays the price of each listing on the map and links to that individual listing's show page. This is exactly what Airbnb does as well.  On the listing show page, there is an area with a Google Map that shows approximately where the location will be. A custom Google Maps InfoWindow is used to display the text "Exact Portkey location procided after booking." 
 
+```js
+const GMap = () => {
+	const [gMap, setGMap] = useState();
+	const ref = useRef();
+	const markers = useRef([]);
+	const listings = useSelector(getListings);
+	const oval = './whiteoval.png'
+
+	const initialCenterCoords = { lat: 54.11389, lng: -4.59445 };
+  const zoomAmount = 6;
+
+	const createTheMap = (latitude, longitude) => {
+		const initialMap = new window.google.maps.Map(ref.current, {
+			center: { lat: latitude, lng: longitude},
+			zoom: zoomAmount,
+			gestureHandling:'greedy'
+		})
+		return initialMap;
+	}
+	
+	useEffect(() => {
+		const initialMap = createTheMap(initialCenterCoords.lat, initialCenterCoords.lng); 
+		setGMap(initialMap);
+	}, []);
+
+	useEffect(() => {
+		markers.current = [];
+		listings.forEach(listing => {
+			const listingLat = Number(listing.lat);
+			const listingLng = Number(listing.long);
+			const position = {lat: listingLat, lng: listingLng};
+			const place = listing.city
+			const currentMarker = new window.google.maps.Marker({
+				position: position, 
+				map: gMap, 
+				title: place,
+				label: {
+					text: '$' + listing.nightlyPrice.toLocaleString(),
+					color: 'black',
+					fontSize: '15px',
+					fontWeight: 'bold'
+				},
+				icon: {
+					url: oval,
+					scaledSize: new window.google.maps.Size(80, 38)
+				},
+				optimized: false,
+				url: `/listings/${listing.id}`
+			})
+			
+			window.google.maps.event.addListener(currentMarker, 'click', function() {
+				window.location.href = currentMarker.url;
+			});
+		})
+	}, [gMap])
+
+	return (
+		<div id="GMap_main_container">
+			<div id="map_wrapper">
+				<div ref={ref} id="map" />
+			</div>
+		</div>
+	)
+}
+```
+export default GMap;
+
 # Reviews 
 Users who are not logged in are able to view reviews on each listing's show page, but are unable to make their own comments. Once logged in, users are able to write reviews of the properties they have "stayed" at. The user can rate the property, and leave a description of their stay. The user can post their review which is displayed on the listing's show page. If the user is the author, they are able to delete and edit the review. If they are not the author they are unable to delete or edit the review. They are also unable to delete any reviews if they are not logged in. 
 

@@ -20,6 +20,12 @@
 	height: 100%;
 }
 
+@media screen and (max-width: 420px) {
+	#top_nav_bar_container {
+		position: fixed; 
+	}
+}
+
 #logo_wrapper {
 	height: 100%;
 	width: 100%; 
@@ -53,4 +59,10 @@
 
 a {
 	text-decoration: none;
+}
+
+@media screen and (max-width: 420px) {
+	#socials_and_nav_wrapper {
+		display: none;
+	}
 }

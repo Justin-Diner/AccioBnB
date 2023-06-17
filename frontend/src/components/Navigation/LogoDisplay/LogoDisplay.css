@@ -20,3 +20,9 @@ img {
 	right: 20px;
 	top: 18px;
 }
+
+@media screen and (max-width: 420px) {
+	 #logo_container {
+		display: none; 
+	}
+}

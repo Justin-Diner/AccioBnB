@@ -7,6 +7,12 @@
 
 }
 
+@media screen and (max-width: 420px) {
+	#listing_index_item_container {
+		padding-left: 16px;
+	}
+}
+
 #listing_index_item_container:hover {
 	cursor: pointer;
 }

@@ -14,7 +14,10 @@
 	width: 100%;
 	display: flex;
 	justify-content: space-around;
-
 }
 
-
+@media screen and (max-width: 420px) {
+	#category_filter_container {
+		position: fixed; 
+	}
+}

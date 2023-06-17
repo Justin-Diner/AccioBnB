@@ -10,6 +10,12 @@
 
 }
 
+@media screen and (max-width: 420px) {
+	#listings_index_container {
+		padding-left: 0px !important;
+	}
+}
+
 #listings_index_wrapper {
 	display: grid;
 	grid-auto-flow: row dense;

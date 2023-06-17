@@ -101,3 +101,9 @@
 	color: black;
 	border-bottom: 1px solid rgba(0,0,0,0.08);
 }
+
+@media screen and (max-width: 420px) {
+	#settings_options_container {
+		display: none;
+	}
+}

@@ -33,3 +33,15 @@
 	width: 80%;
 }
 
+@media screen and (max-width: 420px) {
+	#search_bar { 
+		width: 80%;
+		
+	}
+
+	#search_bar_wrapper {
+		width: 100%;
+		display: fixed;
+		height: 100%;
+	}
+}

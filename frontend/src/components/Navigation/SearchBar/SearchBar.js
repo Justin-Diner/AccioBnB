@@ -13,6 +13,7 @@ const SearchBar = ({index}) => {
 
 	async function handleSearch(e) {
 		e.preventDefault(); 
+		console.log("testing")
 		const query = e.target.value;
 		await setSearchText(query);
 	}
@@ -29,10 +30,16 @@ const SearchBar = ({index}) => {
 		dispatch(fetchSearchResults(searchQuery));
 	}
 
+	const handleKeyDown = (e) => {
+		if (e.key === "Enter") {
+			handleSearchSubmit(e);
+		}
+	}
+
  return (
 	<div id="search_bar_wrapper">
 		<div id="search_bar">
-			<input id="SB_input" onChange={handleSearch} type="text" placeholder="Start Your Search"></input>
+			<input id="SB_input" onChange={handleSearch} type="text" onKeyDown={handleKeyDown} placeholder="Start Your Search"></input>
 			<div></div>
 			<SearchButton clickEvent={handleSearchSubmit} />
 		</div> 

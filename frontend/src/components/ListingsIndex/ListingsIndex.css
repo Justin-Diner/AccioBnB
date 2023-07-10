@@ -7,7 +7,6 @@
 	position: relative;
 	top: 160px;
 	user-select: none;
-
 }
 
 @media screen and (max-width: 420px) {
@@ -26,6 +25,7 @@
 	column-gap: 24px; 
 	row-gap: 40px;
 	max-width: 96%;
+    padding-bottom: 60px;
 }
 
 #listings_index_map_wrapper { 

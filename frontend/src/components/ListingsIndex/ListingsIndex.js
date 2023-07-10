@@ -7,6 +7,7 @@ import GMapsIndexButton from './GMapsIndexButton/GMapsIndexButton';
 import { Wrapper, Status } from "@googlemaps/react-wrapper"
 import GMap from '../GMap/GMap';
 import Loading from '../GMap/Loading/Loading';
+import Footer from './Footer/Footer';
 import { getSearchResults } from '../../store/search';
 
 const ListingsIndex = () => {
@@ -87,11 +88,13 @@ const ListingsIndex = () => {
 			<div onClick={() => handleMapClick()}> 
 				<GMapsIndexButton />
 			</div> 
+          
 			{showGMap &&
 			<div style={gMapDisplayStyle} id="listings_index_map_wrapper">
 				<Wrapper apiKey={process.env.REACT_APP_MAPS_API_KEY} render={render}>
 				</Wrapper>
 			</div>}
+            <Footer />
 		</main>
 	)
 }

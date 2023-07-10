@@ -21,7 +21,7 @@ const CategoryFilter = () => {
 		<>
 			<div id="category_filter_container">
 				<div id="category_filter_wrapper">
-						{displayedIcons}
+						{ displayedIcons }
 				</div> 
 			</div>
 		</>

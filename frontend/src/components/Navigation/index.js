@@ -1,9 +1,4 @@
-import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import ProfileButton from "./SettingsOptions/ProfileButton/ProfileButton";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { receiveSignUpModal, receiveLogInModal } from "../../store/ui";
 import LogoDisplay from "./LogoDisplay/LogoDisplay.js";
 import SearchBar from "./SearchBar/SearchBar";
 import SettingsOptions from "./SettingsOptions/SettingsOptions";
@@ -38,7 +33,6 @@ const Navigation = () => {
 			</div>
 		</>
 	)
-
 }
 
 export default Navigation;

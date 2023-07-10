@@ -16,6 +16,19 @@ const FilterIcon = ({image, text, searchInput}) => {
 			lowerSearchInput = "hogwarts";
 		}
 
+        if (lowerSearchInput === "lovegood") {
+            lowerSearchInput = "lovegood";
+        }
+
+        if (lowerSearchInput === "bed and breakfast") {
+            lowerSearchInput = "breakfast"
+        }
+
+        if (lowerSearchInput === "quidditch") {
+            lowerSearchInput = "tent"
+        }
+
+
 		dispatch(fetchSearchResults(lowerSearchInput))
 	}
 

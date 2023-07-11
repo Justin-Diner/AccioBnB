@@ -4,6 +4,7 @@
 	flex-direction: column;
 	align-items: center;
 	user-select: none;
+    width: 100px; 
 }
 
 #filterIcon_wrapper:hover {

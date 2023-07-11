@@ -10,10 +10,12 @@
 }
 
 #category_filter_wrapper {
+    position: absolute;
 	height: 100%; 
-	width: 100%;
+	width: 96%;
 	display: flex;
 	justify-content: space-around;
+    left: 2%;
 }
 
 @media screen and (max-width: 420px) {

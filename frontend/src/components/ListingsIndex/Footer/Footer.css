@@ -48,3 +48,15 @@ p a:hover {
     color: black;
 }
 
+@media screen and (max-width: 480px) {
+	#footer_wrapper{
+        font-size: 8px;
+	}
+}
+
+@media screen and (max-width: 1520px) {
+	#footer_wrapper{
+        font-size: 12px;
+	}
+}
+

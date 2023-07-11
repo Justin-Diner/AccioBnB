@@ -1,0 +1,43 @@
+.slick-slider {
+    height: 100%;
+    width: 100%;
+}
+
+.slick-list {
+    height: 100%;
+    width: 100%;
+}
+
+.slick-track {
+    height: 100%;
+    width: 100%;
+}
+
+.slick-dots {
+    position: relative;
+    bottom: 60px;
+}
+
+#image_slider {
+    height: 100%;
+    width: 100%;
+}
+
+
+#listing_index_slider_wrapper {
+    height: 100%;
+    width: 100%;
+}
+.listing_index_slider_image { 
+
+	min-height: 380px;
+    max-height: 100%;
+	width: 100%;
+	border-radius: 12px;
+	object-fit: cover;
+}
+
+#image_slider_wrapper {
+    height: 100%;
+    width: 100%;
+}

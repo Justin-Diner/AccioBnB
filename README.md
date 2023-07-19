@@ -239,7 +239,7 @@ To Do
 
 # User Profiles 
 
-To Do 
+Coming Soon
 
 # Additional Features:
 # Continue Button

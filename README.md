@@ -128,7 +128,9 @@ const DatePicker = ({chooseCheckInDate, chooseCheckOutDate}) => {
 ```
 
 # Google Maps 
-The application utlizes Google Maps in two areas: (1) on the initial listings/index page and on each individual listing show page. On the listings/index page, Google Maps is available through the push of a button that is centered on the bottom. When a user clicks the button, it changes to the map on a fixed view. The map displays the price of each listing on the map and links to that individual listing's show page. This is exactly what Airbnb does as well.  On the listing show page, there is an area with a Google Map that shows approximately where the location will be. A custom Google Maps InfoWindow is used to display the text "Exact Portkey location procided after booking." 
+The application utlizes Google Maps in two areas: (1) on the initial listings/index page and (2) on each individual listing show page. On the listings/index page, Google Maps is available through the push of a button centered on the bottom of the page. When a user clicks the button, the map is diplayed with a fixed view covering the listings index. The map displays the price of each listing from the listing's index and links to that individual listing's show page. This is exactly what Airbnb does. 
+
+Second, on the listing show page, there is an area with a Google Map that shows approximately where the location will be. There is a small easter egg for those who hover over the custom Google Maps InfoWindow, where it displays text stating "Exact Portkey location procided after booking." 
 
 ```js
 const GMap = () => {

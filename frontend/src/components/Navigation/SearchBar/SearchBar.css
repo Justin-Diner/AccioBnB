@@ -22,6 +22,25 @@
 	box-shadow: 0 4px 3px -2px gray;
 }
 
+.search_button {
+  height: 100%;
+  width: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer; 
+  padding: 0;
+  border-radius: 4px;
+  margin: -1px;
+  font-family: src(--font-family);
+}
+
+#search_options_container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
 #SB_input {
 	font-family: var(--font-family);
 	font-size: 16px;

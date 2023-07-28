@@ -9,6 +9,7 @@ const SearchBar = ({index}) => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const [searchText, setSearchText] = useState("");
+  const [isClicked, setIsClicked] = useState(false);
 	const searchResults = useSelector(getSearchResults);
 
 	async function handleSearch(e) {
@@ -36,13 +37,27 @@ const SearchBar = ({index}) => {
 		}
 	}
 
+  const handleSearchBarClicked = () => {
+    setIsClicked(!isClicked);
+    console.log("hello")
+  }
+
  return (
 	<div id="search_bar_wrapper">
-		<div id="search_bar">
-			<input id="SB_input" onChange={handleSearch} type="text" onKeyDown={handleKeyDown} placeholder="Start Your Search"></input>
-			<div></div>
-			<SearchButton clickEvent={handleSearchSubmit} />
-		</div> 
+    <div id="search_bar">
+			{!isClicked ? (
+        <div id="search_options_container" onClick={() => handleSearchBarClicked()}>
+          <button className="search_button" id="search_anywhere">Anywhere</button>|
+          <button className="search_button" id="search_anyweek">Any week</button> |
+          <button className="search_button" id="search_addguests">Add guests</button>
+          <div></div>
+          <SearchButton clickEvent={handleSearchSubmit} />
+        </div>
+     ) : ( 
+       <input id="SB_input" onChange={handleSearch} type="text" onKeyDown={handleKeyDown}></input> 
+     )
+}
+		</div>  
 	</div>
  )
 }

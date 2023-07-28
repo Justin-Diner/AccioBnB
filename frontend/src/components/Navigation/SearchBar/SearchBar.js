@@ -1,6 +1,6 @@
 import './SearchBar.css'
 import SearchButton from './SearchButton/SearchButton';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import { fetchSearchResults, getSearchResults } from '../../../store/search';
@@ -11,6 +11,7 @@ const SearchBar = ({index}) => {
 	const [searchText, setSearchText] = useState("");
   const [isClicked, setIsClicked] = useState(false);
 	const searchResults = useSelector(getSearchResults);
+  const inputRef = useRef(null);
 
 	async function handleSearch(e) {
 		e.preventDefault(); 
@@ -39,7 +40,10 @@ const SearchBar = ({index}) => {
 
   const handleSearchBarClicked = () => {
     setIsClicked(!isClicked);
-    console.log("hello")
+    
+    if (isClicked === true && inputRef) {
+      inputRef.current.click()
+    } 
   }
 
  return (
@@ -51,12 +55,17 @@ const SearchBar = ({index}) => {
           <button className="search_button" id="search_anyweek">Any week</button> |
           <button className="search_button" id="search_addguests">Add guests</button>
           <div></div>
-          <SearchButton clickEvent={handleSearchSubmit} />
         </div>
-     ) : ( 
-       <input id="SB_input" onChange={handleSearch} type="text" onKeyDown={handleKeyDown}></input> 
-     )
-}
+      ) : ( 
+        <input 
+          ref={inputRef}
+          id="SB_input" 
+          onChange={handleSearch} 
+          type="text" 
+          onKeyDown={handleKeyDown}>
+        </input> 
+      )}
+    <SearchButton clickEvent={handleSearchSubmit} />
 		</div>  
 	</div>
  )

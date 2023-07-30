@@ -238,8 +238,9 @@ const Reviews = ({users}) => {
 ```
 
 # Search Bar 
+Currently, Users are able to filter listings by typing in keywords within the search bar. The search bar is shown on every page and redirets the user to a customized listing index page based on their search term. If the user wants to go back to the main listing's index page, they can click the AccioBnb logo. The search works by parsing the database and identifying keyword matches within the title or description of each listing. It then returns those results in their own search page.  
 
-To Do 
+A more customizable search is under construction. 
 
 # User Profiles 
 

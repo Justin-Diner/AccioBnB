@@ -24,9 +24,9 @@
 	column-gap: 24px; 
 	row-gap: 40px;
 	max-width: 96%;
-    padding-bottom: 80px;
-    position: relative;
-    left: 2%;
+  padding-bottom: 80px;
+  position: relative;
+  left: 2%;
 }
 
 #listings_index_map_wrapper { 

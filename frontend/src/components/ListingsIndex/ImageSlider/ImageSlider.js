@@ -20,7 +20,7 @@ const ImageSlider = ({photoUrls}) => {
             <Slider {...sliderSettings} id="image_slider">
                 {photoUrls && (
                     photoUrls.map((photoUrl) => 
-                        <div id="listing_index_slider_wrapper">
+                        <div key={photoUrl} id="listing_index_slider_wrapper">
                             <img className="listing_index_slider_image" src={photoUrl}></img>
                         </div>
                     )

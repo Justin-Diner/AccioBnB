@@ -3,7 +3,7 @@
 	bottom: 6%; 
 	left: 50%;
 	margin-left: -65px;
-	z-index: 2;
+	z-index: 10;
 }
 
 #GMaps_Index_Button {

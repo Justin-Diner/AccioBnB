@@ -67,12 +67,14 @@ class User < ApplicationRecord
 	end
 
 	def set_default_photo
-		unless self.photo.attached?
-			self.photo.attach(
-				io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/profilepics/capybara.jpg"),
-				filename: "capybara.jpg"
-			)
-		end
+		return if self.photo.attached?
+
+		self.photo.attach(
+			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/profilepics/capybara.jpg"),
+			filename: "capybara.jpg"
+		)
+	rescue OpenURI::HTTPError, SocketError => e
+		Rails.logger.warn("Default photo unavailable: #{e.message}")
 	end
 
 	private

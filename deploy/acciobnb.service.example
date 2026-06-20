@@ -1,0 +1,15 @@
+[Unit]
+Description=AccioBnB Puma
+After=network.target mysql.service
+
+[Service]
+Type=simple
+User=deploy
+WorkingDirectory=/var/www/acciobnb
+EnvironmentFile=/var/www/acciobnb/.env
+ExecStart=/home/deploy/.rbenv/shims/bundle exec puma -C config/puma.rb
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

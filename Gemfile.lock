@@ -90,6 +90,7 @@ GEM
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
+    bigdecimal (4.1.2)
     binding_of_caller (1.0.0)
       debug_inspector (>= 0.0.1)
     bootsnap (1.16.0)
@@ -101,6 +102,10 @@ GEM
     crass (1.0.6)
     date (3.3.3)
     debug_inspector (1.1.0)
+    dotenv (3.2.0)
+    dotenv-rails (3.2.0)
+      dotenv (= 3.2.0)
+      railties (>= 6.1)
     erubi (1.12.0)
     faker (3.1.1)
       i18n (>= 1.8.11, < 2)
@@ -125,6 +130,8 @@ GEM
     mini_mime (1.1.2)
     minitest (5.18.0)
     msgpack (1.6.1)
+    mysql2 (0.5.7)
+      bigdecimal
     net-imap (0.3.4)
       date
       net-protocol
@@ -141,7 +148,6 @@ GEM
       racc (~> 1.4)
     nokogiri (1.14.2-x86_64-linux)
       racc (~> 1.4)
-    pg (1.4.6)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -202,9 +208,10 @@ DEPENDENCIES
   binding_of_caller
   bootsnap
   byebug
+  dotenv-rails
   faker
   jbuilder
-  pg (~> 1.1)
+  mysql2 (~> 0.5)
   pry-rails
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)

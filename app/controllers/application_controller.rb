@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
 	include ActionController::RequestForgeryProtection
 
 	protect_from_forgery with: :exception
-	before_action :snake_case_params, :attach_authenticity_token
+	before_action :snake_case_params, :attach_authenticity_token, :set_active_storage_url_options
 	rescue_from StandardError, with: :unhandled_error
 	rescue_from ActionController::InvalidAuthenticityToken, with: :invalid_authenticity_token
 
@@ -44,6 +44,14 @@ class ApplicationController < ActionController::API
 
 	def attach_authenticity_token
 		headers['X-CSRF-Token'] = masked_authenticity_token(session)
+	end
+
+	def set_active_storage_url_options
+		ActiveStorage::Current.url_options = {
+			protocol: request.protocol.delete_suffix("://"),
+			host: request.host,
+			port: request.port
+		}
 	end
 
 	def invalid_authenticity_token

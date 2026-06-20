@@ -1,4 +1,22 @@
 require "open-uri"
+
+def reset_auto_increment!(table_name)
+  connection = ApplicationRecord.connection
+  adapter = connection.adapter_name.downcase
+
+  if adapter.include?("mysql")
+    connection.execute("ALTER TABLE #{table_name} AUTO_INCREMENT = 1")
+  elsif adapter.include?("postgres")
+    connection.reset_pk_sequence!(table_name)
+  end
+end
+
+def attach_remote_file(attachment, url, filename)
+  attachment.attach(io: URI.open(url), filename: filename)
+rescue OpenURI::HTTPError, SocketError => e
+  puts "Warning: could not attach #{filename} (#{e.message})"
+end
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -16,7 +34,7 @@ require "open-uri"
 
   puts "Resetting primary keys..."
   # For easy testing, so that after seeding, the first `User` has `id` of 1
-  ApplicationRecord.connection.reset_pk_sequence!('users')
+  reset_auto_increment!('users')
 		property_types = ["House", "Apartment", "Castle", "Condo", "Room"]
 
 		puts "Creating Users..."
@@ -215,7 +233,7 @@ require "open-uri"
 		#end
 
 		# Listings 
-		ApplicationRecord.connection.reset_pk_sequence!('listings')
+		reset_auto_increment!('listings')
 		puts 'Generating Hogwarts...'
 		Listing.create!({
 				host_id: 8,

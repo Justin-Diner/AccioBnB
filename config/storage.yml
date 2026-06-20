@@ -11,10 +11,11 @@ digitalocean_spaces:
   prefix: <%= ENV.fetch("DO_SPACES_PREFIX", "acciobnb") %>
   access_key_id: <%= ENV.fetch("DO_SPACES_ACCESS_KEY") { Rails.application.credentials.dig(:digitalocean, :access_key_id) } %>
   secret_access_key: <%= ENV.fetch("DO_SPACES_SECRET_KEY") { Rails.application.credentials.dig(:digitalocean, :secret_access_key) } %>
-  region: <%= ENV.fetch("DO_SPACES_REGION", "nyc3") %>
+  # AWS SDK requires us-east-1; actual region is in the endpoint URL below.
+  region: us-east-1
   bucket: <%= ENV.fetch("DO_SPACES_BUCKET") { Rails.application.credentials.dig(:digitalocean, :bucket) } %>
   endpoint: <%= ENV.fetch("DO_SPACES_ENDPOINT") { "https://#{ENV.fetch('DO_SPACES_REGION', 'nyc3')}.digitaloceanspaces.com" } %>
-  force_path_style: false
+  force_path_style: true
 
 amazon_dev:
   service: S3

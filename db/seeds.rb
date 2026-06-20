@@ -13,7 +13,7 @@ end
 
 def attach_remote_file(attachment, url, filename)
   attachment.attach(io: URI.open(url), filename: filename)
-rescue OpenURI::HTTPError, SocketError => e
+rescue OpenURI::HTTPError, SocketError, Seahorse::Client::NetworkingError => e
   puts "Warning: could not attach #{filename} (#{e.message})"
 end
 

@@ -73,7 +73,7 @@ class User < ApplicationRecord
 			io: URI.open("https://acciobnb-seeds.s3.amazonaws.com/profilepics/capybara.jpg"),
 			filename: "capybara.jpg"
 		)
-	rescue OpenURI::HTTPError, SocketError => e
+	rescue OpenURI::HTTPError, SocketError, Seahorse::Client::NetworkingError => e
 		Rails.logger.warn("Default photo unavailable: #{e.message}")
 	end
 

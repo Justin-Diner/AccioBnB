@@ -9,10 +9,17 @@ APP_DIR="/var/www/acciobnb"
 DEPLOY_USER="${DEPLOY_USER:-$USER}"
 
 echo "==> Installing system packages"
+PACKAGES=(git curl build-essential libssl-dev libreadline-dev \
+  zlib1g-dev libyaml-dev libffi-dev libmysqlclient-dev default-mysql-client)
+
+if command -v nginx >/dev/null 2>&1; then
+  echo "nginx already installed; skipping nginx package"
+else
+  PACKAGES+=(nginx)
+fi
+
 sudo apt-get update
-sudo apt-get install -y git curl build-essential libssl-dev libreadline-dev \
-  zlib1g-dev libyaml-dev libffi-dev libmysqlclient-dev default-mysql-client \
-  nginx
+sudo apt-get install -y "${PACKAGES[@]}"
 
 if ! command -v rbenv >/dev/null 2>&1; then
   echo "==> Installing rbenv"

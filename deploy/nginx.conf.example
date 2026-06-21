@@ -1,10 +1,34 @@
 # /etc/nginx/sites-available/acciobnb
-# Replace YOUR_DOMAIN with your domain or droplet IP for initial testing.
+#
+# SETUP ORDER
+# -----------
+# 1. DNS (HostGator or your registrar) — A records only, no special certbot records:
+#      @   → YOUR_DROPLET_IP
+#      www → YOUR_DROPLET_IP
+#    Certbot proves ownership by reaching http://YOUR_DOMAIN on port 80 from the
+#    internet. As long as DNS points here, that is enough for: certbot --nginx
+#
+# 2. Copy this file and replace YOUR_DOMAIN (e.g. acciobnb.com www.acciobnb.com):
+#      sudo cp deploy/nginx.conf.example /etc/nginx/sites-available/acciobnb
+#      sudo nano /etc/nginx/sites-available/acciobnb
+#
+# 3. BEFORE certbot: use STEP A only (comment out STEP B). Test and reload nginx.
+#
+# 4. Run certbot (it will add SSL certs and can set up the redirect for you):
+#      sudo certbot --nginx -d acciobnb.com -d www.acciobnb.com
+#    Choose "Redirect" when asked — certbot rewrites this file automatically.
+#
+# 5. AFTER certbot: either keep certbot's changes, or replace with STEP B below
+#    (paths must match /etc/letsencrypt/live/YOUR_DOMAIN/).
+#
+# 6. In .env set SESSION_COOKIE_SECURE=true and restart Puma:
+#      sudo systemctl restart acciobnb
 
 upstream acciobnb {
   server 127.0.0.1:5000 fail_timeout=0;
 }
 
+# --- STEP A: HTTP only (use this until certbot has run) -----------------------
 server {
   listen 80;
   server_name YOUR_DOMAIN;
@@ -20,3 +44,33 @@ server {
     proxy_set_header X-Real-IP $remote_addr;
   }
 }
+
+# --- STEP B: HTTPS + redirect (enable AFTER certbot has created certs) -------
+# Comment out STEP A above when using this block.
+#
+# server {
+#   listen 80;
+#   server_name YOUR_DOMAIN;
+#   return 301 https://$host$request_uri;
+# }
+#
+# server {
+#   listen 443 ssl;
+#   server_name YOUR_DOMAIN;
+#
+#   ssl_certificate /etc/letsencrypt/live/acciobnb.com/fullchain.pem;
+#   ssl_certificate_key /etc/letsencrypt/live/acciobnb.com/privkey.pem;
+#   include /etc/letsencrypt/options-ssl-nginx.conf;
+#   ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+#
+#   client_max_body_size 20M;
+#
+#   location / {
+#     proxy_pass http://acciobnb;
+#     proxy_http_version 1.1;
+#     proxy_set_header Host $host;
+#     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#     proxy_set_header X-Forwarded-Proto $scheme;
+#     proxy_set_header X-Real-IP $remote_addr;
+#   }
+# }
